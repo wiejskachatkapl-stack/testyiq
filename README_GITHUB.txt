@@ -1,17 +1,12 @@
-IQ Challenge PWA v2 INSTALL
+IQ CHALLENGE PWA v4 PORTRAIT
 
-Wgraj wszystkie pliki z katalogu na GitHub Pages.
+Wgraj wszystkie pliki z tego katalogu do repozytorium GitHub Pages.
 
-Ważne pliki PWA:
-- index.html
-- quiz.html
-- manifest.webmanifest
-- service-worker.js
-- assets/icons/icon-192.png
-- assets/icons/icon-512.png
-
-Instalacja na telefonie:
-Android/Chrome: po wejściu na stronę pojawi się przycisk ZAINSTALUJ lub opcja „Dodaj do ekranu głównego”.
-iPhone/Safari: Udostępnij → Do ekranu początkowego.
-
-Po każdej podmianie plików zmieniaj CACHE_NAME w service-worker.js, żeby telefon pobrał nową wersję.
+Zmiany v4:
+- nowa pionowa szata graficzna,
+- aplikacja ustawiona zawsze w pionie,
+- manifest PWA ma orientation: portrait,
+- strona startowa ma tylko przyciski TEST i ZASADY,
+- po kliknięciu TEST pojawia się okno: Imię, Nazwisko, Wiek, ZACZYNAMY,
+- dane użytkownika są zapisywane lokalnie i przekazywane do quizu,
+- zachowana instalacja PWA.
