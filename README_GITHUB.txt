@@ -1,12 +1,5 @@
-IQ CHALLENGE PWA v4 PORTRAIT
+IQ Challenge PWA v5
 
-Wgraj wszystkie pliki z tego katalogu do repozytorium GitHub Pages.
-
-Zmiany v4:
-- nowa pionowa szata graficzna,
-- aplikacja ustawiona zawsze w pionie,
-- manifest PWA ma orientation: portrait,
-- strona startowa ma tylko przyciski TEST i ZASADY,
-- po kliknięciu TEST pojawia się okno: Imię, Nazwisko, Wiek, ZACZYNAMY,
-- dane użytkownika są zapisywane lokalnie i przekazywane do quizu,
-- zachowana instalacja PWA.
+Wgraj wszystkie pliki z katalogu do repozytorium GitHub Pages.
+Po podmianie na telefonie odśwież stronę i w razie potrzeby usuń starą aplikację PWA z ekranu telefonu, a potem dodaj ponownie.
+Ta wersja ma nową nazwę cache: iq-challenge-v5-portrait-start.

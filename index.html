@@ -1,95 +1,41 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <link rel="manifest" href="manifest.webmanifest" />
-  <meta name="theme-color" content="#07182f" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-title" content="IQ Test" />
-  <meta name="screen-orientation" content="portrait" />
-  <link rel="apple-touch-icon" href="assets/icons/icon-192.png" />
-  <title>IQ Challenge</title>
-  <style>
-    *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-    html,body{margin:0;min-height:100%;font-family:Inter,Arial,Helvetica,sans-serif;color:#effbff;background:#020716;overflow-x:hidden}
-    body{
-      min-height:100dvh;display:flex;justify-content:center;align-items:center;padding:12px;
-      background:
-        radial-gradient(circle at 22% 12%,rgba(33,201,255,.24),transparent 26%),
-        radial-gradient(circle at 82% 28%,rgba(93,255,219,.16),transparent 27%),
-        radial-gradient(circle at 50% 110%,rgba(43,81,255,.28),transparent 40%),
-        linear-gradient(160deg,#020716 0%,#07182f 55%,#020712 100%);
-    }
-    .phone-screen{
-      position:relative;width:min(430px,100%);min-height:calc(100dvh - 24px);border-radius:30px;overflow:hidden;
-      border:1px solid rgba(94,221,255,.45);background:rgba(4,18,40,.92);
-      box-shadow:0 24px 80px rgba(0,0,0,.58),inset 0 0 42px rgba(36,185,255,.08);isolation:isolate;padding:22px;
-    }
-    .phone-screen:before{content:"";position:absolute;inset:0;z-index:-1;opacity:.20;background-image:linear-gradient(rgba(94,221,255,.18) 1px,transparent 1px),linear-gradient(90deg,rgba(94,221,255,.18) 1px,transparent 1px);background-size:34px 34px;mask-image:radial-gradient(circle at center,#000 0%,transparent 80%)}
-    .phone-screen:after{content:"";position:absolute;inset:10px;border-radius:22px;border:1px solid rgba(103,229,255,.22);pointer-events:none;box-shadow:inset 0 0 28px rgba(37,188,255,.12)}
-    .brand{text-align:center;margin-top:8px}.logo{width:78px;height:78px;border-radius:25px;margin:0 auto 14px;background:linear-gradient(145deg,#1fd1ff,#0b3d82);display:grid;place-items:center;box-shadow:0 0 36px rgba(42,199,255,.46)}
-    .logo svg{width:50px;height:50px;fill:none;stroke:#fff;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.brand h1{margin:0;font-size:38px;line-height:.95;font-weight:950;letter-spacing:1.5px;text-shadow:0 0 22px rgba(101,220,255,.48)}
-    .brand p{margin:10px 0 0;color:#68e8ff;font-size:13px;letter-spacing:2.5px;font-weight:900;text-transform:uppercase}
-    .hero-orb{position:relative;width:245px;aspect-ratio:1;margin:30px auto 24px;border-radius:50%;background:radial-gradient(circle at 35% 30%,rgba(125,244,255,.30),rgba(15,58,113,.22) 48%,rgba(0,0,0,.08) 70%);border:1px solid rgba(97,224,255,.48);box-shadow:0 0 58px rgba(41,178,255,.23),inset 0 0 52px rgba(44,201,255,.14)}
-    .hero-orb svg{position:absolute;inset:8%;width:84%;height:84%}.hero-orb text{font-weight:950;fill:#eafcff}.ring{position:absolute;inset:9%;border:1px dashed rgba(109,232,255,.42);border-radius:50%;animation:spin 28s linear infinite}.ring.r2{inset:22%;animation-duration:18s;animation-direction:reverse}@keyframes spin{to{transform:rotate(360deg)}}
-    .title{text-align:center;margin:0 auto 26px;max-width:340px}.title h2{margin:0 0 12px;font-size:30px;line-height:1.05;font-weight:950}.title p{margin:0;color:#d5edf7;font-size:16px;line-height:1.35;font-weight:650}
-    .menu{display:grid;gap:16px;margin:0 auto;max-width:330px}.btn{border:0;border-radius:20px;padding:18px 22px;font-size:22px;font-weight:950;letter-spacing:1px;color:#fff;cursor:pointer;box-shadow:0 10px 0 rgba(0,0,0,.34);transition:.12s;text-decoration:none;text-align:center}.btn:active{transform:translateY(5px);box-shadow:0 5px 0 rgba(0,0,0,.36)}
-    .btn.primary{background:linear-gradient(180deg,#1dd4ff,#0960dc);box-shadow:0 10px 0 #063d88,0 0 28px rgba(29,212,255,.42)}.btn.secondary{background:rgba(255,255,255,.09);border:1px solid rgba(139,222,255,.45);color:#e7fbff}
-    .panel{display:none;position:absolute;left:18px;right:18px;bottom:18px;z-index:10;padding:20px;border-radius:24px;background:rgba(3,17,38,.97);border:1px solid rgba(111,226,255,.45);box-shadow:0 18px 60px rgba(0,0,0,.55),inset 0 0 26px rgba(36,185,255,.10)}.panel.show{display:block}.panel h3{margin:0 0 14px;text-align:center;font-size:25px}.panel p{margin:0 0 16px;color:#dff8ff;line-height:1.42;font-weight:650}.form{display:grid;gap:12px}.field label{display:block;margin:0 0 6px;color:#82ecff;font-weight:900;font-size:13px;letter-spacing:1px;text-transform:uppercase}.field input{width:100%;border:1px solid rgba(138,225,255,.5);border-radius:15px;padding:14px 15px;background:rgba(255,255,255,.96);font-size:18px;font-weight:800;color:#06142a;outline:none}.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.close{margin-top:10px;width:100%;padding:13px 16px;border-radius:16px;border:1px solid rgba(139,222,255,.45);background:rgba(255,255,255,.08);color:#e7fbff;font-weight:900;font-size:16px}.small{font-size:13px;color:#9befff;text-align:center;margin-top:14px;font-weight:800}
-    .install{margin-top:14px;text-align:center}.install button{background:none;border:0;color:#76e9ff;text-decoration:underline;font-weight:900;font-size:14px;cursor:pointer}.install-tip{display:none;margin-top:10px;color:#dff8ff;font-size:13px;line-height:1.35}.install-tip.show{display:block}
-    @media(min-width:900px){body{padding:24px}.phone-screen{min-height:760px}.brand h1{font-size:44px}.hero-orb{width:275px}.title h2{font-size:34px}}
-    @media(max-width:370px){.phone-screen{padding:18px;border-radius:24px}.logo{width:66px;height:66px}.brand h1{font-size:32px}.hero-orb{width:210px;margin:22px auto 18px}.title h2{font-size:26px}.title p{font-size:14px}.btn{font-size:19px;padding:16px}.panel{left:12px;right:12px;bottom:12px;padding:16px}.row{grid-template-columns:1fr}}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>IQ Challenge</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#030b1d">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="IQ Challenge">
+<link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html,body{margin:0;width:100%;min-height:100%;overflow-x:hidden;background:#020716;color:#fff;font-family:Arial,Helvetica,sans-serif}body{min-height:100dvh;display:grid;place-items:center;padding:14px;background:radial-gradient(circle at 20% 8%,rgba(43,223,255,.28),transparent 25%),radial-gradient(circle at 85% 18%,rgba(117,255,211,.15),transparent 30%),radial-gradient(circle at 50% 100%,rgba(18,76,255,.25),transparent 35%),linear-gradient(160deg,#020716,#071833 55%,#020716)}.screen{width:min(430px,100%);min-height:calc(100dvh - 28px);position:relative;overflow:hidden;border-radius:34px;border:1px solid rgba(119,229,255,.48);padding:26px 20px;background:linear-gradient(180deg,rgba(8,28,60,.96),rgba(2,8,23,.96));box-shadow:0 28px 90px rgba(0,0,0,.62),inset 0 0 35px rgba(55,207,255,.10)}.screen:before{content:"";position:absolute;inset:0;opacity:.17;background-image:linear-gradient(rgba(98,224,255,.28) 1px,transparent 1px),linear-gradient(90deg,rgba(98,224,255,.28) 1px,transparent 1px);background-size:32px 32px;mask-image:radial-gradient(circle at center,#000,transparent 78%)}.content{position:relative;z-index:1;min-height:calc(100dvh - 80px);display:flex;flex-direction:column}.badge{margin:6px auto 14px;width:84px;height:84px;border-radius:28px;display:grid;place-items:center;background:linear-gradient(145deg,#22d9ff,#0755c9);box-shadow:0 0 42px rgba(34,217,255,.48)}.badge span{font-size:30px;font-weight:1000;letter-spacing:-1px}.title{text-align:center;margin:0;font-size:42px;line-height:.92;font-weight:1000;letter-spacing:1px;text-shadow:0 0 28px rgba(99,224,255,.55)}.subtitle{text-align:center;margin:12px 0 0;color:#7eeeff;text-transform:uppercase;font-size:13px;font-weight:900;letter-spacing:3px}.orb{width:min(270px,74vw);aspect-ratio:1;border-radius:50%;margin:28px auto 20px;position:relative;border:1px solid rgba(132,237,255,.54);background:radial-gradient(circle at 38% 30%,rgba(139,246,255,.26),rgba(9,45,91,.38) 50%,rgba(1,7,19,.16));box-shadow:0 0 58px rgba(39,198,255,.25),inset 0 0 42px rgba(74,216,255,.12)}.orb:before,.orb:after{content:"";position:absolute;border-radius:50%;border:1px dashed rgba(129,237,255,.38);animation:spin 25s linear infinite}.orb:before{inset:9%}.orb:after{inset:24%;animation-duration:15s;animation-direction:reverse}@keyframes spin{to{transform:rotate(360deg)}}.orb svg{position:absolute;inset:12%;width:76%;height:76%}.hero{text-align:center;margin:0 auto 24px;max-width:335px}.hero h2{margin:0 0 10px;font-size:28px;line-height:1.06}.hero p{margin:0;color:#d7f8ff;font-size:16px;line-height:1.35;font-weight:650}.menu{margin-top:auto;display:grid;gap:16px;padding-bottom:8px}.btn{width:100%;border:0;border-radius:22px;padding:18px 18px;font-size:23px;font-weight:1000;letter-spacing:1.2px;color:#fff;cursor:pointer;text-align:center;text-decoration:none;box-shadow:0 10px 0 rgba(0,0,0,.38)}.btn:active{transform:translateY(5px);box-shadow:0 5px 0 rgba(0,0,0,.42)}.primary{background:linear-gradient(180deg,#24d8ff,#0862e3);box-shadow:0 10px 0 #063b8b,0 0 28px rgba(36,216,255,.44)}.secondary{background:rgba(255,255,255,.08);border:1px solid rgba(142,231,255,.48);color:#e8fbff}.panel{position:fixed;left:50%;bottom:14px;transform:translateX(-50%) translateY(110%);width:min(410px,calc(100% - 28px));z-index:10;padding:20px;border-radius:26px;border:1px solid rgba(127,230,255,.55);background:rgba(4,17,39,.98);box-shadow:0 25px 80px rgba(0,0,0,.68),inset 0 0 26px rgba(58,209,255,.10);transition:.22s}.panel.show{transform:translateX(-50%) translateY(0)}.panel h3{margin:0 0 15px;text-align:center;font-size:27px}.panel p{margin:0 0 14px;color:#def9ff;line-height:1.45;font-weight:650}.field{margin-bottom:12px}.field label{display:block;margin:0 0 6px;color:#83edff;text-transform:uppercase;font-size:12px;font-weight:1000;letter-spacing:1.5px}.field input{width:100%;border-radius:16px;border:1px solid rgba(139,230,255,.55);padding:15px 14px;font-size:19px;font-weight:900;color:#06142a;background:#fff;outline:none}.close{margin-top:10px;width:100%;border-radius:16px;border:1px solid rgba(142,231,255,.48);padding:13px;background:rgba(255,255,255,.08);color:#e8fbff;font-size:16px;font-weight:1000}.install{margin-top:10px;text-align:center}.install button{border:0;background:transparent;color:#86efff;text-decoration:underline;font-size:14px;font-weight:900}.landscapeBlock{display:none}@media(orientation:landscape) and (max-height:520px){body:before{content:"Obróć telefon pionowo";position:fixed;inset:0;z-index:99;display:grid;place-items:center;text-align:center;padding:40px;background:#020716;color:#fff;font-size:28px;font-weight:1000}.screen{display:none}}@media(max-width:370px){body{padding:8px}.screen{min-height:calc(100dvh - 16px);border-radius:24px;padding:18px 16px}.badge{width:68px;height:68px;border-radius:22px}.title{font-size:34px}.orb{margin:20px auto 14px}.hero h2{font-size:24px}.hero p{font-size:14px}.btn{font-size:20px;padding:16px}.panel{bottom:8px;width:calc(100% - 16px);padding:16px}.panel h3{font-size:23px}}
+</style>
 </head>
 <body>
-<main class="phone-screen">
-  <section class="brand">
-    <div class="logo" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M32 6c-10 0-18 8-18 18 0 7 4 13 10 16v8h16v-8c6-3 10-9 10-16 0-10-8-18-18-18Z"/><path d="M25 56h14M25 48h14M23 25c3-8 15-8 18 0M25 33h14M32 17v8M20 24h-8M52 24h-8"/></svg></div>
-    <h1>IQ CHALLENGE</h1><p>test logiczny</p>
-  </section>
-  <div class="hero-orb" aria-hidden="true"><div class="ring"></div><div class="ring r2"></div><svg viewBox="0 0 300 300"><circle cx="150" cy="150" r="92" fill="none" stroke="rgba(113,226,255,.9)" stroke-width="3"/><path d="M150 58v184M58 150h184M85 85l130 130M215 85 85 215" stroke="rgba(113,226,255,.75)" stroke-width="2"/><text x="150" y="82" text-anchor="middle" font-size="28">15</text><text x="218" y="150" text-anchor="middle" font-size="28">12</text><text x="150" y="232" text-anchor="middle" font-size="28">3</text><text x="82" y="150" text-anchor="middle" font-size="28">18</text><text x="150" y="156" text-anchor="middle" font-size="58">?</text></svg></div>
-  <section class="title"><h2>Sprawdź swój wynik</h2><p>Test zawsze działa w pionie — na telefonie i komputerze.</p></section>
+<main class="screen">
+ <div class="content">
+  <div class="badge"><span>IQ</span></div>
+  <h1 class="title">IQ<br>CHALLENGE</h1>
+  <div class="subtitle">test logiczny</div>
+  <div class="orb" aria-hidden="true"><svg viewBox="0 0 300 300"><g fill="none" stroke="rgba(126,238,255,.86)" stroke-width="3"><circle cx="150" cy="150" r="96"/><path d="M150 54v192M54 150h192M82 82l136 136M218 82 82 218"/></g><g fill="#fff" font-family="Arial" font-weight="900" text-anchor="middle"><text x="150" y="85" font-size="30">15</text><text x="215" y="160" font-size="30">12</text><text x="150" y="235" font-size="30">3</text><text x="85" y="160" font-size="30">18</text><text x="150" y="168" font-size="62">?</text></g></svg></div>
+  <section class="hero"><h2>Sprawdź swój wynik</h2><p>Test działa wyłącznie w pionie. Najpierw wpisz dane, potem rozpocznij zadania.</p></section>
   <section class="menu"><button class="btn primary" id="testBtn">TEST</button><button class="btn secondary" id="rulesBtn">ZASADY</button></section>
-  <div class="install"><button id="installBtn" type="button" hidden>Zainstaluj aplikację PWA</button><div class="install-tip" id="installTip">Na iPhone użyj Udostępnij → Dodaj do ekranu początkowego. Na Androidzie instalacja pojawi się w Chrome.</div></div>
-
-  <section class="panel" id="testPanel" aria-label="Dane przed testem">
-    <h3>Dane do testu</h3>
-    <form class="form" id="startForm">
-      <div class="field"><label for="firstName">Imię</label><input id="firstName" autocomplete="given-name" required /></div>
-      <div class="field"><label for="lastName">Nazwisko</label><input id="lastName" autocomplete="family-name" required /></div>
-      <div class="field"><label for="age">Wiek</label><input id="age" type="number" min="6" max="99" inputmode="numeric" required /></div>
-      <button class="btn primary" type="submit">ZACZYNAMY</button>
-    </form>
-    <button class="close" type="button" data-close="testPanel">ZAMKNIJ</button>
-  </section>
-
-  <section class="panel" id="rulesPanel" aria-label="Zasady testu">
-    <h3>Zasady</h3>
-    <p>Wpisz dane, rozpocznij test i zaznacz jedną z pięciu odpowiedzi. Wynik będzie liczony z uwzględnieniem liczby punktów oraz wieku.</p>
-    <p class="small">To jest wynik szacunkowy i porównawczy, a nie diagnoza psychologiczna.</p>
-    <button class="close" type="button" data-close="rulesPanel">ZAMKNIJ</button>
-  </section>
+  <div class="install"><button id="installBtn" hidden>Zainstaluj aplikację PWA</button></div>
+ </div>
 </main>
+<section class="panel" id="testPanel"><h3>Dane do testu</h3><form id="startForm"><div class="field"><label>Imię</label><input id="firstName" required autocomplete="given-name"></div><div class="field"><label>Nazwisko</label><input id="lastName" required autocomplete="family-name"></div><div class="field"><label>Wiek</label><input id="age" type="number" min="6" max="99" inputmode="numeric" required></div><button class="btn primary" type="submit">ZACZYNAMY</button></form><button class="close" data-close="testPanel">ZAMKNIJ</button></section>
+<section class="panel" id="rulesPanel"><h3>Zasady</h3><p>Wybierasz jedną z pięciu odpowiedzi. Wynik będzie liczony jako punkty testu oraz porównanie do grupy wiekowej.</p><p>Wynik IQ jest szacunkowy i porównawczy.</p><button class="close" data-close="rulesPanel">ZAMKNIJ</button></section>
 <script>
-  const testBtn=document.getElementById('testBtn');
-  const rulesBtn=document.getElementById('rulesBtn');
-  const testPanel=document.getElementById('testPanel');
-  const rulesPanel=document.getElementById('rulesPanel');
-  function openPanel(panel){testPanel.classList.remove('show');rulesPanel.classList.remove('show');panel.classList.add('show');}
-  testBtn.onclick=()=>openPanel(testPanel);
-  rulesBtn.onclick=()=>openPanel(rulesPanel);
-  document.querySelectorAll('[data-close]').forEach(btn=>btn.onclick=()=>document.getElementById(btn.dataset.close).classList.remove('show'));
-  document.getElementById('startForm').addEventListener('submit',e=>{
-    e.preventDefault();
-    const data={firstName:firstName.value.trim(),lastName:lastName.value.trim(),age:Number(age.value),startedAt:new Date().toISOString()};
-    localStorage.setItem('iqUserData',JSON.stringify(data));
-    location.href='quiz.html';
-  });
-  const installBtn=document.getElementById('installBtn'); const installTip=document.getElementById('installTip'); let deferredPrompt=null;
-  window.addEventListener('beforeinstallprompt',(event)=>{event.preventDefault();deferredPrompt=event;installBtn.hidden=false;});
-  installBtn.addEventListener('click',async()=>{if(!deferredPrompt){installTip.classList.toggle('show');return;}deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;installBtn.hidden=true;});
-  if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js'));}
+const $=id=>document.getElementById(id), testPanel=$('testPanel'), rulesPanel=$('rulesPanel');
+function openPanel(p){testPanel.classList.remove('show');rulesPanel.classList.remove('show');p.classList.add('show')}
+$('testBtn').onclick=()=>openPanel(testPanel); $('rulesBtn').onclick=()=>openPanel(rulesPanel);
+document.querySelectorAll('[data-close]').forEach(b=>b.onclick=()=>$(b.dataset.close).classList.remove('show'));
+$('startForm').onsubmit=e=>{e.preventDefault();localStorage.setItem('iqUserData',JSON.stringify({firstName:firstName.value.trim(),lastName:lastName.value.trim(),age:+age.value,startedAt:new Date().toISOString()}));location.href='quiz.html?v=5'};
+let deferredPrompt=null; const installBtn=$('installBtn'); window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;installBtn.hidden=false}); installBtn.onclick=async()=>{if(deferredPrompt){deferredPrompt.prompt(); await deferredPrompt.userChoice; deferredPrompt=null; installBtn.hidden=true}else alert('Na iPhone: Udostępnij → Dodaj do ekranu początkowego. Na Androidzie użyj menu Chrome → Zainstaluj aplikację.')};
+if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js?v=5'))}
+try{screen.orientation&&screen.orientation.lock&&screen.orientation.lock('portrait').catch(()=>{})}catch(e){}
 </script>
 </body>
 </html>
