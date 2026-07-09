@@ -1,4 +1,4 @@
-const CACHE_NAME = 'iq-challenge-v1';
+const CACHE_NAME = 'iq-challenge-v2-install';
 const FILES_TO_CACHE = [
   './',
   './index.html',

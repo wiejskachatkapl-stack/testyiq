@@ -99,6 +99,7 @@
         <p class="lead">Rozwiązuj zadania z liczbami, literami, figurami i układami. Czytelny ekran startowy działa na telefonie i komputerze.</p>
         <div class="actions">
           <a class="btn primary" href="quiz.html">START</a>
+          <button class="btn secondary" id="installBtn" type="button" hidden>ZAINSTALUJ</button>
           <button class="btn secondary" id="rulesBtn" type="button">ZASADY</button>
         </div>
         <div class="stats">
@@ -125,11 +126,38 @@
       </div>
     </section>
     <div class="rules" id="rules">Wybierz START, przeczytaj polecenie i zaznacz jedną z pięciu odpowiedzi. Po kliknięciu „Sprawdź odpowiedź” zobaczysz wynik.</div>
+    <div class="rules" id="installTip">Na iPhone: otwórz w Safari, wybierz Udostępnij, potem „Do ekranu początkowego”. Na Androidzie przycisk instalacji pojawi się automatycznie, gdy przeglądarka wykryje PWA.</div>
   </main>
   <script>
     const btn=document.getElementById('rulesBtn');
     const rules=document.getElementById('rules');
+    const installBtn=document.getElementById('installBtn');
+    const installTip=document.getElementById('installTip');
+    let deferredPrompt=null;
+
     btn.addEventListener('click',()=>rules.classList.toggle('show'));
+
+    window.addEventListener('beforeinstallprompt',(event)=>{
+      event.preventDefault();
+      deferredPrompt=event;
+      installBtn.hidden=false;
+    });
+
+    installBtn.addEventListener('click',async()=>{
+      if(!deferredPrompt){
+        installTip.classList.toggle('show');
+        return;
+      }
+      deferredPrompt.prompt();
+      await deferredPrompt.userChoice;
+      deferredPrompt=null;
+      installBtn.hidden=true;
+    });
+
+    window.addEventListener('appinstalled',()=>{
+      deferredPrompt=null;
+      installBtn.hidden=true;
+    });
   </script>
 
 <script>

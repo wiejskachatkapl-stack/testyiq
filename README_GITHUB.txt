@@ -1,7 +1,8 @@
-IQ Challenge PWA v1
+IQ Challenge PWA v2 INSTALL
 
-Wrzucasz na GitHub Pages całą zawartość katalogu do repozytorium.
-Pliki wymagane do PWA:
+Wgraj wszystkie pliki z katalogu na GitHub Pages.
+
+Ważne pliki PWA:
 - index.html
 - quiz.html
 - manifest.webmanifest
@@ -9,4 +10,8 @@ Pliki wymagane do PWA:
 - assets/icons/icon-192.png
 - assets/icons/icon-512.png
 
-Po opublikowaniu na GitHub Pages aplikacja powinna mieć opcję „Dodaj do ekranu głównego” / instalacji PWA.
+Instalacja na telefonie:
+Android/Chrome: po wejściu na stronę pojawi się przycisk ZAINSTALUJ lub opcja „Dodaj do ekranu głównego”.
+iPhone/Safari: Udostępnij → Do ekranu początkowego.
+
+Po każdej podmianie plików zmieniaj CACHE_NAME w service-worker.js, żeby telefon pobrał nową wersję.
