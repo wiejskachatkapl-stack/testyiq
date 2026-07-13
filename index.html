@@ -28,20 +28,40 @@
   </header>
 
   <section class="screen active" data-screen="home">
-    <div class="home">
-      <div class="hero">
-        <div class="logo">◇</div>
-        <div><h1>IQ Challenge</h1><p>Brain Lab</p><small>Spokojny trening. Lepsze skupienie.</small></div>
-      </div>
-      <div class="menu">
-        <button class="card wide" data-route="setup"><b>◇</b><span><strong>TEST IQ</strong><small>Sprawdź swój poziom</small></span></button>
-        <button class="card" data-coming="Trening umysłu"><b>✦</b><span><strong>TRENING UMYSŁU</strong><small>Logika i pamięć</small></span></button>
-        <button class="card" data-coming="Wyzwanie dnia"><b>◎</b><span><strong>WYZWANIE DNIA</strong><small>Nowe zadanie codziennie</small></span></button>
-        <button class="card" data-coming="Postępy"><b>⌁</b><span><strong>POSTĘPY</strong><small>Historia i rozwój</small></span></button>
-        <button class="card" data-coming="Osiągnięcia"><b>✧</b><span><strong>OSIĄGNIĘCIA</strong><small>Odznaki i serie</small></span></button>
-        <button class="card" data-coming="Ustawienia"><b>⚙</b><span><strong>USTAWIENIA</strong><small>Dopasuj aplikację</small></span></button>
-      </div>
-      <div class="xp"><span><small>Twój poziom</small><strong>Nowicjusz</strong></span><em>0 / 100 XP</em><div></div></div>
+    <div class="home-premium">
+      <section class="home-visual">
+        <div class="home-brand-block">
+          <div class="home-logo-mark">◇</div>
+          <div><h1>IQ Challenge</h1><p>Brain Lab</p><small>Trenuj umysł. Odkrywaj swój potencjał.</small></div>
+        </div>
+        <svg class="home-brain-art" viewBox="0 0 420 300" aria-hidden="true">
+          <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M204 44c-44-22-90 6-92 50-35 8-49 53-25 82-12 39 25 74 61 67 16 30 66 26 77-8"/>
+            <path d="M228 44c44-22 90 6 92 50 35 8 49 53 25 82 12 39-25 74-61 67-16 30-66 26-77-8"/>
+            <path d="M216 42v205"/><path d="M130 92c31-4 56 16 56 47M302 92c-31-4-56 16-56 47"/>
+            <path d="M95 174c31 1 54-13 60-40M337 174c-31 1-54-13-60-40"/>
+            <path d="M145 242c-2-31 18-53 49-57M287 242c2-31-18-53-49-57"/>
+            <path d="M150 123l31 15 34-34 34 34 31-15"/>
+            <circle cx="150" cy="123" r="5"/><circle cx="181" cy="138" r="5"/><circle cx="215" cy="104" r="5"/><circle cx="249" cy="138" r="5"/><circle cx="280" cy="123" r="5"/>
+          </g>
+          <g fill="none" stroke="currentColor" opacity=".35"><circle cx="217" cy="150" r="118"/><circle cx="217" cy="150" r="142"/><path d="M18 245h95l25-36 31 51 35-91 40 64 26-30 46 42h86"/><path d="M28 214h62M47 195v39M70 183v51M93 202v32"/></g>
+        </svg>
+        <div class="home-metric-art" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      </section>
+      <section class="home-actions" aria-label="Menu główne">
+        <button class="home-action featured" data-route="setup"><b>◇</b><span><strong>TEST IQ</strong><small>Sprawdź swój poziom</small></span><i>›</i></button>
+        <button class="home-action" data-coming="Trening umysłu"><b>✦</b><span><strong>TRENING UMYSŁU</strong><small>Logika i pamięć</small></span><i>›</i></button>
+        <button class="home-action" data-coming="Wyzwanie dnia"><b>◎</b><span><strong>WYZWANIE DNIA</strong><small>Nowe zadanie codziennie</small></span><i>›</i></button>
+        <button class="home-action" data-coming="Postępy"><b>⌁</b><span><strong>POSTĘPY</strong><small>Historia i rozwój</small></span><i>›</i></button>
+        <button class="home-action" data-coming="Osiągnięcia"><b>✧</b><span><strong>OSIĄGNIĘCIA</strong><small>Odznaki i serie</small></span><i>›</i></button>
+        <button class="home-action" data-coming="Ustawienia"><b>⚙</b><span><strong>USTAWIENIA</strong><small>Dopasuj aplikację</small></span><i>›</i></button>
+      </section>
+      <section class="home-level"><div><small>Twój poziom</small><strong>Nowicjusz</strong></div><em>0 / 100 XP</em><span><i></i></span></section>
+      <section class="home-info-strip">
+        <div><b>♢</b><span><strong>Bezpieczne</strong><small>Twoje dane są chronione</small></span></div>
+        <div><b>◷</b><span><strong>Czas testu</strong><small>20–60 minut</small></span></div>
+        <div><b>⌁</b><span><strong>Wynik IQ</strong><small>Szczegółowy raport</small></span></div>
+      </section>
     </div>
   </section>
 
@@ -156,7 +176,7 @@
 
   <section class="screen" data-screen="question">
     <div class="panel center">
-      <div class="round">◇</div><small class="accent">BRAIN ENGINE v1006</small>
+      <div class="round">◇</div><small class="accent">BRAIN ENGINE v1007</small>
       <h2>Silnik ekranu pytania jest gotowy</h2>
       <p class="muted">W następnej wersji podłączymy pierwszy generator zadań z kostkami. Widoki są już oddzielone i nie nakładają się na siebie.</p>
       <div class="stats">
@@ -168,7 +188,7 @@
     </div>
   </section>
 
-  <footer><button data-coming="O aplikacji">O aplikacji</button><span>•</span><span>Wersja 1006</span></footer>
+  <footer><button data-coming="O aplikacji">O aplikacji</button><span>•</span><span>Wersja 1007</span></footer>
 </main>
 
 <div id="modal" class="modal hidden">
