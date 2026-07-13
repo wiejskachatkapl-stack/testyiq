@@ -16,3 +16,236 @@ footer{grid-row:3;display:flex;justify-content:center;align-items:center;gap:8px
 .modal{position:fixed;inset:0;z-index:40;background:rgba(2,12,20,.72);display:grid;place-items:center;padding:18px;backdrop-filter:blur(9px)}.dialog{width:min(430px,100%);border:1px solid var(--line);border-radius:23px;background:linear-gradient(160deg,#102c40,#0a1f30);padding:24px;text-align:center;position:relative}.dialog>button:first-child{position:absolute;right:11px;top:9px;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--text);font-size:1.25rem}.dialog .round{margin:0 auto 12px}.dialog h2{margin:0 0 7px}.dialog p{color:var(--muted);font-size:.77rem;line-height:1.5}.dialog .primary{width:100%}
 @media(max-width:700px){.app{max-width:520px;grid-template-rows:41px minmax(0,1fr) 17px;gap:5px;padding-left:9px;padding-right:9px}.iconBtn{width:37px;height:37px}.home{grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr) auto;gap:6px}.hero{display:grid;grid-template-columns:58px 1fr;text-align:left;align-items:center;column-gap:10px}.logo{width:56px;height:56px;margin:0;grid-row:1/3;border-radius:17px;font-size:1.8rem}.hero h1{font-size:1.42rem}.hero p{font-size:.56rem;margin:1px 0}.hero small{display:none}.menu{gap:6px}.card,.card.wide{grid-column:auto;min-height:0;height:100%;padding:7px 8px;border-radius:14px;gap:7px}.card>b{width:32px;height:32px;border-radius:10px;font-size:.9rem}.card strong{font-size:.62rem}.card small{font-size:.52rem}.xp{padding:7px 10px}.xp small,.xp em{font-size:.53rem}.xp strong{font-size:.65rem}.panel{border-radius:19px;padding:12px;gap:7px}.heading>b,.round{width:44px;height:44px;border-radius:14px;font-size:1.25rem}.heading{gap:9px}.heading h2,.center h2{font-size:1.18rem}.heading p{font-size:.62rem}.heading small,.accent{font-size:.52rem}form{gap:6px}.fields{grid-template-columns:1fr 1fr 70px;gap:5px}.fields label{font-size:.55rem;gap:3px}.fields input{height:37px;border-radius:10px;padding:0 8px;font-size:.7rem}fieldset{padding:5px 7px 7px;border-radius:12px}legend{font-size:.55rem}.segments{gap:4px}.segments span{height:32px;border-radius:8px;font-size:.68rem}.modes{gap:4px}.modes label>span{min-height:40px;padding:5px 7px;border-radius:9px}.modes strong{font-size:.61rem}.modes small{font-size:.48rem}.error{height:10px;font-size:.52rem}.primary,.secondary{min-height:38px;border-radius:11px;font-size:.67rem}.rules{gap:5px;margin:8px 0}.rules div{padding:6px;border-radius:10px}.rules span{font-size:.57rem}.summary,.muted{font-size:.6rem}.stats{gap:5px;margin:10px 0}.stats span{padding:6px}.stats strong{font-size:.6rem}}
 @media(orientation:landscape) and (max-height:520px){body:before{content:"Obróć telefon do pionu";position:fixed;inset:0;z-index:999;background:#071724;display:grid;place-items:center;text-align:center;padding:20px}}
+
+
+/* =========================================================
+   v1005 — ekran główny: większy komputer + pewny pion telefonu
+   ========================================================= */
+
+/* Komputer: wykorzystanie większej części ekranu */
+@media (min-width: 901px) {
+  .app {
+    width: min(1500px, 96vw);
+    padding-left: clamp(22px, 3vw, 54px);
+    padding-right: clamp(22px, 3vw, 54px);
+  }
+
+  .home {
+    grid-template-columns: minmax(390px, .9fr) minmax(650px, 1.35fr);
+    gap: 18px 42px;
+  }
+
+  .logo {
+    width: 122px;
+    height: 122px;
+    border-radius: 34px;
+    font-size: 3.5rem;
+    margin-bottom: 16px;
+  }
+
+  .hero h1 {
+    font-size: clamp(3rem, 4.5vw, 4.8rem);
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .hero small {
+    font-size: 1rem;
+  }
+
+  .menu {
+    gap: 14px;
+  }
+
+  .card {
+    min-height: 94px;
+    border-radius: 23px;
+    padding: 16px 19px;
+    gap: 15px;
+  }
+
+  .card > b {
+    width: 52px;
+    height: 52px;
+    border-radius: 17px;
+    font-size: 1.45rem;
+  }
+
+  .card strong {
+    font-size: 1rem;
+  }
+
+  .card small {
+    font-size: .78rem;
+  }
+
+  .xp {
+    padding: 14px 18px;
+    border-radius: 20px;
+  }
+
+  .xp strong {
+    font-size: .95rem;
+  }
+}
+
+/* Telefon i niewielki tablet: zawsze układ pionowy, niezależnie od DPR */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .app {
+    width: 100%;
+    max-width: 560px;
+    height: 100dvh;
+    padding-left: max(9px, env(safe-area-inset-left));
+    padding-right: max(9px, env(safe-area-inset-right));
+    grid-template-rows: 42px minmax(0, 1fr) 18px;
+    gap: 5px;
+  }
+
+  .home {
+    height: 100%;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    gap: 7px;
+    align-items: stretch;
+  }
+
+  .hero {
+    display: grid;
+    grid-template-columns: 62px minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    align-items: center;
+    column-gap: 11px;
+    text-align: left;
+    padding: 0 2px;
+  }
+
+  .logo {
+    grid-row: 1 / 3;
+    width: 60px;
+    height: 60px;
+    margin: 0;
+    border-radius: 18px;
+    font-size: 1.9rem;
+  }
+
+  .hero h1 {
+    align-self: end;
+    margin: 0;
+    font-size: clamp(1.45rem, 7vw, 2rem);
+    line-height: 1.02;
+    white-space: nowrap;
+  }
+
+  .hero p {
+    align-self: start;
+    margin: 2px 0 0;
+    font-size: .58rem;
+    letter-spacing: .25em;
+  }
+
+  .hero small {
+    display: none;
+  }
+
+  .menu {
+    min-height: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, minmax(0, 1fr));
+    gap: 7px;
+  }
+
+  .card,
+  .card.wide {
+    grid-column: auto;
+    width: 100%;
+    min-width: 0;
+    min-height: 0;
+    height: 100%;
+    padding: 8px 9px;
+    border-radius: 15px;
+    gap: 8px;
+    overflow: hidden;
+  }
+
+  .card > b {
+    width: 35px;
+    height: 35px;
+    min-width: 35px;
+    border-radius: 11px;
+    font-size: 1rem;
+  }
+
+  .card span {
+    min-width: 0;
+  }
+
+  .card strong {
+    display: block;
+    font-size: clamp(.59rem, 2.5vw, .72rem);
+    line-height: 1.08;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .card small {
+    display: block;
+    margin-top: 2px;
+    font-size: clamp(.48rem, 2vw, .59rem);
+    line-height: 1.12;
+    white-space: normal;
+  }
+
+  .xp {
+    grid-column: 1;
+    padding: 8px 10px;
+    border-radius: 14px;
+  }
+
+  .xp small,
+  .xp em {
+    font-size: .55rem;
+  }
+
+  .xp strong {
+    font-size: .68rem;
+  }
+
+  footer {
+    font-size: .57rem;
+  }
+}
+
+/* Bardzo wąskie telefony */
+@media (max-width: 390px) {
+  .hero {
+    grid-template-columns: 54px minmax(0, 1fr);
+  }
+
+  .logo {
+    width: 52px;
+    height: 52px;
+    font-size: 1.65rem;
+  }
+
+  .hero h1 {
+    font-size: 1.35rem;
+  }
+
+  .card {
+    padding: 6px 7px;
+    gap: 6px;
+  }
+
+  .card > b {
+    width: 31px;
+    height: 31px;
+    min-width: 31px;
+  }
+
+  .card small {
+    display: none;
+  }
+}
