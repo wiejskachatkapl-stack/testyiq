@@ -102,3 +102,92 @@ footer{padding:0;min-height:16px;font-size:clamp(.58rem,1.05vh,.72rem)}
   .progress-card{padding-top:5px;padding-bottom:5px}
   footer{display:none}
 }
+
+
+/* v1002 — bezwzględne dopasowanie do widocznego ekranu */
+html,body{
+  width:100%;
+  height:100%;
+  min-height:0;
+  overflow:hidden!important;
+  overscroll-behavior:none;
+}
+body{position:fixed;inset:0}
+.app{
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  min-height:0;
+  max-width:none;
+  margin:0;
+  padding:0;
+  overflow:hidden!important;
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+}
+.fit-content{
+  --fit-scale:1;
+  width:min(980px,calc(100vw - 24px));
+  height:auto;
+  max-height:none;
+  padding:max(env(safe-area-inset-top),8px) clamp(12px,2.2vw,28px) max(env(safe-area-inset-bottom),8px);
+  display:grid;
+  grid-template-rows:auto auto auto auto auto;
+  gap:clamp(4px,0.85vh,10px);
+  transform:scale(var(--fit-scale));
+  transform-origin:top center;
+  will-change:transform;
+}
+.topbar{height:clamp(34px,5vh,44px)}
+.hero{padding:clamp(0px,.35vh,4px) 8px clamp(2px,.55vh,8px)}
+.menu-grid{height:auto;grid-auto-rows:auto}
+.menu-card,.menu-card.half{
+  height:auto;
+  min-height:clamp(58px,8.6vh,82px);
+  padding:clamp(8px,1.15vh,13px) clamp(10px,1.4vw,16px);
+}
+.progress-card{padding:clamp(8px,1.05vh,13px) clamp(12px,1.7vw,18px)}
+footer{padding:0 0 2px;min-height:14px}
+
+@media (min-width:701px){
+  .fit-content{width:min(920px,calc(100vw - 40px))}
+  .menu-grid{grid-template-rows:auto auto auto}
+  .menu-card,.menu-card.half{min-height:clamp(62px,9vh,88px)}
+}
+
+@media (max-width:700px){
+  .fit-content{
+    width:calc(100vw - 14px);
+    padding-left:7px;
+    padding-right:7px;
+    gap:clamp(3px,.62vh,7px)
+  }
+  .topbar{height:clamp(32px,4.7vh,40px)}
+  .topbar .icon-button{width:clamp(32px,4.8vh,38px);height:clamp(32px,4.8vh,38px)}
+  .hero h1{font-size:clamp(1.38rem,3.6vh,1.9rem)}
+  .subtitle{font-size:clamp(.6rem,1.15vh,.72rem)}
+  .logo-card{width:clamp(44px,6.6vh,60px);height:clamp(44px,6.6vh,60px);margin-bottom:3px}
+  .motto{font-size:clamp(.64rem,1.15vh,.78rem);margin-top:4px}
+  .menu-grid{gap:clamp(4px,.65vh,7px)}
+  .menu-card,.menu-card.featured,.menu-card.half{
+    min-height:clamp(52px,7.8vh,68px);
+    padding:clamp(6px,.85vh,9px) 8px;
+    border-radius:15px;
+    gap:7px
+  }
+  .menu-icon{width:clamp(31px,4.8vh,38px);height:clamp(31px,4.8vh,38px);border-radius:11px}
+  .menu-copy strong{font-size:clamp(.62rem,1.18vh,.78rem)}
+  .menu-copy small{font-size:clamp(.52rem,.95vh,.65rem)}
+  .progress-card{padding:6px 9px;border-radius:14px}
+  .xp-track{margin-top:4px;height:5px}
+  footer{font-size:clamp(.5rem,.9vh,.62rem)}
+}
+
+@media (max-height:650px){
+  .motto{display:none}
+  .menu-copy small{display:none}
+  .hero{padding:0 8px 1px}
+  .progress-card{padding-top:4px;padding-bottom:4px}
+}
