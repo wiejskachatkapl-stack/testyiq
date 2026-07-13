@@ -1,5 +1,18 @@
 # Changelog
 
+## v1006
+### Zmieniono
+- pełna przebudowa graficzna ekranu „Przygotuj test”,
+- imię i nazwisko w dwóch kolumnach, wiek w pełnym wierszu,
+- trzy rozbudowane karty liczby pytań,
+- dwie rozbudowane karty trybu testu,
+- wyraźne zaznaczenie aktywnych opcji,
+- pasek informacji o bezpieczeństwie, czasie i raporcie,
+- dolna nawigacja modułów,
+- dekoracyjna grafika mózgu wykonana jako SVG,
+- zachowano działającą walidację formularza,
+- cache PWA zmieniono na `iq-brain-lab-v1006`.
+
 ## v1005
 ### Poprawiono
 - powiększono ekran główny na komputerach,
