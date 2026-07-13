@@ -26,53 +26,122 @@
   </div>
 
   <section id="splash" class="splash" aria-label="Ekran startowy">
-    <div class="brain-mark" aria-hidden="true">
-      <svg viewBox="0 0 220 220"><defs><filter id="glow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
-      <g class="brain-lines" filter="url(#glow)">
-        <path d="M110 30 C70 20 45 45 48 78 C24 92 27 132 55 145 C51 174 80 194 110 184"/>
-        <path d="M110 30 C150 20 175 45 172 78 C196 92 193 132 165 145 C169 174 140 194 110 184"/>
-        <path d="M110 30 V184"/><path d="M58 75 C80 72 92 87 92 108"/><path d="M162 75 C140 72 128 87 128 108"/><path d="M54 143 C78 146 90 131 91 112"/><path d="M166 143 C142 146 130 131 129 112"/>
-        <circle cx="58" cy="75" r="4"/><circle cx="92" cy="108" r="4"/><circle cx="162" cy="75" r="4"/><circle cx="128" cy="108" r="4"/><circle cx="54" cy="143" r="4"/><circle cx="91" cy="112" r="4"/><circle cx="166" cy="143" r="4"/><circle cx="129" cy="112" r="4"/>
-      </g></svg>
-    </div>
+    <div class="brain-mark" aria-hidden="true"><svg viewBox="0 0 220 220"><g class="brain-lines">
+      <path d="M110 30 C70 20 45 45 48 78 C24 92 27 132 55 145 C51 174 80 194 110 184"/>
+      <path d="M110 30 C150 20 175 45 172 78 C196 92 193 132 165 145 C169 174 140 194 110 184"/>
+      <path d="M110 30 V184"/><path d="M58 75 C80 72 92 87 92 108"/><path d="M162 75 C140 72 128 87 128 108"/><path d="M54 143 C78 146 90 131 91 112"/><path d="M166 143 C142 146 130 131 129 112"/>
+    </g></svg></div>
     <h1>IQ Challenge</h1><p>Brain Lab</p><div class="splash-line"></div><small>Trenuj umysł. Odkrywaj swój potencjał.</small>
   </section>
 
   <main id="app" class="app hidden">
-    <div id="fitContent" class="fit-content">
-    <header class="topbar">
-      <button class="icon-button" id="installBtn" title="Zainstaluj aplikację" aria-label="Zainstaluj aplikację"><span>⌄</span></button>
-      <div class="brand-mini"><span class="brand-dot"></span><span>Brain Lab</span></div>
-      <button class="icon-button" id="soundBtn" title="Dźwięk" aria-label="Włącz lub wyłącz dźwięk">♪</button>
-    </header>
+    <div class="app-frame">
+      <header class="topbar">
+        <button class="icon-button hidden-control" id="backBtn" aria-label="Wróć">‹</button>
+        <div class="brand-mini"><span class="brand-dot"></span><span>Brain Lab</span></div>
+        <div class="top-actions">
+          <button class="icon-button" id="installBtn" title="Zainstaluj aplikację" aria-label="Zainstaluj aplikację">⌄</button>
+          <button class="icon-button" id="soundBtn" title="Dźwięk" aria-label="Włącz lub wyłącz dźwięk">♪</button>
+        </div>
+      </header>
 
-    <div class="main-zone">
-    <section class="hero">
-      <div class="logo-card"><svg viewBox="0 0 160 160" aria-hidden="true"><g class="logo-brain">
-        <path d="M80 22 C50 15 31 34 34 59 C16 69 19 100 40 110 C37 132 58 147 80 140"/>
-        <path d="M80 22 C110 15 129 34 126 59 C144 69 141 100 120 110 C123 132 102 147 80 140"/>
-        <path d="M80 22 V140"/><path d="M41 58 C58 56 68 68 68 84"/><path d="M119 58 C102 56 92 68 92 84"/><path d="M39 109 C57 112 67 100 68 85"/><path d="M121 109 C103 112 93 100 92 85"/>
-      </g></svg></div>
-      <h1>IQ Challenge</h1><p class="subtitle">Brain Lab</p><p class="motto">Spokojny trening. Lepsze skupienie. Mądrzejsze decyzje.</p>
-    </section>
+      <section class="screen active" id="homeScreen" data-screen="home">
+        <div class="home-layout">
+          <section class="hero">
+            <div class="logo-card"><svg viewBox="0 0 160 160" aria-hidden="true"><g class="logo-brain">
+              <path d="M80 22 C50 15 31 34 34 59 C16 69 19 100 40 110 C37 132 58 147 80 140"/>
+              <path d="M80 22 C110 15 129 34 126 59 C144 69 141 100 120 110 C123 132 102 147 80 140"/>
+              <path d="M80 22 V140"/><path d="M41 58 C58 56 68 68 68 84"/><path d="M119 58 C102 56 92 68 92 84"/><path d="M39 109 C57 112 67 100 68 85"/><path d="M121 109 C103 112 93 100 92 85"/>
+            </g></svg></div>
+            <h1>IQ Challenge</h1><p class="subtitle">Brain Lab</p><p class="motto">Spokojny trening. Lepsze skupienie. Mądrzejsze decyzje.</p>
+          </section>
 
-    <section class="menu-grid" aria-label="Menu główne">
-      <button class="menu-card featured" data-action="test"><span class="menu-icon">◇</span><span class="menu-copy"><strong>TEST IQ</strong><small>Sprawdź swój poziom</small></span><span class="arrow">›</span></button>
-      <button class="menu-card" data-action="training"><span class="menu-icon">✦</span><span class="menu-copy"><strong>TRENING UMYSŁU</strong><small>Ćwicz logikę i pamięć</small></span><span class="arrow">›</span></button>
-      <button class="menu-card" data-action="daily"><span class="menu-icon">◎</span><span class="menu-copy"><strong>WYZWANIE DNIA</strong><small>Jedno nowe zadanie dziennie</small></span><span class="arrow">›</span></button>
-      <button class="menu-card" data-action="progress"><span class="menu-icon">⌁</span><span class="menu-copy"><strong>POSTĘPY</strong><small>Historia i rozwój</small></span><span class="arrow">›</span></button>
-      <button class="menu-card half" data-action="achievements"><span class="menu-icon">✧</span><span class="menu-copy"><strong>OSIĄGNIĘCIA</strong><small>Odznaki i serie</small></span></button>
-      <button class="menu-card half" data-action="settings"><span class="menu-icon">⚙</span><span class="menu-copy"><strong>USTAWIENIA</strong><small>Dopasuj aplikację</small></span></button>
-    </section>
-    </div>
+          <section class="menu-grid" aria-label="Menu główne">
+            <button class="menu-card featured" data-action="open-test"><span class="menu-icon">◇</span><span class="menu-copy"><strong>TEST IQ</strong><small>Sprawdź swój poziom</small></span><span class="arrow">›</span></button>
+            <button class="menu-card" data-action="training"><span class="menu-icon">✦</span><span class="menu-copy"><strong>TRENING UMYSŁU</strong><small>Ćwicz logikę i pamięć</small></span><span class="arrow">›</span></button>
+            <button class="menu-card" data-action="daily"><span class="menu-icon">◎</span><span class="menu-copy"><strong>WYZWANIE DNIA</strong><small>Jedno nowe zadanie dziennie</small></span><span class="arrow">›</span></button>
+            <button class="menu-card" data-action="progress"><span class="menu-icon">⌁</span><span class="menu-copy"><strong>POSTĘPY</strong><small>Historia i rozwój</small></span><span class="arrow">›</span></button>
+            <button class="menu-card" data-action="achievements"><span class="menu-icon">✧</span><span class="menu-copy"><strong>OSIĄGNIĘCIA</strong><small>Odznaki i serie</small></span></button>
+            <button class="menu-card" data-action="settings"><span class="menu-icon">⚙</span><span class="menu-copy"><strong>USTAWIENIA</strong><small>Dopasuj aplikację</small></span></button>
+          </section>
+        </div>
+        <section class="progress-card"><div class="level-row"><div><small>Twój poziom</small><strong>Nowicjusz</strong></div><span>0 / 100 XP</span></div><div class="xp-track"><div class="xp-fill"></div></div></section>
+      </section>
 
-    <section class="progress-card"><div class="level-row"><div><small>Twój poziom</small><strong>Nowicjusz</strong></div><span>0 / 100 XP</span></div><div class="xp-track"><div class="xp-fill"></div></div></section>
-    <footer><button class="text-link" data-action="about">O aplikacji</button><span>•</span><span>Wersja 1003</span></footer>
+      <section class="screen" id="setupScreen" data-screen="setup">
+        <div class="stage-card setup-card">
+          <div class="stage-heading"><span class="stage-icon">◇</span><div><small>IQ CHALLENGE • BRAIN LAB</small><h2>Przygotuj swój test</h2><p>Podaj dane i wybierz długość testu. Po rozpoczęciu nie będzie można wracać do poprzednich pytań.</p></div></div>
+          <form id="testForm" novalidate>
+            <div class="form-grid">
+              <label><span>Imię</span><input id="firstName" name="firstName" autocomplete="given-name" maxlength="30" placeholder="np. Mariusz" required></label>
+              <label><span>Nazwisko</span><input id="lastName" name="lastName" autocomplete="family-name" maxlength="40" placeholder="np. Gębka" required></label>
+              <label class="age-field"><span>Wiek</span><input id="age" name="age" type="number" inputmode="numeric" min="10" max="99" placeholder="18" required></label>
+            </div>
+            <fieldset><legend>Liczba pytań</legend><div class="choice-row">
+              <label class="choice"><input type="radio" name="questionCount" value="20" checked><span><strong>20</strong><small>około 12 min</small></span></label>
+              <label class="choice"><input type="radio" name="questionCount" value="40"><span><strong>40</strong><small>około 24 min</small></span></label>
+              <label class="choice"><input type="radio" name="questionCount" value="60"><span><strong>60</strong><small>około 36 min</small></span></label>
+            </div></fieldset>
+            <fieldset><legend>Tryb testu</legend><div class="choice-row mode-row">
+              <label class="choice"><input type="radio" name="mode" value="adaptive" checked><span><strong>Adaptacyjny</strong><small>trudność dopasowuje się automatycznie</small></span></label>
+              <label class="choice"><input type="radio" name="mode" value="standard"><span><strong>Standardowy</strong><small>stały, zrównoważony poziom</small></span></label>
+            </div></fieldset>
+            <p class="form-error" id="formError" role="alert"></p>
+            <button class="primary-button" type="submit">ZACZYNAMY <span>›</span></button>
+          </form>
+        </div>
+      </section>
+
+      <section class="screen" id="prepareScreen" data-screen="prepare">
+        <div class="stage-card prepare-card">
+          <div class="pulse-brain"><svg viewBox="0 0 160 160"><g class="logo-brain"><path d="M80 22 C50 15 31 34 34 59 C16 69 19 100 40 110 C37 132 58 147 80 140"/><path d="M80 22 C110 15 129 34 126 59 C144 69 141 100 120 110 C123 132 102 147 80 140"/><path d="M80 22 V140"/></g></svg></div>
+          <h2>Przygotowanie testu</h2><p id="prepareStatus">Analizowanie ustawień…</p>
+          <div class="prepare-track"><div id="prepareFill"></div></div>
+          <ul class="prepare-list"><li data-step="1">Tworzenie zestawu pytań</li><li data-step="2">Dopasowywanie poziomu startowego</li><li data-step="3">Uruchamianie pomiaru czasu</li></ul>
+        </div>
+      </section>
+
+      <section class="screen" id="instructionsScreen" data-screen="instructions">
+        <div class="stage-card instruction-card">
+          <div class="stage-heading compact"><span class="stage-icon">✓</span><div><small>TEST JEST GOTOWY</small><h2>Skup się i pracuj samodzielnie</h2></div></div>
+          <div class="rules-grid">
+            <div class="rule"><span>01</span><p>Na każde pytanie wybierz dokładnie jedną z pięciu odpowiedzi.</p></div>
+            <div class="rule"><span>02</span><p>Po zatwierdzeniu odpowiedzi automatycznie przejdziesz dalej.</p></div>
+            <div class="rule"><span>03</span><p>Nie używaj kalkulatora, wyszukiwarki ani pomocy innych osób.</p></div>
+            <div class="rule"><span>04</span><p>Liczy się poprawność, poziom trudności i tempo całego testu.</p></div>
+          </div>
+          <div class="test-summary" id="testSummary"></div>
+          <button class="primary-button" id="beginTestBtn">ROZPOCZNIJ TEST <span>›</span></button>
+        </div>
+      </section>
+
+      <section class="screen" id="quizScreen" data-screen="quiz">
+        <div class="quiz-shell">
+          <div class="quiz-head">
+            <div><small id="questionCategory">SEKWENCJE</small><strong id="questionLevel">Poziom 1</strong></div>
+            <div class="question-counter"><span id="questionNumber">1</span><small id="questionTotal">/ 20</small></div>
+            <div class="timer-box"><small>Czas</small><strong id="timer">00:00</strong></div>
+          </div>
+          <div class="quiz-progress"><div id="quizProgressFill"></div></div>
+          <div class="question-card">
+            <p id="questionText">Jaka liczba powinna znaleźć się w miejscu znaku zapytania?</p>
+            <div id="questionVisual" class="question-visual" aria-label="Treść zadania"></div>
+          </div>
+          <div id="answers" class="answers-grid"></div>
+          <div class="quiz-foot"><span id="remainingText">Pozostało 19 pytań</span><button id="quitTestBtn" class="quiet-button">ZAKOŃCZ TEST</button></div>
+        </div>
+      </section>
+
+      <section class="screen" id="demoEndScreen" data-screen="demo-end">
+        <div class="stage-card prepare-card"><div class="stage-icon large">✓</div><h2>Fundament testu działa</h2><p>Formularz, przygotowanie, instrukcja, licznik czasu, pięć odpowiedzi i przechodzenie między pytaniami są już gotowe. W następnym etapie podłączymy pełne generatory zadań.</p><button class="primary-button" id="returnHomeBtn">WRÓĆ DO MENU</button></div>
+      </section>
+
+      <footer><button class="text-link" data-action="about">O aplikacji</button><span>•</span><span>Wersja 1004</span></footer>
     </div>
   </main>
 
   <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <div class="modal-panel"><button class="modal-close" id="modalClose" aria-label="Zamknij">×</button><div class="modal-symbol" id="modalSymbol">◇</div><h2 id="modalTitle">Moduł w przygotowaniu</h2><p id="modalText">To pierwszy ekran nowej aplikacji. Kolejne moduły będziemy dodawać etapami.</p><button class="primary-button" id="modalOk">ROZUMIEM</button></div>
+    <div class="modal-panel"><button class="modal-close" id="modalClose" aria-label="Zamknij">×</button><div class="modal-symbol" id="modalSymbol">◇</div><h2 id="modalTitle">Moduł w przygotowaniu</h2><p id="modalText"></p><button class="primary-button" id="modalOk">ROZUMIEM</button></div>
   </div>
   <script src="app.js"></script>
 </body>
