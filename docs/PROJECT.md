@@ -1,6 +1,6 @@
 # IQ Challenge • Brain Lab
 
-Aktualna wersja: **v1006**
+Aktualna wersja: **v1007**
 
 Status: Brain Engine — fundament SPA i pierwsza ścieżka Test IQ.
 
@@ -24,3 +24,7 @@ Powiększono interfejs komputerowy i wymuszono właściwy, pionowy układ strony
 
 ## v1006
 Przebudowano ekran przygotowania testu zgodnie z zaakceptowaną makietą premium: osobne karty danych, liczby pytań, trybu, pasek informacji i dolna nawigacja.
+
+
+## v1007
+Przebudowano ekran główny: prostokątne przyciski, menu obniżone, a w górnej części dodano własną dekorację SVG z mózgiem i elementami analitycznymi.

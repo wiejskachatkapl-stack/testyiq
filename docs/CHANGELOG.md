@@ -1,5 +1,15 @@
 # Changelog
 
+## v1007
+### Zmieniono
+- ekran główny otrzymał nowy układ premium,
+- przyciski menu są prostokątne i bardziej zwarte,
+- menu zostało obniżone,
+- nad menu dodano własną grafikę SVG mózgu i elementy analityczne,
+- dodano pasek informacji pod poziomem użytkownika,
+- zachowano układ bez przewijania na telefonie i komputerze,
+- cache PWA zmieniono na `iq-brain-lab-v1007`.
+
 ## v1006
 ### Zmieniono
 - pełna przebudowa graficzna ekranu „Przygotuj test”,
