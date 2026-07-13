@@ -46,26 +46,96 @@
   </section>
 
   <section class="screen" data-screen="setup">
-    <div class="panel">
-      <div class="heading"><b>◇</b><span><small>IQ CHALLENGE</small><h2>Przygotuj test</h2><p>Podaj dane potrzebne do wyniku porównawczego.</p></span></div>
-      <form id="testForm">
-        <div class="fields">
-          <label>Imię<input id="firstName" maxlength="30" placeholder="Wpisz imię"></label>
-          <label>Nazwisko<input id="lastName" maxlength="40" placeholder="Wpisz nazwisko"></label>
-          <label class="age">Wiek<input id="age" type="number" min="10" max="99" placeholder="35"></label>
+    <div class="setup-premium">
+      <section class="setup-hero-card">
+        <div class="setup-mark" aria-hidden="true">◇</div>
+        <div class="setup-heading">
+          <small>IQ CHALLENGE</small>
+          <h2>Przygotuj test</h2>
+          <p>Podaj dane potrzebne do wyniku porównawczego.</p>
         </div>
-        <fieldset><legend>Liczba pytań</legend><div class="segments">
-          <label><input type="radio" name="count" value="20" checked><span>20</span></label>
-          <label><input type="radio" name="count" value="40"><span>40</span></label>
-          <label><input type="radio" name="count" value="60"><span>60</span></label>
-        </div></fieldset>
-        <fieldset><legend>Tryb testu</legend><div class="modes">
-          <label><input type="radio" name="mode" value="adaptive" checked><span><strong>Adaptacyjny</strong><small>Poziom dopasowuje się do odpowiedzi</small></span></label>
-          <label><input type="radio" name="mode" value="standard"><span><strong>Standardowy</strong><small>Stały rozkład trudności</small></span></label>
-        </div></fieldset>
-        <p id="formError" class="error"></p>
-        <button class="primary" type="submit">DALEJ ›</button>
+        <svg class="setup-brain-art" viewBox="0 0 240 160" aria-hidden="true">
+          <g fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M113 22c-25-12-51 2-53 26-20 5-28 31-15 47-7 22 14 42 34 38 9 17 37 15 43-4"/>
+            <path d="M127 22c25-12 51 2 53 26 20 5 28 31 15 47 7 22-14 42-34 38-9 17-37 15-43-4"/>
+            <path d="M120 20v112"/>
+            <path d="M72 49c17-2 31 9 31 26M168 49c-17-2-31 9-31 26"/>
+            <path d="M52 94c17 0 30-8 33-22M188 94c-17 0-30-8-33-22"/>
+            <path d="M79 132c-1-17 10-29 27-31M161 132c1-17-10-29-27-31"/>
+            <path d="M84 67l17 8 18-18 18 18 18-8"/>
+            <circle cx="84" cy="67" r="3"/><circle cx="101" cy="75" r="3"/><circle cx="119" cy="57" r="3"/>
+            <circle cx="137" cy="75" r="3"/><circle cx="155" cy="67" r="3"/>
+          </g>
+        </svg>
+      </section>
+
+      <form id="testForm" class="premium-form" novalidate>
+        <section class="premium-section participant-section">
+          <div class="premium-fields">
+            <label class="premium-field">
+              <span class="field-label">Imię</span>
+              <span class="input-shell"><i aria-hidden="true">♙</i><input id="firstName" maxlength="30" autocomplete="given-name" placeholder="Wpisz imię"></span>
+            </label>
+            <label class="premium-field">
+              <span class="field-label">Nazwisko</span>
+              <span class="input-shell"><i aria-hidden="true">♙</i><input id="lastName" maxlength="40" autocomplete="family-name" placeholder="Wpisz nazwisko"></span>
+            </label>
+            <label class="premium-field age-premium">
+              <span class="field-label">Wiek</span>
+              <span class="input-shell"><i aria-hidden="true">▣</i><input id="age" type="number" inputmode="numeric" min="10" max="99" placeholder="Podaj wiek"><em>lat</em></span>
+            </label>
+          </div>
+        </section>
+
+        <fieldset class="premium-section count-section">
+          <legend>Liczba pytań <span class="help-dot">?</span></legend>
+          <div class="question-choice-grid">
+            <label class="question-choice">
+              <input type="radio" name="count" value="20" checked>
+              <span><b class="choice-icon">◴</b><strong>20<small>pytań</small></strong><em>Szybki test</em><i>✓</i></span>
+            </label>
+            <label class="question-choice">
+              <input type="radio" name="count" value="40">
+              <span><b class="choice-icon">▥</b><strong>40<small>pytań</small></strong><em>Standardowy</em><i>✓</i></span>
+            </label>
+            <label class="question-choice">
+              <input type="radio" name="count" value="60">
+              <span><b class="choice-icon">◎</b><strong>60<small>pytań</small></strong><em>Pełny test</em><i>✓</i></span>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="premium-section mode-section">
+          <legend>Tryb testu <span class="help-dot">?</span></legend>
+          <div class="premium-mode-grid">
+            <label class="premium-mode">
+              <input type="radio" name="mode" value="adaptive" checked>
+              <span><b>◎</b><strong>Adaptacyjny<small>Poziom dopasowuje się<br>do odpowiedzi</small></strong><i>✓</i></span>
+            </label>
+            <label class="premium-mode">
+              <input type="radio" name="mode" value="standard">
+              <span><b>▥</b><strong>Standardowy<small>Stały rozkład<br>trudności</small></strong><i>✓</i></span>
+            </label>
+          </div>
+
+          <p id="formError" class="error premium-error"></p>
+          <button class="primary premium-next" type="submit">DALEJ <span>›</span></button>
+        </fieldset>
       </form>
+
+      <section class="setup-info-strip" aria-label="Informacje o teście">
+        <div><b>♢</b><span><strong>Bezpieczne</strong><small>Twoje dane są<br>chronione</small></span></div>
+        <div><b>◷</b><span><strong>Czas trwania</strong><small>20–60 min zależnie<br>od wybranej opcji</small></span></div>
+        <div><b>⌁</b><span><strong>Wynik IQ</strong><small>Szczegółowy raport<br>po zakończeniu</small></span></div>
+      </section>
+
+      <nav class="setup-bottom-nav" aria-label="Nawigacja aplikacji">
+        <button type="button" class="active" data-route="setup"><b>⌂</b><span>Test IQ</span></button>
+        <button type="button" data-coming="Trening umysłu"><b>♮</b><span>Trening</span></button>
+        <button type="button" data-coming="Postępy"><b>⌁</b><span>Postępy</span></button>
+        <button type="button" data-coming="Osiągnięcia"><b>♕</b><span>Osiągnięcia</span></button>
+        <button type="button" data-coming="Ustawienia"><b>⚙</b><span>Ustawienia</span></button>
+      </nav>
     </div>
   </section>
 
@@ -86,7 +156,7 @@
 
   <section class="screen" data-screen="question">
     <div class="panel center">
-      <div class="round">◇</div><small class="accent">BRAIN ENGINE v1005</small>
+      <div class="round">◇</div><small class="accent">BRAIN ENGINE v1006</small>
       <h2>Silnik ekranu pytania jest gotowy</h2>
       <p class="muted">W następnej wersji podłączymy pierwszy generator zadań z kostkami. Widoki są już oddzielone i nie nakładają się na siebie.</p>
       <div class="stats">
@@ -98,7 +168,7 @@
     </div>
   </section>
 
-  <footer><button data-coming="O aplikacji">O aplikacji</button><span>•</span><span>Wersja 1005</span></footer>
+  <footer><button data-coming="O aplikacji">O aplikacji</button><span>•</span><span>Wersja 1006</span></footer>
 </main>
 
 <div id="modal" class="modal hidden">
