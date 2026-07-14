@@ -1,5 +1,13 @@
 # Changelog
 
+## v1012
+### Poprawiono
+- kremowe tło kostek jest teraz wymuszane bezpośrednio w SVG,
+- czarne oczka nie są nadpisywane przez stare style,
+- przywrócono wyraźną ciemną obwódkę,
+- zwiększono czytelność kostek na ciemnym tle,
+- cache PWA zmieniono na `iq-brain-lab-v1012`.
+
 ## v1011
 ### Zmieniono
 - kostki mają kremową powierzchnię,

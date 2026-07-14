@@ -10,3 +10,7 @@ Obsługuje ciągi rosnące, malejące, skoki o 2, pary, wartości przeciwległe 
 
 ### Wygląd kostek od v1011
 Kostki są kremowe (`#F3EAD8`) z czarnymi oczkami, delikatnym gradientem i cieniem. Kolor odpowiedzi zmienia jedynie obramowanie/poświatę, a nie samą powierzchnię kostki.
+
+
+### Poprawka v1012
+Elementy powierzchni, obwódki i oczek mają osobne klasy SVG oraz wymuszone kolory, aby globalne style aplikacji nie zmieniały wyglądu kostek.
