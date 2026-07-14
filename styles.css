@@ -1966,3 +1966,58 @@ footer{grid-row:3;display:flex;justify-content:center;align-items:center;gap:8px
 .matrix-answer.wrong .matrix-shape-svg{filter:drop-shadow(0 0 10px rgba(255,120,128,.45));}
 @media(max-width:700px){.shape-matrix-grid{gap:5px;max-height:300px}.shape-matrix-cell{border-radius:10px;padding:3px}.matrix-main-shape{max-width:68px;max-height:68px}.missing-shape{font-size:1.5rem}.matrix-answer .matrix-answer-shape{width:clamp(40px,11vw,56px);height:clamp(40px,11vw,56px)}}
 @media(max-width:390px){.shape-matrix-grid{max-height:255px}.matrix-main-shape{max-width:58px;max-height:58px}}
+
+
+/* =========================================================
+   v1017 — poprawiona widoczność figur geometrycznych
+   ========================================================= */
+
+.matrix-shape-svg{
+  max-width:112px!important;
+  max-height:112px!important;
+  overflow:visible!important;
+  filter:drop-shadow(0 4px 7px rgba(0,0,0,.34))!important;
+}
+
+.matrix-shape-svg polygon,
+.matrix-shape-svg circle,
+.matrix-shape-svg rect,
+.matrix-shape-svg path{
+  opacity:1!important;
+}
+
+.shape-matrix-cell{
+  background:
+    radial-gradient(circle at 50% 50%,rgba(246,240,226,.055),transparent 58%),
+    rgba(3,21,33,.34)!important;
+}
+
+.matrix-answer{
+  background:
+    radial-gradient(circle at 50% 58%,rgba(246,240,226,.055),transparent 55%),
+    rgba(3,21,33,.55)!important;
+}
+
+.matrix-answer .matrix-answer-shape{
+  width:clamp(66px,8vw,98px)!important;
+  height:clamp(66px,8vw,98px)!important;
+}
+
+@media(max-width:700px){
+  .matrix-main-shape{
+    max-width:78px!important;
+    max-height:78px!important;
+  }
+
+  .matrix-answer .matrix-answer-shape{
+    width:clamp(48px,12vw,64px)!important;
+    height:clamp(48px,12vw,64px)!important;
+  }
+}
+
+@media(max-width:390px){
+  .matrix-main-shape{
+    max-width:66px!important;
+    max-height:66px!important;
+  }
+}
