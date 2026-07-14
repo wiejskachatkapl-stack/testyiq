@@ -12,3 +12,7 @@ Ekran wykorzystuje modułowe karty premium, turkusowe zaznaczenia, wbudowane SVG
 
 ## Home v1007
 Górna część ekranu jest strefą wizualną marki. Menu składa się z prostokątnych przycisków w siatce 2 × 3. Dekoracje są wykonywane w SVG/CSS, bez bitmap.
+
+
+## Home v1008
+Menu główne ma sześć małych kart w siatce 3 × 2. Przestrzenie nad i pod menu wykorzystują dekoracje SVG związane z mózgiem i analizą. Usunięto wskaźnik IQ oraz dodatkowy pasek informacyjny.

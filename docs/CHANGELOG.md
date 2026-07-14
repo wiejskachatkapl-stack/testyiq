@@ -1,5 +1,15 @@
 # Changelog
 
+## v1008
+### Zmieniono
+- przyciski ekranu głównego zwężono i ustawiono w siatce 3 × 2,
+- dodano więcej elementów graficznych Brain Lab w górnej części,
+- dodano dolną dekoracyjną grafikę mózgu SVG,
+- usunięto dekoracyjny wskaźnik IQ,
+- usunięto pasek „Bezpieczne / Czas testu / Wynik IQ”,
+- zachowano panel poziomu użytkownika i dolną nawigację,
+- cache PWA zmieniono na `iq-brain-lab-v1008`.
+
 ## v1007
 ### Zmieniono
 - ekran główny otrzymał nowy układ premium,
