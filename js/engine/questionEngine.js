@@ -65,11 +65,11 @@
       });
 
       if (this.mode === 'adaptive') {
-        if (correct && responseMs < 18000) this.level = Math.min(3, this.level + 1);
+        if (correct && responseMs < 18000) this.level = Math.min(10, this.level + 1);
         if (!correct) this.level = Math.max(1, this.level - 1);
       } else {
-        this.level = 1 + Math.floor(((this.index + 1) / Math.max(1, this.total)) * 3);
-        this.level = Math.min(3, this.level);
+        this.level = 1 + Math.floor(((this.index + 1) / Math.max(1, this.total)) * 10);
+        this.level = Math.min(10, this.level);
       }
 
       this.onFeedback?.({ correct, correctIndex: this.current.answerIndex });
