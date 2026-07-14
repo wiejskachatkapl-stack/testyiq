@@ -1,5 +1,16 @@
 # Changelog
 
+## v1009
+### Poprawiono
+- dostosowano ekran główny na komputerze do zaakceptowanej makiety,
+- zwiększono górny panel wizualny,
+- ustawiono przyciski w dwóch równych rzędach po trzy,
+- dolna grafika mózgu otrzymała osobny obszar o ograniczonej wysokości,
+- usunięto nachodzenie grafiki na przyciski i panel poziomu,
+- dodano osobne dopasowanie dla niskich okien komputerowych,
+- układ telefonu pozostawiono bez zmian,
+- cache PWA zmieniono na `iq-brain-lab-v1009`.
+
 ## v1008
 ### Zmieniono
 - przyciski ekranu głównego zwężono i ustawiono w siatce 3 × 2,
