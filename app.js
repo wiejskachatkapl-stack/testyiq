@@ -145,15 +145,14 @@ function updateQuestionProgress(data){
   document.getElementById('questionProgress').style.width=`${data.progress}%`;
 }
 
-function showQuestionFeedback({correct,correctIndex}){
+function showQuestionFeedback({correct,correctIndex,selectedIndex}){
   const buttons=[...document.querySelectorAll('.dice-answer')];
   buttons.forEach((button,index)=>{
     button.disabled=true;
     if(index===correctIndex)button.classList.add('correct');
   });
-  if(!correct){
-    const selected=buttons.find(button=>button.matches(':focus'));
-    selected?.classList.add('wrong');
+  if(!correct && Number.isInteger(selectedIndex)){
+    buttons[selectedIndex]?.classList.add('wrong');
   }
   document.querySelector('.question-card')?.classList.add(correct?'flash-correct':'flash-wrong');
   setTimeout(()=>document.querySelector('.question-card')?.classList.remove('flash-correct','flash-wrong'),420);
