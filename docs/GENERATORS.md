@@ -14,3 +14,7 @@ Kostki są kremowe (`#F3EAD8`) z czarnymi oczkami, delikatnym gradientem i cieni
 
 ### Poprawka v1012
 Elementy powierzchni, obwódki i oczek mają osobne klasy SVG oraz wymuszone kolory, aby globalne style aplikacji nie zmieniały wyglądu kostek.
+
+
+## Rozbudowa v1015
+Dostępne są różne rodziny łamigłówek z kostkami: ciągi, analogie, macierze 2×2, macierze 3×3, wybór elementu niepasującego, równowaga, diament, pierścień oraz złożone reguły wielowarstwowe. Typy są przypisane do poziomów 1–10 i nie powtarzają się bezpośrednio.
