@@ -1,6 +1,6 @@
 # IQ Challenge • Brain Lab
 
-Aktualna wersja: **v1013**
+Aktualna wersja: **v1014**
 
 Status: Brain Engine — fundament SPA i pierwsza ścieżka Test IQ.
 
@@ -52,3 +52,7 @@ Naprawiono widoczność kremowych kostek. Starsze reguły neonowego SVG nie mog�
 
 ## v1013
 Przebudowano dolną nawigację: większe ikony SVG, czytelne podpisy i spójne turkusowe podświetlenie aktywnej zakładki.
+
+
+## v1014
+Naprawiono dolną nawigację na telefonie. Ikony SVG są teraz wymuszane jako widoczne również w mobilnych regułach responsywnych.

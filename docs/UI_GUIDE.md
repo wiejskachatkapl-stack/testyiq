@@ -24,3 +24,7 @@ Na komputerze ekran jest podzielony na cztery bezpieczne strefy: panel wizualny,
 
 ## Dolna nawigacja v1013
 Pięć zakładek używa ikon liniowych SVG: mózg, kostka, wykres, puchar i ustawienia. Każda ma stały podpis i kolorystykę Deep Mind.
+
+
+## Poprawka mobilna v1014
+Ikony dolnej nawigacji muszą być widoczne na telefonie i komputerze. Mobilne reguły nie mogą ustawiać `display:none` ani zerowych wymiarów dla `.bottom-icon` i jego SVG.

@@ -1,5 +1,13 @@
 # Changelog
 
+## v1014
+### Poprawiono
+- przywrócono ikony w dolnej nawigacji na telefonie,
+- usunięto konflikt mobilnych reguł CSS ukrywających SVG,
+- zachowano podpisy pod ikonami,
+- aktywna zakładka nadal ma turkusowe podświetlenie,
+- cache PWA zmieniono na `iq-brain-lab-v1014`.
+
 ## v1013
 ### Zmieniono
 - przebudowano dolny pasek nawigacji,
