@@ -3,3 +3,6 @@
 Każdy generator zwraca kategorię, poziom, SVG, dokładnie 5 odpowiedzi i jedną poprawną.
 
 Kolejność: kostki 1–6, liczby, litery, obrót figur, matryce, symetria.
+
+## Generator kostek — v1010
+Obsługuje ciągi rosnące, malejące, skoki o 2, pary, wartości przeciwległe sumujące się do 7 oraz dwa przeplatające się ciągi. Każde pytanie ma pięć unikalnych odpowiedzi i jedną poprawną.

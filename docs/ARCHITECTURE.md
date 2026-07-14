@@ -9,3 +9,6 @@ Aplikacja działa jako SPA. Widoki są przełączane funkcją `nav()` i tylko je
 Home, Setup, Intro, Question.
 
 Nowych ekranów nie wolno dopisywać pod istniejącymi widokami.
+
+## Silnik pytań v1010
+`QuestionEngine` zarządza sesją, postępem, odpowiedziami, czasem reakcji i prostą adaptacją poziomu. Generator jest niezależnym modułem przekazywanym do silnika.

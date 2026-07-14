@@ -1,5 +1,19 @@
 # Changelog
 
+## v1010
+### Dodano
+- moduł `QuestionEngine`,
+- moduł `DiceGenerator`,
+- generowanie kostek 1–6 jako SVG,
+- kilka reguł sekwencji kostek,
+- dokładnie 5 odpowiedzi i jedną poprawną,
+- ekran pytania z licznikiem czasu,
+- pasek postępu i poziom zadania,
+- wizualną informację o poprawnej i błędnej odpowiedzi,
+- automatyczne przechodzenie do kolejnego pytania,
+- podsumowanie demonstracyjne po zakończeniu,
+- cache PWA `iq-brain-lab-v1010`.
+
 ## v1009
 ### Poprawiono
 - dostosowano ekran główny na komputerze do zaakceptowanej makiety,
