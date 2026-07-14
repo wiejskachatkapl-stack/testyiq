@@ -1578,3 +1578,16 @@ footer{grid-row:3;display:flex;justify-content:center;align-items:center;gap:8px
 .dice-answer .dice-svg{
   filter:drop-shadow(0 5px 6px rgba(0,0,0,.28));
 }
+
+
+/* v1013 — czytelna dolna nawigacja Brain Lab */
+.premium-bottom-nav{min-height:74px;padding:7px 10px;border-radius:20px;background:linear-gradient(155deg,rgba(255,255,255,.075),rgba(255,255,255,.03)),rgba(3,19,31,.84);border:1px solid rgba(118,192,206,.24);box-shadow:0 12px 30px rgba(0,0,0,.18);overflow:hidden}
+.premium-bottom-nav button{min-width:0;min-height:58px;position:relative;border-radius:14px;gap:4px;color:#90a6b2;transition:background .2s ease,color .2s ease,transform .2s ease}
+.premium-bottom-nav button:hover{color:#d9f7f8;background:rgba(59,213,216,.06);transform:translateY(-1px)}
+.bottom-icon{width:31px;height:31px;display:grid;place-items:center}.bottom-icon svg{width:100%;height:100%;overflow:visible}.bottom-icon svg *{fill:none;stroke:currentColor;stroke-width:2.15;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.bottom-label{font-size:.62rem;line-height:1;white-space:nowrap}
+.premium-bottom-nav button.active{color:#4ce1e2;background:radial-gradient(circle at 50% 25%,rgba(58,220,223,.18),transparent 65%),rgba(40,192,197,.08);text-shadow:0 0 12px rgba(76,225,226,.3)}
+.premium-bottom-nav button.active:after{content:"";position:absolute;left:27%;right:27%;bottom:2px;height:3px;border-radius:999px;background:#4ce1e2;box-shadow:0 0 12px rgba(76,225,226,.62)}
+.premium-bottom-nav button.active .bottom-icon{filter:drop-shadow(0 0 7px rgba(76,225,226,.42))}
+@media(max-width:900px),(hover:none) and (pointer:coarse){.premium-bottom-nav{min-height:68px;padding:6px 5px;border-radius:17px}.premium-bottom-nav button{min-height:55px;padding:3px 1px;gap:3px}.bottom-icon{width:27px;height:27px}.bottom-label{display:block!important;font-size:clamp(.48rem,1.75vw,.58rem)!important}}
+@media(max-width:390px){.premium-bottom-nav{min-height:62px}.premium-bottom-nav button{min-height:50px}.bottom-icon{width:24px;height:24px}.bottom-label{font-size:.45rem!important}}

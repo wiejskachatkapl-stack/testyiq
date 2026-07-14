@@ -167,12 +167,22 @@
         <div><b>⌁</b><span><strong>Wynik IQ</strong><small>Szczegółowy raport<br>po zakończeniu</small></span></div>
       </section>
 
-      <nav class="setup-bottom-nav" aria-label="Nawigacja aplikacji">
-        <button type="button" class="active" data-route="setup"><b>⌂</b><span>Test IQ</span></button>
-        <button type="button" data-coming="Trening umysłu"><b>♮</b><span>Trening</span></button>
-        <button type="button" data-coming="Postępy"><b>⌁</b><span>Postępy</span></button>
-        <button type="button" data-coming="Osiągnięcia"><b>♕</b><span>Osiągnięcia</span></button>
-        <button type="button" data-coming="Ustawienia"><b>⚙</b><span>Ustawienia</span></button>
+      <nav class="setup-bottom-nav premium-bottom-nav" aria-label="Nawigacja aplikacji">
+        <button type="button" class="active" data-route="setup" aria-label="Test IQ">
+          <span class="bottom-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M24 8c-7-4-15 1-15 9-5 2-6 9-2 13-2 7 5 13 12 10 2 3 4 4 5 4"/><path d="M24 8c7-4 15 1 15 9 5 2 6 9 2 13 2 7-5 13-12 10-2 3-4 4-5 4"/><path d="M24 8v36M12 18c5-1 8 2 8 7M36 18c-5-1-8 2-8 7M11 31c5 1 8-2 9-6M37 31c-5 1-8-2-9-6"/></svg></span><span class="bottom-label">Test IQ</span>
+        </button>
+        <button type="button" data-coming="Trening umysłu" aria-label="Trening">
+          <span class="bottom-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M10 16l14-8 14 8v16l-14 8-14-8z"/><circle cx="19" cy="18" r="2.2"/><circle cx="29" cy="29" r="2.2"/><circle cx="18" cy="31" r="2.2"/><circle cx="30" cy="17" r="2.2"/><path d="M10 16l14 8 14-8M24 24v16"/></svg></span><span class="bottom-label">Trening</span>
+        </button>
+        <button type="button" data-coming="Postępy" aria-label="Postępy">
+          <span class="bottom-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M9 38h30M12 34V23M22 34V16M32 34V10M10 27l10-8 8 4 10-12"/><path d="M33 11h5v5"/></svg></span><span class="bottom-label">Postępy</span>
+        </button>
+        <button type="button" data-coming="Osiągnięcia" aria-label="Osiągnięcia">
+          <span class="bottom-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M16 8h16v8c0 7-3 12-8 15-5-3-8-8-8-15z"/><path d="M16 11H9v5c0 5 3 8 8 9M32 11h7v5c0 5-3 8-8 9M24 31v7M17 40h14"/><path d="M24 14l2.2 4.5 5 .7-3.6 3.5.9 5-4.5-2.4-4.5 2.4.9-5-3.6-3.5 5-.7z"/></svg></span><span class="bottom-label">Osiągnięcia</span>
+        </button>
+        <button type="button" data-coming="Ustawienia" aria-label="Ustawienia">
+          <span class="bottom-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="7"/><path d="M24 8v5M24 35v5M8 24h5M35 24h5M13 13l4 4M31 31l4 4M35 13l-4 4M17 31l-4 4"/><circle cx="24" cy="24" r="15"/></svg></span><span class="bottom-label">Ustawienia</span>
+        </button>
       </nav>
     </div>
   </section>
@@ -238,7 +248,7 @@
     </div>
   </section>
 
-  <footer><button data-coming="O aplikacji">O aplikacji</button><span>•</span><span>Wersja 1012</span></footer>
+  <footer><button data-coming="O aplikacji">O aplikacji</button><span>•</span><span>Wersja 1013</span></footer>
 </main>
 
 <div id="modal" class="modal hidden">
