@@ -118,12 +118,27 @@
   }
 
   function diceSvg(value, className = '') {
+    const uid = `dice-${Math.random().toString(36).slice(2)}`;
     const pips = pipPositions(value)
-      .map(([x,y]) => `<circle cx="${x}" cy="${y}" r="6.2"/>`)
+      .map(([x,y]) => `<circle cx="${x}" cy="${y}" r="6.3"/>`)
       .join('');
     return `<svg class="dice-svg ${className}" viewBox="0 0 100 100" role="img" aria-label="Kostka z liczbą oczek ${value}">
-      <rect x="8" y="8" width="84" height="84" rx="19"/>
-      <g>${pips}</g>
+      <defs>
+        <linearGradient id="${uid}-face" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#fffaf0"/>
+          <stop offset="55%" stop-color="#f3ead8"/>
+          <stop offset="100%" stop-color="#ded1bb"/>
+        </linearGradient>
+        <filter id="${uid}-shadow" x="-30%" y="-30%" width="160%" height="170%">
+          <feDropShadow dx="0" dy="5" stdDeviation="4" flood-color="#000000" flood-opacity=".28"/>
+        </filter>
+      </defs>
+      <rect x="8" y="8" width="84" height="84" rx="19"
+            fill="url(#${uid}-face)" filter="url(#${uid}-shadow)"/>
+      <rect x="10.5" y="10.5" width="79" height="79" rx="16.5"
+            fill="none" stroke="#5b5247" stroke-width="1.5" opacity=".9"/>
+      <path d="M18 24 Q18 17 25 17 H69" fill="none" stroke="#ffffff" stroke-width="2.2" opacity=".55"/>
+      <g fill="#111111">${pips}</g>
     </svg>`;
   }
 
