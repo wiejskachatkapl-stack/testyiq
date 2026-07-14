@@ -18,3 +18,7 @@ Elementy powierzchni, obwódki i oczek mają osobne klasy SVG oraz wymuszone kol
 
 ## Rozbudowa v1015
 Dostępne są różne rodziny łamigłówek z kostkami: ciągi, analogie, macierze 2×2, macierze 3×3, wybór elementu niepasującego, równowaga, diament, pierścień oraz złożone reguły wielowarstwowe. Typy są przypisane do poziomów 1–10 i nie powtarzają się bezpośrednio.
+
+
+## Matryce figur geometrycznych — v1016
+Generator ma 16 typów reguł na poziomach 1–10: cykle figur, wypełnienia, obroty, wielkości, liczby elementów, pozycje, reguły wierszy i kolumn, odbicia i układy wielocechowe. Odpowiedzi są generowane jako własne SVG.

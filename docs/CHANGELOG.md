@@ -1,5 +1,38 @@
 # Changelog
 
+## v1016
+### Dodano
+- generator matryc figur geometrycznych,
+- 16 typów reguł na poziomach 1–10,
+- figury SVG: koło, kwadrat, trójkąt, romb, pięciokąt, sześciokąt, gwiazda i krzyż,
+- cechy: wypełnienie, obrót, rozmiar, liczba i położenie,
+- pięć generowanych odpowiedzi,
+- MixedGenerator przeplatający kostki i matryce,
+- rozszerzenie adaptacyjnego poziomu do 10.
+
+### Bez zmian
+- ekran główny, formularz, nawigacja i wygląd kostek.
+
+## v1015
+### Dodano
+- wiele różnych typów zadań z kostkami zamiast samych ciągów,
+- analogie,
+- macierze 2 × 2,
+- macierze 3 × 3,
+- element niepasujący,
+- zadania równowagi,
+- układ diamentowy,
+- układ pierścieniowy,
+- trudne reguły dwuwarstwowe,
+- przypisanie typów do poziomów 1–10,
+- pamięć ostatnio użytych typów, aby ograniczyć powtórzenia.
+
+### Bez zmian
+- wygląd strony głównej,
+- formularz uczestnika,
+- dolna nawigacja,
+- kolorystyka i responsywność pozostałych ekranów.
+
 ## v1014
 ### Poprawiono
 - przywrócono ikony w dolnej nawigacji na telefonie,

@@ -12,3 +12,7 @@ Nowych ekranów nie wolno dopisywać pod istniejącymi widokami.
 
 ## Silnik pytań v1010
 `QuestionEngine` zarządza sesją, postępem, odpowiedziami, czasem reakcji i prostą adaptacją poziomu. Generator jest niezależnym modułem przekazywanym do silnika.
+
+
+## MixedGenerator v1016
+Warstwa pośrednia przeplata DiceGenerator i MatrixGenerator, dzięki czemu silnik pytań nie zależy od konkretnej rodziny zadań.

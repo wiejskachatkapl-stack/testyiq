@@ -1,6 +1,6 @@
 # IQ Challenge • Brain Lab
 
-Aktualna wersja: **v1014**
+Aktualna wersja: **v1016**
 
 Status: Brain Engine — fundament SPA i pierwsza ścieżka Test IQ.
 
@@ -56,3 +56,11 @@ Przebudowano dolną nawigację: większe ikony SVG, czytelne podpisy i spójne t
 
 ## v1014
 Naprawiono dolną nawigację na telefonie. Ikony SVG są teraz wymuszane jako widoczne również w mobilnych regułach responsywnych.
+
+
+## v1015
+Generator kostek nie tworzy już wyłącznie ciągów. Dodano analogie, macierze 2×2 i 3×3, zadania z elementem niepasującym, równowagę, diamenty, pierścienie i reguły dwuwarstwowe. Wygląd pozostałych ekranów pozostaje bez zmian.
+
+
+## v1016
+Dodano drugą rodzinę pytań: matryce figur geometrycznych. Test przeplata kostki i matryce, a poziom trudności obsługuje skalę 1–10.
