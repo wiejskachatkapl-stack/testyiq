@@ -102,16 +102,43 @@
   function matrix(cells,answer){ return {cells,answer}; }
 
   function shapeSvg(item,className=''){
-    const count=item.count||1; const positions=countPositions(count,item.position);
-    const shapes=positions.map(([x,y],i)=>shapeElement(item,x,y,scaleFor(item.size,count),`${i}`)).join('');
-    return `<svg class="matrix-shape-svg ${className}" viewBox="0 0 100 100" role="img" aria-label="Figura geometryczna">${patternDefs()}<g transform="rotate(${item.rotation||0} 50 50)">${shapes}</g></svg>`;
+    const count=item.count||1;
+    const positions=countPositions(count,item.position);
+    const uid=`matrix-${Math.random().toString(36).slice(2)}`;
+    const shapes=positions.map(([x,y],i)=>shapeElement(item,x,y,scaleFor(item.size,count),`${i}`,uid)).join('');
+    return `<svg class="matrix-shape-svg ${className}" viewBox="0 0 100 100" role="img" aria-label="Figura geometryczna">
+      <defs>
+        <pattern id="${uid}-stripes" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+          <rect width="8" height="8" fill="#f3ead8"/>
+          <line x1="0" y1="0" x2="0" y2="8" stroke="#27414b" stroke-width="3"/>
+        </pattern>
+        <filter id="${uid}-shadow" x="-25%" y="-25%" width="150%" height="160%">
+          <feDropShadow dx="0" dy="3" stdDeviation="2.5" flood-color="#000000" flood-opacity=".30"/>
+        </filter>
+      </defs>
+      <g transform="rotate(${item.rotation||0} 50 50)" filter="url(#${uid}-shadow)">${shapes}</g>
+    </svg>`;
   }
 
-  function patternDefs(){ return `<defs><pattern id="matrix-stripes" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="8" stroke="#2b343a" stroke-width="3"/></pattern></defs>`; }
-  function fillStyle(fill){ return fill==='solid'?'#e9dec9':fill==='striped'?'url(#matrix-stripes)':'rgba(255,255,255,.03)'; }
-  function shapeElement(it,x,y,s){
-    const fill=fillStyle(it.fill), stroke='#182126', sw=3;
-    const common=`fill="${fill}" stroke="${stroke}" stroke-width="${sw}" stroke-linejoin="round"`;
+  function patternDefs(){
+    const uid=`matrix-${Math.random().toString(36).slice(2)}`;
+    return `<defs>
+      <pattern id="${uid}-stripes" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <rect width="8" height="8" fill="#f3ead8"/>
+        <line x1="0" y1="0" x2="0" y2="8" stroke="#26404a" stroke-width="3"/>
+      </pattern>
+    </defs>`;
+  }
+  function fillStyle(fill,uid){
+    if(fill==='solid') return '#f3ead8';
+    if(fill==='striped') return `url(#${uid}-stripes)`;
+    return 'rgba(243,234,216,.10)';
+  }
+  function shapeElement(it,x,y,s,key,uid){
+    const fill=fillStyle(it.fill,uid);
+    const stroke=it.fill==='outline'?'#f6f0e2':'#4b443b';
+    const sw=it.fill==='outline'?4:2.4;
+    const common=`style="fill:${fill}!important;stroke:${stroke}!important;stroke-width:${sw}!important" stroke-linejoin="round"`;
     switch(it.shape){
       case 'circle': return `<circle cx="${x}" cy="${y}" r="${22*s}" ${common}/>`;
       case 'square': return `<rect x="${x-21*s}" y="${y-21*s}" width="${42*s}" height="${42*s}" rx="${5*s}" ${common}/>`;
