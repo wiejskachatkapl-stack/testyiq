@@ -109,8 +109,8 @@
     return `<svg class="matrix-shape-svg ${className}" viewBox="0 0 100 100" role="img" aria-label="Figura geometryczna">
       <defs>
         <pattern id="${uid}-stripes" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-          <rect width="8" height="8" fill="#f3ead8"/>
-          <line x1="0" y1="0" x2="0" y2="8" stroke="#27414b" stroke-width="3"/>
+          <rect width="8" height="8" fill="#fff3d7"/>
+          <line x1="0" y1="0" x2="0" y2="8" stroke="#176c77" stroke-width="3.2"/>
         </pattern>
         <filter id="${uid}-shadow" x="-25%" y="-25%" width="150%" height="160%">
           <feDropShadow dx="0" dy="3" stdDeviation="2.5" flood-color="#000000" flood-opacity=".30"/>
@@ -124,20 +124,20 @@
     const uid=`matrix-${Math.random().toString(36).slice(2)}`;
     return `<defs>
       <pattern id="${uid}-stripes" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-        <rect width="8" height="8" fill="#f3ead8"/>
-        <line x1="0" y1="0" x2="0" y2="8" stroke="#26404a" stroke-width="3"/>
+        <rect width="8" height="8" fill="#fff3d7"/>
+        <line x1="0" y1="0" x2="0" y2="8" stroke="#176c77" stroke-width="3.2"/>
       </pattern>
     </defs>`;
   }
   function fillStyle(fill,uid){
-    if(fill==='solid') return '#f3ead8';
+    if(fill==='solid') return '#fff3d7';
     if(fill==='striped') return `url(#${uid}-stripes)`;
-    return 'rgba(243,234,216,.10)';
+    return 'rgba(65,225,228,.18)';
   }
   function shapeElement(it,x,y,s,key,uid){
     const fill=fillStyle(it.fill,uid);
-    const stroke=it.fill==='outline'?'#f6f0e2':'#4b443b';
-    const sw=it.fill==='outline'?4:2.4;
+    const stroke=it.fill==='outline'?'#55edf0':'#332f29';
+    const sw=it.fill==='outline'?6:3.2;
     const common=`style="fill:${fill}!important;stroke:${stroke}!important;stroke-width:${sw}!important" stroke-linejoin="round"`;
     switch(it.shape){
       case 'circle': return `<circle cx="${x}" cy="${y}" r="${22*s}" ${common}/>`;
@@ -153,7 +153,10 @@
   }
   function polyPoints(n,cx,cy,r,start){ return Array.from({length:n},(_,i)=>{const a=(start+i*360/n)*Math.PI/180;return `${cx+Math.cos(a)*r},${cy+Math.sin(a)*r}`}).join(' '); }
   function starPoints(cx,cy,r1,r2){ return Array.from({length:10},(_,i)=>{const r=i%2?r2:r1,a=(-90+i*36)*Math.PI/180;return `${cx+Math.cos(a)*r},${cy+Math.sin(a)*r}`}).join(' '); }
-  function scaleFor(size,count){ const base={small:.62,medium:.82,large:1}[size||'medium']; return count>1?base*.68:base; }
+  function scaleFor(size,count){
+    const base={small:.88,medium:1.08,large:1.24}[size||'medium'];
+    return count>1?base*.72:base;
+  }[size||'medium']; return count>1?base*.68:base; }
   function countPositions(count,pos){
     if(count===1){ const m={center:[50,50],tl:[30,30],tr:[70,30],bl:[30,70],br:[70,70]}; return [m[pos]||m.center]; }
     if(count===2) return [[32,50],[68,50]];
