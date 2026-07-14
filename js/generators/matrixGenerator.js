@@ -155,8 +155,8 @@
   function starPoints(cx,cy,r1,r2){ return Array.from({length:10},(_,i)=>{const r=i%2?r2:r1,a=(-90+i*36)*Math.PI/180;return `${cx+Math.cos(a)*r},${cy+Math.sin(a)*r}`}).join(' '); }
   function scaleFor(size,count){
     const base={small:.88,medium:1.08,large:1.24}[size||'medium'];
-    return count>1?base*.72:base;
-  }[size||'medium']; return count>1?base*.68:base; }
+    return count>1 ? base*.72 : base;
+  }
   function countPositions(count,pos){
     if(count===1){ const m={center:[50,50],tl:[30,30],tr:[70,30],bl:[30,70],br:[70,70]}; return [m[pos]||m.center]; }
     if(count===2) return [[32,50],[68,50]];
