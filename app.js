@@ -21,22 +21,17 @@ function formatTime(ms){
 }
 
 function renderDiceQuestion(question){
-  document.getElementById('questionCategory').textContent=question.category;
+  document.getElementById('questionCategory').textContent=`${question.category} • ${layoutName(question.layout)}`;
   document.getElementById('questionPrompt').textContent=question.prompt;
-  document.getElementById('diceSequence').innerHTML=
-    question.sequence.map((value,index)=>`
-      <div class="sequence-item">
-        ${DiceGenerator.diceSvg(value,'sequence-die')}
-        <span>${index+1}</span>
-      </div>`).join('')+
-    `<div class="sequence-arrow">›</div>
-     <div class="sequence-item missing">
-       <div class="missing-die">?</div><span>4</span>
-     </div>`;
+
+  const board=document.getElementById('diceSequence');
+  board.className=`dice-sequence layout-${question.layout}`;
+  board.innerHTML=renderPuzzleLayout(question);
 
   const answers=document.getElementById('diceAnswers');
   answers.innerHTML=question.options.map((value,index)=>`
-    <button class="dice-answer" type="button" data-answer="${index}" aria-label="Odpowiedź ${String.fromCharCode(65+index)}: kostka ${value}">
+    <button class="dice-answer" type="button" data-answer="${index}"
+      aria-label="Odpowiedź ${String.fromCharCode(65+index)}: kostka ${value}">
       <span>${String.fromCharCode(65+index)}</span>
       ${DiceGenerator.diceSvg(value,'answer-die')}
     </button>`).join('');
@@ -47,6 +42,87 @@ function renderDiceQuestion(question){
       state.questionEngine.answer(Number(button.dataset.answer));
     });
   });
+}
+
+function layoutName(layout){
+  return ({
+    sequence:'CIĄG',
+    analogy:'ANALOGIA',
+    analogy3:'ANALOGIA',
+    matrix2:'MACIERZ 2×2',
+    matrix3:'MACIERZ 3×3',
+    odd:'NIEPASUJĄCA',
+    balance:'RÓWNOWAGA',
+    diamond:'DIAMENT',
+    ring:'PIERŚCIEŃ'
+  })[layout]||'WZÓR';
+}
+
+function dieCell(value,extra=''){
+  return `<div class="puzzle-cell ${extra}">
+    ${value==null?'<div class="missing-die">?</div>':DiceGenerator.diceSvg(value,'sequence-die')}
+  </div>`;
+}
+
+function renderPuzzleLayout(question){
+  const d=question.data;
+  switch(question.layout){
+    case 'sequence':
+      return `<div class="sequence-row">${
+        d.cells.map(v=>dieCell(v)).join('<div class="sequence-arrow">›</div>')
+      }<div class="sequence-arrow">›</div>${dieCell(null,'missing')}</div>`;
+
+    case 'analogy':
+      return `<div class="analogy-board">
+        ${dieCell(d.cells[0])}<div class="relation-arrow">→</div>${dieCell(d.cells[1])}
+        <div class="analogy-divider">:</div>
+        ${dieCell(d.cells[2])}<div class="relation-arrow">→</div>${dieCell(null,'missing')}
+      </div>`;
+
+    case 'analogy3':
+      return `<div class="analogy3-board">
+        <div class="pair">${dieCell(d.cells[0])}<span>→</span>${dieCell(d.cells[1])}</div>
+        <div class="pair">${dieCell(d.cells[2])}<span>→</span>${dieCell(d.cells[3])}</div>
+        <div class="pair">${dieCell(d.cells[4])}<span>→</span>${dieCell(null,'missing')}</div>
+      </div>`;
+
+    case 'matrix2':
+      return `<div class="matrix-board matrix-2">${
+        d.cells.map(v=>dieCell(v,v==null?'missing':'')).join('')
+      }</div>`;
+
+    case 'matrix3':
+      return `<div class="matrix-board matrix-3">${
+        d.cells.map(v=>dieCell(v,v==null?'missing':'')).join('')
+      }</div>`;
+
+    case 'odd':
+      return `<div class="odd-board">${
+        d.cells.map((v,i)=>`<div class="odd-item"><span>${String.fromCharCode(65+i)}</span>${DiceGenerator.diceSvg(v,'sequence-die')}</div>`).join('')
+      }</div>`;
+
+    case 'balance':
+      return `<div class="balance-board">
+        <div class="balance-side">${d.left.map(v=>dieCell(v)).join('')}</div>
+        <div class="balance-sign">=</div>
+        <div class="balance-side">${dieCell(d.right[0])}${dieCell(null,'missing')}</div>
+      </div>`;
+
+    case 'diamond':
+      return `<div class="diamond-board">
+        <div class="diamond-top">${dieCell(d.cells[0])}</div>
+        <div class="diamond-mid">${dieCell(d.cells[1])}${dieCell(d.cells[2])}</div>
+        <div class="diamond-bottom">${dieCell(null,'missing')}</div>
+      </div>`;
+
+    case 'ring':
+      return `<div class="ring-board">${
+        d.cells.map((v,i)=>`<div class="ring-pos ring-${i}">${dieCell(v,v==null?'missing':'')}</div>`).join('')
+      }<div class="ring-core">?</div></div>`;
+
+    default:
+      return '';
+  }
 }
 
 function updateQuestionProgress(data){

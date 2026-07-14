@@ -1652,3 +1652,300 @@ footer{grid-row:3;display:flex;justify-content:center;align-items:center;gap:8px
     min-height:26px!important;
   }
 }
+
+
+/* =========================================================
+   v1015 — wiele różnych typów łamigłówek z kostkami
+   ========================================================= */
+
+.dice-sequence{
+  position:relative;
+}
+
+.puzzle-cell{
+  display:grid;
+  place-items:center;
+}
+
+.sequence-row{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:clamp(9px,2vw,24px);
+}
+
+.layout-analogy,
+.layout-analogy3,
+.layout-matrix2,
+.layout-matrix3,
+.layout-balance,
+.layout-diamond,
+.layout-ring,
+.layout-odd{
+  min-height:0;
+}
+
+.analogy-board{
+  display:grid;
+  grid-template-columns:auto auto auto auto auto auto auto;
+  align-items:center;
+  justify-content:center;
+  gap:clamp(7px,1.5vw,18px);
+}
+
+.relation-arrow,
+.analogy-divider,
+.balance-sign{
+  color:#4bdcdf;
+  font-size:clamp(1.4rem,3vw,2.5rem);
+  font-weight:700;
+}
+
+.analogy3-board{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:16px;
+  width:min(760px,100%);
+}
+
+.analogy3-board .pair{
+  border:1px solid rgba(102,212,215,.14);
+  border-radius:16px;
+  background:rgba(3,21,33,.28);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:12px;
+}
+
+.analogy3-board .pair>span{
+  color:#4bdcdf;
+  font-size:1.5rem;
+}
+
+.matrix-board{
+  display:grid;
+  gap:10px;
+  padding:14px;
+  border:1px solid rgba(102,212,215,.18);
+  border-radius:18px;
+  background:rgba(3,21,33,.3);
+}
+
+.matrix-2{
+  grid-template-columns:repeat(2,auto);
+}
+
+.matrix-3{
+  grid-template-columns:repeat(3,auto);
+}
+
+.matrix-board .puzzle-cell{
+  padding:6px;
+}
+
+.odd-board{
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:10px;
+  width:min(760px,100%);
+}
+
+.odd-item{
+  border:1px solid rgba(102,212,215,.16);
+  border-radius:15px;
+  background:rgba(3,21,33,.3);
+  padding:8px;
+  display:grid;
+  justify-items:center;
+  gap:5px;
+}
+
+.odd-item>span{
+  color:#52dfe0;
+  font-size:.65rem;
+  font-weight:800;
+}
+
+.balance-board{
+  width:min(760px,100%);
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  align-items:center;
+  gap:18px;
+}
+
+.balance-side{
+  min-height:150px;
+  border:1px solid rgba(102,212,215,.16);
+  border-radius:18px;
+  background:linear-gradient(180deg,rgba(3,21,33,.28),rgba(3,21,33,.12));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:14px;
+  padding:14px;
+  position:relative;
+}
+
+.balance-side:after{
+  content:"";
+  position:absolute;
+  left:14%;
+  right:14%;
+  bottom:12px;
+  height:3px;
+  border-radius:999px;
+  background:#45dadd;
+  box-shadow:0 0 10px rgba(69,218,221,.28);
+}
+
+.diamond-board{
+  display:grid;
+  grid-template-rows:auto auto auto;
+  justify-items:center;
+  gap:8px;
+}
+
+.diamond-mid{
+  display:flex;
+  gap:50px;
+}
+
+.ring-board{
+  position:relative;
+  width:320px;
+  height:220px;
+}
+
+.ring-pos{
+  position:absolute;
+}
+
+.ring-0{left:120px;top:0}
+.ring-1{right:20px;top:45px}
+.ring-2{right:40px;bottom:0}
+.ring-3{left:120px;bottom:-10px}
+.ring-4{left:10px;bottom:0}
+.ring-5{left:0;top:45px}
+
+.ring-core{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  width:58px;height:58px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(74,220,223,.35);
+  background:rgba(45,205,209,.08);
+  color:#4bdcdf;
+  font-size:1.5rem;
+}
+
+.layout-matrix3 .sequence-die{
+  width:clamp(58px,8vw,86px);
+  height:clamp(58px,8vw,86px);
+}
+
+.layout-matrix3 .missing-die{
+  width:clamp(58px,8vw,86px);
+  height:clamp(58px,8vw,86px);
+}
+
+@media(max-width:700px){
+  .analogy-board{
+    gap:5px;
+  }
+
+  .analogy3-board{
+    gap:6px;
+  }
+
+  .analogy3-board .pair{
+    padding:5px;
+    gap:4px;
+    border-radius:11px;
+  }
+
+  .analogy3-board .pair>span{
+    font-size:1rem;
+  }
+
+  .matrix-board{
+    gap:5px;
+    padding:7px;
+    border-radius:13px;
+  }
+
+  .odd-board{
+    gap:5px;
+  }
+
+  .odd-item{
+    padding:4px 2px;
+    border-radius:10px;
+  }
+
+  .balance-board{
+    gap:7px;
+  }
+
+  .balance-side{
+    min-height:94px;
+    gap:5px;
+    padding:7px;
+    border-radius:13px;
+  }
+
+  .diamond-mid{
+    gap:22px;
+  }
+
+  .ring-board{
+    width:250px;
+    height:160px;
+  }
+
+  .ring-0{left:96px}
+  .ring-1{right:18px;top:30px}
+  .ring-2{right:35px}
+  .ring-3{left:96px;bottom:-5px}
+  .ring-4{left:12px}
+  .ring-5{top:30px}
+
+  .ring-board .sequence-die,
+  .ring-board .missing-die{
+    width:46px;height:46px;
+  }
+
+  .ring-core{
+    width:42px;height:42px;
+    font-size:1.1rem;
+  }
+}
+
+@media(max-width:390px){
+  .analogy-board{
+    transform:scale(.9);
+  }
+
+  .analogy3-board{
+    gap:3px;
+  }
+
+  .analogy3-board .pair{
+    padding:3px;
+  }
+
+  .balance-side{
+    min-height:82px;
+  }
+
+  .ring-board{
+    transform:scale(.88);
+  }
+}
