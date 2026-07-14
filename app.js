@@ -21,6 +21,7 @@ function formatTime(ms){
 }
 
 function renderDiceQuestion(question){
+  document.querySelector('.question-card')?.classList.remove('matrix-question-card');
   if(question.family==='matrix') return renderMatrixQuestion(question);
   document.getElementById('questionCategory').textContent=`${question.category} • ${layoutName(question.layout)}`;
   document.getElementById('questionPrompt').textContent=question.prompt;
@@ -127,6 +128,7 @@ function renderPuzzleLayout(question){
 }
 
 function renderMatrixQuestion(question){
+  document.querySelector('.question-card')?.classList.add('matrix-question-card');
   document.getElementById('questionCategory').textContent=`${question.category} • FIGURY`;
   document.getElementById('questionPrompt').textContent=question.prompt;
   const board=document.getElementById('diceSequence');
