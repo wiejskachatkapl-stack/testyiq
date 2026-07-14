@@ -2021,3 +2021,90 @@ footer{grid-row:3;display:flex;justify-content:center;align-items:center;gap:8px
     max-height:66px!important;
   }
 }
+
+
+/* =========================================================
+   v1018 — figury większe i kontrastowe
+   ========================================================= */
+
+.shape-matrix-cell{
+  min-height:118px!important;
+  background:
+    radial-gradient(circle at 50% 50%,rgba(71,225,228,.10),transparent 66%),
+    rgba(3,21,33,.46)!important;
+}
+
+.matrix-main-shape{
+  width:clamp(94px,10vw,132px)!important;
+  height:clamp(94px,10vw,132px)!important;
+  max-width:none!important;
+  max-height:none!important;
+}
+
+.matrix-answer{
+  min-height:150px!important;
+  background:
+    radial-gradient(circle at 50% 54%,rgba(71,225,228,.10),transparent 64%),
+    rgba(3,21,33,.62)!important;
+}
+
+.matrix-answer .matrix-answer-shape{
+  width:clamp(88px,9vw,118px)!important;
+  height:clamp(88px,9vw,118px)!important;
+  max-width:none!important;
+  max-height:none!important;
+}
+
+.matrix-shape-svg{
+  opacity:1!important;
+  filter:
+    drop-shadow(0 5px 8px rgba(0,0,0,.42))
+    drop-shadow(0 0 5px rgba(85,237,240,.20))!important;
+}
+
+.matrix-shape-svg polygon,
+.matrix-shape-svg circle,
+.matrix-shape-svg rect,
+.matrix-shape-svg path{
+  opacity:1!important;
+}
+
+@media(max-width:700px){
+  .shape-matrix-cell{
+    min-height:84px!important;
+  }
+
+  .matrix-main-shape{
+    width:clamp(68px,20vw,88px)!important;
+    height:clamp(68px,20vw,88px)!important;
+  }
+
+  .matrix-answer{
+    min-height:112px!important;
+  }
+
+  .matrix-answer .matrix-answer-shape{
+    width:clamp(60px,16vw,78px)!important;
+    height:clamp(60px,16vw,78px)!important;
+  }
+}
+
+@media(max-width:390px){
+  .shape-matrix-cell{
+    min-height:72px!important;
+  }
+
+  .matrix-main-shape{
+    width:64px!important;
+    height:64px!important;
+  }
+
+  .matrix-answer{
+    min-height:96px!important;
+  }
+
+  .matrix-answer .matrix-answer-shape{
+    width:54px!important;
+    height:54px!important;
+  }
+}
