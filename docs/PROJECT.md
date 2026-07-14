@@ -1,6 +1,6 @@
 # IQ Challenge • Brain Lab
 
-Aktualna wersja: **v1016**
+Aktualna wersja: **v1017**
 
 Status: Brain Engine — fundament SPA i pierwsza ścieżka Test IQ.
 
@@ -64,3 +64,7 @@ Generator kostek nie tworzy już wyłącznie ciągów. Dodano analogie, macierze
 
 ## v1016
 Dodano drugą rodzinę pytań: matryce figur geometrycznych. Test przeplata kostki i matryce, a poziom trudności obsługuje skalę 1–10.
+
+
+## v1017
+Naprawiono widoczność figur geometrycznych. Figury mają teraz kremowe wypełnienie lub jasny kontur, ciemniejszą obwódkę, wyraźne paskowanie i większy rozmiar.

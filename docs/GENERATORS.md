@@ -22,3 +22,7 @@ Dostępne są różne rodziny łamigłówek z kostkami: ciągi, analogie, macier
 
 ## Matryce figur geometrycznych — v1016
 Generator ma 16 typów reguł na poziomach 1–10: cykle figur, wypełnienia, obroty, wielkości, liczby elementów, pozycje, reguły wierszy i kolumn, odbicia i układy wielocechowe. Odpowiedzi są generowane jako własne SVG.
+
+
+### Widoczność figur v1017
+Paleta figur: krem `#f3ead8`, jasny kontur `#f6f0e2`, ciemna obwódka `#4b443b`. Style są zapisane bezpośrednio w SVG, aby globalne reguły aplikacji nie mogły ich przyciemnić.

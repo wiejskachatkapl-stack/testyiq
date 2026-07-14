@@ -1,5 +1,15 @@
 # Changelog
 
+## v1017
+### Poprawiono
+- figury geometryczne są wyraźnie widoczne na ciemnym tle,
+- figury obrysowe mają jasny kremowy kontur,
+- figury pełne mają kremowe wypełnienie i ciemną obwódkę,
+- figury paskowane otrzymały jasne tło i ciemne paski,
+- zwiększono rozmiary figur w matrycy i odpowiedziach,
+- dodano delikatny cień dla poprawy czytelności,
+- cache PWA zmieniono na `iq-brain-lab-v1017`.
+
 ## v1016
 ### Dodano
 - generator matryc figur geometrycznych,
