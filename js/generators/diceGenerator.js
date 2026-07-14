@@ -133,12 +133,12 @@
           <feDropShadow dx="0" dy="5" stdDeviation="4" flood-color="#000000" flood-opacity=".28"/>
         </filter>
       </defs>
-      <rect x="8" y="8" width="84" height="84" rx="19"
-            fill="url(#${uid}-face)" filter="url(#${uid}-shadow)"/>
-      <rect x="10.5" y="10.5" width="79" height="79" rx="16.5"
-            fill="none" stroke="#5b5247" stroke-width="1.5" opacity=".9"/>
-      <path d="M18 24 Q18 17 25 17 H69" fill="none" stroke="#ffffff" stroke-width="2.2" opacity=".55"/>
-      <g fill="#111111">${pips}</g>
+      <rect class="dice-face" x="8" y="8" width="84" height="84" rx="19"
+            style="fill:url(#${uid}-face)!important;stroke:none!important" filter="url(#${uid}-shadow)"/>
+      <rect class="dice-outline" x="10.5" y="10.5" width="79" height="79" rx="16.5"
+            style="fill:none!important;stroke:#5b5247!important;stroke-width:1.5" opacity=".9"/>
+      <path class="dice-shine" d="M18 24 Q18 17 25 17 H69" style="fill:none!important;stroke:#ffffff!important;stroke-width:2.2" opacity=".62"/>
+      <g class="dice-pips" style="fill:#111111!important">${pips}</g>
     </svg>`;
   }
 
