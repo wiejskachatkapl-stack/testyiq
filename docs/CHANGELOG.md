@@ -1,5 +1,19 @@
 # Changelog
 
+## v1019
+### Naprawiono
+- usunięto uszkodzony, zdublowany fragment funkcji `scaleFor`,
+- przywrócono generowanie kolejnego pytania po wybraniu odpowiedzi,
+- silnik pytań ma zabezpieczenie przed błędem podczas przejścia dalej,
+- błędnie zaznaczona odpowiedź jest wskazywana na podstawie indeksu, a nie fokusu,
+- cache PWA zmieniono na `iq-brain-lab-v1019`.
+
+### Bez zmian
+- wygląd figur,
+- ekran główny,
+- formularz,
+- nawigacja,
+- pozostałe moduły.
 ## v1018
 ### Poprawiono
 - znacznie powiększono figury w matrycy,

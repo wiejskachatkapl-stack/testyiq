@@ -1,6 +1,6 @@
 # IQ Challenge • Brain Lab
 
-Aktualna wersja: **v1018**
+Aktualna wersja: **v1019**
 
 Status: Brain Engine — fundament SPA i pierwsza ścieżka Test IQ.
 
@@ -72,3 +72,7 @@ Naprawiono widoczność figur geometrycznych. Figury mają teraz kremowe wypełn
 
 ## v1018
 Znacznie zwiększono figury w matrycach i odpowiedziach. Figury obrysowe mają teraz mocny turkusowy kontur, pełne jasne kremowe wypełnienie, a paskowane wyraźny kontrast.
+
+
+## v1019
+Naprawiono mechanikę przechodzenia do następnego pytania. Usunięto uszkodzony fragment kodu generatora matryc i dodano bezpieczne wznowienie kolejnego pytania.
