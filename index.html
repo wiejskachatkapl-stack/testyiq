@@ -193,25 +193,59 @@
   </section>
 
   <section class="screen" data-screen="question">
-    <div class="panel center">
-      <div class="round">◇</div><small class="accent">BRAIN ENGINE v1009</small>
-      <h2>Silnik ekranu pytania jest gotowy</h2>
-      <p class="muted">W następnej wersji podłączymy pierwszy generator zadań z kostkami. Widoki są już oddzielone i nie nakładają się na siebie.</p>
-      <div class="stats">
-        <span><small>Uczestnik</small><strong id="pName">—</strong></span>
-        <span><small>Pytania</small><strong id="pCount">—</strong></span>
-        <span><small>Tryb</small><strong id="pMode">—</strong></span>
-      </div>
-      <button class="secondary" data-route="home">WRÓĆ DO MENU</button>
+    <div class="question-screen">
+      <section class="question-top">
+        <div class="question-meta">
+          <div>
+            <small id="questionCategory">KOSTKI</small>
+            <strong id="questionCounter">1 / 20</strong>
+          </div>
+          <div class="question-level">
+            <small>POZIOM</small>
+            <strong id="questionLevel">1</strong>
+          </div>
+          <div class="question-timer">
+            <small>CZAS</small>
+            <strong id="questionTimer">00:00</strong>
+          </div>
+        </div>
+        <div class="question-progress"><span id="questionProgress"></span></div>
+      </section>
+
+      <section class="question-card">
+        <div class="question-heading">
+          <span class="question-symbol">⬡</span>
+          <div>
+            <small>ANALIZA WZORCA</small>
+            <h2 id="questionPrompt">Która kostka uzupełnia ciąg?</h2>
+            <p>Przeanalizuj zależność i wybierz jedną odpowiedź.</p>
+          </div>
+        </div>
+
+        <div class="dice-sequence" id="diceSequence" aria-label="Ciąg kostek"></div>
+
+        <div class="answer-title">
+          <span>Wybierz odpowiedź</span>
+          <small>Jedna odpowiedź jest poprawna</small>
+        </div>
+        <div class="dice-answers" id="diceAnswers"></div>
+      </section>
+
+      <section class="question-footer">
+        <div><span class="question-dot"></span><small>Odpowiedź zostanie zapisana automatycznie</small></div>
+        <button type="button" id="endPreviewBtn">ZAKOŃCZ PODGLĄD</button>
+      </section>
     </div>
   </section>
 
-  <footer><button data-coming="O aplikacji">O aplikacji</button><span>•</span><span>Wersja 1009</span></footer>
+  <footer><button data-coming="O aplikacji">O aplikacji</button><span>•</span><span>Wersja 1010</span></footer>
 </main>
 
 <div id="modal" class="modal hidden">
   <div class="dialog"><button id="closeModal">×</button><div id="modalIcon" class="round">✦</div><h2 id="modalTitle"></h2><p id="modalText"></p><button id="okModal" class="primary">ROZUMIEM</button></div>
 </div>
+<script src="js/generators/diceGenerator.js"></script>
+<script src="js/engine/questionEngine.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
