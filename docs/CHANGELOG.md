@@ -1,5 +1,15 @@
 # Changelog
 
+## v1013
+### Zmieniono
+- przebudowano dolny pasek nawigacji,
+- dodano większe i czytelne ikony SVG,
+- dodano podpis pod każdą ikoną,
+- zastosowano granatowo-turkusową kolorystykę Brain Lab,
+- aktywna zakładka ma turkusową poświatę i dolny wskaźnik,
+- zwiększono obszary klikalne na telefonie,
+- cache PWA zmieniono na `iq-brain-lab-v1013`.
+
 ## v1012
 ### Poprawiono
 - kremowe tło kostek jest teraz wymuszane bezpośrednio w SVG,

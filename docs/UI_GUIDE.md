@@ -20,3 +20,7 @@ Menu główne ma sześć małych kart w siatce 3 × 2. Przestrzenie nad i pod me
 
 ## Desktop Home v1009
 Na komputerze ekran jest podzielony na cztery bezpieczne strefy: panel wizualny, siatkę przycisków 3 × 2, dolną dekorację Brain Lab oraz panel poziomu. Żaden element dekoracyjny nie może wychodzić poza swoją strefę.
+
+
+## Dolna nawigacja v1013
+Pięć zakładek używa ikon liniowych SVG: mózg, kostka, wykres, puchar i ustawienia. Każda ma stały podpis i kolorystykę Deep Mind.
