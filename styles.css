@@ -1591,3 +1591,64 @@ footer{grid-row:3;display:flex;justify-content:center;align-items:center;gap:8px
 .premium-bottom-nav button.active .bottom-icon{filter:drop-shadow(0 0 7px rgba(76,225,226,.42))}
 @media(max-width:900px),(hover:none) and (pointer:coarse){.premium-bottom-nav{min-height:68px;padding:6px 5px;border-radius:17px}.premium-bottom-nav button{min-height:55px;padding:3px 1px;gap:3px}.bottom-icon{width:27px;height:27px}.bottom-label{display:block!important;font-size:clamp(.48rem,1.75vw,.58rem)!important}}
 @media(max-width:390px){.premium-bottom-nav{min-height:62px}.premium-bottom-nav button{min-height:50px}.bottom-icon{width:24px;height:24px}.bottom-label{font-size:.45rem!important}}
+
+
+/* =========================================================
+   v1014 — poprawka ikon dolnej nawigacji na telefonie
+   ========================================================= */
+
+@media(max-width:900px),(hover:none) and (pointer:coarse){
+  .premium-bottom-nav button{
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    justify-content:center!important;
+  }
+
+  .premium-bottom-nav .bottom-icon{
+    display:grid!important;
+    visibility:visible!important;
+    opacity:1!important;
+    width:29px!important;
+    height:29px!important;
+    min-width:29px!important;
+    min-height:29px!important;
+    margin:0 auto 3px!important;
+    color:currentColor!important;
+  }
+
+  .premium-bottom-nav .bottom-icon svg{
+    display:block!important;
+    visibility:visible!important;
+    opacity:1!important;
+    width:29px!important;
+    height:29px!important;
+    overflow:visible!important;
+  }
+
+  .premium-bottom-nav .bottom-icon svg *{
+    display:block!important;
+    visibility:visible!important;
+    opacity:1!important;
+    fill:none!important;
+    stroke:currentColor!important;
+    stroke-width:2.2!important;
+  }
+
+  .premium-bottom-nav .bottom-label{
+    display:block!important;
+    visibility:visible!important;
+    opacity:1!important;
+    line-height:1.05!important;
+  }
+}
+
+@media(max-width:390px){
+  .premium-bottom-nav .bottom-icon,
+  .premium-bottom-nav .bottom-icon svg{
+    width:26px!important;
+    height:26px!important;
+    min-width:26px!important;
+    min-height:26px!important;
+  }
+}
