@@ -21,6 +21,7 @@ function formatTime(ms){
 }
 
 function renderDiceQuestion(question){
+  if(question.family==='matrix') return renderMatrixQuestion(question);
   document.getElementById('questionCategory').textContent=`${question.category} • ${layoutName(question.layout)}`;
   document.getElementById('questionPrompt').textContent=question.prompt;
 
@@ -125,6 +126,19 @@ function renderPuzzleLayout(question){
   }
 }
 
+function renderMatrixQuestion(question){
+  document.getElementById('questionCategory').textContent=`${question.category} • FIGURY`;
+  document.getElementById('questionPrompt').textContent=question.prompt;
+  const board=document.getElementById('diceSequence');
+  board.className='dice-sequence matrix-shape-board';
+  board.innerHTML=`<div class="shape-matrix-grid">${question.data.cells.map(item=>
+    item==null?'<div class="shape-matrix-cell missing-shape">?</div>':`<div class="shape-matrix-cell">${MatrixGenerator.shapeSvg(item,'matrix-main-shape')}</div>`
+  ).join('')}</div>`;
+  const answers=document.getElementById('diceAnswers');
+  answers.innerHTML=question.options.map((item,index)=>`<button class="dice-answer matrix-answer" type="button" data-answer="${index}" aria-label="Odpowiedź ${String.fromCharCode(65+index)}"><span>${String.fromCharCode(65+index)}</span>${MatrixGenerator.shapeSvg(item,'matrix-answer-shape')}</button>`).join('');
+  answers.querySelectorAll('.dice-answer').forEach(button=>button.addEventListener('click',()=>{if(state.questionEngine?.locked)return;state.questionEngine.answer(Number(button.dataset.answer));}));
+}
+
 function updateQuestionProgress(data){
   document.getElementById('questionCounter').textContent=`${data.current} / ${data.total}`;
   document.getElementById('questionLevel').textContent=data.level;
@@ -169,7 +183,7 @@ function startDiceTest(){
   },1000);
 
   state.questionEngine=new QuestionEngine({
-    generator:DiceGenerator,
+    generator:MixedGenerator,
     onRender:renderDiceQuestion,
     onProgress:updateQuestionProgress,
     onFeedback:showQuestionFeedback,
