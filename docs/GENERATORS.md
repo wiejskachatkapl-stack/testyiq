@@ -26,3 +26,7 @@ Generator ma 16 typów reguł na poziomach 1–10: cykle figur, wypełnienia, ob
 
 ### Widoczność figur v1017
 Paleta figur: krem `#f3ead8`, jasny kontur `#f6f0e2`, ciemna obwódka `#4b443b`. Style są zapisane bezpośrednio w SVG, aby globalne reguły aplikacji nie mogły ich przyciemnić.
+
+
+### Czytelność v1018
+Figury obrysowe: turkus `#55edf0`, grubość 6. Figury pełne: krem `#fff3d7`. Skala figur została zwiększona dla telefonu i komputera.

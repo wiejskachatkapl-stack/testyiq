@@ -1,6 +1,6 @@
 # IQ Challenge • Brain Lab
 
-Aktualna wersja: **v1017**
+Aktualna wersja: **v1018**
 
 Status: Brain Engine — fundament SPA i pierwsza ścieżka Test IQ.
 
@@ -68,3 +68,7 @@ Dodano drugą rodzinę pytań: matryce figur geometrycznych. Test przeplata kost
 
 ## v1017
 Naprawiono widoczność figur geometrycznych. Figury mają teraz kremowe wypełnienie lub jasny kontur, ciemniejszą obwódkę, wyraźne paskowanie i większy rozmiar.
+
+
+## v1018
+Znacznie zwiększono figury w matrycach i odpowiedziach. Figury obrysowe mają teraz mocny turkusowy kontur, pełne jasne kremowe wypełnienie, a paskowane wyraźny kontrast.

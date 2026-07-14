@@ -1,5 +1,15 @@
 # Changelog
 
+## v1018
+### Poprawiono
+- znacznie powiększono figury w matrycy,
+- powiększono figury w pięciu odpowiedziach,
+- figury obrysowe mają gruby turkusowy kontur,
+- figury pełne mają jasne kremowe wypełnienie,
+- figury paskowane mają kremowe tło i ciemnoturkusowe paski,
+- zwiększono kontrast pól matrycy,
+- cache PWA zmieniono na `iq-brain-lab-v1018`.
+
 ## v1017
 ### Poprawiono
 - figury geometryczne są wyraźnie widoczne na ciemnym tle,
