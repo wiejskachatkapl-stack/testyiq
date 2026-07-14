@@ -1,5 +1,14 @@
 # Changelog
 
+## v1020
+### Poprawiono
+- plansza matrycy nie nachodzi już na odpowiedzi,
+- odpowiedzi mają własny stały obszar,
+- figury są automatycznie ograniczane do rozmiaru swoich pól,
+- dodano osobne proporcje dla komputera i telefonu,
+- mechanika pytań pozostała bez zmian,
+- cache PWA zmieniono na `iq-brain-lab-v1020`.
+
 ## v1019
 ### Naprawiono
 - usunięto uszkodzony, zdublowany fragment funkcji `scaleFor`,
