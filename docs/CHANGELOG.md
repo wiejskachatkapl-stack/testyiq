@@ -1,5 +1,14 @@
 # Changelog
 
+## v1011
+### Zmieniono
+- kostki mają kremową powierzchnię,
+- oczka są czarne,
+- dodano delikatny gradient przestrzenny,
+- dodano subtelną obwódkę i cień,
+- po poprawnej lub błędnej odpowiedzi zmienia się poświata, a nie kolor kostki,
+- cache PWA zmieniono na `iq-brain-lab-v1011`.
+
 ## v1010
 ### Dodano
 - moduł `QuestionEngine`,

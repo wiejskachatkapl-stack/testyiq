@@ -1,6 +1,6 @@
 # IQ Challenge • Brain Lab
 
-Aktualna wersja: **v1010**
+Aktualna wersja: **v1011**
 
 Status: Brain Engine — fundament SPA i pierwsza ścieżka Test IQ.
 
@@ -40,3 +40,7 @@ Poprawiono wyłącznie układ komputerowy. Dolna grafika mózgu ma własny, ogra
 
 ## v1010
 Uruchomiono pierwszy działający generator zadań. Kategoria Kostki tworzy sekwencje wartości 1–6, dokładnie pięć odpowiedzi, jedną poprawną, licznik czasu, poziom i pasek postępu.
+
+
+## v1011
+Zmieniono standard wizualny kostek: kremowa powierzchnia, czarne oczka, delikatny gradient 3D, ciemna obwódka i subtelny cień.
