@@ -1538,3 +1538,43 @@ footer{grid-row:3;display:flex;justify-content:center;align-items:center;gap:8px
 .dice-answer.wrong .dice-svg{
   filter:drop-shadow(0 0 10px rgba(255,120,128,.42));
 }
+
+
+/* =========================================================
+   v1012 — poprawka widoczności kremowych kostek
+   Starsze reguły neonowych SVG nie mogą nadpisywać kostek.
+   ========================================================= */
+
+.dice-svg .dice-face{
+  fill:#f3ead8!important;
+  stroke:none!important;
+}
+
+.dice-svg .dice-outline{
+  fill:none!important;
+  stroke:#5b5247!important;
+  stroke-width:1.5!important;
+}
+
+.dice-svg .dice-shine{
+  fill:none!important;
+  stroke:#ffffff!important;
+  stroke-width:2.2!important;
+}
+
+.dice-svg .dice-pips,
+.dice-svg .dice-pips circle{
+  fill:#111111!important;
+  stroke:none!important;
+  opacity:1!important;
+  filter:none!important;
+}
+
+.dice-svg{
+  overflow:visible;
+}
+
+.sequence-item .dice-svg,
+.dice-answer .dice-svg{
+  filter:drop-shadow(0 5px 6px rgba(0,0,0,.28));
+}
