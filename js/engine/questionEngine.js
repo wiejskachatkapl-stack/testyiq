@@ -72,9 +72,17 @@
         this.level = Math.min(10, this.level);
       }
 
-      this.onFeedback?.({ correct, correctIndex: this.current.answerIndex });
+      this.onFeedback?.({ correct, correctIndex: this.current.answerIndex, selectedIndex: optionIndex });
       this.index += 1;
-      setTimeout(() => this.next(), 520);
+      setTimeout(() => {
+        try {
+          this.next();
+        } catch (error) {
+          console.error('Błąd przejścia do następnego pytania:', error);
+          this.locked = false;
+          setTimeout(() => this.next(), 120);
+        }
+      }, 520);
     }
 
     summary() {
