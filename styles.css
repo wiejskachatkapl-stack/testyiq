@@ -1502,3 +1502,39 @@ footer{grid-row:3;display:flex;justify-content:center;align-items:center;gap:8px
     display:none;
   }
 }
+
+
+/* =========================================================
+   v1011 — kostki kremowe z czarnymi oczkami
+   ========================================================= */
+
+.dice-svg rect,
+.dice-svg circle,
+.dice-svg path{
+  vector-effect:non-scaling-stroke;
+}
+
+.dice-svg rect{
+  stroke:none;
+}
+
+.dice-svg circle{
+  fill:#111111;
+  filter:drop-shadow(0 1px 0 rgba(255,255,255,.28));
+}
+
+.dice-answer:hover .dice-svg{
+  transform:translateY(-1px) scale(1.015);
+}
+
+.dice-svg{
+  transition:transform .18s ease, filter .18s ease;
+}
+
+.dice-answer.correct .dice-svg{
+  filter:drop-shadow(0 0 10px rgba(85,223,176,.45));
+}
+
+.dice-answer.wrong .dice-svg{
+  filter:drop-shadow(0 0 10px rgba(255,120,128,.42));
+}
