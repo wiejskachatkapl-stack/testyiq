@@ -32,3 +32,7 @@ Ikony dolnej nawigacji muszą być widoczne na telefonie i komputerze. Mobilne r
 
 ## Training Hub v1025
 Kategorie: Logika — niebieski, Pamięć — zielony, Refleks — pomarańczowy, Koncentracja — turkusowy, Wiedza — złoty, Wyobraźnia — fioletowy. Ikony są wektorowe i nie wymagają plików graficznych.
+
+
+## Dopasowanie nazw v1026
+Nazwy kategorii muszą mieścić się w jednym wierszu. Dłuższe nazwy `KONCENTRACJA` i `WYOBRAŹNIA` używają mniejszego rozmiaru, ale zachowują ten sam styl i wagę pisma.

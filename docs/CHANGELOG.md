@@ -1,5 +1,15 @@
 # Changelog
 
+## v1026
+### Poprawiono
+- duże nazwy kategorii nie wychodzą poza kafelki,
+- osobno dopasowano napisy `KONCENTRACJA` i `WYOBRAŹNIA`,
+- zmniejszono ikony tylko tam, gdzie było to potrzebne,
+- zwiększono przestrzeń przeznaczoną na tekst,
+- dodano osobne proporcje dla szerokich monitorów, laptopów i telefonu,
+- mechanika Centrum Treningu pozostała bez zmian,
+- cache PWA zmieniono na `iq-brain-lab-v1026`.
+
 ## v1023
 ### Poprawiono
 - dolne przyciski odpowiedzi nie wychodzą poza główną kartę na komputerze,
