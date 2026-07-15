@@ -17,6 +17,39 @@
   }
   function key(f){ return [f.shape,f.fill,f.rotation,f.count,f.size,f.position].join('|'); }
 
+  function normalizedRotation(shape,rotation=0){
+    const periods={
+      circle:1,
+      square:90,
+      diamond:90,
+      triangle:120,
+      pentagon:72,
+      hexagon:60,
+      star:72,
+      cross:90
+    };
+    const period=periods[shape]||360;
+    return period===1 ? 0 : rot(rotation)%period;
+  }
+
+  function visualKey(f){
+    const count=f.count||1;
+    const position=count===1 ? (f.position||'center') : 'group';
+    return [
+      f.shape,
+      f.fill,
+      normalizedRotation(f.shape,f.rotation||0),
+      count,
+      f.size||'medium',
+      position
+    ].join('|');
+  }
+
+  function samePaletteCandidate(answer,changes){
+    return {...answer,...changes,fill:answer.fill};
+  }
+
+
   const TYPES = [
     { id:'latin-shapes', level:1, prompt:'Która figura uzupełnia matrycę?', build(){
       const s=shuffle(SHAPES).slice(0,3);
@@ -163,18 +196,96 @@
     return [[50,27],[30,68],[70,68]];
   }
 
-  function distractors(answer){
-    const candidates=[
-      {...answer,shape:differentShape(answer.shape)},
-      {...answer,fill:differentFill(answer.fill)},
-      {...answer,rotation:rot((answer.rotation||0)+90)},
-      {...answer,count:answer.count===3?1:(answer.count||1)+1},
-      {...answer,size:answer.size==='large'?'small':answer.size==='small'?'medium':'large'},
-      {...answer,position:answer.position==='center'?'tr':'center'}
-    ];
-    const unique=[]; const seen=new Set([key(answer)]);
-    for(const c of shuffle(candidates)){ const k=key(c); if(!seen.has(k)){seen.add(k);unique.push(c);} if(unique.length===4) break; }
-    while(unique.length<4){ const c=feature(differentShape(answer.shape),choose(FILLS),choose([0,45,90,180]),rand(1,3),choose(['small','medium','large'])); const k=key(c); if(!seen.has(k)){seen.add(k);unique.push(c);} }
+  function distractors(answer,typeId){
+    const fillTypes=new Set([
+      'fill-cycle','shape-fill-two-rules','row-combination','rotation-fill',
+      'three-feature-latin','alternating-count-fill','xor-shape',
+      'progressive-transform','nested-three-rules'
+    ]);
+    const rotationTypes=new Set([
+      'rotation-rows','rotation-fill','three-feature-latin',
+      'progressive-transform','nested-three-rules'
+    ]);
+    const countTypes=new Set([
+      'count-cycle','column-shape-row-count','alternating-count-fill',
+      'progressive-transform','nested-three-rules'
+    ]);
+    const sizeTypes=new Set([
+      'size-cycle','progressive-transform','nested-three-rules'
+    ]);
+    const positionTypes=new Set(['position-cycle']);
+
+    const candidates=[];
+
+    // Basic shape puzzles should keep exactly the same visual palette.
+    for(const shape of shuffle(SHAPES.filter(s=>s!==answer.shape))){
+      candidates.push(samePaletteCandidate(answer,{shape}));
+    }
+
+    if(fillTypes.has(typeId)){
+      for(const fill of FILLS.filter(f=>f!==answer.fill)){
+        candidates.push({...answer,fill});
+      }
+    }
+
+    if(rotationTypes.has(typeId)){
+      for(const angle of [45,90,120,180,270]){
+        candidates.push(samePaletteCandidate(answer,{rotation:rot((answer.rotation||0)+angle)}));
+      }
+    }
+
+    if(countTypes.has(typeId)){
+      for(const count of [1,2,3].filter(n=>n!==(answer.count||1))){
+        candidates.push(samePaletteCandidate(answer,{count}));
+      }
+    }
+
+    if(sizeTypes.has(typeId)){
+      for(const size of ['small','medium','large'].filter(s=>s!==(answer.size||'medium'))){
+        candidates.push(samePaletteCandidate(answer,{size}));
+      }
+    }
+
+    if(positionTypes.has(typeId)){
+      for(const position of ['center','tl','tr','br','bl'].filter(p=>p!==(answer.position||'center'))){
+        candidates.push(samePaletteCandidate(answer,{position}));
+      }
+    }
+
+    // Fallbacks remain in the same colour/fill family.
+    candidates.push(
+      samePaletteCandidate(answer,{shape:differentShape(answer.shape),count:(answer.count||1)===3?1:(answer.count||1)+1}),
+      samePaletteCandidate(answer,{shape:differentShape(answer.shape),size:(answer.size||'medium')==='large'?'small':'large'}),
+      samePaletteCandidate(answer,{shape:differentShape(answer.shape),position:(answer.position||'center')==='center'?'tr':'center'})
+    );
+
+    const unique=[];
+    const seen=new Set([visualKey(answer)]);
+    for(const candidate of shuffle(candidates)){
+      const vk=visualKey(candidate);
+      if(!seen.has(vk)){
+        seen.add(vk);
+        unique.push(candidate);
+      }
+      if(unique.length===4) break;
+    }
+
+    let guard=0;
+    while(unique.length<4 && guard<100){
+      guard++;
+      const candidate=samePaletteCandidate(answer,{
+        shape:choose(SHAPES.filter(s=>s!==answer.shape)),
+        count:choose([1,2,3]),
+        size:choose(['small','medium','large']),
+        position:choose(['center','tl','tr','br','bl']),
+        rotation:choose([0,45,90,120,180,270])
+      });
+      const vk=visualKey(candidate);
+      if(!seen.has(vk)){
+        seen.add(vk);
+        unique.push(candidate);
+      }
+    }
     return unique;
   }
 
@@ -183,8 +294,22 @@
     if(!eligible.length) eligible=TYPES.filter(t=>t.level<=max); const t=choose(eligible); usedTypes.push(t.id); if(usedTypes.length>MEMORY)usedTypes.shift(); return t;
   }
   function generate(index=0,level=1){
-    const type=pickType(level), data=type.build(), options=shuffle([data.answer,...distractors(data.answer)]);
-    return {id:`matrix-${Date.now()}-${index}`,category:'MATRYCE',family:'matrix',layout:'matrix3-shapes',level:type.level,prompt:type.prompt,data,answer:data.answer,answerIndex:options.findIndex(o=>key(o)===key(data.answer)),options};
+    const type=pickType(level);
+    const data=type.build();
+    const options=shuffle([data.answer,...distractors(data.answer,type.id)]);
+    const answerVisualKey=visualKey(data.answer);
+    return {
+      id:`matrix-${Date.now()}-${index}`,
+      category:'MATRYCE',
+      family:'matrix',
+      layout:'matrix3-shapes',
+      level:type.level,
+      prompt:type.prompt,
+      data,
+      answer:data.answer,
+      answerIndex:options.findIndex(o=>visualKey(o)===answerVisualKey),
+      options
+    };
   }
   window.MatrixGenerator={generate,shapeSvg,typeCount:TYPES.length,types:TYPES.map(({id,level,prompt})=>({id,level,prompt}))};
 })();
