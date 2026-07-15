@@ -13,11 +13,56 @@
 <body>
 <div class="bg" aria-hidden="true"></div>
 
+
 <section id="splash" class="splash">
-  <div class="brain">◇</div>
-  <h1>IQ Challenge</h1>
-  <p>Brain Lab</p>
-  <small>Trenuj umysł. Odkrywaj swój potencjał.</small>
+  <div class="splash-orbit orbit-one"></div>
+  <div class="splash-orbit orbit-two"></div>
+  <div class="splash-particles">
+    <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+  </div>
+
+  <div class="splash-core">
+    <div class="splash-brain-wrap">
+      <svg class="splash-brain-svg" viewBox="0 0 180 180" aria-hidden="true">
+        <defs>
+          <linearGradient id="splashBrainGradient" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#2eeaff"/>
+            <stop offset="48%" stop-color="#4d7cff"/>
+            <stop offset="100%" stop-color="#ff3fc8"/>
+          </linearGradient>
+          <filter id="splashGlow" x="-40%" y="-40%" width="180%" height="180%">
+            <feGaussianBlur stdDeviation="4" result="blur"/>
+            <feMerge>
+              <feMergeNode in="blur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+        </defs>
+        <g fill="none" stroke="url(#splashBrainGradient)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" filter="url(#splashGlow)">
+          <path d="M84 35c-18-13-43-1-43 22-14 4-20 22-11 34-8 17 5 35 23 34 7 14 25 17 37 6"/>
+          <path d="M96 35c18-13 43-1 43 22 14 4 20 22 11 34 8 17-5 35-23 34-7 14-25 17-37 6"/>
+          <path d="M90 31v105"/>
+          <path d="M51 61c15-2 27 8 27 23M129 61c-15-2-27 8-27 23"/>
+          <path d="M42 96c15 0 26-7 31-20M138 96c-15 0-26-7-31-20"/>
+          <path d="M59 126c0-14 9-24 22-27M121 126c0-14-9-24-22-27"/>
+          <circle cx="62" cy="73" r="3"/>
+          <circle cx="78" cy="84" r="3"/>
+          <circle cx="102" cy="84" r="3"/>
+          <circle cx="118" cy="73" r="3"/>
+        </g>
+      </svg>
+      <div class="splash-pulse"></div>
+    </div>
+
+    <div class="splash-copy">
+      <small>IQ CHALLENGE</small>
+      <h1>BRAIN LAB</h1>
+      <p>Trenuj umysł. Odkrywaj swój potencjał.</p>
+    </div>
+
+    <div class="splash-loader"><span></span></div>
+    <div class="splash-loading-text">URUCHAMIANIE</div>
+  </div>
 </section>
 
 <main id="app" class="app hidden">
@@ -324,7 +369,7 @@
     </div>
   </section>
 
-  <footer><button data-coming="O aplikacji">O aplikacji</button><span>•</span><span>Wersja 1030</span></footer>
+  <footer><button data-coming="O aplikacji">O aplikacji</button><span>•</span><span>Wersja 1031</span></footer>
 </main>
 
 <div id="modal" class="modal hidden">

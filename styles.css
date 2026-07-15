@@ -3835,3 +3835,126 @@ footer{grid-row:3;display:flex;justify-content:center;align-items:center;gap:8px
   .training-category.focus .category-copy strong{font-size:.46rem!important}
   .training-category.imagination .category-copy strong{font-size:.48rem!important}
 }
+
+
+/* =========================================================
+   v1031 — nowy animowany ekran startowy
+   ========================================================= */
+
+.splash{
+  position:fixed!important;
+  inset:0!important;
+  z-index:999!important;
+  display:grid!important;
+  place-items:center!important;
+  overflow:hidden!important;
+  text-align:center!important;
+  background:
+    radial-gradient(circle at 50% 46%,rgba(39,84,152,.22),transparent 31%),
+    radial-gradient(circle at 48% 52%,rgba(138,44,190,.12),transparent 42%),
+    linear-gradient(165deg,#020918 0%,#051224 54%,#030a17 100%)!important;
+  animation:splashExit .72s ease 3.15s forwards!important;
+}
+
+.splash-core{
+  position:relative;
+  z-index:3;
+  width:min(430px,88vw);
+  display:grid;
+  justify-items:center;
+}
+
+.splash-brain-wrap{
+  position:relative;
+  width:clamp(150px,25vw,220px);
+  aspect-ratio:1;
+  display:grid;
+  place-items:center;
+  animation:splashFloat 2.2s ease-in-out infinite;
+}
+
+.splash-brain-svg{width:84%;height:84%;position:relative;z-index:2}
+.splash-pulse{
+  position:absolute;
+  inset:20%;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(66,217,255,.16),rgba(107,73,255,.07) 45%,transparent 70%);
+  box-shadow:0 0 36px rgba(48,221,255,.26),0 0 72px rgba(121,63,255,.20),0 0 100px rgba(255,54,192,.08);
+  animation:splashPulse 1.8s ease-in-out infinite;
+}
+
+.splash-copy{margin-top:-4px}
+.splash-copy small{
+  display:block;font-size:.76rem;font-weight:800;letter-spacing:.34em;color:#60ecf2;
+  opacity:0;animation:splashTextIn .55s ease .35s forwards;
+}
+.splash-copy h1{
+  margin:7px 0 5px;font-size:clamp(2.1rem,7vw,3.7rem);line-height:1;letter-spacing:.08em;color:#f5fbff;
+  text-shadow:0 0 16px rgba(78,221,255,.22),0 0 30px rgba(105,88,255,.16);
+  opacity:0;transform:translateY(8px);animation:splashTextIn .62s ease .52s forwards;
+}
+.splash-copy p{
+  margin:0;color:#9fb5c3;font-size:clamp(.68rem,2.2vw,.88rem);
+  opacity:0;animation:splashTextIn .55s ease .72s forwards;
+}
+.splash-loader{
+  width:min(260px,68vw);height:6px;margin-top:24px;border-radius:999px;background:rgba(255,255,255,.07);
+  overflow:hidden;box-shadow:inset 0 0 0 1px rgba(91,149,178,.10);
+}
+.splash-loader span{
+  display:block;width:0;height:100%;border-radius:inherit;
+  background:linear-gradient(90deg,#36dded,#4e7eff,#ea42cc);
+  box-shadow:0 0 14px rgba(70,219,245,.6);
+  animation:splashLoad 2.65s cubic-bezier(.33,.02,.24,1) .35s forwards;
+}
+.splash-loading-text{
+  margin-top:10px;font-size:.54rem;letter-spacing:.26em;color:#5e8ca0;
+  animation:splashLoadingGlow 1.1s ease-in-out infinite;
+}
+
+.splash-orbit{
+  position:absolute;left:50%;top:50%;border-radius:50%;
+  border:1px solid rgba(71,216,235,.13);transform:translate(-50%,-50%);
+}
+.orbit-one{
+  width:min(480px,78vw);aspect-ratio:1;border-top-color:rgba(60,228,244,.48);
+  border-right-color:rgba(93,102,255,.27);animation:splashOrbit 8s linear infinite;
+}
+.orbit-two{
+  width:min(610px,94vw);aspect-ratio:1;border-bottom-color:rgba(226,66,207,.33);
+  border-left-color:rgba(44,198,236,.18);animation:splashOrbitReverse 11s linear infinite;
+}
+
+.splash-particles{position:absolute;inset:0;pointer-events:none}
+.splash-particles i{
+  position:absolute;width:4px;height:4px;border-radius:50%;background:#5beaf0;
+  box-shadow:0 0 10px currentColor;opacity:.45;animation:splashParticle 3s ease-in-out infinite;
+}
+.splash-particles i:nth-child(1){left:17%;top:24%;animation-delay:.1s}
+.splash-particles i:nth-child(2){left:78%;top:20%;animation-delay:.8s}
+.splash-particles i:nth-child(3){left:12%;top:66%;animation-delay:1.5s}
+.splash-particles i:nth-child(4){left:83%;top:70%;animation-delay:.4s}
+.splash-particles i:nth-child(5){left:30%;top:12%;animation-delay:1.2s}
+.splash-particles i:nth-child(6){left:68%;top:84%;animation-delay:1.9s}
+.splash-particles i:nth-child(7){left:92%;top:44%;animation-delay:.6s}
+.splash-particles i:nth-child(8){left:7%;top:43%;animation-delay:2.2s}
+
+@keyframes splashFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes splashPulse{0%,100%{transform:scale(.92);opacity:.65}50%{transform:scale(1.08);opacity:1}}
+@keyframes splashTextIn{to{opacity:1;transform:translateY(0)}}
+@keyframes splashLoad{0%{width:0}35%{width:42%}68%{width:72%}100%{width:100%}}
+@keyframes splashLoadingGlow{0%,100%{opacity:.45}50%{opacity:1}}
+@keyframes splashOrbit{from{transform:translate(-50%,-50%) rotate(0)}to{transform:translate(-50%,-50%) rotate(360deg)}}
+@keyframes splashOrbitReverse{from{transform:translate(-50%,-50%) rotate(360deg)}to{transform:translate(-50%,-50%) rotate(0)}}
+@keyframes splashParticle{0%,100%{transform:translateY(0) scale(.7);opacity:.2}50%{transform:translateY(-14px) scale(1.3);opacity:.8}}
+@keyframes splashExit{0%{opacity:1;visibility:visible}100%{opacity:0;visibility:hidden;pointer-events:none}}
+
+@media(max-width:600px){
+  .splash-core{width:92vw}
+  .splash-brain-wrap{width:170px}
+  .splash-copy small{font-size:.62rem}
+  .splash-copy h1{font-size:2.25rem}
+  .splash-copy p{font-size:.72rem}
+  .orbit-one{width:82vw}
+  .orbit-two{width:108vw}
+}
