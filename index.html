@@ -87,20 +87,69 @@
   <section class="screen" data-screen="training">
     <div class="training-hub">
       <section class="training-hero">
-        <div class="training-title-block"><div class="training-logo">✦</div><div><small>BRAIN LAB</small><h2>Trening Umysłu</h2><p>Rozwijaj swoje zdolności każdego dnia.</p></div></div>
+        <div class="training-title-block"><div class="training-logo"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M47 17c-12-8-27 1-27 14-9 3-12 15-6 22-5 10 3 23 15 22 4 8 15 10 22 4"/><path d="M53 17c12-8 27 1 27 14 9 3 12 15 6 22 5 10-3 23-15 22-4 8-15 10-22 4"/><path d="M50 15v69M27 35c10-2 18 5 18 15M73 35c-10-2-18 5-18 15M22 58c10 0 17-5 20-14M78 58c-10 0-17-5-20-14M32 77c0-9 6-15 14-17M68 77c0-9-6-15-14-17"/></g></svg></div><div><small>BRAIN LAB</small><h2>Trening Umysłu</h2><p>Rozwijaj swoje zdolności każdego dnia.</p></div></div>
         <div class="brain-level-card"><div><small>POZIOM BRAIN</small><strong id="brainLevelValue">1</strong></div><span>XP <b id="brainXpValue">0 / 100</b></span><div class="brain-xp-track"><i id="brainXpFill"></i></div></div>
-        <svg class="training-brain-art" viewBox="0 0 460 250" aria-hidden="true"><g fill="none" stroke="#55edf0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M214 38c-42-20-84 7-87 48-34 8-46 49-24 76-11 36 23 68 57 62 15 27 60 24 70-7"/><path d="M238 38c42-20 84 7 87 48 34 8 46 49 24 76 11 36-23 68-57 62-15 27-60 24-70-7"/><path d="M226 36v189"/><path d="M147 82c29-3 51 15 51 43M305 82c-29-3-51 15-51 43"/><path d="M114 158c29 0 49-12 55-37M338 158c-29 0-49-12-55-37"/><path d="M159 221c-2-29 17-49 45-53M293 221c2-29-17-49-45-53"/><path d="M165 104l33 26 28-39 29 39 33-26"/></g></svg>
+        <svg class="training-brain-art premium-brain" viewBox="0 0 460 250" aria-hidden="true">
+<defs>
+  <linearGradient id="brainLeft" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#00e5ff"/><stop offset="1" stop-color="#4058ff"/></linearGradient>
+  <linearGradient id="brainRight" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e42cff"/><stop offset=".55" stop-color="#ff367d"/><stop offset="1" stop-color="#ff9a00"/></linearGradient>
+  <filter id="brainGlow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<g fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#brainGlow)">
+  <g stroke="url(#brainLeft)" stroke-width="3.2">
+    <path d="M214 32c-42-18-82 8-86 47-31 7-43 43-25 69-9 31 20 59 50 56 15 25 51 24 70 5"/>
+    <path d="M214 32v177M143 77c23-3 43 13 44 34M117 142c25 0 42-11 49-32M153 202c-1-24 15-41 37-45"/>
+    <path d="M143 77c15 8 24 18 25 33M117 142c18 3 34 11 43 26M153 202c10-11 22-17 37-18"/>
+  </g>
+  <g stroke="url(#brainRight)" stroke-width="3.2">
+    <path d="M246 32c42-18 82 8 86 47 31 7 43 43 25 69 9 31-20 59-50 56-15 25-51 24-70 5"/>
+    <path d="M246 32v177M317 77c-23-3-43 13-44 34M343 142c-25 0-42-11-49-32M307 202c1-24-15-41-37-45"/>
+    <path d="M317 77c-15 8-24 18-25 33M343 142c-18 3-34 11-43 26M307 202c-10-11-22-17-37-18"/>
+  </g>
+  <path d="M230 30v181" stroke="#ffffff" stroke-width="1.4" opacity=".55"/>
+</g>
+</svg>
       </section>
-      <section class="training-skill-strip"><div><span>LOGIKA</span><b>0%</b><i><em></em></i></div><div><span>PAMIĘĆ</span><b>0%</b><i><em></em></i></div><div><span>REFLEKS</span><b>0%</b><i><em></em></i></div><div><span>KONCENTRACJA</span><b>0%</b><i><em></em></i></div><div><span>WYOBRAŹNIA</span><b>0%</b><i><em></em></i></div><div><span>WIEDZA</span><b>0%</b><i><em></em></i></div></section>
+      <section class="training-skill-strip"><div class="skill-logic"><span class="skill-mini-icon"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><path d="M12 18h31v31H12zM43 11h31v31H43zM57 42h31v31H57zM26 49h31v31H26z"/><path d="M43 18l14-7M43 49l14-7M43 49l14 24M26 49l-14-1M57 42l17-31"/></g></svg></span><span>LOGIKA</span><b>0%</b><i><em></em></i></div><div class="skill-memory"><span class="skill-mini-icon"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M47 18c-14-9-31 1-31 17-10 3-14 17-7 25-5 12 5 25 18 24 5 9 17 10 24 4"/><path d="M53 18c14-9 31 1 31 17 10 3 14 17 7 25 5 12-5 25-18 24-5 9-17 10-24 4"/><path d="M50 16v72M23 38c10-1 18 5 18 16M77 38c-10-1-18 5-18 16M18 64c10 0 17-5 21-15M82 64c-10 0-17-5-21-15M31 84c0-10 7-17 16-19M69 84c0-10-7-17-16-19"/></g></svg></span><span>PAMIĘĆ</span><b>0%</b><i><em></em></i></div><div class="skill-reflex"><span class="skill-mini-icon"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M58 6L18 56h28l-9 38 45-56H54z" fill="currentColor" stroke="#fff4bd" stroke-width="2" stroke-linejoin="round"/></svg></span><span>REFLEKS</span><b>0%</b><i><em></em></i></div><div class="skill-focus"><span class="skill-mini-icon"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="4"><circle cx="45" cy="55" r="31"/><circle cx="45" cy="55" r="20"/><circle cx="45" cy="55" r="9"/><path d="M62 38L88 12M69 12h19v19" stroke-linecap="round" stroke-linejoin="round"/></g></svg></span><span>KONCENTRACJA</span><b>0%</b><i><em></em></i></div><div class="skill-imagination"><span class="skill-mini-icon"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M28 47c0-18 10-31 22-31s22 13 22 31c0 13-8 19-13 26H41c-5-7-13-13-13-26z"/><path d="M41 73h18M42 80h16M45 87h10M35 14l-5-8M65 14l5-8M20 30l-9-4M80 30l9-4M18 55l-9 2M82 55l9 2"/></g></svg></span><span>WYOBRAŹNIA</span><b>0%</b><i><em></em></i></div><div class="skill-knowledge"><span class="skill-mini-icon"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3"><circle cx="50" cy="50" r="38"/><path d="M12 50h76M50 12c14 13 20 25 20 38S64 75 50 88M50 12C36 25 30 37 30 50s6 25 20 38M20 29c18 8 42 8 60 0M20 71c18-8 42-8 60 0"/></g></svg></span><span>WIEDZA</span><b>0%</b><i><em></em></i></div></section>
       <section class="training-category-grid">
-        <button class="training-category" data-category="logic"><span class="category-icon">◇</span><span class="category-copy"><strong>LOGIKA</strong><small>5 treningów</small></span><span class="category-progress"><i><em></em></i><b>0%</b></span></button>
-        <button class="training-category" data-category="memory"><span class="category-icon">◎</span><span class="category-copy"><strong>PAMIĘĆ</strong><small>4 treningi</small></span><span class="category-progress"><i><em></em></i><b>0%</b></span></button>
-        <button class="training-category" data-category="reflex"><span class="category-icon">⚡</span><span class="category-copy"><strong>REFLEKS</strong><small>4 treningi</small></span><span class="category-progress"><i><em></em></i><b>0%</b></span></button>
-        <button class="training-category" data-category="focus"><span class="category-icon">◉</span><span class="category-copy"><strong>KONCENTRACJA</strong><small>4 treningi</small></span><span class="category-progress"><i><em></em></i><b>0%</b></span></button>
-        <button class="training-category" data-category="knowledge"><span class="category-icon">⌁</span><span class="category-copy"><strong>WIEDZA</strong><small>5 treningów</small></span><span class="category-progress"><i><em></em></i><b>0%</b></span></button>
-        <button class="training-category" data-category="imagination"><span class="category-icon">△</span><span class="category-copy"><strong>WYOBRAŹNIA</strong><small>4 treningi</small></span><span class="category-progress"><i><em></em></i><b>0%</b></span></button>
+        <button class="training-category logic" data-category="logic">
+      <span class="category-icon"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><path d="M12 18h31v31H12zM43 11h31v31H43zM57 42h31v31H57zM26 49h31v31H26z"/><path d="M43 18l14-7M43 49l14-7M43 49l14 24M26 49l-14-1M57 42l17-31"/></g></svg></span>
+      <span class="category-copy"><strong>LOGIKA</strong><small>5 treningów</small></span>
+      <span class="category-arrow">›</span>
+      <span class="category-progress"><i><em></em></i><b>0%</b></span>
+    </button>
+        <button class="training-category memory" data-category="memory">
+      <span class="category-icon"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M47 18c-14-9-31 1-31 17-10 3-14 17-7 25-5 12 5 25 18 24 5 9 17 10 24 4"/><path d="M53 18c14-9 31 1 31 17 10 3 14 17 7 25 5 12-5 25-18 24-5 9-17 10-24 4"/><path d="M50 16v72M23 38c10-1 18 5 18 16M77 38c-10-1-18 5-18 16M18 64c10 0 17-5 21-15M82 64c-10 0-17-5-21-15M31 84c0-10 7-17 16-19M69 84c0-10-7-17-16-19"/></g></svg></span>
+      <span class="category-copy"><strong>PAMIĘĆ</strong><small>4 treningi</small></span>
+      <span class="category-arrow">›</span>
+      <span class="category-progress"><i><em></em></i><b>0%</b></span>
+    </button>
+        <button class="training-category reflex" data-category="reflex">
+      <span class="category-icon"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M58 6L18 56h28l-9 38 45-56H54z" fill="currentColor" stroke="#fff4bd" stroke-width="2" stroke-linejoin="round"/></svg></span>
+      <span class="category-copy"><strong>REFLEKS</strong><small>4 treningi</small></span>
+      <span class="category-arrow">›</span>
+      <span class="category-progress"><i><em></em></i><b>0%</b></span>
+    </button>
+        <button class="training-category focus" data-category="focus">
+      <span class="category-icon"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="4"><circle cx="45" cy="55" r="31"/><circle cx="45" cy="55" r="20"/><circle cx="45" cy="55" r="9"/><path d="M62 38L88 12M69 12h19v19" stroke-linecap="round" stroke-linejoin="round"/></g></svg></span>
+      <span class="category-copy"><strong>KONCENTRACJA</strong><small>4 treningi</small></span>
+      <span class="category-arrow">›</span>
+      <span class="category-progress"><i><em></em></i><b>0%</b></span>
+    </button>
+        <button class="training-category knowledge" data-category="knowledge">
+      <span class="category-icon"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3"><circle cx="50" cy="50" r="38"/><path d="M12 50h76M50 12c14 13 20 25 20 38S64 75 50 88M50 12C36 25 30 37 30 50s6 25 20 38M20 29c18 8 42 8 60 0M20 71c18-8 42-8 60 0"/></g></svg></span>
+      <span class="category-copy"><strong>WIEDZA</strong><small>5 treningów</small></span>
+      <span class="category-arrow">›</span>
+      <span class="category-progress"><i><em></em></i><b>0%</b></span>
+    </button>
+        <button class="training-category imagination" data-category="imagination">
+      <span class="category-icon"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M28 47c0-18 10-31 22-31s22 13 22 31c0 13-8 19-13 26H41c-5-7-13-13-13-26z"/><path d="M41 73h18M42 80h16M45 87h10M35 14l-5-8M65 14l5-8M20 30l-9-4M80 30l9-4M18 55l-9 2M82 55l9 2"/></g></svg></span>
+      <span class="category-copy"><strong>WYOBRAŹNIA</strong><small>4 treningi</small></span>
+      <span class="category-arrow">›</span>
+      <span class="category-progress"><i><em></em></i><b>0%</b></span>
+    </button>
       </section>
-      <section class="training-daily-card"><div><small>CODZIENNE WYZWANIE</small><strong>Trening mieszany</strong><p>Krótka sesja z kilku obszarów umysłu.</p></div><span><b>0</b><small>dni serii</small></span><button type="button" data-coming="Codzienne wyzwanie">ROZPOCZNIJ</button></section>
+      <section class="training-daily-card"><span class="daily-trophy"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M30 14h40v20c0 18-8 31-20 38-12-7-20-20-20-38z"/><path d="M30 20H13v12c0 12 8 20 20 23M70 20h17v12c0 12-8 20-20 23M50 72v12M32 88h36"/><path d="M50 26l5 10 11 2-8 8 2 11-10-5-10 5 2-11-8-8 11-2z"/></g></svg></span><div><small>CODZIENNE WYZWANIE</small><strong>Trening mieszany</strong><p>Krótka sesja z kilku obszarów umysłu.</p></div><span><b>0</b><small>dni serii</small></span><button type="button" data-coming="Codzienne wyzwanie">ROZPOCZNIJ</button></section>
     </div>
   </section>
   <section class="screen" data-screen="training-category">
@@ -275,7 +324,7 @@
     </div>
   </section>
 
-  <footer><button data-coming="O aplikacji">O aplikacji</button><span>•</span><span>Wersja 1024</span></footer>
+  <footer><button data-coming="O aplikacji">O aplikacji</button><span>•</span><span>Wersja 1025</span></footer>
 </main>
 
 <div id="modal" class="modal hidden">
