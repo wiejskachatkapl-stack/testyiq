@@ -8,3 +8,8 @@
 - [ ] v1007 — sekwencje liczb
 - [ ] v1008 — sekwencje liter
 - [ ] v1009 — raport Brain Score
+
+- [x] v1024 — Centrum Treningu Umysłu
+- [ ] v1025 — pierwsza pełna gra treningowa
+- [ ] v1026 — Zapałki
+- [ ] v1027 — Memory

@@ -218,3 +218,5 @@
 Dodano architekturę SPA, centralną nawigację, formularz, walidację danych, wybór liczby pytań i trybu, zasady testu, kontener pytania, dokumentację oraz katalog `pliki_do_podmiany`.
 
 Zmieniono cache PWA na `iq-brain-lab-v1004`.
+## v1024
+Dodano Centrum Treningu Umysłu, sześć kategorii, profil Brain/XP, ekran kategorii, statusy Graj/Wkrótce i responsywność. Test IQ bez zmian.

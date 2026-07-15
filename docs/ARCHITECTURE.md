@@ -16,3 +16,7 @@ Nowych ekranów nie wolno dopisywać pod istniejącymi widokami.
 
 ## MixedGenerator v1016
 Warstwa pośrednia przeplata DiceGenerator i MatrixGenerator, dzięki czemu silnik pytań nie zależy od konkretnej rodziny zadań.
+
+
+## Training Hub v1024
+Kategorie i gry są definiowane w konfiguracji TRAINING_CATEGORIES. Profil lokalny przechowuje XP, postęp, gwiazdki i serię dni.
