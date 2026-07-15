@@ -28,3 +28,7 @@ Pięć zakładek używa ikon liniowych SVG: mózg, kostka, wykres, puchar i usta
 
 ## Poprawka mobilna v1014
 Ikony dolnej nawigacji muszą być widoczne na telefonie i komputerze. Mobilne reguły nie mogą ustawiać `display:none` ani zerowych wymiarów dla `.bottom-icon` i jego SVG.
+
+
+## Training Hub v1025
+Kategorie: Logika — niebieski, Pamięć — zielony, Refleks — pomarańczowy, Koncentracja — turkusowy, Wiedza — złoty, Wyobraźnia — fioletowy. Ikony są wektorowe i nie wymagają plików graficznych.

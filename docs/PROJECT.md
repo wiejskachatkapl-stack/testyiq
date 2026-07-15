@@ -1,6 +1,6 @@
 # IQ Challenge • Brain Lab
 
-Aktualna wersja: **v1024**
+Aktualna wersja: **v1025**
 
 Status: Brain Engine — fundament SPA i pierwsza ścieżka Test IQ.
 
@@ -96,3 +96,7 @@ Poprawiono wyłącznie układ matryc na komputerze. Pięć odpowiedzi jest teraz
 
 ## v1024
 Dodano Centrum Treningu Umysłu z sześcioma kategoriami, profilem Brain, XP, ekranem kategorii i konfigurowalną listą gier. Test IQ pozostaje bez zmian.
+
+
+## v1025
+Centrum Treningu otrzymało docelową identyfikację wizualną: duże nazwy, autorskie ikony SVG oraz kolorystyczne rozróżnienie obszarów mózgu.

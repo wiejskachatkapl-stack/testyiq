@@ -220,3 +220,13 @@ Dodano architekturę SPA, centralną nawigację, formularz, walidację danych, w
 Zmieniono cache PWA na `iq-brain-lab-v1004`.
 ## v1024
 Dodano Centrum Treningu Umysłu, sześć kategorii, profil Brain/XP, ekran kategorii, statusy Graj/Wkrótce i responsywność. Test IQ bez zmian.
+
+
+## v1025
+- odświeżono wygląd Centrum Treningu,
+- powiększono nazwy kategorii,
+- dodano własne ikony SVG dla sześciu obszarów,
+- dodano indywidualne akcenty kolorystyczne kategorii,
+- przebudowano grafikę mózgu w nagłówku,
+- dodano ikonę pucharu w codziennym wyzwaniu,
+- zachowano mechanikę i działanie v1024.
