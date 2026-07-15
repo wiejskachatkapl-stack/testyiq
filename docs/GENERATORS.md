@@ -30,3 +30,7 @@ Paleta figur: krem `#f3ead8`, jasny kontur `#f6f0e2`, ciemna obwódka `#4b443b`.
 
 ### Czytelność v1018
 Figury obrysowe: turkus `#55edf0`, grubość 6. Figury pełne: krem `#fff3d7`. Skala figur została zwiększona dla telefonu i komputera.
+
+
+### Unikalność odpowiedzi v1021
+Odpowiedzi są porównywane według wyglądu, a nie tylko danych. Obrót koła, kwadratu o 90°, krzyża o 90°, gwiazdy o 72° itd. nie tworzy sztucznie nowej odpowiedzi. Wypełnienie jest zmieniane tylko w regułach, które rzeczywiście badają wypełnienie.

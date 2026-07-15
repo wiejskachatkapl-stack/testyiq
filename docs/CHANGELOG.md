@@ -1,5 +1,16 @@
 # Changelog
 
+## v1021
+### Poprawiono
+- usunięto wizualnie identyczne odpowiedzi,
+- generator rozpoznaje symetrię koła, kwadratu, krzyża, gwiazdy i wielokątów,
+- zmiana obrotu nie jest już uznawana za inną odpowiedź, gdy figura wygląda identycznie,
+- w prostych zadaniach wszystkie odpowiedzi zachowują ten sam sposób wypełnienia i kolorystykę,
+- biały pełny plus nie pojawia się jako przypadkowa odpowiedź do turkusowych figur obrysowych,
+- na komputerze dolny rząd matrycy i odpowiedzi mają osobne, nieprzecinające się strefy,
+- układ telefonu pozostawiono bez zmian,
+- cache PWA zmieniono na `iq-brain-lab-v1021`.
+
 ## v1020
 ### Poprawiono
 - plansza matrycy nie nachodzi już na odpowiedzi,

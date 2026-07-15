@@ -1,6 +1,6 @@
 # IQ Challenge • Brain Lab
 
-Aktualna wersja: **v1020**
+Aktualna wersja: **v1021**
 
 Status: Brain Engine — fundament SPA i pierwsza ścieżka Test IQ.
 
@@ -80,3 +80,7 @@ Naprawiono mechanikę przechodzenia do następnego pytania. Usunięto uszkodzony
 
 ## v1020
 Naprawiono nakładanie się matrycy i odpowiedzi. Ekran matryc ma teraz osobne, kontrolowane strefy dla planszy oraz pięciu odpowiedzi.
+
+
+## v1021
+Naprawiono odpowiedzi matryc: wszystkie pięć wariantów jest wizualnie unikalne, a zmiana koloru lub wypełnienia pojawia się tylko w zadaniach, w których stanowi część reguły. Na komputerze plansza i odpowiedzi mają całkowicie oddzielone strefy.
