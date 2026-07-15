@@ -1,6 +1,6 @@
 # IQ Challenge • Brain Lab
 
-Aktualna wersja: **v1026**
+Aktualna wersja: **v1027**
 
 Status: Brain Engine — fundament SPA i pierwsza ścieżka Test IQ.
 
@@ -104,3 +104,7 @@ Centrum Treningu otrzymało docelową identyfikację wizualną: duże nazwy, aut
 
 ## v1026
 Dopasowano duże nazwy kategorii do szerokości kafelków. Szczególnie poprawiono napisy KONCENTRACJA i WYOBRAŹNIA, bez zmiany mechaniki modułu.
+
+
+## v1027
+Przebudowano układ wnętrza kafelków kategorii. Strzałka jest pozycjonowana niezależnie, tekst ma własną zamkniętą kolumnę, a nazwy KONCENTRACJA i WYOBRAŹNIA zostały dodatkowo zmniejszone.

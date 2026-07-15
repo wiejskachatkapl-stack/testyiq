@@ -1,5 +1,14 @@
 # Changelog
 
+## v1027
+### Poprawiono
+- teksty kategorii nie mogą już wyjść poza obręb kafelków,
+- strzałki zostały przeniesione poza kolumnę tekstową,
+- nazwy mają własny zamknięty obszar,
+- osobno zmniejszono `KONCENTRACJA` i `WYOBRAŹNIA`,
+- zachowano wygląd, kolory i mechanikę v1026,
+- cache PWA zmieniono na `iq-brain-lab-v1027`.
+
 ## v1026
 ### Poprawiono
 - duże nazwy kategorii nie wychodzą poza kafelki,
