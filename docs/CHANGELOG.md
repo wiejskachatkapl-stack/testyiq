@@ -1,5 +1,17 @@
 # Changelog
 
+## v1028
+### Poprawiono
+- pełne nazwy kategorii na telefonie,
+- brak ucinania `KONCENTRACJA` i `WYOBRAŹNIA`,
+- większe kafelki treningowe,
+- pełny nagłówek z grafiką mózgu na telefonie,
+- czytelny panel poziomu Brain,
+- układ sześciu umiejętności 3 × 2,
+- pełny panel codziennego wyzwania,
+- zachowano mechanikę v1027,
+- cache PWA zmieniono na `iq-brain-lab-v1028`.
+
 ## v1027
 ### Poprawiono
 - teksty kategorii nie mogą już wyjść poza obręb kafelków,

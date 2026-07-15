@@ -40,3 +40,7 @@ Nazwy kategorii muszą mieścić się w jednym wierszu. Dłuższe nazwy `KONCENT
 
 ## Kafelki kategorii v1027
 Strzałka jest absolutnie pozycjonowana po prawej stronie, dzięki czemu nie zabiera szerokości nazwie. Tekst ma własną kolumnę z `min-width: 0` i `overflow: hidden`.
+
+
+## Mobilny Training Hub v1028
+Na telefonie ekran wykorzystuje dwie kolumny kafelków. Nazwy kategorii pozostają kompletne, a dłuższe napisy otrzymują mniejszy rozmiar zamiast obcinania.
