@@ -1,5 +1,15 @@
 # Changelog
 
+## v1030
+### Poprawiono
+- cały ekran Trening Umysłu mieści się na telefonie bez przewijania,
+- widoczne są wszystkie sześć kafelków,
+- widoczny jest panel Trening mieszany,
+- wysokości sekcji są liczone proporcjonalnie do realnej wysokości ekranu,
+- usunięto mobilne nakładanie elementów,
+- zachowano wygląd i mechanikę wersji komputerowej,
+- cache PWA zmieniono na `iq-brain-lab-v1030`.
+
 ## v1029
 ### Naprawiono
 - porzucono wadliwy układ mobilny z v1028,

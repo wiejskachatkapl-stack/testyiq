@@ -44,3 +44,7 @@ Strzałka jest absolutnie pozycjonowana po prawej stronie, dzięki czemu nie zab
 
 ## Telefon v1029
 Mobilny układ opiera się na stabilnej wersji v1027. Nie używa dużych wysokości ani absolutnego nakładania grafiki mózgu na panel poziomu.
+
+
+## Mobilny układ v1030
+Ekran Trening Umysłu używa czterech proporcjonalnych rzędów: nagłówek 26%, umiejętności 13%, kafelki 49%, codzienne wyzwanie 12%. Całość mieści się w obszarze ekranu aplikacji.

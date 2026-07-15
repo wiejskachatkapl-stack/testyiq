@@ -1,6 +1,6 @@
 # IQ Challenge • Brain Lab
 
-Aktualna wersja: **v1029**
+Aktualna wersja: **v1030**
 
 Status: Brain Engine — fundament SPA i pierwsza ścieżka Test IQ.
 
@@ -112,3 +112,7 @@ Przebudowano układ wnętrza kafelków kategorii. Strzałka jest pozycjonowana n
 
 ## v1029
 Wersję wykonano ponownie na bazie stabilnej v1027. Usunięto rozbudowane reguły mobilne z v1028 i zastosowano prosty, kontrolowany układ telefonu.
+
+
+## v1030
+Mobilny ekran Trening Umysłu został ponownie ułożony proporcjami procentowymi całej dostępnej wysokości. Wszystkie sześć kafelków oraz Trening mieszany mieszczą się bez przewijania.
