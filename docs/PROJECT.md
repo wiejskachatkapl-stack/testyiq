@@ -1,6 +1,6 @@
 # IQ Challenge • Brain Lab
 
-Aktualna wersja: **v1031**
+Aktualna wersja: **v1032**
 
 Status: Brain Engine — fundament SPA i pierwsza ścieżka Test IQ.
 
@@ -120,3 +120,7 @@ Mobilny ekran Trening Umysłu został ponownie ułożony proporcjami procentowym
 
 ## v1031
 Zastąpiono stary ekran uruchamiania animowanym ekranem Brain Lab z neonowym mózgiem SVG, pierścieniami, cząsteczkami i paskiem ładowania.
+
+
+## v1032
+Usunięto stare logo `IQ TEST`, które system telefonu pokazywał przed właściwą animacją. Zmieniono ikony PWA, kolory manifestu oraz dodano mocniejsze różowo-fioletowe akcenty do nowego ekranu uruchamiania.

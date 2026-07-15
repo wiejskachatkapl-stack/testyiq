@@ -1,5 +1,14 @@
 # Changelog
 
+## v1032
+### Naprawiono
+- usunięto stare systemowe logo `IQ TEST`,
+- zastąpiono ikony PWA nową ikoną neonowego mózgu,
+- ustawiono jednolite ciemnogranatowe tło startowe systemu,
+- dodano ikonę maskowalną i Apple Touch Icon,
+- wzmocniono różowe i fioletowe akcenty nowej animacji,
+- cache PWA zmieniono na `iq-brain-lab-v1032`.
+
 ## v1031
 ### Zmieniono
 - nowy animowany ekran uruchamiania,

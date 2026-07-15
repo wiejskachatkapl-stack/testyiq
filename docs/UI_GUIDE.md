@@ -52,3 +52,7 @@ Ekran Trening Umysłu używa czterech proporcjonalnych rzędów: nagłówek 26%,
 
 ## Splash screen v1031
 Animacja jest wykonana w HTML, CSS i SVG, dlatego nie wymaga dodatkowych obrazów oraz zachowuje ostrość na telefonie i komputerze.
+
+
+## Systemowy splash v1032
+Telefon przed uruchomieniem HTML pokazuje ikonę z manifestu. Dlatego stare logo zostało zastąpione neonowym mózgiem, a `background_color` i `theme_color` ustawiono na `#020918`.
