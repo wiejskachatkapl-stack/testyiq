@@ -1,6 +1,6 @@
 # IQ Challenge • Brain Lab
 
-Aktualna wersja: **v1028**
+Aktualna wersja: **v1029**
 
 Status: Brain Engine — fundament SPA i pierwsza ścieżka Test IQ.
 
@@ -110,5 +110,5 @@ Dopasowano duże nazwy kategorii do szerokości kafelków. Szczególnie poprawio
 Przebudowano układ wnętrza kafelków kategorii. Strzałka jest pozycjonowana niezależnie, tekst ma własną zamkniętą kolumnę, a nazwy KONCENTRACJA i WYOBRAŹNIA zostały dodatkowo zmniejszone.
 
 
-## v1028
-Przebudowano mobilny układ Centrum Treningu według zaakceptowanego projektu. Nazwy kategorii są kompletne, kafelki są większe, nagłówek zachowuje grafikę mózgu, a codzienne wyzwanie ma pełny układ mobilny.
+## v1029
+Wersję wykonano ponownie na bazie stabilnej v1027. Usunięto rozbudowane reguły mobilne z v1028 i zastosowano prosty, kontrolowany układ telefonu.

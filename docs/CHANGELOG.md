@@ -1,16 +1,15 @@
 # Changelog
 
-## v1028
-### Poprawiono
-- pełne nazwy kategorii na telefonie,
-- brak ucinania `KONCENTRACJA` i `WYOBRAŹNIA`,
-- większe kafelki treningowe,
-- pełny nagłówek z grafiką mózgu na telefonie,
-- czytelny panel poziomu Brain,
-- układ sześciu umiejętności 3 × 2,
-- pełny panel codziennego wyzwania,
-- zachowano mechanikę v1027,
-- cache PWA zmieniono na `iq-brain-lab-v1028`.
+## v1029
+### Naprawiono
+- porzucono wadliwy układ mobilny z v1028,
+- przywrócono stabilną bazę v1027,
+- kafelki na telefonie mają stałą wysokość,
+- teksty, strzałki i paski postępu mają osobne obszary,
+- panel umiejętności nie nakłada tekstów,
+- nagłówek i codzienne wyzwanie zostały uproszczone na telefonie,
+- mechanika pozostała bez zmian,
+- cache PWA zmieniono na `iq-brain-lab-v1029`.
 
 ## v1027
 ### Poprawiono
