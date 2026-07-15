@@ -1,5 +1,14 @@
 # Changelog
 
+## v1023
+### Poprawiono
+- dolne przyciski odpowiedzi nie wychodzą poza główną kartę na komputerze,
+- wysokości planszy i odpowiedzi dopasowują się do wysokości okna,
+- dodano osobne proporcje dla typowych monitorów, laptopów i niskich okien,
+- układ telefonu pozostawiono bez zmian,
+- mechanika i generator zadań pozostały bez zmian,
+- cache PWA zmieniono na `iq-brain-lab-v1023`.
+
 ## v1022
 ### Dodano
 - wypełnienie kropkowane,
