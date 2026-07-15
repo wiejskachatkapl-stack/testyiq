@@ -2,7 +2,7 @@
   'use strict';
 
   const SHAPES = ['circle','square','triangle','diamond','pentagon','hexagon','star','cross'];
-  const FILLS = ['outline','solid','striped'];
+  const FILLS = ['outline','solid','striped','dotted'];
   const usedTypes = [];
   const MEMORY = 7;
 
@@ -124,6 +124,49 @@
       for(let i=0;i<9;i++) cells.push(feature(s[i%3],fills[Math.floor(i/3)%3],i*45,(i%3)+1,['small','medium','large'][i%3]));
       const ans=cells[8];cells[8]=null;return matrix(cells,ans);
     }},
+    { id:'fill-rotation-cycle', level:4, prompt:'Uzupełnij jednoczesny cykl obrotu i wypełnienia.', build(){
+      const shape=choose(['triangle','diamond','star','cross']);
+      const fills=['outline','striped','dotted'];
+      const cells=[];
+      for(let r=0;r<3;r++) for(let c=0;c<3;c++){
+        cells.push(feature(shape,fills[(r+c)%3],(r*45+c*90)));
+      }
+      const ans=cells[8]; cells[8]=null; return matrix(cells,ans);
+    }},
+    { id:'multi-count-cycle', level:5, prompt:'Uzupełnij liczbę i układ figur.', build(){
+      const shape=choose(['circle','square','triangle','diamond','star']);
+      const counts=[1,2,3];
+      const fills=['outline','striped','dotted'];
+      const cells=[];
+      for(let r=0;r<3;r++) for(let c=0;c<3;c++){
+        cells.push(feature(shape,fills[r],0,counts[(r+c)%3],c===0?'small':'medium'));
+      }
+      const ans=cells[8]; cells[8]=null; return matrix(cells,ans);
+    }},
+    { id:'dotted-striped-latin', level:5, prompt:'Odkryj cykl figur i sposobu wypełnienia.', build(){
+      const shapes=shuffle(SHAPES).slice(0,3);
+      const fills=['outline','striped','dotted'];
+      const cells=[];
+      for(let r=0;r<3;r++) for(let c=0;c<3;c++){
+        cells.push(feature(shapes[(r+c)%3],fills[(2*r+c)%3]));
+      }
+      const ans=cells[8]; cells[8]=null; return matrix(cells,ans);
+    }},
+    { id:'shape-fill-count', level:7, prompt:'Połącz figurę, wypełnienie i ich liczbę.', build(){
+      const shapes=shuffle(['circle','square','triangle','diamond','star','hexagon']).slice(0,3);
+      const fills=['outline','striped','dotted'];
+      const cells=[];
+      for(let r=0;r<3;r++) for(let c=0;c<3;c++){
+        cells.push(feature(
+          shapes[(r+c)%3],
+          fills[(r+2*c)%3],
+          c*45,
+          ((r+c)%3)+1,
+          'medium'
+        ));
+      }
+      const ans=cells[8]; cells[8]=null; return matrix(cells,ans);
+    }},
     { id:'nested-three-rules', level:10, prompt:'Zastosuj jednocześnie reguły wierszy, kolumn i przekątnej.', build(){
       const s=shuffle(SHAPES).slice(0,3), fills=['outline','solid','striped']; const cells=[];
       for(let r=0;r<3;r++) for(let c=0;c<3;c++) cells.push(feature(s[(r+c)%3],fills[(2*r+c)%3],(r*90+c*45),((r+c)%3)+1,['small','medium','large'][(r+2*c)%3]));
@@ -142,8 +185,13 @@
     return `<svg class="matrix-shape-svg ${className}" viewBox="0 0 100 100" role="img" aria-label="Figura geometryczna">
       <defs>
         <pattern id="${uid}-stripes" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-          <rect width="8" height="8" fill="#fff3d7"/>
-          <line x1="0" y1="0" x2="0" y2="8" stroke="#176c77" stroke-width="3.2"/>
+          <rect width="8" height="8" fill="rgba(3,21,33,.10)"/>
+          <line x1="0" y1="0" x2="0" y2="8" stroke="#55edf0" stroke-width="1.5"/>
+        </pattern>
+        <pattern id="${uid}-dots" width="10" height="10" patternUnits="userSpaceOnUse">
+          <rect width="10" height="10" fill="rgba(3,21,33,.10)"/>
+          <circle cx="3" cy="3" r="1.5" fill="#55edf0"/>
+          <circle cx="8" cy="8" r="1.5" fill="#55edf0"/>
         </pattern>
         <filter id="${uid}-shadow" x="-25%" y="-25%" width="150%" height="160%">
           <feDropShadow dx="0" dy="3" stdDeviation="2.5" flood-color="#000000" flood-opacity=".30"/>
@@ -157,20 +205,26 @@
     const uid=`matrix-${Math.random().toString(36).slice(2)}`;
     return `<defs>
       <pattern id="${uid}-stripes" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-        <rect width="8" height="8" fill="#fff3d7"/>
-        <line x1="0" y1="0" x2="0" y2="8" stroke="#176c77" stroke-width="3.2"/>
+        <rect width="8" height="8" fill="rgba(3,21,33,.10)"/>
+        <line x1="0" y1="0" x2="0" y2="8" stroke="#55edf0" stroke-width="1.5"/>
+      </pattern>
+      <pattern id="${uid}-dots" width="10" height="10" patternUnits="userSpaceOnUse">
+        <rect width="10" height="10" fill="rgba(3,21,33,.10)"/>
+        <circle cx="3" cy="3" r="1.5" fill="#55edf0"/>
+        <circle cx="8" cy="8" r="1.5" fill="#55edf0"/>
       </pattern>
     </defs>`;
   }
   function fillStyle(fill,uid){
-    if(fill==='solid') return '#fff3d7';
+    if(fill==='solid') return 'rgba(85,237,240,.22)';
     if(fill==='striped') return `url(#${uid}-stripes)`;
-    return 'rgba(65,225,228,.18)';
+    if(fill==='dotted') return `url(#${uid}-dots)`;
+    return 'rgba(3,21,33,.08)';
   }
   function shapeElement(it,x,y,s,key,uid){
     const fill=fillStyle(it.fill,uid);
-    const stroke=it.fill==='outline'?'#55edf0':'#332f29';
-    const sw=it.fill==='outline'?6:3.2;
+    const stroke='#72f0f2';
+    const sw=it.fill==='outline'?2.6:2.0;
     const common=`style="fill:${fill}!important;stroke:${stroke}!important;stroke-width:${sw}!important" stroke-linejoin="round"`;
     switch(it.shape){
       case 'circle': return `<circle cx="${x}" cy="${y}" r="${22*s}" ${common}/>`;
@@ -200,18 +254,18 @@
     const fillTypes=new Set([
       'fill-cycle','shape-fill-two-rules','row-combination','rotation-fill',
       'three-feature-latin','alternating-count-fill','xor-shape',
-      'progressive-transform','nested-three-rules'
+      'progressive-transform','nested-three-rules','fill-rotation-cycle','multi-count-cycle','dotted-striped-latin','shape-fill-count'
     ]);
     const rotationTypes=new Set([
       'rotation-rows','rotation-fill','three-feature-latin',
-      'progressive-transform','nested-three-rules'
+      'progressive-transform','nested-three-rules','fill-rotation-cycle','multi-count-cycle','dotted-striped-latin','shape-fill-count'
     ]);
     const countTypes=new Set([
       'count-cycle','column-shape-row-count','alternating-count-fill',
-      'progressive-transform','nested-three-rules'
+      'progressive-transform','nested-three-rules','fill-rotation-cycle','multi-count-cycle','dotted-striped-latin','shape-fill-count'
     ]);
     const sizeTypes=new Set([
-      'size-cycle','progressive-transform','nested-three-rules'
+      'size-cycle','progressive-transform','nested-three-rules','fill-rotation-cycle','multi-count-cycle','dotted-striped-latin','shape-fill-count'
     ]);
     const positionTypes=new Set(['position-cycle']);
 
