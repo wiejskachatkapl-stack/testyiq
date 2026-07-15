@@ -1,5 +1,15 @@
 # Changelog
 
+## v1031
+### Zmieniono
+- nowy animowany ekran uruchamiania,
+- neonowy mózg SVG,
+- obracające się pierścienie i cząsteczki,
+- animowany pasek ładowania,
+- płynne przejście do aplikacji,
+- mechanika v1030 bez zmian,
+- cache PWA zmieniono na `iq-brain-lab-v1031`.
+
 ## v1030
 ### Poprawiono
 - cały ekran Trening Umysłu mieści się na telefonie bez przewijania,
