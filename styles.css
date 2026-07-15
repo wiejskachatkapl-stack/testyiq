@@ -2377,3 +2377,172 @@ footer{grid-row:3;display:flex;justify-content:center;align-items:center;gap:8px
     max-height:70px!important;
   }
 }
+
+
+/* =========================================================
+   v1023 — dolne odpowiedzi zawsze wewnątrz karty na komputerze
+   ========================================================= */
+
+@media(min-width:901px){
+  .matrix-question-card{
+    box-sizing:border-box!important;
+    grid-template-rows:
+      auto
+      minmax(210px,1fr)
+      30px
+      minmax(118px,136px)!important;
+    gap:7px!important;
+    padding:14px 16px!important;
+    overflow:hidden!important;
+  }
+
+  .matrix-question-card .matrix-shape-board{
+    box-sizing:border-box!important;
+    min-height:210px!important;
+    max-height:none!important;
+    height:100%!important;
+    overflow:hidden!important;
+    padding:7px!important;
+  }
+
+  .matrix-question-card .shape-matrix-grid{
+    box-sizing:border-box!important;
+    width:min(570px,100%)!important;
+    height:100%!important;
+    max-height:100%!important;
+    grid-template-rows:repeat(3,minmax(0,1fr))!important;
+    gap:6px!important;
+  }
+
+  .matrix-question-card .shape-matrix-cell{
+    box-sizing:border-box!important;
+    min-height:0!important;
+    height:100%!important;
+    max-height:none!important;
+    overflow:hidden!important;
+    padding:3px!important;
+  }
+
+  .matrix-question-card .matrix-main-shape{
+    width:min(70px,68%)!important;
+    height:min(70px,68%)!important;
+    max-width:70px!important;
+    max-height:70px!important;
+  }
+
+  .matrix-question-card .answer-title{
+    box-sizing:border-box!important;
+    min-height:30px!important;
+    height:30px!important;
+    margin:0!important;
+    align-items:center!important;
+  }
+
+  .matrix-question-card .dice-answers{
+    box-sizing:border-box!important;
+    min-height:118px!important;
+    height:100%!important;
+    max-height:136px!important;
+    overflow:hidden!important;
+    align-self:stretch!important;
+    gap:8px!important;
+  }
+
+  .matrix-question-card .matrix-answer{
+    box-sizing:border-box!important;
+    min-height:0!important;
+    height:100%!important;
+    max-height:136px!important;
+    overflow:hidden!important;
+    padding:6px!important;
+  }
+
+  .matrix-question-card .matrix-answer .matrix-answer-shape{
+    width:min(62px,68%)!important;
+    height:min(62px,68%)!important;
+    max-width:62px!important;
+    max-height:62px!important;
+  }
+}
+
+/* Typowe ekrany laptopów i monitorów o wysokości do 900 px */
+@media(min-width:901px) and (max-height:900px){
+  .matrix-question-card{
+    grid-template-rows:
+      auto
+      minmax(195px,1fr)
+      28px
+      116px!important;
+    gap:6px!important;
+    padding:11px 14px!important;
+  }
+
+  .matrix-question-card .matrix-shape-board{
+    min-height:195px!important;
+  }
+
+  .matrix-question-card .matrix-main-shape{
+    width:62px!important;
+    height:62px!important;
+    max-width:62px!important;
+    max-height:62px!important;
+  }
+
+  .matrix-question-card .answer-title{
+    min-height:28px!important;
+    height:28px!important;
+  }
+
+  .matrix-question-card .dice-answers,
+  .matrix-question-card .matrix-answer{
+    min-height:116px!important;
+    height:116px!important;
+    max-height:116px!important;
+  }
+
+  .matrix-question-card .matrix-answer .matrix-answer-shape{
+    width:54px!important;
+    height:54px!important;
+    max-width:54px!important;
+    max-height:54px!important;
+  }
+}
+
+/* Niskie okna desktopowe */
+@media(min-width:901px) and (max-height:760px){
+  .matrix-question-card{
+    grid-template-rows:auto minmax(165px,1fr) 25px 96px!important;
+    padding:8px 11px!important;
+    gap:5px!important;
+  }
+
+  .matrix-question-card .matrix-shape-board{
+    min-height:165px!important;
+  }
+
+  .matrix-question-card .matrix-main-shape{
+    width:52px!important;
+    height:52px!important;
+    max-width:52px!important;
+    max-height:52px!important;
+  }
+
+  .matrix-question-card .answer-title{
+    min-height:25px!important;
+    height:25px!important;
+  }
+
+  .matrix-question-card .dice-answers,
+  .matrix-question-card .matrix-answer{
+    min-height:96px!important;
+    height:96px!important;
+    max-height:96px!important;
+  }
+
+  .matrix-question-card .matrix-answer .matrix-answer-shape{
+    width:44px!important;
+    height:44px!important;
+    max-width:44px!important;
+    max-height:44px!important;
+  }
+}
