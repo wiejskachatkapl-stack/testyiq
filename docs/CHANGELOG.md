@@ -1,5 +1,20 @@
 # Changelog
 
+## v1022
+### Dodano
+- wypełnienie kropkowane,
+- delikatne wypełnienie pełne w kolorystyce Brain Lab,
+- nowe typy matryc łączące obrót, wypełnienie i liczbę figur,
+- zadania z dwiema i trzema figurami w jednym polu,
+- cztery nowe rodziny reguł matryc.
+
+### Zmieniono
+- kontury figur są wyraźnie cieńsze,
+- paski i kropki zachowują turkusową kolorystykę aplikacji,
+- odpowiedzi mają większe podobieństwo stylistyczne do matrycy,
+- pozostałych ekranów i mechaniki nie zmieniono,
+- cache PWA zmieniono na `iq-brain-lab-v1022`.
+
 ## v1021
 ### Poprawiono
 - usunięto wizualnie identyczne odpowiedzi,

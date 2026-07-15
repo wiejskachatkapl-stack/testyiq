@@ -34,3 +34,7 @@ Figury obrysowe: turkus `#55edf0`, grubość 6. Figury pełne: krem `#fff3d7`. S
 
 ### Unikalność odpowiedzi v1021
 Odpowiedzi są porównywane według wyglądu, a nie tylko danych. Obrót koła, kwadratu o 90°, krzyża o 90°, gwiazdy o 72° itd. nie tworzy sztucznie nowej odpowiedzi. Wypełnienie jest zmieniane tylko w regułach, które rzeczywiście badają wypełnienie.
+
+
+### Matryce v1022
+Dostępne wypełnienia: puste, półprzezroczyste pełne, paskowane i kropkowane. Generator częściej wykorzystuje obroty oraz układy 1–3 figur. Kontur ma grubość 2,0–2,6 zamiast poprzedniego grubego obrysu.
