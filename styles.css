@@ -3486,3 +3486,352 @@ footer{grid-row:3;display:flex;justify-content:center;align-items:center;gap:8px
     font-size:.58rem!important;
   }
 }
+
+
+/* =========================================================
+   v1030 — mobilny Training Hub mieszczący się na jednym ekranie
+   Bazą pozostaje stabilna v1029.
+   ========================================================= */
+
+@media (max-width:900px), (hover:none) and (pointer:coarse){
+  .screen[data-screen="training"]{
+    overflow:hidden!important;
+  }
+
+  .training-hub{
+    width:100%!important;
+    height:100%!important;
+    min-height:0!important;
+    overflow:hidden!important;
+    display:grid!important;
+    grid-template-rows:
+      minmax(0, 26%)
+      minmax(0, 13%)
+      minmax(0, 49%)
+      minmax(0, 12%)!important;
+    gap:6px!important;
+  }
+
+  /* GÓRA */
+  .training-hero{
+    min-height:0!important;
+    height:100%!important;
+    border-radius:18px!important;
+    padding:10px 11px!important;
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) 112px!important;
+    gap:8px!important;
+    align-items:center!important;
+    overflow:hidden!important;
+  }
+
+  .training-title-block{
+    min-width:0!important;
+    display:grid!important;
+    grid-template-columns:50px minmax(0,1fr)!important;
+    gap:8px!important;
+    align-items:center!important;
+  }
+
+  .training-logo{
+    width:48px!important;
+    height:48px!important;
+    border-radius:14px!important;
+  }
+
+  .training-logo svg{
+    width:36px!important;
+    height:36px!important;
+  }
+
+  .training-title-block>div:last-child{
+    min-width:0!important;
+  }
+
+  .training-title-block small{
+    font-size:.50rem!important;
+    letter-spacing:.12em!important;
+  }
+
+  .training-title-block h2{
+    margin:3px 0 5px!important;
+    font-size:1.28rem!important;
+    line-height:.95!important;
+    letter-spacing:-.035em!important;
+  }
+
+  .training-title-block p{
+    margin:0!important;
+    font-size:.54rem!important;
+    line-height:1.18!important;
+    max-width:150px!important;
+  }
+
+  .brain-level-card{
+    min-width:0!important;
+    min-height:0!important;
+    height:82%!important;
+    align-self:center!important;
+    padding:8px 9px!important;
+    border-radius:15px!important;
+    grid-template-columns:1fr auto!important;
+    gap:4px!important;
+  }
+
+  .brain-level-card small,
+  .brain-level-card span{
+    font-size:.43rem!important;
+  }
+
+  .brain-level-card strong{
+    font-size:1.35rem!important;
+    line-height:1!important;
+  }
+
+  .brain-xp-track{
+    height:5px!important;
+  }
+
+  .premium-brain,
+  .training-brain-art{
+    display:none!important;
+  }
+
+  /* 6 UMIEJĘTNOŚCI */
+  .training-skill-strip{
+    min-height:0!important;
+    height:100%!important;
+    padding:0!important;
+    border-radius:15px!important;
+    display:grid!important;
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+    grid-template-rows:repeat(2,minmax(0,1fr))!important;
+    gap:0!important;
+    overflow:hidden!important;
+  }
+
+  .training-skill-strip>div{
+    min-width:0!important;
+    min-height:0!important;
+    padding:4px 5px!important;
+    display:grid!important;
+    grid-template-columns:22px minmax(0,1fr) auto!important;
+    grid-template-rows:auto auto!important;
+    gap:2px 4px!important;
+    align-items:center!important;
+    border-right:1px solid rgba(90,127,186,.22)!important;
+    border-bottom:1px solid rgba(90,127,186,.22)!important;
+  }
+
+  .training-skill-strip>div:nth-child(3n){
+    border-right:0!important;
+  }
+
+  .training-skill-strip>div:nth-child(n+4){
+    border-bottom:0!important;
+  }
+
+  .skill-mini-icon{
+    grid-row:1/3!important;
+    width:20px!important;
+    height:20px!important;
+    border-radius:6px!important;
+  }
+
+  .skill-mini-icon svg{
+    width:16px!important;
+    height:16px!important;
+  }
+
+  .training-skill-strip span:not(.skill-mini-icon){
+    min-width:0!important;
+    font-size:.39rem!important;
+    white-space:nowrap!important;
+    overflow:hidden!important;
+    text-overflow:clip!important;
+  }
+
+  .training-skill-strip b{
+    font-size:.44rem!important;
+  }
+
+  .training-skill-strip i{
+    grid-column:2/4!important;
+    height:4px!important;
+  }
+
+  /* 6 KAFELKÓW */
+  .training-category-grid{
+    min-height:0!important;
+    height:100%!important;
+    display:grid!important;
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    grid-template-rows:repeat(3,minmax(0,1fr))!important;
+    gap:6px!important;
+    overflow:hidden!important;
+  }
+
+  .training-category{
+    min-width:0!important;
+    min-height:0!important;
+    height:100%!important;
+    position:relative!important;
+    display:grid!important;
+    grid-template-columns:46px minmax(0,1fr)!important;
+    grid-template-rows:minmax(0,1fr) auto!important;
+    gap:3px 7px!important;
+    padding:7px 28px 6px 7px!important;
+    border-radius:14px!important;
+    overflow:hidden!important;
+  }
+
+  .training-category .category-icon{
+    grid-column:1!important;
+    grid-row:1/3!important;
+    width:43px!important;
+    height:43px!important;
+    max-width:43px!important;
+    max-height:43px!important;
+    align-self:center!important;
+  }
+
+  .training-category .category-copy{
+    grid-column:2!important;
+    grid-row:1!important;
+    min-width:0!important;
+    overflow:hidden!important;
+    align-self:center!important;
+  }
+
+  .training-category .category-copy strong{
+    display:block!important;
+    width:100%!important;
+    max-width:100%!important;
+    white-space:nowrap!important;
+    overflow:hidden!important;
+    text-overflow:clip!important;
+    font-size:.73rem!important;
+    line-height:1!important;
+    letter-spacing:-.025em!important;
+  }
+
+  .training-category.focus .category-copy strong{
+    font-size:.52rem!important;
+    letter-spacing:-.04em!important;
+  }
+
+  .training-category.imagination .category-copy strong{
+    font-size:.55rem!important;
+    letter-spacing:-.04em!important;
+  }
+
+  .training-category .category-copy small{
+    display:block!important;
+    margin-top:3px!important;
+    font-size:.45rem!important;
+    white-space:nowrap!important;
+    overflow:hidden!important;
+  }
+
+  .training-category .category-arrow{
+    position:absolute!important;
+    right:6px!important;
+    top:50%!important;
+    transform:translateY(-50%)!important;
+    width:22px!important;
+    height:22px!important;
+    font-size:1.05rem!important;
+    line-height:1!important;
+  }
+
+  .training-category .category-progress{
+    grid-column:2!important;
+    grid-row:2!important;
+    min-width:0!important;
+    display:grid!important;
+    grid-template-columns:1fr auto!important;
+    gap:4px!important;
+    align-items:center!important;
+  }
+
+  .training-category .category-progress i{
+    height:4px!important;
+  }
+
+  .training-category .category-progress b{
+    font-size:.48rem!important;
+  }
+
+  /* CODZIENNE WYZWANIE */
+  .training-daily-card{
+    min-width:0!important;
+    min-height:0!important;
+    height:100%!important;
+    padding:5px 7px!important;
+    border-radius:14px!important;
+    display:grid!important;
+    grid-template-columns:38px minmax(0,1fr) 36px 78px!important;
+    gap:6px!important;
+    align-items:center!important;
+    overflow:hidden!important;
+  }
+
+  .daily-trophy{
+    width:34px!important;
+    height:34px!important;
+  }
+
+  .daily-trophy svg{
+    width:32px!important;
+    height:32px!important;
+  }
+
+  .training-daily-card div{
+    min-width:0!important;
+  }
+
+  .training-daily-card div small{
+    font-size:.40rem!important;
+  }
+
+  .training-daily-card div strong{
+    font-size:.62rem!important;
+    white-space:nowrap!important;
+  }
+
+  .training-daily-card p{
+    display:none!important;
+  }
+
+  .training-daily-card>span b{
+    font-size:1rem!important;
+    line-height:1!important;
+  }
+
+  .training-daily-card>span small{
+    font-size:.42rem!important;
+    white-space:nowrap!important;
+  }
+
+  .training-daily-card button{
+    min-height:30px!important;
+    height:30px!important;
+    padding:0 6px!important;
+    border-radius:10px!important;
+    font-size:.48rem!important;
+  }
+}
+
+/* Jeszcze ciaśniejsze telefony */
+@media (max-width:380px){
+  .training-title-block h2{font-size:1.12rem!important}
+  .training-title-block p{font-size:.48rem!important}
+  .training-category{grid-template-columns:40px minmax(0,1fr)!important}
+  .training-category .category-icon{
+    width:37px!important;height:37px!important;
+    max-width:37px!important;max-height:37px!important;
+  }
+  .training-category .category-copy strong{font-size:.64rem!important}
+  .training-category.focus .category-copy strong{font-size:.46rem!important}
+  .training-category.imagination .category-copy strong{font-size:.48rem!important}
+}
