@@ -90,9 +90,7 @@ document.querySelectorAll('.training-category').forEach(b=>b.onclick=()=>openTra
    Brain Music v1037 — procedural ambient audio engine
    ========================================================= */
 const brainMusic={
-  context:null,
-  master:null,
-  nodes:[],
+  audio:new Audio(),
   playing:false,
   sound:'rain',
   name:'Deszcz',
@@ -101,7 +99,21 @@ const brainMusic={
   timerMinutes:0,
   timerEnd:0,
   timerInterval:null,
-
+  sources:{
+    rain:'assets/audio/rain.ogg',
+    ocean:'assets/audio/ocean.ogg',
+    forest:'assets/audio/forest.ogg',
+    fire:'assets/audio/fire.ogg',
+    night:'assets/audio/night.ogg',
+    alpha:'assets/audio/alpha.ogg',
+    deepFocus:'assets/audio/deepFocus.ogg',
+    study:'assets/audio/study.ogg',
+    meditation:'assets/audio/meditation.ogg',
+    pink:'assets/audio/pink.ogg',
+    brown:'assets/audio/brown.ogg',
+    white:'assets/audio/white.ogg',
+    delta:'assets/audio/delta.ogg'
+  },
   load(){
     try{
       const saved=JSON.parse(localStorage.getItem('brainMusicSettings')||'{}');
@@ -111,300 +123,64 @@ const brainMusic={
       this.volume=Number.isFinite(saved.volume)?saved.volume:this.volume;
       this.timerMinutes=Number.isFinite(saved.timerMinutes)?saved.timerMinutes:0;
     }catch{}
+    this.audio.loop=true;
+    this.audio.preload='auto';
+    this.audio.src=this.sources[this.sound]||this.sources.rain;
+    this.audio.volume=this.volume/100;
+    this.audio.addEventListener('play',()=>{this.playing=true;this.updateUI()});
+    this.audio.addEventListener('pause',()=>{this.playing=false;this.updateUI()});
   },
-
   save(){
     localStorage.setItem('brainMusicSettings',JSON.stringify({
       sound:this.sound,name:this.name,category:this.category,
       volume:this.volume,timerMinutes:this.timerMinutes
     }));
   },
-
-  ensureContext(){
-    if(!this.context){
-      const AudioCtx=window.AudioContext||window.webkitAudioContext;
-      if(!AudioCtx) return false;
-      this.context=new AudioCtx();
-      this.master=this.context.createGain();
-      this.master.gain.value=this.volume/100*.55;
-      this.master.connect(this.context.destination);
-    }
-    if(this.context.state==='suspended') this.context.resume();
-    return true;
-  },
-
-  add(node){
-    this.nodes.push(node);
-    return node;
-  },
-
-  makeNoise(color='white'){
-    const ctx=this.context;
-    const length=ctx.sampleRate*4;
-    const buffer=ctx.createBuffer(1,length,ctx.sampleRate);
-    const data=buffer.getChannelData(0);
-    let last=0;
-    for(let i=0;i<length;i++){
-      const white=Math.random()*2-1;
-      if(color==='brown'){
-        last=(last+.02*white)/1.02;
-        data[i]=last*3.5;
-      }else if(color==='pink'){
-        last=.97*last+.03*white;
-        data[i]=(white*.35+last*.9)*.7;
-      }else{
-        data[i]=white;
-      }
-    }
-    const src=ctx.createBufferSource();
-    src.buffer=buffer;
-    src.loop=true;
-    return src;
-  },
-
-  connectNoise({color='white',gain=.12,lowpass=1200,highpass=20}={}){
-    const src=this.makeNoise(color);
-    const hp=this.context.createBiquadFilter();
-    hp.type='highpass'; hp.frequency.value=highpass;
-    const lp=this.context.createBiquadFilter();
-    lp.type='lowpass'; lp.frequency.value=lowpass;
-    const g=this.context.createGain(); g.gain.value=gain;
-    src.connect(hp).connect(lp).connect(g).connect(this.master);
-    src.start();
-    this.add(src);this.add(hp);this.add(lp);this.add(g);
-    return {src,hp,lp,g};
-  },
-
-  oscillator(freq,type='sine',gain=.03,detune=0){
-    const o=this.context.createOscillator();
-    const g=this.context.createGain();
-    o.frequency.value=freq;o.type=type;o.detune.value=detune;g.gain.value=gain;
-    o.connect(g).connect(this.master);o.start();
-    this.add(o);this.add(g);
-    return {o,g};
-  },
-
-  lfo(target,param,min,max,seconds){
-    const o=this.context.createOscillator();
-    const g=this.context.createGain();
-    const base=(min+max)/2,amount=(max-min)/2;
-    target[param].value=base;
-    o.frequency.value=1/seconds;g.gain.value=amount;
-    o.connect(g).connect(target[param]);o.start();
-    this.add(o);this.add(g);
-  },
-
-  playRain(){
-    const n=this.connectNoise({color:'pink',gain:.17,lowpass:6500,highpass:500});
-    this.lfo(n.g,'gain',.10,.20,4.5);
-    const low=this.connectNoise({color:'brown',gain:.05,lowpass:450,highpass:30});
-    this.lfo(low.g,'gain',.025,.07,7);
-  },
-
-  playOcean(){
-    const n=this.connectNoise({color:'pink',gain:.12,lowpass:1300,highpass:40});
-    this.lfo(n.g,'gain',.025,.18,7.5);
-    this.lfo(n.lp,'frequency',350,1700,7.5);
-    this.oscillator(92,'sine',.018);
-  },
-
-  playForest(){
-    const n=this.connectNoise({color:'pink',gain:.055,lowpass:2800,highpass:90});
-    this.lfo(n.g,'gain',.025,.08,8);
-    [1450,1870,2320].forEach((f,i)=>{
-      const chirp=this.oscillator(f,'sine',.004,i*7);
-      this.lfo(chirp.g,'gain',0,.009,2.7+i*.9);
-    });
-  },
-
-  playFire(){
-    const n=this.connectNoise({color:'brown',gain:.11,lowpass:900,highpass:80});
-    this.lfo(n.g,'gain',.035,.15,1.7);
-    const crack=this.connectNoise({color:'white',gain:.018,lowpass:5000,highpass:1700});
-    this.lfo(crack.g,'gain',.002,.035,.45);
-  },
-
-  playNight(){
-    const n=this.connectNoise({color:'pink',gain:.035,lowpass:1100,highpass:30});
-    this.oscillator(220,'sine',.012);
-    this.oscillator(330,'sine',.007,4);
-    const insect=this.oscillator(4200,'sine',.002);
-    this.lfo(insect.g,'gain',0,.006,1.2);
-  },
-
-  playBinaural(base,beat,gain=.025){
-    const merger=this.context.createChannelMerger(2);
-    const left=this.context.createOscillator(),right=this.context.createOscillator();
-    const gl=this.context.createGain(),gr=this.context.createGain();
-    left.frequency.value=base;right.frequency.value=base+beat;
-    gl.gain.value=gain;gr.gain.value=gain;
-    left.connect(gl).connect(merger,0,0);
-    right.connect(gr).connect(merger,0,1);
-    merger.connect(this.master);
-    left.start();right.start();
-    [left,right,gl,gr,merger].forEach(n=>this.add(n));
-  },
-
-  playAlpha(){
-    this.playBinaural(180,10,.035);
-    this.connectNoise({color:'pink',gain:.025,lowpass:700,highpass:30});
-  },
-
-  playDeepFocus(){
-    this.playBinaural(210,18,.028);
-    this.oscillator(105,'sine',.018);
-    this.connectNoise({color:'brown',gain:.025,lowpass:520,highpass:30});
-  },
-
-  playStudy(){
-    [110,164.8,220,329.6].forEach((f,i)=>{
-      const x=this.oscillator(f,'sine',.010-i*.001);
-      this.lfo(x.g,'gain',.004,.014,5+i);
-    });
-    this.connectNoise({color:'pink',gain:.018,lowpass:900,highpass:40});
-  },
-
-  playMeditation(){
-    this.oscillator(110,'sine',.030);
-    this.oscillator(165,'sine',.015);
-    const n=this.connectNoise({color:'brown',gain:.020,lowpass:420,highpass:20});
-    this.lfo(n.g,'gain',.010,.035,9);
-  },
-
-  playDelta(){
-    this.playBinaural(100,3,.035);
-    this.connectNoise({color:'brown',gain:.04,lowpass:350,highpass:20});
-  },
-
   start(){
-    if(!this.ensureContext()) return;
-    this.stopNodes();
-    const map={
-      rain:()=>this.playRain(),ocean:()=>this.playOcean(),forest:()=>this.playForest(),
-      fire:()=>this.playFire(),night:()=>this.playNight(),alpha:()=>this.playAlpha(),
-      deepFocus:()=>this.playDeepFocus(),study:()=>this.playStudy(),
-      meditation:()=>this.playMeditation(),pink:()=>this.connectNoise({color:'pink',gain:.09,lowpass:5000,highpass:30}),
-      brown:()=>this.connectNoise({color:'brown',gain:.12,lowpass:1300,highpass:20}),
-      white:()=>this.connectNoise({color:'white',gain:.055,lowpass:8000,highpass:60}),
-      delta:()=>this.playDelta()
-    };
-    (map[this.sound]||map.rain)();
-    this.playing=true;
-    this.applyVolume();
-    this.startTimer();
-    this.updateUI();
+    const src=this.sources[this.sound]||this.sources.rain;
+    if(!this.audio.src.endsWith(src))this.audio.src=src;
+    this.audio.loop=true;this.audio.volume=this.volume/100;
+    this.audio.play().catch(()=>{});
+    this.playing=true;this.startTimer();this.updateUI();
   },
-
-  pause(){
-    if(this.context&&this.context.state==='running') this.context.suspend();
-    this.playing=false;
-    this.updateUI();
-  },
-
-  resume(){
-    if(!this.context){this.start();return}
-    this.context.resume();
-    this.playing=true;
-    this.updateUI();
-  },
-
-  stopNodes(){
-    this.nodes.forEach(n=>{
-      try{if(typeof n.stop==='function')n.stop()}catch{}
-      try{n.disconnect()}catch{}
-    });
-    this.nodes=[];
-  },
-
-  stop(){
-    this.stopNodes();
-    this.playing=false;
-    clearInterval(this.timerInterval);
-    this.timerInterval=null;
-    this.timerEnd=0;
-    this.updateUI();
-  },
-
+  pause(){this.audio.pause();this.playing=false;this.updateUI()},
+  resume(){this.audio.play().catch(()=>{});this.playing=true;this.updateUI()},
+  stop(){this.audio.pause();this.audio.currentTime=0;this.playing=false;clearInterval(this.timerInterval);this.timerInterval=null;this.timerEnd=0;this.updateUI()},
   select(sound,name,category){
+    const wasPlaying=this.playing;
     this.sound=sound;this.name=name;this.category=category;
+    this.audio.pause();this.audio.src=this.sources[sound]||this.sources.rain;this.audio.load();
     this.save();
-    if(this.playing) this.start();
-    this.updateUI();
+    if(wasPlaying)this.start();else this.updateUI();
   },
-
-  applyVolume(){
-    if(this.master&&this.context){
-      this.master.gain.cancelScheduledValues(this.context.currentTime);
-      this.master.gain.linearRampToValueAtTime(this.volume/100*.55,this.context.currentTime+.08);
-    }
-  },
-
-  setVolume(value){
-    this.volume=Number(value);
-    this.applyVolume();this.save();this.updateUI();
-  },
-
-  setTimer(minutes){
-    this.timerMinutes=Number(minutes);
-    this.save();
-    if(this.playing)this.startTimer();
-    else this.updateTimerUI();
-  },
-
+  setVolume(value){this.volume=Number(value);this.audio.volume=this.volume/100;this.save();this.updateUI()},
+  setTimer(minutes){this.timerMinutes=Number(minutes);this.save();if(this.playing)this.startTimer();else this.updateTimerUI()},
   startTimer(){
-    clearInterval(this.timerInterval);
-    this.timerInterval=null;
-    if(!this.timerMinutes){
-      this.timerEnd=0;this.updateTimerUI();return;
-    }
+    clearInterval(this.timerInterval);this.timerInterval=null;
+    if(!this.timerMinutes){this.timerEnd=0;this.updateTimerUI();return}
     this.timerEnd=Date.now()+this.timerMinutes*60000;
-    this.timerInterval=setInterval(()=>{
-      if(Date.now()>=this.timerEnd){
-        this.stop();
-        this.timerEnd=0;
-      }
-      this.updateTimerUI();
-    },1000);
+    this.timerInterval=setInterval(()=>{if(Date.now()>=this.timerEnd){this.stop();this.timerEnd=0}this.updateTimerUI()},1000);
     this.updateTimerUI();
   },
-
   updateTimerUI(){
-    const el=document.getElementById('musicTimerDisplay');
-    if(!el)return;
-    if(this.timerEnd){
-      const sec=Math.max(0,Math.ceil((this.timerEnd-Date.now())/1000));
-      const m=Math.floor(sec/60),s=String(sec%60).padStart(2,'0');
-      el.textContent=`${m}:${s}`;
-    }else{
-      el.textContent=this.timerMinutes?`${this.timerMinutes} min`:'Bez limitu';
-    }
+    const el=document.getElementById('musicTimerDisplay');if(!el)return;
+    if(this.timerEnd){const sec=Math.max(0,Math.ceil((this.timerEnd-Date.now())/1000));el.textContent=`${Math.floor(sec/60)}:${String(sec%60).padStart(2,'0')}`}
+    else el.textContent=this.timerMinutes?`${this.timerMinutes} min`:'Bez limitu';
     document.querySelectorAll('[data-minutes]').forEach(b=>b.classList.toggle('active',Number(b.dataset.minutes)===this.timerMinutes));
   },
-
   updateUI(){
-    const name=document.getElementById('musicCurrentName');
-    const cat=document.getElementById('musicCurrentCategory');
-    if(name)name.textContent=this.name;
-    if(cat)cat.textContent=this.category;
+    const name=document.getElementById('musicCurrentName'),cat=document.getElementById('musicCurrentCategory');
+    if(name)name.textContent=this.name;if(cat)cat.textContent=this.category;
     const btn=document.getElementById('musicPlayPause');
-    if(btn){
-      btn.querySelector('span').textContent=this.playing?'Ⅱ':'▶';
-      btn.querySelector('b').textContent=this.playing?'PAUZA':'ODTWÓRZ';
-    }
+    if(btn){btn.querySelector('span').textContent=this.playing?'Ⅱ':'▶';btn.querySelector('b').textContent=this.playing?'PAUZA':'ODTWÓRZ'}
     document.getElementById('musicEqualizer')?.classList.toggle('playing',this.playing);
     document.getElementById('brainMusicBtn')?.classList.toggle('playing',this.playing);
-    document.querySelectorAll('.music-track').forEach(b=>{
-      b.classList.toggle('active',b.dataset.sound===this.sound);
-      b.querySelector('i').textContent=b.dataset.sound===this.sound&&this.playing?'Ⅱ':'▶';
-    });
-    const vol=document.getElementById('musicVolume');
-    if(vol)vol.value=this.volume;
-    const vv=document.getElementById('musicVolumeValue');
-    if(vv)vv.textContent=`${this.volume}%`;
+    document.querySelectorAll('.music-track').forEach(b=>{b.classList.toggle('active',b.dataset.sound===this.sound);b.querySelector('i').textContent=b.dataset.sound===this.sound&&this.playing?'Ⅱ':'▶'});
+    const vol=document.getElementById('musicVolume');if(vol)vol.value=this.volume;
+    const vv=document.getElementById('musicVolumeValue');if(vv)vv.textContent=`${this.volume}%`;
     this.updateTimerUI();
   }
 };
-
 brainMusic.load();
 
 function openBrainMusic(){
