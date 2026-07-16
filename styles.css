@@ -4960,3 +4960,551 @@ html,body{
   .music-panel-foot span{font-size:.40rem}
   .music-panel-foot button{min-height:30px;padding:0 13px;font-size:.44rem;border-radius:9px}
 }
+
+
+/* =========================================================
+   v1038 — ekran główny zgodny z zaakceptowaną makietą
+   ========================================================= */
+
+.home-visual{
+  background:
+    radial-gradient(circle at 78% 24%,rgba(0,203,255,.13),transparent 27%),
+    radial-gradient(circle at 20% 88%,rgba(116,43,219,.08),transparent 31%),
+    linear-gradient(145deg,#051a30 0%,#051426 56%,#07101e 100%)!important;
+  border-color:rgba(46,152,191,.42)!important;
+}
+
+.home-brand-block{
+  align-items:flex-start!important;
+}
+
+.home-brand-copy{
+  position:static!important;
+}
+
+.home-brand-block small{
+  display:block!important;
+  max-width:360px!important;
+  font-size:1rem!important;
+  line-height:1.45!important;
+  color:#d3dde7!important;
+}
+
+.brain-music-launch{
+  position:absolute!important;
+  left:28px!important;
+  bottom:24px!important;
+  width:320px!important;
+  min-height:76px!important;
+  margin:0!important;
+  padding:10px 14px!important;
+  grid-template-columns:52px minmax(0,1fr) 28px!important;
+  border-radius:22px!important;
+  border:1px solid #cf2fff!important;
+  background:
+    radial-gradient(circle at 12% 50%,rgba(0,221,255,.18),transparent 32%),
+    linear-gradient(115deg,#053253 0%,#15224c 48%,#42105c 100%)!important;
+  box-shadow:
+    0 0 0 1px rgba(0,217,255,.28),
+    0 0 26px rgba(0,210,255,.12),
+    0 0 28px rgba(218,48,255,.12),
+    0 14px 30px rgba(0,0,0,.25)!important;
+}
+
+.brain-music-launch-icon{
+  width:50px!important;
+  height:50px!important;
+  border-radius:15px!important;
+  font-size:1.45rem!important;
+  color:#4be9ff!important;
+  border-color:rgba(54,225,255,.55)!important;
+  background:rgba(0,137,192,.18)!important;
+}
+
+.brain-music-launch strong{
+  font-size:.88rem!important;
+  line-height:1.15!important;
+}
+
+.brain-music-launch small{
+  display:none!important;
+}
+
+.brain-music-launch>b{
+  font-size:1.9rem!important;
+  color:#e54cff!important;
+}
+
+/* Premium menu buttons */
+.home-actions{
+  gap:12px!important;
+}
+
+.home-action{
+  --home-accent:#24d7ff;
+  --home-bg1:#06335a;
+  --home-bg2:#06172a;
+  position:relative!important;
+  min-height:132px!important;
+  overflow:hidden!important;
+  isolation:isolate!important;
+  display:grid!important;
+  grid-template-columns:72px minmax(0,1fr) 38px!important;
+  grid-template-rows:minmax(0,1fr) auto!important;
+  gap:8px 12px!important;
+  padding:16px!important;
+  border-radius:23px!important;
+  border:1px solid var(--home-accent)!important;
+  background:
+    radial-gradient(circle at 20% 28%,color-mix(in srgb,var(--home-accent) 18%,transparent),transparent 36%),
+    linear-gradient(140deg,var(--home-bg1),var(--home-bg2))!important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.025),
+    0 14px 30px rgba(0,0,0,.22)!important;
+}
+
+.home-action:after{
+  content:"";
+  position:absolute;
+  width:190px;
+  height:190px;
+  right:-80px;
+  bottom:-120px;
+  border-radius:50%;
+  background:var(--home-accent);
+  filter:blur(52px);
+  opacity:.12;
+  z-index:-1;
+}
+
+.home-action-test{
+  --home-accent:#1fd4ff;
+  --home-bg1:#06365d;
+  --home-bg2:#06172b;
+}
+.home-action-training{
+  --home-accent:#23d9d2;
+  --home-bg1:#07504e;
+  --home-bg2:#062528;
+}
+.home-action-daily{
+  --home-accent:#248cff;
+  --home-bg1:#102f6d;
+  --home-bg2:#091a3d;
+}
+.home-action-progresses{
+  --home-accent:#904dff;
+  --home-bg1:#32125f;
+  --home-bg2:#1a0a36;
+}
+.home-action-achievements{
+  --home-accent:#e445f4;
+  --home-bg1:#4a164e;
+  --home-bg2:#270d31;
+}
+.home-action-settings{
+  --home-accent:#1bd9e9;
+  --home-bg1:#063e52;
+  --home-bg2:#05232f;
+}
+
+.home-action>b{
+  grid-column:1!important;
+  grid-row:1!important;
+  width:68px!important;
+  height:68px!important;
+  border-radius:20px!important;
+  display:grid!important;
+  place-items:center!important;
+  align-self:center!important;
+  color:var(--home-accent)!important;
+  background:rgba(3,20,39,.52)!important;
+  border:1px solid var(--home-accent)!important;
+  font-size:1.75rem!important;
+  box-shadow:inset 0 0 20px rgba(255,255,255,.025),0 8px 20px rgba(0,0,0,.22)!important;
+}
+
+.home-action>span{
+  grid-column:2!important;
+  grid-row:1!important;
+  align-self:center!important;
+  gap:5px!important;
+}
+
+.home-action strong{
+  color:#fff!important;
+  font-size:1.22rem!important;
+  line-height:1.05!important;
+  letter-spacing:-.025em!important;
+  white-space:nowrap!important;
+}
+
+.home-action>span small{
+  color:var(--home-accent)!important;
+  font-size:.68rem!important;
+}
+
+.home-action>i{
+  grid-column:3!important;
+  grid-row:1!important;
+  align-self:center!important;
+  justify-self:end!important;
+  width:34px!important;
+  height:34px!important;
+  display:grid!important;
+  place-items:center!important;
+  border-radius:50%!important;
+  border:1px solid var(--home-accent)!important;
+  color:var(--home-accent)!important;
+  background:rgba(0,0,0,.18)!important;
+  font-size:1.45rem!important;
+}
+
+.home-action-progress{
+  grid-column:1/4!important;
+  grid-row:2!important;
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) auto!important;
+  gap:9px!important;
+  align-items:center!important;
+  font-style:normal!important;
+}
+
+.home-action-progress u{
+  display:block!important;
+  height:7px!important;
+  border-radius:999px!important;
+  background:rgba(255,255,255,.10)!important;
+  text-decoration:none!important;
+  overflow:hidden!important;
+}
+
+.home-action-progress u:before{
+  content:"";
+  display:block;
+  width:7px;
+  height:100%;
+  border-radius:999px;
+  background:var(--home-accent);
+  box-shadow:0 0 10px var(--home-accent);
+}
+
+.home-action-progress small{
+  color:var(--home-accent)!important;
+  font-size:.85rem!important;
+  font-weight:800!important;
+}
+
+.home-action:hover{
+  transform:translateY(-2px)!important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.035),
+    0 18px 38px rgba(0,0,0,.26),
+    0 0 22px color-mix(in srgb,var(--home-accent) 14%,transparent)!important;
+}
+
+/* Telefon */
+@media(max-width:900px),(hover:none) and (pointer:coarse){
+  .home-premium{
+    grid-template-rows:minmax(175px,.86fr) minmax(0,1.45fr) auto auto!important;
+  }
+
+  .home-visual{
+    min-height:0!important;
+    padding:12px!important;
+  }
+
+  .home-brand-block{
+    width:72%!important;
+    gap:9px!important;
+  }
+
+  .home-brand-block small{
+    max-width:175px!important;
+    font-size:.57rem!important;
+    line-height:1.3!important;
+  }
+
+  .brain-music-launch{
+    left:12px!important;
+    bottom:10px!important;
+    width:205px!important;
+    min-height:48px!important;
+    padding:6px 8px!important;
+    grid-template-columns:34px minmax(0,1fr) 17px!important;
+    border-radius:15px!important;
+  }
+
+  .brain-music-launch-icon{
+    width:32px!important;
+    height:32px!important;
+    border-radius:10px!important;
+    font-size:.9rem!important;
+  }
+
+  .brain-music-launch strong{
+    font-size:.58rem!important;
+  }
+
+  .brain-music-launch>b{
+    font-size:1.2rem!important;
+  }
+
+  .home-actions{
+    gap:7px!important;
+  }
+
+  .home-action{
+    min-height:0!important;
+    height:100%!important;
+    grid-template-columns:42px minmax(0,1fr) 24px!important;
+    grid-template-rows:minmax(0,1fr) auto!important;
+    gap:4px 7px!important;
+    padding:8px!important;
+    border-radius:15px!important;
+  }
+
+  .home-action>b{
+    width:40px!important;
+    height:40px!important;
+    border-radius:12px!important;
+    font-size:1rem!important;
+  }
+
+  .home-action strong{
+    font-size:.67rem!important;
+  }
+
+  .home-action>span small{
+    font-size:.43rem!important;
+  }
+
+  .home-action>i{
+    width:24px!important;
+    height:24px!important;
+    font-size:1rem!important;
+  }
+
+  .home-action-progress{
+    gap:5px!important;
+  }
+
+  .home-action-progress u{
+    height:5px!important;
+  }
+
+  .home-action-progress u:before{
+    width:5px!important;
+  }
+
+  .home-action-progress small{
+    font-size:.53rem!important;
+  }
+}
+
+/* Węższe telefony */
+@media(max-width:390px){
+  .brain-music-launch{width:190px!important}
+  .home-action strong{font-size:.61rem!important}
+  .home-action>span small{font-size:.39rem!important}
+}
+
+
+/* =========================================================
+   v1040 — pełny premium ekran główny na PC i telefonie
+   ========================================================= */
+
+.home-action-svg{
+  width:72%;
+  height:72%;
+  display:block;
+  color:inherit;
+  filter:drop-shadow(0 0 8px currentColor);
+}
+
+/* KOMPUTER */
+@media(min-width:901px){
+  .app{
+    width:min(1500px,96vw)!important;
+  }
+
+  .home-premium{
+    width:min(1320px,100%)!important;
+    height:100%!important;
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    grid-template-rows:minmax(310px,1.08fr) minmax(290px,.95fr) minmax(92px,.28fr) auto!important;
+    gap:14px!important;
+    align-content:stretch!important;
+  }
+
+  .home-visual{
+    min-height:310px!important;
+    height:100%!important;
+    padding:30px 34px!important;
+    overflow:hidden!important;
+  }
+
+  .home-brand-block{
+    width:48%!important;
+    gap:20px!important;
+  }
+
+  .home-brand-block h1{
+    font-size:clamp(3.4rem,4.1vw,5rem)!important;
+    line-height:.94!important;
+  }
+
+  .home-brand-block p{
+    margin:8px 0 10px!important;
+  }
+
+  .home-brand-block small{
+    font-size:1rem!important;
+    line-height:1.35!important;
+  }
+
+  .brain-music-launch{
+    display:grid!important;
+    visibility:visible!important;
+    opacity:1!important;
+    position:absolute!important;
+    left:34px!important;
+    bottom:18px!important;
+    z-index:10!important;
+    width:360px!important;
+    min-height:64px!important;
+    padding:8px 13px!important;
+    grid-template-columns:48px minmax(0,1fr) 24px!important;
+  }
+
+  .brain-music-launch-icon{
+    width:46px!important;
+    height:46px!important;
+  }
+
+  .brain-music-launch strong{
+    font-size:.82rem!important;
+  }
+
+  .home-brain-art{
+    width:46%!important;
+    max-width:560px!important;
+    height:90%!important;
+    right:1.5%!important;
+    top:2%!important;
+  }
+
+  .home-metric-art{
+    left:31%!important;
+    bottom:20px!important;
+  }
+
+  .home-actions{
+    display:grid!important;
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+    grid-template-rows:repeat(2,minmax(0,1fr))!important;
+    gap:14px!important;
+    transform:none!important;
+    align-self:stretch!important;
+  }
+
+  .home-action{
+    min-height:132px!important;
+    height:100%!important;
+    grid-template-columns:84px minmax(0,1fr) 34px!important;
+    grid-template-rows:minmax(0,1fr) auto!important;
+    gap:8px 14px!important;
+    padding:16px 18px!important;
+    border-radius:22px!important;
+  }
+
+  .home-action>b{
+    width:78px!important;
+    height:78px!important;
+    border-radius:20px!important;
+  }
+
+  .home-action strong{
+    font-size:1.15rem!important;
+  }
+
+  .home-action>span small{
+    font-size:.68rem!important;
+  }
+
+  .home-action>i{
+    width:32px!important;
+    height:32px!important;
+  }
+
+  .home-action-progress u{
+    height:7px!important;
+  }
+
+  .home-action-progress small{
+    font-size:.78rem!important;
+  }
+
+  .home-lower-visual{
+    min-height:92px!important;
+    overflow:hidden!important;
+  }
+
+  .home-level{
+    min-height:76px!important;
+  }
+}
+
+/* Jawne gradienty bez color-mix */
+.home-action-test{
+  border-color:#20d9ff!important;
+  background:
+    radial-gradient(circle at 18% 28%,rgba(32,217,255,.22),transparent 35%),
+    linear-gradient(135deg,#07365e,#061629)!important;
+}
+.home-action-training{
+  border-color:#20dfd4!important;
+  background:
+    radial-gradient(circle at 18% 28%,rgba(32,223,212,.20),transparent 35%),
+    linear-gradient(135deg,#07504d,#062126)!important;
+}
+.home-action-daily{
+  border-color:#4a71ff!important;
+  background:
+    radial-gradient(circle at 18% 28%,rgba(74,113,255,.22),transparent 35%),
+    linear-gradient(135deg,#192f70,#0b183d)!important;
+}
+.home-action-progresses{
+  border-color:#a54aff!important;
+  background:
+    radial-gradient(circle at 18% 28%,rgba(165,74,255,.22),transparent 35%),
+    linear-gradient(135deg,#3c1468,#1b0b36)!important;
+}
+.home-action-achievements{
+  border-color:#ec43e8!important;
+  background:
+    radial-gradient(circle at 18% 28%,rgba(236,67,232,.22),transparent 35%),
+    linear-gradient(135deg,#51184e,#280d31)!important;
+}
+.home-action-settings{
+  border-color:#19dbe7!important;
+  background:
+    radial-gradient(circle at 18% 28%,rgba(25,219,231,.22),transparent 35%),
+    linear-gradient(135deg,#06455a,#05222e)!important;
+}
+
+/* TELEFON */
+@media(max-width:900px),(hover:none) and (pointer:coarse){
+  .home-action-svg{
+    width:72%!important;
+    height:72%!important;
+  }
+
+  .brain-music-launch{
+    display:grid!important;
+    visibility:visible!important;
+    opacity:1!important;
+    z-index:10!important;
+  }
+}
