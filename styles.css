@@ -4330,3 +4330,293 @@ html,body{
   .game-status:after{font-size:1.25rem!important}
   .locked .game-status{width:auto!important;min-width:58px!important;height:24px!important;padding:0 7px!important;font-size:.43rem!important}
 }
+
+
+/* =========================================================
+   v1035 — rzeczywiście kolorowe kafelki premium w kategorii
+   Jawne kolory bez color-mix dla pełnej zgodności.
+   ========================================================= */
+
+.training-game-grid{
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:14px!important;
+}
+
+.training-game-card{
+  position:relative!important;
+  min-width:0!important;
+  min-height:168px!important;
+  overflow:hidden!important;
+  isolation:isolate!important;
+  display:grid!important;
+  grid-template-columns:112px minmax(0,1fr) 48px!important;
+  grid-template-rows:minmax(0,1fr) auto!important;
+  gap:10px 18px!important;
+  padding:20px!important;
+  border-radius:24px!important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.025),
+    0 16px 34px rgba(0,0,0,.24)!important;
+  opacity:1!important;
+  filter:none!important;
+}
+
+.training-game-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-2;
+}
+
+.training-game-card::after{
+  content:"";
+  position:absolute;
+  width:250px;
+  height:250px;
+  right:-100px;
+  bottom:-150px;
+  border-radius:50%;
+  filter:blur(56px);
+  opacity:.22;
+  z-index:-1;
+}
+
+/* KOSTKI — błękit */
+.training-game-card.game-card-1{
+  border:1px solid #19cfff!important;
+  background:linear-gradient(135deg,#07365f 0%,#061a31 62%,#04101e 100%)!important;
+}
+.game-card-1::before{
+  background:radial-gradient(circle at 16% 34%,rgba(27,213,255,.22),transparent 38%)!important;
+}
+.game-card-1::after{background:#00bfff!important}
+.game-card-1 .game-icon,.game-card-1 .game-status{color:#26dfff!important;border-color:#26dfff!important}
+.game-card-1 .game-icon{background:rgba(0,123,177,.17)!important}
+
+/* MATRYCE — zieleń */
+.training-game-card.game-card-2{
+  border:1px solid #20d965!important;
+  background:linear-gradient(135deg,#0a4f2e 0%,#072a1d 60%,#03150d 100%)!important;
+}
+.game-card-2::before{
+  background:radial-gradient(circle at 16% 34%,rgba(42,235,108,.20),transparent 38%)!important;
+}
+.game-card-2::after{background:#14d75c!important}
+.game-card-2 .game-icon,.game-card-2 .game-status{color:#39ef73!important;border-color:#39ef73!important}
+.game-card-2 .game-icon{background:rgba(12,134,63,.17)!important}
+
+/* SEKWENCJE — pomarańcz */
+.training-game-card.game-card-3{
+  border:1px solid #ff7a16!important;
+  background:linear-gradient(135deg,#582008 0%,#2a1007 62%,#160807 100%)!important;
+}
+.game-card-3::before{
+  background:radial-gradient(circle at 16% 34%,rgba(255,126,27,.20),transparent 38%)!important;
+}
+.game-card-3::after{background:#f05d0c!important}
+.game-card-3 .game-icon,.game-card-3 .game-status{color:#ff8d1c!important;border-color:#ff8d1c!important}
+.game-card-3 .game-icon{background:rgba(169,64,9,.18)!important}
+
+/* ZAPAŁKI — złoto */
+.training-game-card.game-card-4{
+  border:1px solid #ffc20b!important;
+  background:linear-gradient(135deg,#594000 0%,#2e2102 62%,#171003 100%)!important;
+}
+.game-card-4::before{
+  background:radial-gradient(circle at 16% 34%,rgba(255,204,35,.20),transparent 38%)!important;
+}
+.game-card-4::after{background:#e7a900!important}
+.game-card-4 .game-icon,.game-card-4 .game-status{color:#ffd21b!important;border-color:#ffd21b!important}
+.game-card-4 .game-icon{background:rgba(161,113,0,.18)!important}
+
+/* CO NIE PASUJE — fiolet */
+.training-game-card.game-card-5{
+  border:1px solid #b648f4!important;
+  background:linear-gradient(135deg,#3b1159 0%,#210d34 62%,#12061f 100%)!important;
+}
+.game-card-5::before{
+  background:radial-gradient(circle at 16% 34%,rgba(187,69,244,.22),transparent 38%)!important;
+}
+.game-card-5::after{background:#982fd7!important}
+.game-card-5 .game-icon,.game-card-5 .game-status{color:#c55cff!important;border-color:#c55cff!important}
+.game-card-5 .game-icon{background:rgba(112,31,156,.20)!important}
+
+.training-game-card .game-icon{
+  grid-column:1!important;
+  grid-row:1/3!important;
+  width:104px!important;
+  height:104px!important;
+  border-radius:24px!important;
+  display:grid!important;
+  place-items:center!important;
+  border-width:1px!important;
+  border-style:solid!important;
+  font-size:2.3rem!important;
+  box-shadow:inset 0 0 24px rgba(255,255,255,.025),0 10px 24px rgba(0,0,0,.24)!important;
+}
+
+.training-game-card .game-copy{
+  grid-column:2!important;
+  grid-row:1!important;
+  min-width:0!important;
+  align-self:center!important;
+}
+
+.training-game-card .game-copy strong{
+  display:block!important;
+  color:#fff!important;
+  font-size:1.72rem!important;
+  line-height:1!important;
+  letter-spacing:-.035em!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+}
+
+.training-game-card .game-copy small{
+  display:block!important;
+  margin-top:8px!important;
+  color:rgba(236,246,250,.78)!important;
+  font-size:.86rem!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+}
+
+.training-game-card .game-level{
+  grid-column:2/4!important;
+  grid-row:2!important;
+  min-width:0!important;
+  display:grid!important;
+  grid-template-columns:auto minmax(80px,1fr)!important;
+  gap:12px!important;
+  align-items:center!important;
+}
+
+.training-game-card .game-level b{
+  color:#fff!important;
+  font-size:1.28rem!important;
+  white-space:nowrap!important;
+}
+
+.training-game-card .game-level i{
+  height:8px!important;
+  background:rgba(255,255,255,.12)!important;
+  border-radius:999px!important;
+  overflow:hidden!important;
+}
+
+.training-game-card .game-level em{
+  height:100%!important;
+  background:currentColor!important;
+}
+
+.training-game-card .game-status{
+  grid-column:3!important;
+  grid-row:1!important;
+  justify-self:end!important;
+  align-self:center!important;
+  width:42px!important;
+  min-width:42px!important;
+  height:42px!important;
+  padding:0!important;
+  border-radius:50%!important;
+  display:grid!important;
+  place-items:center!important;
+  font-size:0!important;
+  background:rgba(0,0,0,.22)!important;
+  border-width:1px!important;
+  border-style:solid!important;
+}
+
+.training-game-card .game-status::after{
+  content:"›"!important;
+  font-size:1.8rem!important;
+  line-height:1!important;
+  transform:translateX(1px);
+}
+
+.training-game-card.locked{
+  opacity:.68!important;
+}
+
+.training-game-card.locked .game-status{
+  width:auto!important;
+  min-width:78px!important;
+  height:30px!important;
+  padding:0 10px!important;
+  border-radius:999px!important;
+  font-size:.56rem!important;
+}
+
+.training-game-card.locked .game-status::after{
+  content:none!important;
+}
+
+/* Telefon */
+@media(max-width:900px),(hover:none) and (pointer:coarse){
+  .training-game-grid{
+    grid-template-columns:1fr!important;
+    grid-template-rows:repeat(5,minmax(0,1fr))!important;
+    gap:7px!important;
+    overflow:hidden!important;
+  }
+
+  .training-game-card{
+    min-height:0!important;
+    height:100%!important;
+    grid-template-columns:54px minmax(0,1fr) 34px!important;
+    grid-template-rows:minmax(0,1fr) auto!important;
+    gap:3px 8px!important;
+    padding:8px 9px!important;
+    border-radius:16px!important;
+  }
+
+  .training-game-card .game-icon{
+    width:50px!important;
+    height:50px!important;
+    border-radius:14px!important;
+    font-size:1.15rem!important;
+  }
+
+  .training-game-card .game-copy strong{
+    font-size:.84rem!important;
+  }
+
+  .training-game-card .game-copy small{
+    margin-top:2px!important;
+    font-size:.49rem!important;
+  }
+
+  .training-game-card .game-level{
+    grid-template-columns:auto minmax(44px,1fr)!important;
+    gap:7px!important;
+  }
+
+  .training-game-card .game-level b{
+    font-size:.82rem!important;
+  }
+
+  .training-game-card .game-level i{
+    height:5px!important;
+  }
+
+  .training-game-card .game-status{
+    width:28px!important;
+    min-width:28px!important;
+    height:28px!important;
+  }
+
+  .training-game-card .game-status::after{
+    font-size:1.25rem!important;
+  }
+
+  .training-game-card.locked .game-status{
+    width:auto!important;
+    min-width:58px!important;
+    height:24px!important;
+    padding:0 7px!important;
+    font-size:.43rem!important;
+  }
+}
