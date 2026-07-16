@@ -1,5 +1,17 @@
 # Changelog
 
+## v1037
+### Dodano
+- przycisk `Muzyka relaksacyjna` pod nazwą IQ Challenge,
+- panel Brain Music,
+- kategorie Natura, Focus, Wyciszenie i Sen,
+- 13 generowanych dźwięków i pejzaży dźwiękowych,
+- odtwarzanie, pauzę, zatrzymanie i regulację głośności,
+- timer 10, 20, 30 i 60 minut,
+- zapamiętywanie wyboru i głośności,
+- działanie muzyki podczas przechodzenia między ekranami,
+- cache PWA `iq-brain-lab-v1037`.
+
 ## v1036
 ### Zmieniono
 - Kostki mają ikonę dwóch kostek,

@@ -20,3 +20,7 @@ Warstwa pośrednia przeplata DiceGenerator i MatrixGenerator, dzięki czemu siln
 
 ## Training Hub v1024
 Kategorie i gry są definiowane w konfiguracji TRAINING_CATEGORIES. Profil lokalny przechowuje XP, postęp, gwiazdki i serię dni.
+
+
+## Brain Music v1037
+Moduł wykorzystuje Web Audio API i proceduralne generowanie szumu, oscylatorów oraz dudnień różnicowych. Nie korzysta z zewnętrznych plików ani połączenia internetowego.
