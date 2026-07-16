@@ -4620,3 +4620,83 @@ html,body{
     font-size:.43rem!important;
   }
 }
+
+
+/* =========================================================
+   v1036 — prawdziwe ikony gier + identyczny wygląd na PC
+   ========================================================= */
+
+.training-game-svg{
+  width:68%;
+  height:68%;
+  display:block;
+  color:inherit;
+  filter:drop-shadow(0 0 8px currentColor);
+}
+
+/* Twarde reguły komputerowe — nadpisują starsze definicje */
+@media(min-width:901px){
+  .training-category-screen .training-game-grid{
+    display:grid!important;
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    grid-auto-rows:minmax(170px,1fr)!important;
+    gap:14px!important;
+    overflow:visible!important;
+  }
+
+  .training-category-screen .training-game-card{
+    min-height:170px!important;
+    height:auto!important;
+    grid-template-columns:112px minmax(0,1fr) 48px!important;
+    grid-template-rows:minmax(0,1fr) auto!important;
+    padding:20px!important;
+    gap:10px 18px!important;
+    border-radius:24px!important;
+    opacity:1!important;
+    filter:none!important;
+  }
+
+  .training-category-screen .training-game-card.locked{
+    opacity:.72!important;
+  }
+
+  .training-category-screen .training-game-card .game-icon{
+    width:104px!important;
+    height:104px!important;
+    max-width:104px!important;
+    max-height:104px!important;
+    border-radius:24px!important;
+  }
+
+  .training-category-screen .training-game-card .game-copy strong{
+    font-size:1.72rem!important;
+  }
+
+  .training-category-screen .training-game-card .game-copy small{
+    font-size:.86rem!important;
+  }
+
+  .training-category-screen .training-game-card .game-level b{
+    font-size:1.28rem!important;
+  }
+
+  .training-category-screen .training-game-card .game-status{
+    width:42px!important;
+    min-width:42px!important;
+    height:42px!important;
+  }
+
+  .training-category-screen .training-game-card.locked .game-status{
+    width:auto!important;
+    min-width:78px!important;
+    height:30px!important;
+  }
+}
+
+/* Dodatkowe dopasowanie telefonu */
+@media(max-width:900px),(hover:none) and (pointer:coarse){
+  .training-game-svg{
+    width:72%!important;
+    height:72%!important;
+  }
+}

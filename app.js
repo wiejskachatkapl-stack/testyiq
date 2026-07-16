@@ -23,9 +23,66 @@ const TRAINING_CATEGORIES={
  imagination:{name:'Wyobraźnia',icon:'△',description:'Rozwijaj wyobraźnię przestrzenną.',games:[['rotate','Obrót figur','↻',200,'soon','Wybierz figurę po obrocie'],['solids','Bryły 3D','⬡',200,'soon','Wyobrażaj sobie obrót brył'],['tangram','Tangram','△',200,'soon','Układaj kształty'],['mazes','Labirynty','⌗',200,'soon','Znajdź drogę']]}
 };
 for(const c of Object.values(TRAINING_CATEGORIES)) c.games=c.games.map(g=>({id:g[0],name:g[1],icon:g[2],levels:g[3],status:g[4],subtitle:g[5]}));
+
+const TRAINING_GAME_ICONS={
+  'dice-training':`<svg class="training-game-svg" viewBox="0 0 100 100" aria-hidden="true">
+    <g fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round">
+      <rect x="16" y="18" width="36" height="36" rx="8"/>
+      <rect x="48" y="46" width="36" height="36" rx="8"/>
+      <circle cx="28" cy="30" r="3" fill="currentColor"/>
+      <circle cx="40" cy="42" r="3" fill="currentColor"/>
+      <circle cx="60" cy="58" r="3" fill="currentColor"/>
+      <circle cx="72" cy="70" r="3" fill="currentColor"/>
+      <circle cx="72" cy="58" r="3" fill="currentColor"/>
+      <circle cx="60" cy="70" r="3" fill="currentColor"/>
+    </g>
+  </svg>`,
+  'matrix-training':`<svg class="training-game-svg" viewBox="0 0 100 100" aria-hidden="true">
+    <g fill="none" stroke="currentColor" stroke-width="3.2">
+      <rect x="14" y="14" width="72" height="72" rx="10"/>
+      <path d="M38 14v72M62 14v72M14 38h72M14 62h72"/>
+      <circle cx="26" cy="26" r="5" fill="currentColor"/>
+      <rect x="48" y="20" width="10" height="10" rx="2" fill="currentColor"/>
+      <path d="M74 20l6 10H68z" fill="currentColor"/>
+      <rect x="20" y="48" width="10" height="10" rx="2" fill="currentColor"/>
+      <path d="M50 48l6 10H44z" fill="currentColor"/>
+      <circle cx="74" cy="50" r="5" fill="currentColor"/>
+      <path d="M26 68l6 10H20z" fill="currentColor"/>
+      <circle cx="50" cy="74" r="5" fill="currentColor"/>
+      <path d="M70 70h10v10H70z" stroke-dasharray="3 3"/>
+    </g>
+  </svg>`,
+  'sequences':`<svg class="training-game-svg" viewBox="0 0 100 100" aria-hidden="true">
+    <g fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="18" cy="50" r="7"/>
+      <rect x="35" y="43" width="14" height="14" rx="3"/>
+      <path d="M66 40l9 18H57z"/>
+      <path d="M82 50h10M88 44l6 6-6 6"/>
+    </g>
+  </svg>`,
+  'matches':`<svg class="training-game-svg" viewBox="0 0 100 100" aria-hidden="true">
+    <g fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round">
+      <path d="M24 76L70 30"/>
+      <path d="M37 83L83 37"/>
+    </g>
+    <circle cx="73" cy="27" r="8" fill="currentColor"/>
+    <circle cx="86" cy="34" r="8" fill="currentColor"/>
+  </svg>`,
+  'odd-one-out':`<svg class="training-game-svg" viewBox="0 0 100 100" aria-hidden="true">
+    <g fill="none" stroke="currentColor" stroke-width="3.5">
+      <circle cx="25" cy="28" r="10"/>
+      <circle cx="50" cy="28" r="10"/>
+      <circle cx="75" cy="28" r="10"/>
+      <circle cx="25" cy="58" r="10"/>
+      <circle cx="50" cy="58" r="10"/>
+      <path d="M75 46l12 12-12 12-12-12z"/>
+    </g>
+  </svg>`
+};
+
 function getTrainingProfile(){try{return {level:1,xp:0,streak:0,categories:{},games:{},...JSON.parse(localStorage.getItem('brainLabTrainingProfile')||'{}')}}catch{return {level:1,xp:0,streak:0,categories:{},games:{}}}}
 function renderTrainingProfile(){const p=getTrainingProfile(),xp=p.xp||0;document.getElementById('brainLevelValue').textContent=Math.floor(xp/100)+1;document.getElementById('brainXpValue').textContent=`${xp%100} / 100`;document.getElementById('brainXpFill').style.width=`${xp%100}%`;document.querySelectorAll('.training-category').forEach(b=>{const v=p.categories?.[b.dataset.category]||0;b.querySelector('.category-progress em').style.width=`${v}%`;b.querySelector('.category-progress b').textContent=`${v}%`})}
-function openTrainingCategory(key){const c=TRAINING_CATEGORIES[key];if(!c)return;const p=getTrainingProfile(),v=p.categories?.[key]||0;categoryScreenIcon.textContent=c.icon;categoryScreenTitle.textContent=c.name;categoryScreenDescription.textContent=c.description;categoryScreenProgress.textContent=`${v}%`;let total=0,done=0,stars=0;c.games.forEach(g=>{total+=g.levels;done+=p.games?.[g.id]?.completed||0;stars+=p.games?.[g.id]?.stars||0});categoryCompleted.textContent=`${done} / ${total}`;categoryStars.textContent=stars;categoryStreak.textContent=`${p.streak||0} dni`;trainingGameGrid.innerHTML=c.games.map((g,idx)=>`<button class="training-game-card game-card-${idx+1} ${g.status==='available'?'available':'locked'}" data-game="${g.id}" data-status="${g.status}"><span class="game-icon">${g.icon}</span><span class="game-copy"><strong>${g.name}</strong><small>${g.subtitle}</small></span><span class="game-level"><b>${p.games?.[g.id]?.completed||0} / ${g.levels}</b><i><em style="width:0%"></em></i></span><span class="game-status">${g.status==='available'?'GRAJ':'WKRÓTCE'}</span></button>`).join('');trainingGameGrid.querySelectorAll('button').forEach(b=>b.onclick=()=>modal(b.dataset.status==='available'?b.querySelector('strong').textContent:'Wkrótce dostępne',b.dataset.status==='available'?'Generator działa już w Test IQ. Pełny tryb treningowy z poziomami, gwiazdkami i XP podłączymy w kolejnej wersji.':'Ten trening zostanie dodany w kolejnych wersjach.','✦'));nav('training-category')}
+function openTrainingCategory(key){const c=TRAINING_CATEGORIES[key];if(!c)return;const p=getTrainingProfile(),v=p.categories?.[key]||0;categoryScreenIcon.textContent=c.icon;categoryScreenTitle.textContent=c.name;categoryScreenDescription.textContent=c.description;categoryScreenProgress.textContent=`${v}%`;let total=0,done=0,stars=0;c.games.forEach(g=>{total+=g.levels;done+=p.games?.[g.id]?.completed||0;stars+=p.games?.[g.id]?.stars||0});categoryCompleted.textContent=`${done} / ${total}`;categoryStars.textContent=stars;categoryStreak.textContent=`${p.streak||0} dni`;trainingGameGrid.innerHTML=c.games.map((g,idx)=>`<button class="training-game-card game-card-${idx+1} ${g.status==='available'?'available':'locked'}" data-game="${g.id}" data-status="${g.status}"><span class="game-icon">${TRAINING_GAME_ICONS[g.id]||g.icon}</span><span class="game-copy"><strong>${g.name}</strong><small>${g.subtitle}</small></span><span class="game-level"><b>${p.games?.[g.id]?.completed||0} / ${g.levels}</b><i><em style="width:0%"></em></i></span><span class="game-status">${g.status==='available'?'GRAJ':'WKRÓTCE'}</span></button>`).join('');trainingGameGrid.querySelectorAll('button').forEach(b=>b.onclick=()=>modal(b.dataset.status==='available'?b.querySelector('strong').textContent:'Wkrótce dostępne',b.dataset.status==='available'?'Generator działa już w Test IQ. Pełny tryb treningowy z poziomami, gwiazdkami i XP podłączymy w kolejnej wersji.':'Ten trening zostanie dodany w kolejnych wersjach.','✦'));nav('training-category')}
 document.querySelectorAll('.training-category').forEach(b=>b.onclick=()=>openTrainingCategory(b.dataset.category));
 
 function formatTime(ms){
