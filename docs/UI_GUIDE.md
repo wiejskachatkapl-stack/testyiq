@@ -64,3 +64,7 @@ Ekran kategorii używa tych samych zasad co Centrum Treningu: mocna ikona, duża
 
 ## Kafelki v1035
 Kolory są jawne: Kostki — błękit, Matryce — zieleń, Sekwencje — pomarańcz, Zapałki — złoto, Co nie pasuje — fiolet.
+
+
+## Ikony treningów v1036
+Każda gra ma własną ikonę SVG odpowiadającą jej mechanice. Te same komponenty są używane na telefonie i komputerze.

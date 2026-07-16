@@ -1,6 +1,6 @@
 # IQ Challenge • Brain Lab
 
-Aktualna wersja: **v1035**
+Aktualna wersja: **v1036**
 
 Status: Brain Engine — fundament SPA i pierwsza ścieżka Test IQ.
 
@@ -132,3 +132,7 @@ Kafelki gier w ekranie kategorii otrzymały ten sam premium styl co główne prz
 
 ## v1035
 Kafelki gier otrzymały jawne klasy kolorystyczne generowane w app.js. Usunięto zależność od funkcji CSS `color-mix`, aby wygląd był identyczny w każdej przeglądarce.
+
+
+## v1036
+Dodano prawdziwe ikony SVG do Kostek, Matryc, Sekwencji, Zapałek i Co nie pasuje. Wymuszono ten sam premium wygląd kafelków na telefonie i komputerze.

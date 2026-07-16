@@ -1,5 +1,16 @@
 # Changelog
 
+## v1036
+### Zmieniono
+- Kostki mają ikonę dwóch kostek,
+- Matryce mają ikonę planszy 3 × 3,
+- Sekwencje mają ikonę ciągu figur,
+- Zapałki mają ikonę dwóch zapałek,
+- Co nie pasuje ma ikonę zestawu z jednym innym elementem,
+- wygląd kafelków premium został wymuszony także na komputerze,
+- mechanika pozostała bez zmian,
+- cache PWA zmieniono na `iq-brain-lab-v1036`.
+
 ## v1035
 ### Naprawiono
 - kafelki naprawdę otrzymują pięć różnych kolorów,
