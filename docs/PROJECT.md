@@ -1,6 +1,6 @@
 # IQ Challenge • Brain Lab
 
-Aktualna wersja: **v1042**
+Aktualna wersja: **v1043**
 
 Status: Brain Engine — fundament SPA i pierwsza ścieżka Test IQ.
 
@@ -156,3 +156,7 @@ Naprawiono widoczność przycisku Muzyka relaksacyjna na komputerze. Główne pr
 
 ## v1042
 Na komputerze przycisk Muzyka relaksacyjna został przeniesiony do prawej dolnej części nagłówka. Układ telefonu pozostawiono bez zmian.
+
+
+## v1043
+Ekran główny telefonu został zmniejszony tak, aby całość mieściła się bez przewijania. Przycisk Muzyka relaksacyjna przeniesiono na prawą dolną część nagłówka, analogicznie do wersji komputerowej.

@@ -80,3 +80,7 @@ Każdy kafelek używa tematycznej ikony SVG. Na komputerze układ ma trzy kolumn
 
 ## Nagłówek v1042
 Na komputerze przycisk muzyki jest zakotwiczony w prawym dolnym narożniku panelu głównego. Na telefonie pozostaje po lewej stronie.
+
+
+## Mobile v1043
+Mobilny ekran główny korzysta z czterech proporcjonalnych sekcji wysokości. Dzięki temu wszystkie elementy są widoczne jednocześnie bez przewijania.
