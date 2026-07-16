@@ -1,5 +1,15 @@
 # Changelog
 
+## v1045
+### Zmieniono
+- dodano przycisk `Pokaż rozłożoną kostkę`,
+- dodano pełny widok siatki sześciu ścian,
+- pokazano pary przeciwległe: 1–6, 2–5, 3–4,
+- znacząco powiększono przyciski wskazówek,
+- powiększono treść wyświetlanej podpowiedzi,
+- uproszczono pierwszą lekcję i rozwiązanie,
+- cache PWA zmieniono na `iq-brain-lab-v1045`.
+
 ## v1044
 ### Zmieniono
 - cały ekran główny telefonu mieści się bez przewijania,

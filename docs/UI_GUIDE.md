@@ -84,3 +84,7 @@ Na komputerze przycisk muzyki jest zakotwiczony w prawym dolnym narożniku panel
 
 ## Mobile v1044
 Mobilny ekran główny korzysta z czterech proporcjonalnych sekcji wysokości. Dzięki temu wszystkie elementy są widoczne jednocześnie bez przewijania.
+
+
+## Akademia Kostek v1045
+Wskazówki są prezentowane jako duże, opisowe kafelki. Widok rozłożonej kostki pokazuje położenie wszystkich sześciu ścian i pary przeciwległe.
