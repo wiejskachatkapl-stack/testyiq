@@ -270,6 +270,60 @@
       <section class="category-footer-card"><div><small>Ukończone poziomy</small><strong id="categoryCompleted">0 / 1000</strong></div><div><small>Zdobyte gwiazdki</small><strong id="categoryStars">0</strong></div><div><small>Najlepsza seria</small><strong id="categoryStreak">0 dni</strong></div></section>
     </div>
   </section>
+
+<section class="screen" data-screen="dice-academy">
+  <div class="dice-academy">
+    <section class="academy-hero">
+      <div class="academy-hero-icon">⚄</div>
+      <div><small>AKADEMIA LOGIKI</small><h2>Nauka: Kostki</h2><p>Poznaj zasady, korzystaj ze wskazówek i sprawdzaj rozwiązania krok po kroku.</p></div>
+      <div class="academy-progress"><span>POSTĘP NAUKI</span><strong id="academyProgressText">1 / 5</strong><i><b id="academyProgressBar"></b></i></div>
+    </section>
+
+    <nav class="academy-lessons">
+      <button class="active" data-lesson="0"><b>1</b><span>Orientacja</span></button>
+      <button data-lesson="1"><b>2</b><span>Sąsiedztwo</span></button>
+      <button data-lesson="2"><b>3</b><span>Przeciwległe</span></button>
+      <button data-lesson="3"><b>4</b><span>Obrót</span></button>
+      <button data-lesson="4"><b>5</b><span>Eliminacja</span></button>
+    </nav>
+
+    <section class="academy-content">
+      <article class="academy-theory">
+        <small>JAK TO DZIAŁA?</small>
+        <h3 id="academyTitle"></h3>
+        <p id="academyDescription"></p>
+        <div class="academy-rule"><span>NAJWAŻNIEJSZA ZASADA</span><strong id="academyRule"></strong></div>
+        <div class="academy-tips">
+          <button data-tip="0">💡 Wskazówka 1</button>
+          <button data-tip="1">💡 Wskazówka 2</button>
+          <button data-tip="2">💡 Wskazówka 3</button>
+        </div>
+        <div id="academyTipBox" class="academy-tip-box hidden"><b>WSKAZÓWKA</b><p id="academyTipText"></p></div>
+      </article>
+
+      <article class="academy-example">
+        <div class="academy-example-head"><div><small>PRZYKŁAD</small><h3>Która odpowiedź zachowuje układ ścian?</h3></div><button id="academyResetExample">↻ Powtórz</button></div>
+        <div class="academy-demo">
+          <div class="demo-source"><span>WZORZEC</span><div class="flat-die die-four"><i></i><i></i><i></i><i></i></div><small>Obok: 2 i 3</small></div>
+          <div class="demo-arrow">→</div>
+          <div class="demo-answers">
+            <button data-academy-answer="wrong"><span>A</span><div class="flat-die die-three"><i></i><i></i><i></i></div><small>Obok: 2 i 4</small></button>
+            <button data-academy-answer="correct"><span>B</span><div class="flat-die die-two"><i></i><i></i></div><small>Obok: 4 i 3</small></button>
+            <button data-academy-answer="wrong"><span>C</span><div class="flat-die die-five"><i></i><i></i><i></i><i></i><i></i></div><small>Obok: 2 i 3</small></button>
+          </div>
+        </div>
+        <div id="academyFeedback" class="academy-feedback">Wybierz odpowiedź albo pokaż rozwiązanie.</div>
+        <div class="academy-actions"><button id="academyShowSolution">POKAŻ ROZWIĄZANIE</button><button id="academyNextLesson">NASTĘPNA LEKCJA ›</button></div>
+      </article>
+    </section>
+
+    <section id="academySolution" class="academy-solution hidden">
+      <div>✓</div><article><small>ROZWIĄZANIE KROK PO KROKU</small><h3 id="academySolutionTitle">Poprawna odpowiedź: B</h3><p id="academySolutionText"></p></article>
+      <button id="academyStartTraining">ROZPOCZNIJ TRENING</button>
+    </section>
+  </div>
+</section>
+
 <section class="screen" data-screen="setup">
     <div class="setup-premium">
       <section class="setup-hero-card">
@@ -435,7 +489,7 @@
     </div>
   </section>
 
-  <footer><button data-coming="O aplikacji">O aplikacji</button><span>•</span><span>Wersja 1043</span></footer>
+  <footer><button data-coming="O aplikacji">O aplikacji</button><span>•</span><span>Wersja 1044</span></footer>
 </main>
 
 

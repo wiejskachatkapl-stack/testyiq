@@ -2,7 +2,7 @@ const state={screen:'home',history:[],participant:null,sound:true,questionEngine
 const screens=[...document.querySelectorAll('.screen')];
 const back=document.getElementById('backBtn');
 const label=document.getElementById('screenLabel');
-const labels={home:'Brain Lab',training:'Trening Umysłu','training-category':'Kategoria treningu',setup:'Test IQ',intro:'Zasady testu',question:'Test IQ'};
+const labels={home:'Brain Lab',training:'Trening Umysłu','training-category':'Kategoria treningu','dice-academy':'Nauka • Kostki',setup:'Test IQ',intro:'Zasady testu',question:'Test IQ'};
 function nav(name,push=true){if(name===state.screen)return;const t=document.querySelector(`[data-screen="${name}"]`);if(!t)return;if(push)state.history.push(state.screen);screens.forEach(s=>s.classList.toggle('active',s===t));state.screen=name;label.textContent=labels[name]||'Brain Lab';back.style.visibility=name==='home'?'hidden':'visible';if(name==='training')renderTrainingProfile()}
 function modal(title,text,icon='✦'){document.getElementById('modalTitle').textContent=title;document.getElementById('modalText').textContent=text;document.getElementById('modalIcon').textContent=icon;document.getElementById('modal').classList.remove('hidden')}
 function closeModal(){document.getElementById('modal').classList.add('hidden')}
@@ -82,8 +82,44 @@ const TRAINING_GAME_ICONS={
 
 function getTrainingProfile(){try{return {level:1,xp:0,streak:0,categories:{},games:{},...JSON.parse(localStorage.getItem('brainLabTrainingProfile')||'{}')}}catch{return {level:1,xp:0,streak:0,categories:{},games:{}}}}
 function renderTrainingProfile(){const p=getTrainingProfile(),xp=p.xp||0;document.getElementById('brainLevelValue').textContent=Math.floor(xp/100)+1;document.getElementById('brainXpValue').textContent=`${xp%100} / 100`;document.getElementById('brainXpFill').style.width=`${xp%100}%`;document.querySelectorAll('.training-category').forEach(b=>{const v=p.categories?.[b.dataset.category]||0;b.querySelector('.category-progress em').style.width=`${v}%`;b.querySelector('.category-progress b').textContent=`${v}%`})}
-function openTrainingCategory(key){const c=TRAINING_CATEGORIES[key];if(!c)return;const p=getTrainingProfile(),v=p.categories?.[key]||0;categoryScreenIcon.textContent=c.icon;categoryScreenTitle.textContent=c.name;categoryScreenDescription.textContent=c.description;categoryScreenProgress.textContent=`${v}%`;let total=0,done=0,stars=0;c.games.forEach(g=>{total+=g.levels;done+=p.games?.[g.id]?.completed||0;stars+=p.games?.[g.id]?.stars||0});categoryCompleted.textContent=`${done} / ${total}`;categoryStars.textContent=stars;categoryStreak.textContent=`${p.streak||0} dni`;trainingGameGrid.innerHTML=c.games.map((g,idx)=>`<button class="training-game-card game-card-${idx+1} ${g.status==='available'?'available':'locked'}" data-game="${g.id}" data-status="${g.status}"><span class="game-icon">${TRAINING_GAME_ICONS[g.id]||g.icon}</span><span class="game-copy"><strong>${g.name}</strong><small>${g.subtitle}</small></span><span class="game-level"><b>${p.games?.[g.id]?.completed||0} / ${g.levels}</b><i><em style="width:0%"></em></i></span><span class="game-status">${g.status==='available'?'GRAJ':'WKRÓTCE'}</span></button>`).join('');trainingGameGrid.querySelectorAll('button').forEach(b=>b.onclick=()=>modal(b.dataset.status==='available'?b.querySelector('strong').textContent:'Wkrótce dostępne',b.dataset.status==='available'?'Generator działa już w Test IQ. Pełny tryb treningowy z poziomami, gwiazdkami i XP podłączymy w kolejnej wersji.':'Ten trening zostanie dodany w kolejnych wersjach.','✦'));nav('training-category')}
+function openTrainingCategory(key){const c=TRAINING_CATEGORIES[key];if(!c)return;const p=getTrainingProfile(),v=p.categories?.[key]||0;categoryScreenIcon.textContent=c.icon;categoryScreenTitle.textContent=c.name;categoryScreenDescription.textContent=c.description;categoryScreenProgress.textContent=`${v}%`;let total=0,done=0,stars=0;c.games.forEach(g=>{total+=g.levels;done+=p.games?.[g.id]?.completed||0;stars+=p.games?.[g.id]?.stars||0});categoryCompleted.textContent=`${done} / ${total}`;categoryStars.textContent=stars;categoryStreak.textContent=`${p.streak||0} dni`;trainingGameGrid.innerHTML=c.games.map((g,idx)=>`<button class="training-game-card game-card-${idx+1} ${g.status==='available'?'available':'locked'}" data-game="${g.id}" data-status="${g.status}"><span class="game-icon">${TRAINING_GAME_ICONS[g.id]||g.icon}</span><span class="game-copy"><strong>${g.name}</strong><small>${g.subtitle}</small></span><span class="game-level"><b>${p.games?.[g.id]?.completed||0} / ${g.levels}</b><i><em style="width:0%"></em></i></span><span class="game-status">${g.status==='available'?'GRAJ':'WKRÓTCE'}</span></button>`).join('');trainingGameGrid.querySelectorAll('button').forEach(b=>b.onclick=()=>{
+  if(b.dataset.game==='dice-training'&&b.dataset.status==='available'){nav('dice-academy');renderDiceAcademy();return}
+  modal(b.dataset.status==='available'?b.querySelector('strong').textContent:'Wkrótce dostępne',b.dataset.status==='available'?'Ten moduł otrzyma taki sam system nauki jak Kostki.':'Ten trening zostanie dodany w kolejnych wersjach.','✦')
+});nav('training-category')}
 document.querySelectorAll('.training-category').forEach(b=>b.onclick=()=>openTrainingCategory(b.dataset.category));
+
+
+
+const DICE_ACADEMY_LESSONS=[
+ {title:'Zacznij od charakterystycznej ściany',description:'Najpierw wybierz ścianę, którą łatwo rozpoznać. Potem sprawdź, jakie ściany znajdują się obok niej.',rule:'Układ ścian względem siebie nie zmienia się podczas obrotu.',tips:['Wybierz ścianę z najbardziej charakterystyczną liczbą punktów.','Sprawdź dwie ściany bezpośrednio przylegające do wybranej.','Odrzuć odpowiedzi, w których sąsiednie ściany stały się przeciwległe.'],solution:'W odpowiedzi B ściana z czterema punktami została obrócona, ale nadal sąsiaduje ze ścianami z dwoma i trzema punktami.'},
+ {title:'Sprawdzaj sąsiednie ściany',description:'Dwie ściany są sąsiednie, gdy dotykają się krawędzią. Po obrocie nadal będą sąsiadami.',rule:'Sąsiednie ściany zawsze pozostają sąsiednie.',tips:['Szukaj trzech ścian widocznych w jednym narożniku.','Porównuj cały zestaw trzech ścian.','Jeśli para nigdy nie występuje obok siebie, może być przeciwległa.'],solution:'Tylko odpowiedź B zachowuje ten sam zestaw trzech ścian spotykających się w jednym narożniku.'},
+ {title:'Rozpoznawaj ściany przeciwległe',description:'Ściany przeciwległe nigdy nie są widoczne jednocześnie w jednym narożniku kostki.',rule:'Ściany przeciwległe nigdy nie stykają się krawędzią.',tips:['Zapamiętuj pary ścian przeciwległych.','Odrzucaj odpowiedzi pokazujące je obok siebie.','Najpierw eliminuj niemożliwe układy.'],solution:'A i C pokazują niemożliwe sąsiedztwo. B zachowuje poprawną relację ścian.'},
+ {title:'Obracaj kostkę etapami',description:'Wyobrażaj sobie pojedyncze obroty o 90°. To łatwiejsze niż obracanie całej kostki naraz.',rule:'Jeden obrót, jedna kontrola położenia ścian.',tips:['Wybierz oś obrotu.','Ściana na osi obrotu pozostaje na swoim boku.','Po każdym obrocie sprawdź trzy widoczne ściany.'],solution:'Po obrocie ściana górna pozostaje górą, a przednia i boczna zamieniają pozycje. Tak wygląda B.'},
+ {title:'Używaj eliminacji',description:'W trudnym zadaniu wystarczy znaleźć jedną błędną relację w każdej złej odpowiedzi.',rule:'Najpierw odrzucaj to, co niemożliwe.',tips:['Porównaj pary sąsiednich ścian.','Sprawdź przeciwległe pary.','Na końcu porównaj kolejność ścian wokół narożnika.'],solution:'A odpada przez złą parę sąsiadów, C przez złą kolejność. B jako jedyna jest możliwa.'}
+];
+let diceAcademyLesson=0;
+function renderDiceAcademy(){
+ const l=DICE_ACADEMY_LESSONS[diceAcademyLesson];
+ academyTitle.textContent=l.title;academyDescription.textContent=l.description;academyRule.textContent=l.rule;
+ academySolutionText.textContent=l.solution;academyProgressText.textContent=`${diceAcademyLesson+1} / 5`;
+ academyProgressBar.style.width=`${(diceAcademyLesson+1)*20}%`;
+ document.querySelectorAll('[data-lesson]').forEach((b,i)=>{b.classList.toggle('active',i===diceAcademyLesson);b.classList.toggle('completed',i<diceAcademyLesson)});
+ academyTipBox.classList.add('hidden');academySolution.classList.add('hidden');
+ academyFeedback.className='academy-feedback';academyFeedback.textContent='Wybierz odpowiedź albo pokaż rozwiązanie.';
+ document.querySelectorAll('[data-academy-answer]').forEach(b=>b.classList.remove('correct','wrong'));
+ academyNextLesson.textContent=diceAcademyLesson===4?'ZAKOŃCZ NAUKĘ ✓':'NASTĘPNA LEKCJA ›';
+}
+document.querySelectorAll('[data-lesson]').forEach(b=>b.onclick=()=>{diceAcademyLesson=Number(b.dataset.lesson);renderDiceAcademy()});
+document.querySelectorAll('[data-tip]').forEach(b=>b.onclick=()=>{academyTipText.textContent=DICE_ACADEMY_LESSONS[diceAcademyLesson].tips[Number(b.dataset.tip)];academyTipBox.classList.remove('hidden')});
+document.querySelectorAll('[data-academy-answer]').forEach(b=>b.onclick=()=>{
+ const ok=b.dataset.academyAnswer==='correct';document.querySelectorAll('[data-academy-answer]').forEach(x=>x.classList.remove('correct','wrong'));
+ b.classList.add(ok?'correct':'wrong');academyFeedback.className=`academy-feedback ${ok?'good':'bad'}`;
+ academyFeedback.textContent=ok?'Dobrze. Układ sąsiednich ścian został zachowany.':'Jeszcze nie. Skorzystaj ze wskazówki i sprawdź sąsiednie ściany.';
+});
+academyShowSolution.onclick=()=>{academySolution.classList.remove('hidden');document.querySelector('[data-academy-answer="correct"]').classList.add('correct')};
+academyResetExample.onclick=renderDiceAcademy;
+academyNextLesson.onclick=()=>{if(diceAcademyLesson<4){diceAcademyLesson++;renderDiceAcademy()}else academySolution.classList.remove('hidden')};
+academyStartTraining.onclick=()=>nav('setup');
 
 
 /* =========================================================
