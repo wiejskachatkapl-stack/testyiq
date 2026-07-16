@@ -68,3 +68,11 @@ Kolory są jawne: Kostki — błękit, Matryce — zieleń, Sekwencje — pomara
 
 ## Ikony treningów v1036
 Każda gra ma własną ikonę SVG odpowiadającą jej mechanice. Te same komponenty są używane na telefonie i komputerze.
+
+
+## Ekran główny v1038
+Przycisk muzyki jest osadzony w lewym dolnym narożniku nagłówka. Przyciski główne mają sześć osobnych akcentów: błękit, turkus, niebieski, fiolet, róż i cyjan.
+
+
+## Ekran główny v1040
+Każdy kafelek używa tematycznej ikony SVG. Na komputerze układ ma trzy kolumny i dwa rzędy, a przycisk muzyki pozostaje widoczny w lewym dolnym obszarze nagłówka.

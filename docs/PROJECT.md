@@ -1,6 +1,6 @@
 # IQ Challenge • Brain Lab
 
-Aktualna wersja: **v1039**
+Aktualna wersja: **v1040**
 
 Status: Brain Engine — fundament SPA i pierwsza ścieżka Test IQ.
 
@@ -148,3 +148,7 @@ Przeniesiono zaakceptowany wygląd ekranu głównego do kodu. Przycisk Muzyka re
 
 ## v1039 — Brain Music Audio Pack
 Wszystkie syntetyczne dźwięki odtwarzane na żywo zastąpiono przygotowanymi, zapętlonymi ścieżkami OGG. Dodano 13 osobnych plików audio, działających offline.
+
+
+## v1040
+Naprawiono widoczność przycisku Muzyka relaksacyjna na komputerze. Główne przyciski otrzymały sześć tematycznych ikon SVG oraz jawne gradienty premium na telefonie i komputerze.

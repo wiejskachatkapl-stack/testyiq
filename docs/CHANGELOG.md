@@ -1,5 +1,18 @@
 # Changelog
 
+## v1040
+### Naprawiono i zmieniono
+- przycisk Muzyka relaksacyjna jest widoczny na komputerze,
+- Test IQ ma ikonę mózgu,
+- Trening Umysłu ma ikonę głowy z mózgiem,
+- Wyzwanie Dnia ma ikonę celu,
+- Postępy mają ikonę rosnącego wykresu,
+- Osiągnięcia mają ikonę pucharu,
+- Ustawienia mają ikonę koła zębatego,
+- wymuszono kolorowe gradienty premium na PC i telefonie,
+- mechanika i muzyka v1039 pozostały bez zmian,
+- cache PWA zmieniono na `iq-brain-lab-v1040`.
+
 ## v1039
 ### Zmieniono
 - wymieniono wszystkie 13 dźwięków Brain Music,
