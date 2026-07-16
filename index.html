@@ -293,10 +293,15 @@
         <h3 id="academyTitle"></h3>
         <p id="academyDescription"></p>
         <div class="academy-rule"><span>NAJWAŻNIEJSZA ZASADA</span><strong id="academyRule"></strong></div>
-        <div class="academy-tips">
-          <button data-tip="0">💡 Wskazówka 1</button>
-          <button data-tip="1">💡 Wskazówka 2</button>
-          <button data-tip="2">💡 Wskazówka 3</button>
+        <button type="button" id="showCubeNetBtn" class="cube-net-open">
+          <span>▦</span>
+          <div><strong>POKAŻ ROZŁOŻONĄ KOSTKĘ</strong><small>Zobacz wszystkie sześć ścian na płasko</small></div>
+          <b>›</b>
+        </button>
+        <div class="academy-tips academy-tips-large">
+          <button data-tip="0"><b>1</b><span><strong>Pierwsza podpowiedź</strong><small>Od czego zacząć?</small></span></button>
+          <button data-tip="1"><b>2</b><span><strong>Druga podpowiedź</strong><small>Na co zwrócić uwagę?</small></span></button>
+          <button data-tip="2"><b>3</b><span><strong>Trzecia podpowiedź</strong><small>Jak odrzucić błędne?</small></span></button>
         </div>
         <div id="academyTipBox" class="academy-tip-box hidden"><b>WSKAZÓWKA</b><p id="academyTipText"></p></div>
       </article>
@@ -489,9 +494,44 @@
     </div>
   </section>
 
-  <footer><button data-coming="O aplikacji">O aplikacji</button><span>•</span><span>Wersja 1044</span></footer>
+  <footer><button data-coming="O aplikacji">O aplikacji</button><span>•</span><span>Wersja 1045</span></footer>
 </main>
 
+
+
+<div id="cubeNetPanel" class="cube-net-overlay hidden" aria-hidden="true">
+  <section class="cube-net-panel" role="dialog" aria-modal="true" aria-labelledby="cubeNetTitle">
+    <header>
+      <div>
+        <small>AKADEMIA KOSTEK</small>
+        <h2 id="cubeNetTitle">Rozłożona kostka do gry</h2>
+        <p>Każdy kwadrat to jedna ściana. Po złożeniu pary 1–6, 2–5 oraz 3–4 znajdują się naprzeciwko siebie.</p>
+      </div>
+      <button id="closeCubeNetBtn" type="button">×</button>
+    </header>
+
+    <div class="cube-net-area">
+      <div class="cube-net">
+        <div class="net-face face-1"><i></i><span>1</span></div>
+        <div class="net-face face-2"><i></i><i></i><span>2</span></div>
+        <div class="net-face face-3"><i></i><i></i><i></i><span>3</span></div>
+        <div class="net-face face-4"><i></i><i></i><i></i><i></i><span>4</span></div>
+        <div class="net-face face-5"><i></i><i></i><i></i><i></i><i></i><span>5</span></div>
+        <div class="net-face face-6"><i></i><i></i><i></i><i></i><i></i><i></i><span>6</span></div>
+      </div>
+      <div class="cube-net-explanation">
+        <article><b>1 ↔ 6</b><span>Ściany przeciwległe</span></article>
+        <article><b>2 ↔ 5</b><span>Ściany przeciwległe</span></article>
+        <article><b>3 ↔ 4</b><span>Ściany przeciwległe</span></article>
+        <p>Ściany leżące naprzeciwko siebie nigdy nie dotykają się krawędzią.</p>
+      </div>
+    </div>
+
+    <footer>
+      <button id="cubeNetDoneBtn" type="button">ROZUMIEM</button>
+    </footer>
+  </section>
+</div>
 
 <div id="brainMusicPanel" class="music-overlay hidden" aria-hidden="true">
   <section class="music-panel" role="dialog" aria-modal="true" aria-labelledby="musicPanelTitle">

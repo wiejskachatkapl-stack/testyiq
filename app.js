@@ -91,7 +91,7 @@ document.querySelectorAll('.training-category').forEach(b=>b.onclick=()=>openTra
 
 
 const DICE_ACADEMY_LESSONS=[
- {title:'Zacznij od charakterystycznej ściany',description:'Najpierw wybierz ścianę, którą łatwo rozpoznać. Potem sprawdź, jakie ściany znajdują się obok niej.',rule:'Układ ścian względem siebie nie zmienia się podczas obrotu.',tips:['Wybierz ścianę z najbardziej charakterystyczną liczbą punktów.','Sprawdź dwie ściany bezpośrednio przylegające do wybranej.','Odrzuć odpowiedzi, w których sąsiednie ściany stały się przeciwległe.'],solution:'W odpowiedzi B ściana z czterema punktami została obrócona, ale nadal sąsiaduje ze ścianami z dwoma i trzema punktami.'},
+ {title:'Najpierw poznaj trzy widoczne ściany',description:'Na kostce widzisz jednocześnie górę, przód i prawy bok. Zapamiętaj trzy liczby, które spotykają się w jednym narożniku. Po obróceniu kostki mogą zmienić miejsce, ale nadal muszą się ze sobą stykać.',rule:'Te same trzy ściany spotykające się w narożniku pozostają razem po każdym obrocie.',tips:['Najpierw znajdź ścianę z liczbą 4. To nasz punkt startowy.','Sprawdź, czy obok 4 nadal znajdują się ściany 2 i 3.','Odrzuć każdą odpowiedź, w której przy 4 pojawia się inna liczba.'],solution:'W odpowiedzi B ściana 4 została przeniesiona na górę. Obok niej nadal znajdują się 2 i 3. Dlatego B zachowuje ten sam narożnik kostki.'},
  {title:'Sprawdzaj sąsiednie ściany',description:'Dwie ściany są sąsiednie, gdy dotykają się krawędzią. Po obrocie nadal będą sąsiadami.',rule:'Sąsiednie ściany zawsze pozostają sąsiednie.',tips:['Szukaj trzech ścian widocznych w jednym narożniku.','Porównuj cały zestaw trzech ścian.','Jeśli para nigdy nie występuje obok siebie, może być przeciwległa.'],solution:'Tylko odpowiedź B zachowuje ten sam zestaw trzech ścian spotykających się w jednym narożniku.'},
  {title:'Rozpoznawaj ściany przeciwległe',description:'Ściany przeciwległe nigdy nie są widoczne jednocześnie w jednym narożniku kostki.',rule:'Ściany przeciwległe nigdy nie stykają się krawędzią.',tips:['Zapamiętuj pary ścian przeciwległych.','Odrzucaj odpowiedzi pokazujące je obok siebie.','Najpierw eliminuj niemożliwe układy.'],solution:'A i C pokazują niemożliwe sąsiedztwo. B zachowuje poprawną relację ścian.'},
  {title:'Obracaj kostkę etapami',description:'Wyobrażaj sobie pojedyncze obroty o 90°. To łatwiejsze niż obracanie całej kostki naraz.',rule:'Jeden obrót, jedna kontrola położenia ścian.',tips:['Wybierz oś obrotu.','Ściana na osi obrotu pozostaje na swoim boku.','Po każdym obrocie sprawdź trzy widoczne ściany.'],solution:'Po obrocie ściana górna pozostaje górą, a przednia i boczna zamieniają pozycje. Tak wygląda B.'},
@@ -120,6 +120,21 @@ academyShowSolution.onclick=()=>{academySolution.classList.remove('hidden');docu
 academyResetExample.onclick=renderDiceAcademy;
 academyNextLesson.onclick=()=>{if(diceAcademyLesson<4){diceAcademyLesson++;renderDiceAcademy()}else academySolution.classList.remove('hidden')};
 academyStartTraining.onclick=()=>nav('setup');
+
+
+
+function openCubeNet(){
+  cubeNetPanel.classList.remove('hidden');
+  cubeNetPanel.setAttribute('aria-hidden','false');
+}
+function closeCubeNet(){
+  cubeNetPanel.classList.add('hidden');
+  cubeNetPanel.setAttribute('aria-hidden','true');
+}
+showCubeNetBtn.onclick=openCubeNet;
+closeCubeNetBtn.onclick=closeCubeNet;
+cubeNetDoneBtn.onclick=closeCubeNet;
+cubeNetPanel.onclick=e=>{if(e.target===cubeNetPanel)closeCubeNet()};
 
 
 /* =========================================================
