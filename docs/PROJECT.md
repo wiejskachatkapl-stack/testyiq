@@ -1,6 +1,6 @@
 # IQ Challenge • Brain Lab
 
-Aktualna wersja: **v1037**
+Aktualna wersja: **v1039**
 
 Status: Brain Engine — fundament SPA i pierwsza ścieżka Test IQ.
 
@@ -140,3 +140,11 @@ Dodano prawdziwe ikony SVG do Kostek, Matryc, Sekwencji, Zapałek i Co nie pasuj
 
 ## v1037 — Brain Music
 Dodano proceduralny odtwarzacz dźwięków relaksacyjnych i skupiających. Dźwięki są generowane przez Web Audio API, grają podczas przechodzenia między ekranami i nie wymagają zewnętrznych plików audio.
+
+
+## v1038
+Przeniesiono zaakceptowany wygląd ekranu głównego do kodu. Przycisk Muzyka relaksacyjna znajduje się w lewym dolnym obszarze nagłówka, a sześć głównych przycisków ma indywidualne gradienty, podświetlenia i paski postępu.
+
+
+## v1039 — Brain Music Audio Pack
+Wszystkie syntetyczne dźwięki odtwarzane na żywo zastąpiono przygotowanymi, zapętlonymi ścieżkami OGG. Dodano 13 osobnych plików audio, działających offline.

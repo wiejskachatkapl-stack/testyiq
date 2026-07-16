@@ -1,5 +1,24 @@
 # Changelog
 
+## v1039
+### Zmieniono
+- wymieniono wszystkie 13 dźwięków Brain Music,
+- dodano osobne ścieżki OGG dla Natury, Focus, Wyciszenia i Snu,
+- Las, Kominek, Deszcz i Ocean mają znacznie bogatsze brzmienie,
+- muzyka Focus i Medytacja wykorzystuje pełne kompozycje ambientowe,
+- dźwięki działają offline i są zapętlone,
+- mechanika timera, głośności i odtwarzania pozostała bez zmian,
+- cache PWA zmieniono na `iq-brain-lab-v1039`.
+
+## v1038
+### Zmieniono
+- przeniesiono przycisk Muzyka relaksacyjna niżej i do lewej,
+- sześć głównych przycisków otrzymało indywidualne kolory,
+- dodano gradienty, neonowe obramowania i paski postępu,
+- zachowano pełną responsywność telefonu i komputera,
+- mechanika Brain Music i pozostałe funkcje pozostały bez zmian,
+- cache PWA zmieniono na `iq-brain-lab-v1038`.
+
 ## v1037
 ### Dodano
 - przycisk `Muzyka relaksacyjna` pod nazwą IQ Challenge,
