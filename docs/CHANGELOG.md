@@ -1,13 +1,13 @@
 # Changelog
 
-## v1043
+## v1044
 ### Zmieniono
 - cały ekran główny telefonu mieści się bez przewijania,
 - zmniejszono nagłówek, kafelki, dolną grafikę i panel poziomu,
 - sześć przycisków zachowuje układ 2 × 3,
 - przycisk `Muzyka relaksacyjna` znajduje się po prawej i niżej, tak jak na komputerze,
 - wygląd i mechanika v1042 pozostały bez zmian,
-- cache PWA zmieniono na `iq-brain-lab-v1043`.
+- cache PWA zmieniono na `iq-brain-lab-v1044`.
 
 ## v1042
 ### Zmieniono
