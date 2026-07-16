@@ -4058,3 +4058,180 @@ html,body{
   0%,100%{transform:scale(.94);opacity:.55}
   50%{transform:scale(1.10);opacity:1}
 }
+
+
+/* =========================================================
+   v1033 — kafelki gier w kategorii w stylu Centrum Treningu
+   ========================================================= */
+
+.training-category-screen{width:min(1180px,100%)!important}
+
+.category-screen-header{
+  border-color:rgba(21,199,255,.34)!important;
+  background:
+    radial-gradient(circle at 18% 30%,rgba(0,190,255,.10),transparent 34%),
+    linear-gradient(145deg,rgba(5,23,47,.98),rgba(4,14,31,.96))!important;
+}
+.category-screen-icon{
+  color:#20d8ff!important;
+  border-color:rgba(22,199,255,.44)!important;
+  background:rgba(0,158,217,.11)!important;
+  box-shadow:0 0 22px rgba(0,190,255,.10);
+}
+.category-screen-score strong{color:#42eaff!important}
+
+.training-game-grid{gap:12px!important}
+
+.training-game-card{
+  position:relative!important;
+  min-height:138px!important;
+  grid-template-columns:92px minmax(0,1fr) auto!important;
+  grid-template-rows:auto auto!important;
+  padding:16px 18px!important;
+  gap:8px 16px!important;
+  border-radius:21px!important;
+  overflow:hidden!important;
+  isolation:isolate;
+  transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease!important;
+}
+.training-game-card:before{
+  content:"";position:absolute;inset:0;z-index:-2;
+  background:
+    radial-gradient(circle at 16% 50%,rgba(0,204,255,.13),transparent 30%),
+    linear-gradient(135deg,rgba(5,27,52,.98),rgba(3,14,31,.98));
+}
+.training-game-card:after{
+  content:"";position:absolute;width:210px;height:210px;right:-90px;bottom:-120px;
+  border-radius:50%;background:#00bfff;filter:blur(42px);opacity:.11;z-index:-1;
+}
+.training-game-card.available{
+  border-color:#16bff5!important;
+  box-shadow:inset 0 0 0 1px rgba(45,218,255,.08),0 12px 30px rgba(0,0,0,.16)!important;
+  opacity:1!important;
+}
+.training-game-card.available:hover{
+  transform:translateY(-2px)!important;
+  border-color:#45e6ff!important;
+  box-shadow:inset 0 0 0 1px rgba(60,233,255,.13),0 16px 34px rgba(0,0,0,.22),0 0 22px rgba(0,192,255,.10)!important;
+}
+.training-game-card.locked{
+  opacity:.72!important;
+  border-color:rgba(83,124,160,.26)!important;
+  filter:saturate(.72);
+}
+.training-game-card.locked:before{
+  background:
+    radial-gradient(circle at 16% 50%,rgba(65,112,150,.08),transparent 30%),
+    linear-gradient(135deg,rgba(8,22,38,.96),rgba(4,12,25,.98));
+}
+.training-game-card.locked:after{background:#55718b;opacity:.06}
+
+.game-icon{
+  grid-column:1!important;
+  grid-row:1/3!important;
+  width:84px!important;height:84px!important;
+  border-radius:20px!important;
+  border:1px solid rgba(26,209,255,.34)!important;
+  background:
+    radial-gradient(circle at 50% 35%,rgba(30,218,255,.17),transparent 58%),
+    rgba(3,24,43,.72)!important;
+  color:#2edfff!important;
+  font-size:2rem!important;
+  box-shadow:inset 0 0 18px rgba(0,201,255,.06),0 8px 22px rgba(0,0,0,.20);
+}
+.locked .game-icon{
+  color:#6a9bad!important;
+  border-color:rgba(84,133,154,.22)!important;
+  background:rgba(7,23,36,.60)!important;
+}
+.game-copy{
+  grid-column:2!important;
+  grid-row:1!important;
+  min-width:0!important;
+  align-self:center!important;
+}
+.game-copy strong{font-size:1.28rem!important;line-height:1.05!important;color:#f7fbff!important}
+.game-copy small{margin-top:5px!important;font-size:.78rem!important;color:#a8bdc8!important}
+
+.game-level{
+  grid-column:2!important;
+  grid-row:2!important;
+  min-width:0!important;
+  display:grid!important;
+  grid-template-columns:auto minmax(90px,1fr)!important;
+  gap:14px!important;
+  align-items:center!important;
+}
+.game-level b{font-size:1.42rem!important;line-height:1!important;color:#f7fbff!important;white-space:nowrap!important}
+.game-level i{height:8px!important;border-radius:999px!important;background:rgba(255,255,255,.075)!important}
+.game-level em{
+  background:linear-gradient(90deg,#11cff1,#55f0e2)!important;
+  box-shadow:0 0 11px rgba(25,220,244,.24);
+}
+.game-status{
+  grid-column:3!important;
+  grid-row:1/3!important;
+  align-self:center!important;
+  min-width:92px!important;
+  text-align:center!important;
+  font-size:.76rem!important;
+  font-weight:700!important;
+  letter-spacing:.03em!important;
+  padding:10px 14px!important;
+  border-radius:999px!important;
+  color:#40e3f5!important;
+  border:1px solid rgba(50,220,244,.38)!important;
+  background:rgba(7,38,52,.48)!important;
+}
+.available .game-status{box-shadow:0 0 14px rgba(20,205,238,.08)}
+.locked .game-status{
+  color:#6fa2b1!important;
+  border-color:rgba(101,148,163,.24)!important;
+  background:rgba(10,28,38,.48)!important;
+}
+.category-footer-card{
+  border-color:rgba(55,121,165,.28)!important;
+  background:linear-gradient(145deg,rgba(7,23,40,.94),rgba(4,13,27,.96))!important;
+}
+
+@media(max-width:900px),(hover:none) and (pointer:coarse){
+  .training-category-screen{
+    height:100%!important;
+    grid-template-rows:auto minmax(0,1fr) auto!important;
+    gap:8px!important;
+  }
+  .category-screen-header{
+    padding:11px 12px!important;
+    border-radius:18px!important;
+    grid-template-columns:48px minmax(0,1fr) auto!important;
+  }
+  .category-screen-icon{
+    width:44px!important;height:44px!important;border-radius:13px!important;font-size:1.2rem!important;
+  }
+  .category-screen-header h2{font-size:1.22rem!important}
+  .category-screen-header p{font-size:.55rem!important;line-height:1.25!important}
+
+  .training-game-grid{
+    grid-template-columns:1fr!important;
+    gap:7px!important;
+    overflow:hidden!important;
+  }
+  .training-game-card{
+    min-height:0!important;
+    height:100%!important;
+    grid-template-columns:52px minmax(0,1fr) auto!important;
+    padding:8px 10px!important;
+    gap:4px 9px!important;
+    border-radius:15px!important;
+  }
+  .game-icon{
+    width:48px!important;height:48px!important;border-radius:14px!important;font-size:1.15rem!important;
+  }
+  .game-copy strong{font-size:.78rem!important}
+  .game-copy small{margin-top:2px!important;font-size:.50rem!important}
+  .game-level{grid-template-columns:auto minmax(50px,1fr)!important;gap:7px!important}
+  .game-level b{font-size:.86rem!important}
+  .game-level i{height:5px!important}
+  .game-status{min-width:60px!important;padding:6px 8px!important;font-size:.48rem!important}
+  .category-footer-card{min-height:52px!important;border-radius:15px!important}
+}
