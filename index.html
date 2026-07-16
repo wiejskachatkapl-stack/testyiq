@@ -79,7 +79,16 @@
       <section class="home-visual">
         <div class="home-brand-block">
           <div class="home-logo-mark">◇</div>
-          <div><h1>IQ Challenge</h1><p>Brain Lab</p><small>Trenuj umysł. Odkrywaj swój potencjał.</small></div>
+          <div class="home-brand-copy">
+            <h1>IQ Challenge</h1>
+            <p>Brain Lab</p>
+            <small>Trenuj umysł. Odkrywaj swój potencjał.</small>
+            <button type="button" id="brainMusicBtn" class="brain-music-launch">
+              <span class="brain-music-launch-icon">♫</span>
+              <span><strong>MUZYKA RELAKSACYJNA</strong><small>Wyciszenie i koncentracja</small></span>
+              <b>›</b>
+            </button>
+          </div>
         </div>
         <svg class="home-brain-art" viewBox="0 0 420 300" aria-hidden="true">
           <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
@@ -371,8 +380,99 @@
     </div>
   </section>
 
-  <footer><button data-coming="O aplikacji">O aplikacji</button><span>•</span><span>Wersja 1036</span></footer>
+  <footer><button data-coming="O aplikacji">O aplikacji</button><span>•</span><span>Wersja 1037</span></footer>
 </main>
+
+
+<div id="brainMusicPanel" class="music-overlay hidden" aria-hidden="true">
+  <section class="music-panel" role="dialog" aria-modal="true" aria-labelledby="musicPanelTitle">
+    <header class="music-panel-head">
+      <div class="music-panel-mark">♫</div>
+      <div>
+        <small>BRAIN LAB</small>
+        <h2 id="musicPanelTitle">Muzyka relaksacyjna</h2>
+        <p>Wycisz umysł, popraw koncentrację i ćwicz w swoim rytmie.</p>
+      </div>
+      <button type="button" id="closeMusicPanel" class="music-close" aria-label="Zamknij">×</button>
+    </header>
+
+    <div class="music-now-playing">
+      <div class="music-disc"><i></i><b>♫</b></div>
+      <div class="music-now-copy">
+        <small>TERAZ WYBRANE</small>
+        <strong id="musicCurrentName">Deszcz</strong>
+        <span id="musicCurrentCategory">Natura</span>
+      </div>
+      <div class="music-equalizer" id="musicEqualizer" aria-hidden="true">
+        <i></i><i></i><i></i><i></i><i></i>
+      </div>
+    </div>
+
+    <nav class="music-tabs" aria-label="Kategorie muzyki">
+      <button type="button" class="active" data-music-tab="nature">NATURA</button>
+      <button type="button" data-music-tab="focus">FOCUS</button>
+      <button type="button" data-music-tab="calm">WYCISZENIE</button>
+      <button type="button" data-music-tab="sleep">SEN</button>
+    </nav>
+
+    <div class="music-track-groups">
+      <section class="music-track-grid active" data-music-group="nature">
+        <button type="button" class="music-track active" data-sound="rain" data-name="Deszcz" data-category="Natura"><b>☂</b><span><strong>Deszcz</strong><small>Spokojne krople</small></span><i>▶</i></button>
+        <button type="button" class="music-track" data-sound="ocean" data-name="Fale oceanu" data-category="Natura"><b>≈</b><span><strong>Fale oceanu</strong><small>Powolny rytm morza</small></span><i>▶</i></button>
+        <button type="button" class="music-track" data-sound="forest" data-name="Las" data-category="Natura"><b>♧</b><span><strong>Las</strong><small>Wiatr i ptaki</small></span><i>▶</i></button>
+        <button type="button" class="music-track" data-sound="fire" data-name="Kominek" data-category="Natura"><b>♨</b><span><strong>Kominek</strong><small>Ciepły trzask ognia</small></span><i>▶</i></button>
+      </section>
+
+      <section class="music-track-grid" data-music-group="focus">
+        <button type="button" class="music-track" data-sound="alpha" data-name="Alpha Waves" data-category="Focus"><b>α</b><span><strong>Alpha Waves</strong><small>Spokojne skupienie</small></span><i>▶</i></button>
+        <button type="button" class="music-track" data-sound="deepFocus" data-name="Deep Focus" data-category="Focus"><b>◎</b><span><strong>Deep Focus</strong><small>Głęboka koncentracja</small></span><i>▶</i></button>
+        <button type="button" class="music-track" data-sound="study" data-name="Study Flow" data-category="Focus"><b>⌁</b><span><strong>Study Flow</strong><small>Równy rytm nauki</small></span><i>▶</i></button>
+      </section>
+
+      <section class="music-track-grid" data-music-group="calm">
+        <button type="button" class="music-track" data-sound="meditation" data-name="Medytacja" data-category="Wyciszenie"><b>◌</b><span><strong>Medytacja</strong><small>Oddech i równowaga</small></span><i>▶</i></button>
+        <button type="button" class="music-track" data-sound="night" data-name="Spokojna noc" data-category="Wyciszenie"><b>☾</b><span><strong>Spokojna noc</strong><small>Cichy nocny pejzaż</small></span><i>▶</i></button>
+        <button type="button" class="music-track" data-sound="pink" data-name="Pink Noise" data-category="Wyciszenie"><b>∿</b><span><strong>Pink Noise</strong><small>Miękki szum</small></span><i>▶</i></button>
+      </section>
+
+      <section class="music-track-grid" data-music-group="sleep">
+        <button type="button" class="music-track" data-sound="brown" data-name="Brown Noise" data-category="Sen"><b>≋</b><span><strong>Brown Noise</strong><small>Głęboki niski szum</small></span><i>▶</i></button>
+        <button type="button" class="music-track" data-sound="white" data-name="White Noise" data-category="Sen"><b>≀</b><span><strong>White Noise</strong><small>Jednolity szum</small></span><i>▶</i></button>
+        <button type="button" class="music-track" data-sound="delta" data-name="Delta Sleep" data-category="Sen"><b>δ</b><span><strong>Delta Sleep</strong><small>Powolne fale snu</small></span><i>▶</i></button>
+      </section>
+    </div>
+
+    <section class="music-controls">
+      <button type="button" id="musicPlayPause" class="music-main-control"><span>▶</span><b>ODTWÓRZ</b></button>
+      <button type="button" id="musicStop" class="music-small-control" aria-label="Zatrzymaj">■</button>
+
+      <label class="music-volume">
+        <span>GŁOŚNOŚĆ</span>
+        <input type="range" id="musicVolume" min="0" max="100" value="35">
+        <b id="musicVolumeValue">35%</b>
+      </label>
+    </section>
+
+    <section class="music-timer">
+      <div>
+        <small>TIMER</small>
+        <strong id="musicTimerDisplay">Bez limitu</strong>
+      </div>
+      <div class="music-timer-options">
+        <button type="button" data-minutes="10">10 min</button>
+        <button type="button" data-minutes="20">20 min</button>
+        <button type="button" data-minutes="30">30 min</button>
+        <button type="button" data-minutes="60">60 min</button>
+        <button type="button" class="active" data-minutes="0">∞</button>
+      </div>
+    </section>
+
+    <footer class="music-panel-foot">
+      <span><i></i> Muzyka gra dalej podczas treningu</span>
+      <button type="button" id="musicPanelDone">GOTOWE</button>
+    </footer>
+  </section>
+</div>
 
 <div id="modal" class="modal hidden">
   <div class="dialog"><button id="closeModal">×</button><div id="modalIcon" class="round">✦</div><h2 id="modalTitle"></h2><p id="modalText"></p><button id="okModal" class="primary">ROZUMIEM</button></div>
