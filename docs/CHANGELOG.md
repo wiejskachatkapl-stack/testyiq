@@ -299,3 +299,10 @@ Dodano Centrum Treningu Umysłu, sześć kategorii, profil Brain/XP, ekran kateg
 - przebudowano grafikę mózgu w nagłówku,
 - dodano ikonę pucharu w codziennym wyzwaniu,
 - zachowano mechanikę i działanie v1024.
+
+
+## v1034
+- stabilny komponent premium dla kafelków gier,
+- duże ikony, gradienty, paski postępu i okrągłe strzałki,
+- zwarty układ mobilny bez nakładania,
+- mechanika bez zmian.

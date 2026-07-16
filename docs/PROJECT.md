@@ -1,6 +1,6 @@
 # IQ Challenge • Brain Lab
 
-Aktualna wersja: **v1033**
+Aktualna wersja: **v1034**
 
 Status: Brain Engine — fundament SPA i pierwsza ścieżka Test IQ.
 
