@@ -5508,3 +5508,35 @@ html,body{
     z-index:10!important;
   }
 }
+
+
+/* =========================================================
+   v1041 — pozycja przycisku Muzyka relaksacyjna
+   ========================================================= */
+
+@media(min-width:901px){
+  .home-visual .brain-music-launch{
+    left:auto!important;
+    right:34px!important;
+    bottom:22px!important;
+    top:auto!important;
+    width:360px!important;
+    min-height:64px!important;
+    z-index:20!important;
+  }
+
+  .home-visual .home-brain-art{
+    right:2.5%!important;
+    top:0!important;
+    height:83%!important;
+  }
+}
+
+@media(max-width:900px),(hover:none) and (pointer:coarse){
+  .home-visual .brain-music-launch{
+    left:12px!important;
+    right:auto!important;
+    bottom:10px!important;
+    top:auto!important;
+  }
+}
