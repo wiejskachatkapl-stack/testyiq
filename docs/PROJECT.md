@@ -1,6 +1,6 @@
 # IQ Challenge • Brain Lab
 
-Aktualna wersja: **v1034**
+Aktualna wersja: **v1035**
 
 Status: Brain Engine — fundament SPA i pierwsza ścieżka Test IQ.
 
@@ -128,3 +128,7 @@ Usunięto stare logo `IQ TEST`, które system telefonu pokazywał przed właści
 
 ## v1033
 Kafelki gier w ekranie kategorii otrzymały ten sam premium styl co główne przyciski Centrum Treningu. Aktywne gry są wyraźniejsze, a planowane zachowują przygaszony wariant.
+
+
+## v1035
+Kafelki gier otrzymały jawne klasy kolorystyczne generowane w app.js. Usunięto zależność od funkcji CSS `color-mix`, aby wygląd był identyczny w każdej przeglądarce.

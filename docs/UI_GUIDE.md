@@ -60,3 +60,7 @@ Telefon przed uruchomieniem HTML pokazuje ikonę z manifestu. Dlatego stare logo
 
 ## Kafelki gier v1033
 Ekran kategorii używa tych samych zasad co Centrum Treningu: mocna ikona, duża nazwa, widoczny postęp, osobny status oraz kolorystyczne rozróżnienie aktywne/wkrótce.
+
+
+## Kafelki v1035
+Kolory są jawne: Kostki — błękit, Matryce — zieleń, Sekwencje — pomarańcz, Zapałki — złoto, Co nie pasuje — fiolet.

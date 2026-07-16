@@ -1,5 +1,14 @@
 # Changelog
 
+## v1035
+### Naprawiono
+- kafelki naprawdę otrzymują pięć różnych kolorów,
+- klasy kolorystyczne są nadawane bezpośrednio przez `app.js`,
+- usunięto zależność od `color-mix`,
+- wygląd działa na telefonie i komputerze,
+- mechanika gier pozostała bez zmian,
+- cache PWA zmieniono na `iq-brain-lab-v1035`.
+
 ## v1033
 ### Zmieniono
 - nowe premium kafelki gier w ekranie kategorii,
