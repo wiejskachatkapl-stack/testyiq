@@ -1,12 +1,12 @@
 # Changelog
 
-## v1041
+## v1042
 ### Zmieniono
 - na komputerze przycisk `Muzyka relaksacyjna` znajduje się po prawej stronie nagłówka,
 - przycisk został lekko obniżony,
 - telefon zachowuje dotychczasowe położenie przycisku,
 - pozostały wygląd i mechanika v1040 pozostały bez zmian,
-- cache PWA zmieniono na `iq-brain-lab-v1041`.
+- cache PWA zmieniono na `iq-brain-lab-v1042`.
 
 ## v1040
 ### Naprawiono i zmieniono
