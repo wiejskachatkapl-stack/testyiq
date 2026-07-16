@@ -5540,3 +5540,109 @@ html,body{
     top:auto!important;
   }
 }
+
+/* v1042 — poprawione położenie muzyki i mobile */
+@media (min-width:901px){
+  .screen[data-screen="home"] .home-visual{position:relative!important}
+  .screen[data-screen="home"] .home-visual .home-brand-block,
+  .screen[data-screen="home"] .home-visual .home-brand-copy{position:static!important}
+  .screen[data-screen="home"] .home-visual #brainMusicBtn{
+    display:grid!important;visibility:visible!important;opacity:1!important;
+    position:absolute!important;left:auto!important;right:34px!important;
+    top:auto!important;bottom:20px!important;width:360px!important;
+    min-height:64px!important;margin:0!important;transform:none!important;z-index:50!important
+  }
+  .screen[data-screen="home"] .home-brain-art{
+    right:3%!important;top:0!important;width:42%!important;height:78%!important
+  }
+}
+@media (max-width:900px), (hover:none) and (pointer:coarse){
+  .screen[data-screen="home"]{overflow:auto!important}
+  .screen[data-screen="home"] .home-premium{
+    height:auto!important;min-height:100%!important;display:grid!important;
+    grid-template-rows:auto auto auto auto!important;gap:10px!important;overflow:visible!important
+  }
+  .screen[data-screen="home"] .home-visual{
+    position:relative!important;min-height:260px!important;height:260px!important;
+    padding:14px!important;overflow:hidden!important
+  }
+  .screen[data-screen="home"] .home-brand-block{
+    width:72%!important;display:grid!important;grid-template-columns:56px minmax(0,1fr)!important;
+    gap:10px!important;align-items:start!important
+  }
+  .screen[data-screen="home"] .home-logo-mark{
+    width:54px!important;height:54px!important;border-radius:16px!important;font-size:1.45rem!important
+  }
+  .screen[data-screen="home"] .home-brand-block h1{
+    margin:0!important;font-size:1.55rem!important;line-height:.96!important;letter-spacing:-.035em!important
+  }
+  .screen[data-screen="home"] .home-brand-block p{margin:5px 0 4px!important;font-size:.68rem!important}
+  .screen[data-screen="home"] .home-brand-block small{
+    font-size:.54rem!important;line-height:1.25!important;max-width:180px!important
+  }
+  .screen[data-screen="home"] .home-brain-art{
+    width:49%!important;height:56%!important;right:-2%!important;top:4%!important
+  }
+  .screen[data-screen="home"] .home-metric-art{
+    left:31%!important;bottom:12px!important;width:115px!important;height:54px!important
+  }
+  .screen[data-screen="home"] #brainMusicBtn{
+    display:grid!important;visibility:visible!important;opacity:1!important;
+    position:absolute!important;left:auto!important;right:12px!important;top:auto!important;bottom:12px!important;
+    width:215px!important;min-height:48px!important;margin:0!important;padding:6px 8px!important;
+    grid-template-columns:34px minmax(0,1fr) 18px!important;border-radius:15px!important;
+    transform:none!important;z-index:30!important
+  }
+  .screen[data-screen="home"] #brainMusicBtn .brain-music-launch-icon{
+    width:32px!important;height:32px!important;border-radius:10px!important;font-size:.9rem!important
+  }
+  .screen[data-screen="home"] #brainMusicBtn strong{
+    font-size:.57rem!important;line-height:1.05!important;white-space:nowrap!important
+  }
+  .screen[data-screen="home"] .home-actions{
+    display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    grid-template-rows:repeat(3,128px)!important;gap:8px!important;overflow:visible!important
+  }
+  .screen[data-screen="home"] .home-action{
+    min-width:0!important;min-height:128px!important;height:128px!important;display:grid!important;
+    grid-template-columns:48px minmax(0,1fr) 27px!important;grid-template-rows:minmax(0,1fr) auto!important;
+    gap:5px 8px!important;padding:9px!important;border-radius:16px!important;overflow:hidden!important
+  }
+  .screen[data-screen="home"] .home-action>b{
+    grid-column:1!important;grid-row:1!important;width:46px!important;height:46px!important;
+    border-radius:14px!important;align-self:center!important
+  }
+  .screen[data-screen="home"] .home-action>span{
+    grid-column:2!important;grid-row:1!important;min-width:0!important;align-self:center!important;overflow:hidden!important
+  }
+  .screen[data-screen="home"] .home-action strong{
+    display:block!important;width:100%!important;font-size:.72rem!important;line-height:1.05!important;
+    white-space:normal!important;overflow-wrap:anywhere!important
+  }
+  .screen[data-screen="home"] .home-action>span small{
+    display:block!important;margin-top:3px!important;font-size:.46rem!important;line-height:1.15!important;white-space:normal!important
+  }
+  .screen[data-screen="home"] .home-action>i{
+    grid-column:3!important;grid-row:1!important;width:25px!important;height:25px!important;
+    align-self:center!important;justify-self:end!important;font-size:1rem!important
+  }
+  .screen[data-screen="home"] .home-action-progress{
+    grid-column:1/4!important;grid-row:2!important;min-width:0!important;display:grid!important;
+    grid-template-columns:minmax(0,1fr) auto!important;gap:6px!important;align-items:center!important
+  }
+  .screen[data-screen="home"] .home-action-progress u{height:5px!important}
+  .screen[data-screen="home"] .home-action-progress small{font-size:.50rem!important}
+  .screen[data-screen="home"] .home-lower-visual{min-height:165px!important;height:165px!important}
+  .screen[data-screen="home"] .home-level{min-height:76px!important}
+}
+@media (max-width:380px){
+  .screen[data-screen="home"] .home-actions{grid-template-rows:repeat(3,122px)!important}
+  .screen[data-screen="home"] .home-action{
+    height:122px!important;min-height:122px!important;grid-template-columns:43px minmax(0,1fr) 24px!important;
+    gap:4px 6px!important;padding:8px!important
+  }
+  .screen[data-screen="home"] .home-action>b{width:41px!important;height:41px!important}
+  .screen[data-screen="home"] .home-action strong{font-size:.64rem!important}
+  .screen[data-screen="home"] .home-action>span small{font-size:.41rem!important}
+  .screen[data-screen="home"] #brainMusicBtn{width:195px!important}
+}
