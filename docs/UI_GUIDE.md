@@ -56,3 +56,7 @@ Animacja jest wykonana w HTML, CSS i SVG, dlatego nie wymaga dodatkowych obrazó
 
 ## Systemowy splash v1032
 Telefon przed uruchomieniem HTML pokazuje ikonę z manifestu. Dlatego stare logo zostało zastąpione neonowym mózgiem, a `background_color` i `theme_color` ustawiono na `#020918`.
+
+
+## Kafelki gier v1033
+Ekran kategorii używa tych samych zasad co Centrum Treningu: mocna ikona, duża nazwa, widoczny postęp, osobny status oraz kolorystyczne rozróżnienie aktywne/wkrótce.

@@ -1,5 +1,15 @@
 # Changelog
 
+## v1033
+### Zmieniono
+- nowe premium kafelki gier w ekranie kategorii,
+- większe i czytelniejsze ikony,
+- wyraźne przyciski `GRAJ`,
+- przygaszony wariant `WKRÓTCE`,
+- dopasowanie do telefonu i komputera,
+- mechanika v1032 pozostaje bez zmian,
+- cache PWA zmieniono na `iq-brain-lab-v1033`.
+
 ## v1032
 ### Naprawiono
 - usunięto stare systemowe logo `IQ TEST`,
