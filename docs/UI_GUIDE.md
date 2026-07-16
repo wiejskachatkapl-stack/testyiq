@@ -76,3 +76,7 @@ Przycisk muzyki jest osadzony w lewym dolnym narożniku nagłówka. Przyciski g�
 
 ## Ekran główny v1040
 Każdy kafelek używa tematycznej ikony SVG. Na komputerze układ ma trzy kolumny i dwa rzędy, a przycisk muzyki pozostaje widoczny w lewym dolnym obszarze nagłówka.
+
+
+## Nagłówek v1041
+Na komputerze przycisk muzyki jest zakotwiczony w prawym dolnym narożniku panelu głównego. Na telefonie pozostaje po lewej stronie.
