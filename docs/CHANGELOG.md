@@ -1,5 +1,15 @@
 # Changelog
 
+## v1058
+### Naprawiono
+- poprawki dotyczą teraz właściwej zakładki `Orientacja`,
+- kliknięta odpowiedź pojawia się w polu ze znakiem zapytania,
+- dobra odpowiedź ma zieloną ramkę,
+- błędna odpowiedź ma czerwoną ramkę i po chwili znika,
+- po dobrej odpowiedzi widoczny jest przycisk `NASTĘPNE PYTANIE`,
+- automatyczne przejście następuje po 2 sekundach,
+- cache PWA zmieniono na `iq-brain-lab-v1058`.
+
 ## v1057
 ### Naprawiono
 - wybrana kostka pojawia się w okienku ze znakiem zapytania,
