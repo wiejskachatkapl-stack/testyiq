@@ -1,6 +1,6 @@
 # IQ Challenge • Brain Lab
 
-Aktualna wersja: **v1038**
+Aktualna wersja: **v1053**
 
 Status: Brain Engine — fundament SPA i pierwsza ścieżka Test IQ.
 
@@ -144,3 +144,31 @@ Dodano proceduralny odtwarzacz dźwięków relaksacyjnych i skupiających. Dźwi
 
 ## v1038
 Przeniesiono zaakceptowany wygląd ekranu głównego do kodu. Przycisk Muzyka relaksacyjna znajduje się w lewym dolnym obszarze nagłówka, a sześć głównych przycisków ma indywidualne gradienty, podświetlenia i paski postępu.
+
+
+## v1039 — Brain Music Audio Pack
+Wszystkie syntetyczne dźwięki odtwarzane na żywo zastąpiono przygotowanymi, zapętlonymi ścieżkami OGG. Dodano 13 osobnych plików audio, działających offline.
+
+
+## v1040
+Naprawiono widoczność przycisku Muzyka relaksacyjna na komputerze. Główne przyciski otrzymały sześć tematycznych ikon SVG oraz jawne gradienty premium na telefonie i komputerze.
+
+
+## v1042
+Na komputerze przycisk Muzyka relaksacyjna został przeniesiony do prawej dolnej części nagłówka. Układ telefonu pozostawiono bez zmian.
+
+
+## v1044
+Ekran główny telefonu został zmniejszony tak, aby całość mieściła się bez przewijania. Przycisk Muzyka relaksacyjna przeniesiono na prawą dolną część nagłówka, analogicznie do wersji komputerowej.
+
+
+## v1051
+Dodano widok rozłożonej kostki z opisem par przeciwległych ścian. Powiększono wskazówki i uproszczono pierwszą lekcję, aby była zrozumiała bez znajomości obrotów przestrzennych.
+
+
+## v1053
+Naprawiono przycisk cofania, dodano kursor ręki do elementów interaktywnych oraz zablokowano przechwytywanie kliknięć przez ukryte ekrany i przycisk muzyki.
+
+
+## v1053
+Siatka kostki składa się teraz rzeczywiście z sześciu ścian w prawidłowy sześcian 3D. Usunięto fałszywy, nakładany podgląd.

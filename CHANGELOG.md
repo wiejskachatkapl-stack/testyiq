@@ -1,5 +1,72 @@
 # Changelog
 
+## v1053
+### Naprawiono
+- prawidłowe składanie rozłożonej siatki kostki,
+- każda z sześciu ścian składa się do właściwej pozycji w sześcianie 3D,
+- zachowano prawidłowe pary przeciwległe: 1–6, 2–5, 3–4,
+- usunięto nieprawidłowy rysunkowy podgląd nakładany na siatkę,
+- cache PWA zmieniono na `iq-brain-lab-v1053`.
+
+## v1052
+### Naprawiono
+- przycisk cofania w lewym górnym rogu,
+- kursor ręki na przyciskach drugiego i trzeciego ekranu,
+- kursor ręki na przyciskach Akademii Kostek,
+- ukryty ekran główny nie przechwytuje już kliknięć,
+- przycisk `Muzyka relaksacyjna` nie otwiera się po kliknięciu kafelka `Analogie`,
+- cache PWA zmieniono na `iq-brain-lab-v1052`.
+
+## v1051
+### Zmieniono
+- dodano przycisk `Pokaż rozłożoną kostkę`,
+- dodano pełny widok siatki sześciu ścian,
+- pokazano pary przeciwległe: 1–6, 2–5, 3–4,
+- znacząco powiększono przyciski wskazówek,
+- powiększono treść wyświetlanej podpowiedzi,
+- uproszczono pierwszą lekcję i rozwiązanie,
+- cache PWA zmieniono na `iq-brain-lab-v1051`.
+
+## v1044
+### Zmieniono
+- cały ekran główny telefonu mieści się bez przewijania,
+- zmniejszono nagłówek, kafelki, dolną grafikę i panel poziomu,
+- sześć przycisków zachowuje układ 2 × 3,
+- przycisk `Muzyka relaksacyjna` znajduje się po prawej i niżej, tak jak na komputerze,
+- wygląd i mechanika v1042 pozostały bez zmian,
+- cache PWA zmieniono na `iq-brain-lab-v1044`.
+
+## v1042
+### Zmieniono
+- na komputerze przycisk `Muzyka relaksacyjna` znajduje się po prawej stronie nagłówka,
+- przycisk został lekko obniżony,
+- telefon zachowuje dotychczasowe położenie przycisku,
+- pozostały wygląd i mechanika v1040 pozostały bez zmian,
+- cache PWA zmieniono na `iq-brain-lab-v1042`.
+
+## v1040
+### Naprawiono i zmieniono
+- przycisk Muzyka relaksacyjna jest widoczny na komputerze,
+- Test IQ ma ikonę mózgu,
+- Trening Umysłu ma ikonę głowy z mózgiem,
+- Wyzwanie Dnia ma ikonę celu,
+- Postępy mają ikonę rosnącego wykresu,
+- Osiągnięcia mają ikonę pucharu,
+- Ustawienia mają ikonę koła zębatego,
+- wymuszono kolorowe gradienty premium na PC i telefonie,
+- mechanika i muzyka v1039 pozostały bez zmian,
+- cache PWA zmieniono na `iq-brain-lab-v1040`.
+
+## v1039
+### Zmieniono
+- wymieniono wszystkie 13 dźwięków Brain Music,
+- dodano osobne ścieżki OGG dla Natury, Focus, Wyciszenia i Snu,
+- Las, Kominek, Deszcz i Ocean mają znacznie bogatsze brzmienie,
+- muzyka Focus i Medytacja wykorzystuje pełne kompozycje ambientowe,
+- dźwięki działają offline i są zapętlone,
+- mechanika timera, głośności i odtwarzania pozostała bez zmian,
+- cache PWA zmieniono na `iq-brain-lab-v1039`.
+
 ## v1038
 ### Zmieniono
 - przeniesiono przycisk Muzyka relaksacyjna niżej i do lewej,

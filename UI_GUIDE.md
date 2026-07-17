@@ -72,3 +72,27 @@ Każda gra ma własną ikonę SVG odpowiadającą jej mechanice. Te same kompone
 
 ## Ekran główny v1038
 Przycisk muzyki jest osadzony w lewym dolnym narożniku nagłówka. Przyciski główne mają sześć osobnych akcentów: błękit, turkus, niebieski, fiolet, róż i cyjan.
+
+
+## Ekran główny v1040
+Każdy kafelek używa tematycznej ikony SVG. Na komputerze układ ma trzy kolumny i dwa rzędy, a przycisk muzyki pozostaje widoczny w lewym dolnym obszarze nagłówka.
+
+
+## Nagłówek v1042
+Na komputerze przycisk muzyki jest zakotwiczony w prawym dolnym narożniku panelu głównego. Na telefonie pozostaje po lewej stronie.
+
+
+## Mobile v1044
+Mobilny ekran główny korzysta z czterech proporcjonalnych sekcji wysokości. Dzięki temu wszystkie elementy są widoczne jednocześnie bez przewijania.
+
+
+## Akademia Kostek v1051
+Wskazówki są prezentowane jako duże, opisowe kafelki. Widok rozłożonej kostki pokazuje położenie wszystkich sześciu ścian i pary przeciwległe.
+
+
+## Interakcje v1053
+Tylko aktywny ekran może odbierać kliknięcia. Na komputerze wszystkie aktywne przyciski pokazują kursor ręki.
+
+
+## v1053
+Siatka kostki składa się teraz rzeczywiście z sześciu ścian w prawidłowy sześcian 3D. Usunięto fałszywy, nakładany podgląd.
