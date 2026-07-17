@@ -105,21 +105,18 @@ function renderDiceAcademy(){
  academyProgressBar.style.width=`${(diceAcademyLesson+1)*20}%`;
  document.querySelectorAll('[data-lesson]').forEach((b,i)=>{b.classList.toggle('active',i===diceAcademyLesson);b.classList.toggle('completed',i<diceAcademyLesson)});
  academyTipBox.classList.add('hidden');academySolution.classList.add('hidden');
- academyFeedback.className='academy-feedback';academyFeedback.textContent='Wybierz odpowiedź albo pokaż rozwiązanie.';
+ if(window.academyFeedback){academyFeedback.className='academy-feedback';academyFeedback.textContent='Wybierz odpowiedź albo pokaż rozwiązanie.'}
  document.querySelectorAll('[data-academy-answer]').forEach(b=>b.classList.remove('correct','wrong'));
  academyNextLesson.textContent=diceAcademyLesson===4?'ZAKOŃCZ NAUKĘ ✓':'NASTĘPNA LEKCJA ›';
 }
 document.querySelectorAll('[data-lesson]').forEach(b=>b.onclick=()=>{diceAcademyLesson=Number(b.dataset.lesson);renderDiceAcademy()});
 document.querySelectorAll('[data-tip]').forEach(b=>b.onclick=()=>{academyTipText.textContent=DICE_ACADEMY_LESSONS[diceAcademyLesson].tips[Number(b.dataset.tip)];academyTipBox.classList.remove('hidden')});
-document.querySelectorAll('[data-academy-answer]').forEach(b=>b.onclick=()=>{
- const ok=b.dataset.academyAnswer==='correct';document.querySelectorAll('[data-academy-answer]').forEach(x=>x.classList.remove('correct','wrong'));
- b.classList.add(ok?'correct':'wrong');academyFeedback.className=`academy-feedback ${ok?'good':'bad'}`;
- academyFeedback.textContent=ok?'Dobrze. Układ sąsiednich ścian został zachowany.':'Jeszcze nie. Skorzystaj ze wskazówki i sprawdź sąsiednie ściany.';
-});
-academyShowSolution.onclick=()=>{academySolution.classList.remove('hidden');document.querySelector('[data-academy-answer="correct"]').classList.add('correct')};
-academyResetExample.onclick=renderDiceAcademy;
+
+
+
 academyNextLesson.onclick=()=>{if(diceAcademyLesson<4){diceAcademyLesson++;renderDiceAcademy()}else academySolution.classList.remove('hidden')};
-academyStartTraining.onclick=()=>nav('setup');
+academyStartTraining.onclick=()=>startDiceTraining();
+document.getElementById('academyDirectTraining').onclick=()=>startDiceTraining();
 
 
 
@@ -448,7 +445,110 @@ function finishDicePreview(summary){
   nav('home');
 }
 
+
+let diceTrainingMode=false;
+
+function diceTrainingHints(question){
+  const layout=question.layout;
+  const d=question.data;
+  const answer=question.answer;
+
+  if(layout==='sequence'){
+    return {
+      hint1:'Przeczytaj kostki od lewej do prawej. Sprawdź, o ile zmienia się liczba oczek między kolejnymi polami.',
+      hint2:'Szukaj powtarzającego się kroku, naprzemienności albo par. Nie zgaduj na podstawie ostatniej kostki.',
+      solution:`Poprawna odpowiedź to kostka z liczbą ${answer}. Reguła ciągu prowadzi właśnie do tej wartości.`
+    };
+  }
+  if(layout==='analogy'||layout==='analogy3'){
+    return {
+      hint1:'Najpierw ustal zmianę w pierwszej parze: dodawanie, odejmowanie albo ściana przeciwległa.',
+      hint2:'Zastosuj dokładnie tę samą zmianę do ostatniej kostki.',
+      solution:`Poprawna odpowiedź to ${answer}. W każdej parze działa ta sama zmiana.`
+    };
+  }
+  if(layout==='matrix2'||layout==='matrix3'){
+    return {
+      hint1:'Porównaj cały pierwszy wiersz lub kolumnę. Odkryj, jak z wcześniejszych pól powstaje ostatnie.',
+      hint2:'Sprawdź tę samą regułę w kolejnym wierszu. Dopiero wtedy zastosuj ją w polu ze znakiem zapytania.',
+      solution:`Brakujące pole powinno mieć ${answer} oczek. Ta sama reguła działa w każdym wierszu lub każdej kolumnie.`
+    };
+  }
+  if(layout==='odd'){
+    return {
+      hint1:'Porównaj wszystkie kostki i poszukaj jednej, która nie pasuje do wspólnej reguły.',
+      hint2:'Sprawdź parzystość, kolejność, powtarzanie oraz wartości przeciwległe.',
+      solution:`Prawidłowy wybór odpowiada wartości ${answer}, ponieważ jako jedyna łamie wspólną regułę.`
+    };
+  }
+  return {
+    hint1:'Najpierw ustal, co łączy pokazane kostki.',
+    hint2:'Sprawdź wartości, kolejność oraz pary przeciwległe sumujące się do 7.',
+    solution:`Poprawna odpowiedź to kostka z liczbą ${answer}.`
+  };
+}
+
+function resetTrainingHelp(){
+  if(!diceTrainingMode)return;
+  trainingHelpPanel.classList.remove('hidden');
+  trainingNextQuestion.classList.add('hidden');
+  trainingExplanation.className='training-explanation';
+  trainingExplanation.innerHTML='<small>NAUKA PODCZAS TRENINGU</small><p>Wybierz wskazówkę, gdy nie widzisz reguły.</p>';
+}
+
+function showTrainingText(kind){
+  const q=state.questionEngine?.current;
+  if(!q)return;
+  const h=diceTrainingHints(q);
+  const labels={hint1:'WSKAZÓWKA 1',hint2:'WSKAZÓWKA 2',solution:'ROZWIĄZANIE'};
+  trainingExplanation.innerHTML=`<small>${labels[kind]}</small><p>${h[kind]}</p>`;
+  trainingExplanation.className=`training-explanation ${kind==='solution'?'solution':''}`;
+}
+
+function startDiceTraining(){
+  diceTrainingMode=true;
+  state.participant={firstName:'Trening',lastName:'Kostki',age:18,count:20,mode:'adaptive'};
+  nav('question');
+  questionCategory.textContent='TRENING • KOSTKI';
+  state.testStartedAt=Date.now();
+  clearInterval(state.timerId);
+  questionTimer.textContent='00:00';
+  state.timerId=setInterval(()=>questionTimer.textContent=formatTime(Date.now()-state.testStartedAt),1000);
+
+  state.questionEngine=new QuestionEngine({
+    generator:DiceGenerator,
+    manualAdvance:true,
+    onRender:q=>{renderDiceQuestion(q);resetTrainingHelp()},
+    onProgress:updateQuestionProgress,
+    onFeedback:({correct,correctIndex,selectedIndex})=>{
+      showQuestionFeedback({correct,correctIndex,selectedIndex});
+      const q=state.questionEngine.current;
+      const h=diceTrainingHints(q);
+      trainingExplanation.className=`training-explanation ${correct?'good':'bad'}`;
+      trainingExplanation.innerHTML=`<small>${correct?'DOBRZE':'NIE TYM RAZEM'}</small><p>${correct?'Poprawnie rozpoznałeś regułę. ':''}${h.solution}</p>`;
+      trainingNextQuestion.classList.remove('hidden');
+    },
+    onFinish:summary=>{
+      clearInterval(state.timerId);
+      diceTrainingMode=false;
+      trainingHelpPanel.classList.add('hidden');
+      modal('Trening Kostek ukończony',`Poprawne odpowiedzi: ${summary.correct}/${summary.total} (${summary.percent}%).`,'⬡');
+      nav('training-category');
+      renderTrainingCategory('logic');
+    }
+  });
+  state.questionEngine.start(20,'adaptive');
+}
+
+trainingHint1.onclick=()=>showTrainingText('hint1');
+trainingHint2.onclick=()=>showTrainingText('hint2');
+trainingShowSolution.onclick=()=>showTrainingText('solution');
+trainingNextQuestion.onclick=()=>state.questionEngine?.advance();
+
+
 function startDiceTest(){
+  diceTrainingMode=false;
+  trainingHelpPanel.classList.add('hidden');
   const p=state.participant;
   if(!p)return nav('setup');
 
@@ -474,7 +574,12 @@ document.getElementById('startBtn').onclick=startDiceTest;
 document.getElementById('endPreviewBtn').onclick=()=>{
   clearInterval(state.timerId);
   state.questionEngine?.reset();
-  nav('home');
+  if(diceTrainingMode){
+    diceTrainingMode=false;
+    trainingHelpPanel.classList.add('hidden');
+    nav('training-category');
+    renderTrainingCategory('logic');
+  }else nav('home');
 };
 
 setTimeout(()=>{document.getElementById('app').classList.remove('hidden');setTimeout(()=>document.getElementById('splash')?.remove(),700)},1700);

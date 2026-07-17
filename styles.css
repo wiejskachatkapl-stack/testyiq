@@ -6161,3 +6161,131 @@ html,body{
   .real-cube-net .net-4{left:232px!important;top:66px!important}
   .real-cube-net .net-6{left:112px!important;top:126px!important}
 }
+
+
+/* =========================================================
+   v1048 — trening Kostek taki jak w Teście IQ
+   ========================================================= */
+
+.academy-training-intro{
+  display:flex;
+  flex-direction:column;
+}
+.training-preview-list{
+  margin-top:12px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+}
+.training-preview-list article{
+  min-height:72px;
+  padding:10px;
+  border-radius:14px;
+  border:1px solid rgba(67,150,184,.23);
+  background:rgba(255,255,255,.028);
+  display:grid;
+  grid-template-columns:32px minmax(0,1fr);
+  gap:9px;
+  align-items:center;
+}
+.training-preview-list article>b{
+  width:30px;height:30px;border-radius:9px;display:grid;place-items:center;
+  color:#06151d;background:linear-gradient(145deg,#4fe1e7,#8d70ea);
+}
+.training-preview-list article span{display:flex;flex-direction:column}
+.training-preview-list strong{font-size:.66rem}
+.training-preview-list small{margin-top:3px;font-size:.49rem;color:#91a7b2}
+
+.training-learning-info{
+  margin-top:10px;
+  min-height:60px;
+  padding:10px 12px;
+  border-radius:14px;
+  border-left:3px solid #d157f4;
+  background:rgba(174,52,223,.08);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.training-learning-info b{font-size:.62rem;color:#f0b0ff}
+.training-learning-info span{margin-top:4px;font-size:.54rem;color:#c5d1d7}
+
+.academy-direct-training{
+  margin-top:auto;
+  min-height:44px;
+  border:0;border-radius:12px;
+  background:linear-gradient(120deg,#4fe0e7,#8b70eb);
+  color:#06151e;font-size:.57rem;font-weight:900;
+}
+
+.training-help-panel{
+  margin-top:10px;
+  padding:10px;
+  border-radius:16px;
+  border:1px solid rgba(65,151,186,.28);
+  background:
+    radial-gradient(circle at 10% 20%,rgba(47,219,232,.09),transparent 30%),
+    linear-gradient(135deg,rgba(5,27,44,.92),rgba(18,10,40,.92));
+}
+.training-help-buttons{
+  display:grid;
+  grid-template-columns:1fr 1fr 1.2fr;
+  gap:7px;
+}
+.training-help-buttons button{
+  min-height:42px;
+  border-radius:11px;
+  border:1px solid rgba(81,151,181,.26);
+  background:rgba(255,255,255,.035);
+  color:#d9e7ed;
+  font-size:.52rem;
+  font-weight:800;
+}
+.training-help-buttons button:last-child{
+  border-color:rgba(194,76,242,.34);
+  color:#efb4ff;
+  background:rgba(174,53,218,.08);
+}
+
+.training-explanation{
+  margin-top:8px;
+  min-height:70px;
+  padding:10px 12px;
+  border-radius:12px;
+  border-left:3px solid #47dce6;
+  background:rgba(51,207,221,.06);
+}
+.training-explanation small{
+  font-size:.48rem;color:#4fe1e8;letter-spacing:.13em;
+}
+.training-explanation p{
+  margin:5px 0 0;
+  font-size:.68rem;
+  line-height:1.45;
+  color:#edf5f7;
+}
+.training-explanation.solution{border-left-color:#d456f2;background:rgba(178,53,221,.07)}
+.training-explanation.solution small{color:#e994ff}
+.training-explanation.good{border-left-color:#42dc77;background:rgba(46,204,105,.07)}
+.training-explanation.good small{color:#62ee91}
+.training-explanation.bad{border-left-color:#ff6571;background:rgba(255,74,90,.07)}
+.training-explanation.bad small{color:#ff9ba4}
+
+.training-next-question{
+  width:100%;
+  margin-top:8px;
+  min-height:42px;
+  border:0;border-radius:11px;
+  background:linear-gradient(120deg,#4edfe6,#8870e9);
+  color:#06151d;font-size:.55rem;font-weight:900;
+}
+
+@media(max-width:900px),(hover:none) and (pointer:coarse){
+  .training-preview-list{grid-template-columns:1fr}
+  .training-preview-list article{min-height:55px}
+  .training-help-buttons{grid-template-columns:1fr 1fr}
+  .training-help-buttons button:last-child{grid-column:1/-1}
+  .training-help-buttons button{min-height:36px;font-size:.42rem}
+  .training-explanation{min-height:62px;padding:8px}
+  .training-explanation p{font-size:.52rem}
+}
