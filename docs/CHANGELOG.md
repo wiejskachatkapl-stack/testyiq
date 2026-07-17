@@ -1,6 +1,6 @@
 # Changelog
 
-## v1045
+## v1046
 ### Zmieniono
 - dodano przycisk `Pokaż rozłożoną kostkę`,
 - dodano pełny widok siatki sześciu ścian,
@@ -8,7 +8,7 @@
 - znacząco powiększono przyciski wskazówek,
 - powiększono treść wyświetlanej podpowiedzi,
 - uproszczono pierwszą lekcję i rozwiązanie,
-- cache PWA zmieniono na `iq-brain-lab-v1045`.
+- cache PWA zmieniono na `iq-brain-lab-v1046`.
 
 ## v1044
 ### Zmieniono
