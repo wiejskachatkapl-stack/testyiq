@@ -1,5 +1,16 @@
 # Changelog
 
+## v1059
+### Naprawiono
+- kostki w zakładce `Orientacja` są teraz zwarte i wyglądają jak złożone sześciany,
+- zmniejszono przerwy między trzema widocznymi ścianami,
+- w zakładce `Przeciwległe` kliknięta odpowiedź pojawia się w miejscu znaku zapytania,
+- poprawna odpowiedź ma zieloną ramkę,
+- błędna odpowiedź ma czerwoną ramkę i po chwili znika,
+- po poprawnej odpowiedzi widoczny jest przycisk `NASTĘPNE PYTANIE`,
+- automatyczne przejście następuje po 2 sekundach,
+- cache PWA zmieniono na `iq-brain-lab-v1059`.
+
 ## v1058
 ### Naprawiono
 - poprawki dotyczą teraz właściwej zakładki `Orientacja`,
