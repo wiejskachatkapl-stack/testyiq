@@ -7068,3 +7068,109 @@ html,body{
   .orientation-answer-grid button{min-height:110px}
   .orientation-answer-grid .orientation-cube{transform:scale(.72)}
 }
+
+
+/* =========================================================
+   v1059 — zwarte kostki 3D i odpowiedzi w Przeciwległych
+   ========================================================= */
+
+/* Zwarte, złożone kostki w Orientacji */
+.orientation-cube{
+  position:relative;
+  width:118px!important;
+  height:104px!important;
+  margin:auto;
+}
+
+.orientation-cube-top,
+.orientation-cube-left,
+.orientation-cube-right{
+  position:absolute!important;
+  width:62px!important;
+  height:62px!important;
+  overflow:hidden;
+}
+
+.orientation-cube-top{
+  left:28px!important;
+  top:0!important;
+  transform:rotateX(58deg) rotateZ(45deg)!important;
+  transform-origin:center bottom!important;
+}
+
+.orientation-cube-left{
+  left:8px!important;
+  top:42px!important;
+  transform:skewY(28deg)!important;
+  transform-origin:right top!important;
+}
+
+.orientation-cube-right{
+  left:60px!important;
+  top:42px!important;
+  transform:skewY(-28deg)!important;
+  transform-origin:left top!important;
+}
+
+.orientation-main-die,
+.orientation-option-die{
+  width:62px!important;
+  height:62px!important;
+  display:block;
+}
+
+/* Odpowiedź w miejscu znaku zapytania w Przeciwległych */
+#oppositeAnswerFace{
+  overflow:hidden;
+  transition:border-color .2s ease,box-shadow .2s ease,background .2s ease;
+}
+
+#oppositeAnswerFace.filled{
+  display:grid;
+  place-items:center;
+  border-style:solid;
+}
+
+#oppositeAnswerFace.filled .opposite-main-die{
+  width:84px;
+  height:84px;
+}
+
+#oppositeAnswerFace.answer-good{
+  border-color:#3fe079;
+  background:rgba(44,208,105,.15);
+  box-shadow:0 0 24px rgba(63,224,121,.25);
+}
+
+#oppositeAnswerFace.answer-bad{
+  border-color:#ff5363;
+  background:rgba(255,70,87,.15);
+  box-shadow:0 0 22px rgba(255,83,99,.22);
+}
+
+#oppositeNextBtn{
+  display:block;
+  width:100%;
+  min-height:46px;
+  margin-top:10px;
+  position:relative;
+  z-index:8;
+  opacity:1!important;
+  visibility:visible!important;
+}
+
+#oppositeNextBtn.hidden{
+  display:none!important;
+}
+
+@media(max-width:900px),(hover:none) and (pointer:coarse){
+  .orientation-cube{
+    transform:scale(.86);
+    transform-origin:center center;
+  }
+
+  #oppositeAnswerFace.filled .opposite-main-die{
+    width:64px;
+    height:64px;
+  }
+}

@@ -115,6 +115,14 @@ function renderOppositeLesson(){
   document.getElementById('oppositeQuestionCounter').textContent=`${oppositeLessonIndex+1} / ${OPPOSITE_LESSON_QUESTIONS.length}`;
   document.getElementById('oppositeQuestionDie').innerHTML=DiceGenerator.diceSvg(q.face,'opposite-main-die');
 
+  const oppositeAnswerFace=document.getElementById('oppositeAnswerFace');
+  oppositeAnswerFace.className='opposite-question-mark';
+  oppositeAnswerFace.innerHTML='?';
+
+  const oppositeNextButton=document.getElementById('oppositeNextBtn');
+  oppositeNextButton.classList.add('hidden');
+  oppositeNextButton.textContent='NASTĘPNE PYTANIE ›';
+
   const wrong=[1,2,3,4,5,6].filter(v=>v!==q.answer);
   const distractors=[wrong[(oppositeLessonIndex*2)%wrong.length],wrong[(oppositeLessonIndex*2+2)%wrong.length]];
   const options=[q.answer,...distractors].sort(()=>Math.random()-.5);
@@ -130,26 +138,70 @@ function renderOppositeLesson(){
   answers.querySelectorAll('button').forEach(button=>{
     button.onclick=()=>{
       if(oppositeLessonLocked)return;
-      oppositeLessonLocked=true;
+
       const value=Number(button.dataset.oppositeValue);
       const correct=value===q.answer;
-      answers.querySelectorAll('button').forEach(b=>{
-        const v=Number(b.dataset.oppositeValue);
-        b.classList.toggle('correct',v===q.answer);
-        if(b===button&&!correct)b.classList.add('wrong');
-      });
       const box=document.getElementById('oppositeExplanation');
-      box.className=`opposite-explanation ${correct?'good':'bad'}`;
-      box.innerHTML=`<small>${correct?'DOBRZE':'NIE TYM RAZEM'}</small><p>${q.solution}</p>`;
-      document.getElementById('oppositeNextBtn').classList.remove('hidden');
+      const answerFace=document.getElementById('oppositeAnswerFace');
+      const nextButton=document.getElementById('oppositeNextBtn');
+
+      answerFace.innerHTML=DiceGenerator.diceSvg(value,'opposite-main-die');
+      answerFace.className=`opposite-question-mark filled ${correct?'answer-good':'answer-bad'}`;
+
+      if(correct){
+        oppositeLessonLocked=true;
+        button.classList.add('correct');
+        box.className='opposite-explanation good';
+        box.innerHTML=`<small>DOBRA ODPOWIEDŹ</small><p>${q.solution}</p>`;
+        nextButton.classList.remove('hidden');
+        nextButton.textContent='NASTĘPNE PYTANIE ZA 2 SEKUNDY ›';
+
+        clearTimeout(window.oppositeAdvanceTimer);
+        window.oppositeAdvanceTimer=setTimeout(advanceOppositeLesson,2000);
+      }else{
+        button.classList.add('wrong');
+        box.className='opposite-explanation bad';
+        box.innerHTML='<small>ZŁA ODPOWIEDŹ</small><p>Popraw się i spróbuj jeszcze raz.</p>';
+
+        setTimeout(()=>{
+          button.classList.remove('wrong');
+          answerFace.className='opposite-question-mark';
+          answerFace.innerHTML='?';
+          box.className='opposite-explanation';
+          box.innerHTML='<small>NAUKA</small><p>Wybierz ścianę, która znajduje się po przeciwnej stronie standardowej kostki.</p>';
+        },1600);
+      }
     };
   });
-
   const explanation=document.getElementById('oppositeExplanation');
   explanation.className='opposite-explanation';
   explanation.innerHTML='<small>NAUKA</small><p>Wybierz ścianę, która znajduje się po przeciwnej stronie standardowej kostki.</p>';
   document.getElementById('oppositeNextBtn').classList.add('hidden');
 }
+
+
+function advanceOppositeLesson(){
+  clearTimeout(window.oppositeAdvanceTimer);
+  const box=document.getElementById('oppositeExplanation');
+
+  if(oppositeLessonIndex<OPPOSITE_LESSON_QUESTIONS.length-1){
+    oppositeLessonIndex++;
+    renderOppositeLesson();
+  }else{
+    oppositeLessonIndex=0;
+    oppositeLessonLocked=true;
+    document.getElementById('oppositeAnswers').innerHTML='';
+    document.getElementById('oppositeNextBtn').classList.add('hidden');
+    const answerFace=document.getElementById('oppositeAnswerFace');
+    answerFace.className='opposite-question-mark';
+    answerFace.innerHTML='✓';
+    box.className='opposite-explanation good';
+    box.innerHTML='<small>ETAP 2 UKOŃCZONY</small><p>Znasz już wszystkie trzy pary przeciwległych ścian: 1–6, 2–5 oraz 3–4.</p>';
+  }
+}
+
+
+document.getElementById('oppositeNextBtn')?.addEventListener('click',()=>{if(oppositeLessonLocked)advanceOppositeLesson();});
 
 function showOppositeLesson(){
   document.querySelector('.academy-training-intro')?.classList.add('hidden');
@@ -172,13 +224,25 @@ document.getElementById('oppositeHintBtn')?.addEventListener('click',()=>{
 document.getElementById('oppositeSolutionBtn')?.addEventListener('click',()=>{
   const q=OPPOSITE_LESSON_QUESTIONS[oppositeLessonIndex];
   oppositeLessonLocked=true;
+
   document.querySelectorAll('#oppositeAnswers button').forEach(b=>{
     b.classList.toggle('correct',Number(b.dataset.oppositeValue)===q.answer);
   });
+
+  const answerFace=document.getElementById('oppositeAnswerFace');
+  answerFace.innerHTML=DiceGenerator.diceSvg(q.answer,'opposite-main-die');
+  answerFace.className='opposite-question-mark filled answer-good';
+
   const box=document.getElementById('oppositeExplanation');
   box.className='opposite-explanation solution';
   box.innerHTML=`<small>ROZWIĄZANIE</small><p>${q.solution}</p>`;
-  document.getElementById('oppositeNextBtn').classList.remove('hidden');
+
+  const nextButton=document.getElementById('oppositeNextBtn');
+  nextButton.classList.remove('hidden');
+  nextButton.textContent='NASTĘPNE PYTANIE ZA 2 SEKUNDY ›';
+
+  clearTimeout(window.oppositeAdvanceTimer);
+  window.oppositeAdvanceTimer=setTimeout(advanceOppositeLesson,2000);
 });
 
 document.getElementById('oppositeNextBtn')?.addEventListener('click',()=>{
