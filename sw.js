@@ -1,4 +1,4 @@
-const CACHE='iq-brain-lab-v1046';const ASSETS=['./','./index.html','./styles.css','./app.js','./manifest.json','./icons/icon-192.png','./icons/icon-512.png','./icons/icon-maskable-512.png','./js/generators/diceGenerator.js','./js/generators/matrixGenerator.js','./js/generators/mixedGenerator.js','./js/engine/questionEngine.js',
+const CACHE='iq-brain-lab-v1047';const ASSETS=['./','./index.html','./styles.css','./app.js','./manifest.json','./icons/icon-192.png','./icons/icon-512.png','./icons/icon-maskable-512.png','./js/generators/diceGenerator.js','./js/generators/matrixGenerator.js','./js/generators/mixedGenerator.js','./js/engine/questionEngine.js',
   'assets/audio/rain.ogg'
 ,
   'assets/audio/ocean.ogg'
