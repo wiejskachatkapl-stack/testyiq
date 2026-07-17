@@ -6871,3 +6871,44 @@ html,body{
     grid-column:1/-1;
   }
 }
+
+
+/* =========================================================
+   v1056 — czytelna reakcja na odpowiedzi w etapie 3
+   ========================================================= */
+
+#cornerAnswers button{
+  transition:
+    border-color .18s ease,
+    background .18s ease,
+    box-shadow .18s ease,
+    transform .18s ease;
+}
+
+#cornerAnswers button.correct{
+  border-color:#3fe079!important;
+  background:rgba(44,208,105,.18)!important;
+  box-shadow:
+    0 0 0 2px rgba(63,224,121,.22),
+    0 0 22px rgba(47,217,109,.22)!important;
+  transform:scale(1.025);
+}
+
+#cornerAnswers button.wrong{
+  border-color:#ff5363!important;
+  background:rgba(255,70,87,.18)!important;
+  box-shadow:
+    0 0 0 2px rgba(255,83,99,.20),
+    0 0 20px rgba(255,70,87,.18)!important;
+  transform:translateX(-3px);
+}
+
+#cornerExplanation.good,
+#cornerExplanation.bad{
+  animation:corner-feedback-pop .22s ease-out;
+}
+
+@keyframes corner-feedback-pop{
+  from{opacity:.55;transform:scale(.985)}
+  to{opacity:1;transform:scale(1)}
+}
