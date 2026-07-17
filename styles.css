@@ -6469,3 +6469,55 @@ html,body{
   .opposite-pair-memory{grid-template-columns:repeat(3,1fr)}
   .opposite-pair-memory span{grid-column:1/-1}
 }
+
+
+/* =========================================================
+   v1052 — kursory, cofanie i blokada ukrytych ekranów
+   ========================================================= */
+
+/* Ukryte ekrany nie mogą przechwytywać kliknięć */
+.screen{
+  pointer-events:none!important;
+}
+.screen.active{
+  pointer-events:auto!important;
+}
+
+/* Przycisk muzyki jest aktywny wyłącznie na aktywnym ekranie głównym */
+.screen[data-screen="home"]:not(.active) #brainMusicBtn{
+  pointer-events:none!important;
+  visibility:hidden!important;
+  opacity:0!important;
+}
+.screen[data-screen="home"].active #brainMusicBtn{
+  pointer-events:auto!important;
+}
+
+/* Czytelny kursor na wszystkich elementach interaktywnych na komputerze */
+@media (hover:hover) and (pointer:fine){
+  button,
+  [role="button"],
+  [data-route],
+  [data-coming],
+  [data-category],
+  [data-game],
+  [data-lesson],
+  [data-tip],
+  [data-academy-answer],
+  [data-opposite-value],
+  .training-category,
+  .training-game-card,
+  .academy-lessons button,
+  .academy-tips button,
+  .music-track,
+  .music-tabs button,
+  .question-choice>span,
+  .premium-mode>span{
+    cursor:pointer!important;
+  }
+
+  button:disabled,
+  [aria-disabled="true"]{
+    cursor:not-allowed!important;
+  }
+}

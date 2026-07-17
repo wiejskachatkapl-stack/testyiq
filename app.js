@@ -8,7 +8,7 @@ function modal(title,text,icon='✦'){document.getElementById('modalTitle').text
 function closeModal(){document.getElementById('modal').classList.add('hidden')}
 document.querySelectorAll('[data-route]').forEach(b=>b.onclick=()=>nav(b.dataset.route));
 document.querySelectorAll('[data-coming]').forEach(b=>b.onclick=()=>modal(b.dataset.coming,'Moduł jest zapisany w roadmapie i zostanie uruchomiony w kolejnych wersjach.'));
-document.getElementById('back')?.addEventListener('click',()=>nav(state.history.pop()||'home',false));
+document.getElementById('backBtn')?.addEventListener('click',()=>nav(state.history.pop()||'home',false));
 document.getElementById('closeModal').onclick=closeModal;document.getElementById('okModal').onclick=closeModal;
 document.getElementById('modal').onclick=e=>{if(e.target.id==='modal')closeModal()};
 document.getElementById('soundBtn').onclick=e=>{state.sound=!state.sound;e.currentTarget.textContent=state.sound?'♪':'×'};
