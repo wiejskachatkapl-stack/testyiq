@@ -494,42 +494,78 @@
     </div>
   </section>
 
-  <footer><button data-coming="O aplikacji">O aplikacji</button><span>•</span><span>Wersja 1045</span></footer>
+  <footer><button data-coming="O aplikacji">O aplikacji</button><span>•</span><span>Wersja 1046</span></footer>
 </main>
 
 
 
+
 <div id="cubeNetPanel" class="cube-net-overlay hidden" aria-hidden="true">
-  <section class="cube-net-panel" role="dialog" aria-modal="true" aria-labelledby="cubeNetTitle">
+  <section class="cube-net-panel cube-net-panel-v1046">
     <header>
       <div>
         <small>AKADEMIA KOSTEK</small>
-        <h2 id="cubeNetTitle">Rozłożona kostka do gry</h2>
-        <p>Każdy kwadrat to jedna ściana. Po złożeniu pary 1–6, 2–5 oraz 3–4 znajdują się naprzeciwko siebie.</p>
+        <h2>Prawdziwa kostka do gry</h2>
+        <p>Każda ściana ma oczka od 1 do 6. Pary przeciwległe to 1–6, 2–5 oraz 3–4.</p>
       </div>
       <button id="closeCubeNetBtn" type="button">×</button>
     </header>
 
-    <div class="cube-net-area">
-      <div class="cube-net">
-        <div class="net-face face-1"><i></i><span>1</span></div>
-        <div class="net-face face-2"><i></i><i></i><span>2</span></div>
-        <div class="net-face face-3"><i></i><i></i><i></i><span>3</span></div>
-        <div class="net-face face-4"><i></i><i></i><i></i><i></i><span>4</span></div>
-        <div class="net-face face-5"><i></i><i></i><i></i><i></i><i></i><span>5</span></div>
-        <div class="net-face face-6"><i></i><i></i><i></i><i></i><i></i><i></i><span>6</span></div>
-      </div>
-      <div class="cube-net-explanation">
-        <article><b>1 ↔ 6</b><span>Ściany przeciwległe</span></article>
-        <article><b>2 ↔ 5</b><span>Ściany przeciwległe</span></article>
-        <article><b>3 ↔ 4</b><span>Ściany przeciwległe</span></article>
-        <p>Ściany leżące naprzeciwko siebie nigdy nie dotykają się krawędzią.</p>
-      </div>
+    <div class="real-dice-layout">
+      <section class="real-die-card">
+        <div class="real-die-title">
+          <div><small>STANDARDOWA KOSTKA 3D</small><h3>Obróć kostkę</h3></div>
+          <button id="rotateRealDieBtn" type="button">OBRÓĆ</button>
+        </div>
+        <div class="real-die-stage">
+          <div id="realDie" class="real-die">
+            <div class="die-face die-front"><i></i><i></i><i></i><i></i></div>
+            <div class="die-face die-back"><i></i><i></i><i></i></div>
+            <div class="die-face die-right"><i></i><i></i></div>
+            <div class="die-face die-left"><i></i><i></i><i></i><i></i><i></i></div>
+            <div class="die-face die-top"><i></i></div>
+            <div class="die-face die-bottom"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          </div>
+        </div>
+        <div class="opposite-pairs">
+          <article><b>1 ↔ 6</b><span>przeciwległe</span></article>
+          <article><b>2 ↔ 5</b><span>przeciwległe</span></article>
+          <article><b>3 ↔ 4</b><span>przeciwległe</span></article>
+        </div>
+      </section>
+
+      <section class="real-net-card">
+        <div class="real-die-title">
+          <div><small>SIATKA KOSTKI</small><h3>Wszystkie 6 ścian</h3></div>
+          <button id="foldCubeNetBtn" type="button">ZŁÓŻ</button>
+        </div>
+        <div id="realCubeNet" class="real-cube-net">
+          <div class="real-net-face net-1"><i></i><span>1</span></div>
+          <div class="real-net-face net-2"><i></i><i></i><span>2</span></div>
+          <div class="real-net-face net-6"><i></i><i></i><i></i><i></i><i></i><i></i><span>6</span></div>
+          <div class="real-net-face net-5"><i></i><i></i><i></i><i></i><i></i><span>5</span></div>
+          <div class="real-net-face net-3"><i></i><i></i><i></i><span>3</span></div>
+          <div class="real-net-face net-4"><i></i><i></i><i></i><i></i><span>4</span></div>
+        </div>
+        <div id="foldedCubePreview" class="folded-cube-preview hidden">
+          <div class="mini-real-die">
+            <div class="mini-face mf-front"><i></i><i></i><i></i><i></i></div>
+            <div class="mini-face mf-right"><i></i><i></i></div>
+            <div class="mini-face mf-top"><i></i></div>
+          </div>
+          <strong>Po złożeniu powstaje sześcian</strong>
+          <small>Każda ściana nadal ma swoje oczka.</small>
+        </div>
+      </section>
     </div>
 
-    <footer>
-      <button id="cubeNetDoneBtn" type="button">ROZUMIEM</button>
-    </footer>
+    <section class="real-dice-guide">
+      <article><b>1</b><span>Każda z 6 ścian ma inną liczbę oczek.</span></article>
+      <article><b>2</b><span>Ściany przeciwległe nigdy się nie dotykają.</span></article>
+      <article><b>3</b><span>Przeciwległe pary zawsze sumują się do 7.</span></article>
+    </section>
+
+    <footer><button id="cubeNetDoneBtn" type="button">ROZUMIEM</button></footer>
   </section>
 </div>
 

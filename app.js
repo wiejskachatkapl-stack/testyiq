@@ -123,6 +123,24 @@ academyStartTraining.onclick=()=>nav('setup');
 
 
 
+
+let realDieRotation=0;
+rotateRealDieBtn.onclick=()=>{
+  realDieRotation=(realDieRotation+1)%4;
+  const rotations=[
+    'rotateX(-20deg) rotateY(32deg)',
+    'rotateX(-18deg) rotateY(122deg)',
+    'rotateX(-28deg) rotateY(212deg)',
+    'rotateX(-16deg) rotateY(302deg)'
+  ];
+  realDie.style.transform=rotations[realDieRotation];
+};
+foldCubeNetBtn.onclick=()=>{
+  const folded=realCubeNet.classList.toggle('folded');
+  foldedCubePreview.classList.toggle('hidden',!folded);
+  foldCubeNetBtn.textContent=folded?'ROZŁÓŻ':'ZŁÓŻ';
+};
+
 function openCubeNet(){
   cubeNetPanel.classList.remove('hidden');
   cubeNetPanel.setAttribute('aria-hidden','false');
