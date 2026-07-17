@@ -2,12 +2,13 @@
   'use strict';
 
   class QuestionEngine {
-    constructor({ generator, onRender, onProgress, onFinish, onFeedback }) {
+    constructor({ generator, onRender, onProgress, onFinish, onFeedback, manualAdvance = false }) {
       this.generator = generator;
       this.onRender = onRender;
       this.onProgress = onProgress;
       this.onFinish = onFinish;
       this.onFeedback = onFeedback;
+      this.manualAdvance = manualAdvance;
       this.reset();
     }
 
@@ -74,15 +75,22 @@
 
       this.onFeedback?.({ correct, correctIndex: this.current.answerIndex, selectedIndex: optionIndex });
       this.index += 1;
-      setTimeout(() => {
-        try {
-          this.next();
-        } catch (error) {
-          console.error('Błąd przejścia do następnego pytania:', error);
-          this.locked = false;
-          setTimeout(() => this.next(), 120);
-        }
-      }, 520);
+      if (!this.manualAdvance) {
+        setTimeout(() => {
+          try {
+            this.next();
+          } catch (error) {
+            console.error('Błąd przejścia do następnego pytania:', error);
+            this.locked = false;
+            setTimeout(() => this.next(), 120);
+          }
+        }, 520);
+      }
+    }
+
+    advance() {
+      if (!this.manualAdvance || !this.locked) return;
+      this.next();
     }
 
     summary() {
