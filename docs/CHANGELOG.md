@@ -1,5 +1,15 @@
 # Changelog
 
+## v1056
+### Zmieniono
+- poprawna odpowiedź w etapie 3 jest zaznaczana na zielono,
+- po poprawnej odpowiedzi kolejne pytanie pojawia się automatycznie po 2 sekundach,
+- błędna odpowiedź jest zaznaczana na czerwono,
+- po błędnej odpowiedzi pojawia się komunikat „Zła odpowiedź. Popraw się i spróbuj jeszcze raz”,
+- czerwone zaznaczenie znika, a użytkownik może wybrać odpowiedź ponownie,
+- usunięto konieczność ręcznego przechodzenia dalej,
+- cache PWA zmieniono na `iq-brain-lab-v1056`.
+
 ## v1055
 ### Dodano
 - trzeci etap Akademii Kostek: `Sąsiedztwo i narożniki`,
