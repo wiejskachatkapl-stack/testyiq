@@ -281,7 +281,7 @@
 
     <nav class="academy-lessons">
       <button class="active" data-lesson="0"><b>1</b><span>Orientacja</span></button>
-      <button data-lesson="1"><b>2</b><span>Sąsiedztwo</span></button>
+      <button data-lesson="1"><b>2</b><span>Przeciwległe</span></button>
       <button data-lesson="2"><b>3</b><span>Przeciwległe</span></button>
       <button data-lesson="3"><b>4</b><span>Obrót</span></button>
       <button data-lesson="4"><b>5</b><span>Eliminacja</span></button>
@@ -321,6 +321,43 @@
           <span>duże wskazówki, pokazanie reguły i rozwiązanie przed przejściem dalej.</span>
         </div>
         <button type="button" id="academyDirectTraining" class="academy-direct-training">ROZPOCZNIJ TRENING KOSTEK ›</button>
+      </article>
+
+      <article id="oppositeLessonPanel" class="academy-example opposite-lesson-panel hidden">
+        <div class="academy-example-head">
+          <div>
+            <small>ETAP 2 • ŚCIANY PRZECIWLEGŁE</small>
+            <h3 id="oppositeQuestionTitle">Co znajduje się naprzeciwko ściany z 1 oczkiem?</h3>
+          </div>
+          <div class="opposite-score"><span>PYTANIE</span><strong id="oppositeQuestionCounter">1 / 6</strong></div>
+        </div>
+
+        <div class="opposite-learning-card">
+          <div id="oppositeQuestionDie" class="opposite-question-die"></div>
+          <div class="opposite-question-arrow">↔</div>
+          <div class="opposite-question-mark">?</div>
+        </div>
+
+        <div id="oppositeAnswers" class="opposite-answer-grid"></div>
+
+        <div class="opposite-tools">
+          <button type="button" id="oppositeHintBtn">💡 POKAŻ WSKAZÓWKĘ</button>
+          <button type="button" id="oppositeSolutionBtn">✓ POKAŻ ROZWIĄZANIE</button>
+        </div>
+
+        <div id="oppositeExplanation" class="opposite-explanation">
+          <small>NAUKA</small>
+          <p>Wybierz ścianę, która znajduje się po przeciwnej stronie standardowej kostki.</p>
+        </div>
+
+        <button type="button" id="oppositeNextBtn" class="opposite-next hidden">NASTĘPNE PYTANIE ›</button>
+
+        <div class="opposite-pair-memory">
+          <span>Zapamiętaj:</span>
+          <b>1 ↔ 6</b>
+          <b>2 ↔ 5</b>
+          <b>3 ↔ 4</b>
+        </div>
       </article>
     </section>
 
@@ -508,7 +545,7 @@
     </div>
   </section>
 
-  <footer><button data-coming="O aplikacji">O aplikacji</button><span>•</span><span>Wersja 1050</span></footer>
+  <footer><button data-coming="O aplikacji">O aplikacji</button><span>•</span><span>Wersja 1051</span></footer>
 </main>
 
 

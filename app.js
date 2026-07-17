@@ -90,9 +90,114 @@ document.querySelectorAll('.training-category').forEach(b=>b.onclick=()=>openTra
 
 
 
+
+/* =========================================================
+   v1051 — Etap 2: Ściany przeciwległe
+   ========================================================= */
+const OPPOSITE_LESSON_QUESTIONS=[
+  {face:1,answer:6,hint:'Na standardowej kostce suma oczek na przeciwległych ścianach wynosi 7.',solution:'7 − 1 = 6, więc naprzeciwko 1 znajduje się 6.'},
+  {face:2,answer:5,hint:'Dodaj brakującą liczbę do 2 tak, aby otrzymać 7.',solution:'7 − 2 = 5, więc naprzeciwko 2 znajduje się 5.'},
+  {face:3,answer:4,hint:'Przeciwległa para musi sumować się do 7.',solution:'7 − 3 = 4, więc naprzeciwko 3 znajduje się 4.'},
+  {face:6,answer:1,hint:'To ta sama para co 1 ↔ 6, tylko pytanie jest odwrócone.',solution:'Naprzeciwko 6 znajduje się 1.'},
+  {face:5,answer:2,hint:'Przypomnij sobie parę 2 ↔ 5.',solution:'Naprzeciwko 5 znajduje się 2.'},
+  {face:4,answer:3,hint:'Przypomnij sobie parę 3 ↔ 4.',solution:'Naprzeciwko 4 znajduje się 3.'}
+];
+
+let oppositeLessonIndex=0;
+let oppositeLessonLocked=false;
+
+function renderOppositeLesson(){
+  const q=OPPOSITE_LESSON_QUESTIONS[oppositeLessonIndex];
+  if(!q)return;
+
+  oppositeLessonLocked=false;
+  document.getElementById('oppositeQuestionTitle').textContent=`Co znajduje się naprzeciwko ściany z ${q.face} ${q.face===1?'oczkiem':'oczkami'}?`;
+  document.getElementById('oppositeQuestionCounter').textContent=`${oppositeLessonIndex+1} / ${OPPOSITE_LESSON_QUESTIONS.length}`;
+  document.getElementById('oppositeQuestionDie').innerHTML=DiceGenerator.diceSvg(q.face,'opposite-main-die');
+
+  const wrong=[1,2,3,4,5,6].filter(v=>v!==q.answer);
+  const distractors=[wrong[(oppositeLessonIndex*2)%wrong.length],wrong[(oppositeLessonIndex*2+2)%wrong.length]];
+  const options=[q.answer,...distractors].sort(()=>Math.random()-.5);
+
+  const answers=document.getElementById('oppositeAnswers');
+  answers.innerHTML=options.map((value,index)=>`
+    <button type="button" data-opposite-value="${value}">
+      <span>${String.fromCharCode(65+index)}</span>
+      ${DiceGenerator.diceSvg(value,'opposite-answer-die')}
+      <small>${value} ${value===1?'oczko':value<5?'oczka':'oczek'}</small>
+    </button>`).join('');
+
+  answers.querySelectorAll('button').forEach(button=>{
+    button.onclick=()=>{
+      if(oppositeLessonLocked)return;
+      oppositeLessonLocked=true;
+      const value=Number(button.dataset.oppositeValue);
+      const correct=value===q.answer;
+      answers.querySelectorAll('button').forEach(b=>{
+        const v=Number(b.dataset.oppositeValue);
+        b.classList.toggle('correct',v===q.answer);
+        if(b===button&&!correct)b.classList.add('wrong');
+      });
+      const box=document.getElementById('oppositeExplanation');
+      box.className=`opposite-explanation ${correct?'good':'bad'}`;
+      box.innerHTML=`<small>${correct?'DOBRZE':'NIE TYM RAZEM'}</small><p>${q.solution}</p>`;
+      document.getElementById('oppositeNextBtn').classList.remove('hidden');
+    };
+  });
+
+  const explanation=document.getElementById('oppositeExplanation');
+  explanation.className='opposite-explanation';
+  explanation.innerHTML='<small>NAUKA</small><p>Wybierz ścianę, która znajduje się po przeciwnej stronie standardowej kostki.</p>';
+  document.getElementById('oppositeNextBtn').classList.add('hidden');
+}
+
+function showOppositeLesson(){
+  document.querySelector('.academy-training-intro')?.classList.add('hidden');
+  document.getElementById('oppositeLessonPanel')?.classList.remove('hidden');
+  renderOppositeLesson();
+}
+
+function hideOppositeLesson(){
+  document.querySelector('.academy-training-intro')?.classList.remove('hidden');
+  document.getElementById('oppositeLessonPanel')?.classList.add('hidden');
+}
+
+document.getElementById('oppositeHintBtn')?.addEventListener('click',()=>{
+  const q=OPPOSITE_LESSON_QUESTIONS[oppositeLessonIndex];
+  const box=document.getElementById('oppositeExplanation');
+  box.className='opposite-explanation hint';
+  box.innerHTML=`<small>WSKAZÓWKA</small><p>${q.hint}</p>`;
+});
+
+document.getElementById('oppositeSolutionBtn')?.addEventListener('click',()=>{
+  const q=OPPOSITE_LESSON_QUESTIONS[oppositeLessonIndex];
+  oppositeLessonLocked=true;
+  document.querySelectorAll('#oppositeAnswers button').forEach(b=>{
+    b.classList.toggle('correct',Number(b.dataset.oppositeValue)===q.answer);
+  });
+  const box=document.getElementById('oppositeExplanation');
+  box.className='opposite-explanation solution';
+  box.innerHTML=`<small>ROZWIĄZANIE</small><p>${q.solution}</p>`;
+  document.getElementById('oppositeNextBtn').classList.remove('hidden');
+});
+
+document.getElementById('oppositeNextBtn')?.addEventListener('click',()=>{
+  if(oppositeLessonIndex<OPPOSITE_LESSON_QUESTIONS.length-1){
+    oppositeLessonIndex++;
+    renderOppositeLesson();
+  }else{
+    oppositeLessonIndex=0;
+    const box=document.getElementById('oppositeExplanation');
+    box.className='opposite-explanation good';
+    box.innerHTML='<small>ETAP 2 UKOŃCZONY</small><p>Znasz już wszystkie trzy pary przeciwległych ścian: 1–6, 2–5 oraz 3–4.</p>';
+    document.getElementById('oppositeNextBtn').classList.add('hidden');
+  }
+});
+
+
 const DICE_ACADEMY_LESSONS=[
  {title:'Najpierw poznaj trzy widoczne ściany',description:'Na kostce widzisz jednocześnie górę, przód i prawy bok. Zapamiętaj trzy liczby, które spotykają się w jednym narożniku. Po obróceniu kostki mogą zmienić miejsce, ale nadal muszą się ze sobą stykać.',rule:'Te same trzy ściany spotykające się w narożniku pozostają razem po każdym obrocie.',tips:['Najpierw znajdź ścianę z liczbą 4. To nasz punkt startowy.','Sprawdź, czy obok 4 nadal znajdują się ściany 2 i 3.','Odrzuć każdą odpowiedź, w której przy 4 pojawia się inna liczba.'],solution:'W odpowiedzi B ściana 4 została przeniesiona na górę. Obok niej nadal znajdują się 2 i 3. Dlatego B zachowuje ten sam narożnik kostki.'},
- {title:'Sprawdzaj sąsiednie ściany',description:'Dwie ściany są sąsiednie, gdy dotykają się krawędzią. Po obrocie nadal będą sąsiadami.',rule:'Sąsiednie ściany zawsze pozostają sąsiednie.',tips:['Szukaj trzech ścian widocznych w jednym narożniku.','Porównuj cały zestaw trzech ścian.','Jeśli para nigdy nie występuje obok siebie, może być przeciwległa.'],solution:'Tylko odpowiedź B zachowuje ten sam zestaw trzech ścian spotykających się w jednym narożniku.'},
+ {title:'Poznaj ściany przeciwległe',description:'Ściany przeciwległe leżą po dwóch stronach kostki i nigdy nie dotykają się krawędzią. W standardowej kostce są tylko trzy takie pary.',rule:'Pary przeciwległe to 1–6, 2–5 oraz 3–4. Ich suma zawsze wynosi 7.',tips:['Zapamiętaj pierwszą parę: 1 i 6.','Następnie zapamiętaj 2 i 5.','Ostatnia para to 3 i 4.'],solution:'Aby znaleźć ścianę przeciwległą, odejmij liczbę oczek od 7.'},
  {title:'Rozpoznawaj ściany przeciwległe',description:'Ściany przeciwległe nigdy nie są widoczne jednocześnie w jednym narożniku kostki.',rule:'Ściany przeciwległe nigdy nie stykają się krawędzią.',tips:['Zapamiętuj pary ścian przeciwległych.','Odrzucaj odpowiedzi pokazujące je obok siebie.','Najpierw eliminuj niemożliwe układy.'],solution:'A i C pokazują niemożliwe sąsiedztwo. B zachowuje poprawną relację ścian.'},
  {title:'Obracaj kostkę etapami',description:'Wyobrażaj sobie pojedyncze obroty o 90°. To łatwiejsze niż obracanie całej kostki naraz.',rule:'Jeden obrót, jedna kontrola położenia ścian.',tips:['Wybierz oś obrotu.','Ściana na osi obrotu pozostaje na swoim boku.','Po każdym obrocie sprawdź trzy widoczne ściany.'],solution:'Po obrocie ściana górna pozostaje górą, a przednia i boczna zamieniają pozycje. Tak wygląda B.'},
  {title:'Używaj eliminacji',description:'W trudnym zadaniu wystarczy znaleźć jedną błędną relację w każdej złej odpowiedzi.',rule:'Najpierw odrzucaj to, co niemożliwe.',tips:['Porównaj pary sąsiednich ścian.','Sprawdź przeciwległe pary.','Na końcu porównaj kolejność ścian wokół narożnika.'],solution:'A odpada przez złą parę sąsiadów, C przez złą kolejność. B jako jedyna jest możliwa.'}
@@ -110,7 +215,16 @@ function renderDiceAcademy(){
  const nextLessonButton=document.getElementById('academyNextLesson');
  if(nextLessonButton)nextLessonButton.textContent=diceAcademyLesson===4?'ZAKOŃCZ NAUKĘ ✓':'NASTĘPNA LEKCJA ›';
 }
-document.querySelectorAll('[data-lesson]').forEach(b=>b.onclick=()=>{diceAcademyLesson=Number(b.dataset.lesson);renderDiceAcademy()});
+document.querySelectorAll('[data-lesson]').forEach(b=>b.onclick=()=>{
+  diceAcademyLesson=Number(b.dataset.lesson);
+  renderDiceAcademy();
+  if(diceAcademyLesson===1){
+    oppositeLessonIndex=0;
+    showOppositeLesson();
+  }else{
+    hideOppositeLesson();
+  }
+});
 document.querySelectorAll('[data-tip]').forEach(b=>b.onclick=()=>{academyTipText.textContent=DICE_ACADEMY_LESSONS[diceAcademyLesson].tips[Number(b.dataset.tip)];academyTipBox.classList.remove('hidden')});
 
 

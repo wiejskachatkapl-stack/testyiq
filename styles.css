@@ -6289,3 +6289,183 @@ html,body{
   .training-explanation{min-height:62px;padding:8px}
   .training-explanation p{font-size:.52rem}
 }
+
+
+/* =========================================================
+   v1051 — Etap 2: Ściany przeciwległe
+   ========================================================= */
+
+.opposite-lesson-panel{
+  display:flex;
+  flex-direction:column;
+  min-height:0;
+}
+
+.opposite-score{
+  min-width:74px;
+  padding:7px 9px;
+  border-radius:11px;
+  border:1px solid rgba(70,145,180,.24);
+  background:rgba(255,255,255,.03);
+  display:flex;
+  flex-direction:column;
+  text-align:center;
+}
+.opposite-score span{font-size:.40rem;color:#89a5b2}
+.opposite-score strong{font-size:.65rem;color:#52e1e8}
+
+.opposite-learning-card{
+  margin-top:10px;
+  min-height:142px;
+  border-radius:16px;
+  border:1px solid rgba(62,140,175,.22);
+  background:
+    linear-gradient(rgba(57,111,137,.07) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(57,111,137,.07) 1px,transparent 1px),
+    rgba(2,15,28,.44);
+  background-size:26px 26px;
+  display:grid;
+  grid-template-columns:110px 42px 110px;
+  justify-content:center;
+  align-items:center;
+  gap:12px;
+}
+.opposite-main-die{width:88px;height:88px}
+.opposite-question-arrow{font-size:1.8rem;color:#4fe0e8;text-align:center}
+.opposite-question-mark{
+  width:86px;height:86px;border-radius:20px;
+  border:2px dashed rgba(79,223,235,.54);
+  display:grid;place-items:center;
+  color:#55e6ed;font-size:2rem;
+  background:rgba(44,190,210,.06);
+}
+
+.opposite-answer-grid{
+  margin-top:9px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:7px;
+}
+.opposite-answer-grid button{
+  min-height:122px;
+  padding:7px;
+  border-radius:14px;
+  border:1px solid rgba(74,129,158,.24);
+  background:rgba(255,255,255,.025);
+  color:#fff;
+  display:grid;
+  grid-template-rows:auto 1fr auto;
+  justify-items:center;
+}
+.opposite-answer-grid button>span{
+  justify-self:start;
+  width:22px;height:22px;border-radius:7px;
+  display:grid;place-items:center;
+  color:#4de2e9;background:rgba(50,190,208,.12);
+  font-size:.50rem;
+}
+.opposite-answer-die{width:64px;height:64px}
+.opposite-answer-grid button small{font-size:.43rem;color:#90a7b2}
+.opposite-answer-grid button.correct{
+  border-color:#3fe079;
+  background:rgba(44,208,105,.10);
+  box-shadow:0 0 16px rgba(47,217,109,.12);
+}
+.opposite-answer-grid button.wrong{
+  border-color:#ff6170;
+  background:rgba(255,70,87,.08);
+}
+
+.opposite-tools{
+  margin-top:8px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:7px;
+}
+.opposite-tools button{
+  min-height:38px;
+  border-radius:10px;
+  border:1px solid rgba(81,145,174,.25);
+  background:rgba(255,255,255,.03);
+  color:#dbe8ed;
+  font-size:.47rem;
+  font-weight:800;
+}
+.opposite-tools button:last-child{
+  color:#efb1ff;
+  border-color:rgba(202,76,240,.30);
+  background:rgba(174,48,218,.07);
+}
+
+.opposite-explanation{
+  margin-top:8px;
+  min-height:70px;
+  padding:10px 12px;
+  border-radius:12px;
+  border-left:3px solid #4bdce5;
+  background:rgba(48,199,213,.06);
+}
+.opposite-explanation small{
+  color:#54e2e9;
+  font-size:.45rem;
+  letter-spacing:.13em;
+}
+.opposite-explanation p{
+  margin:5px 0 0;
+  color:#eff6f8;
+  font-size:.64rem;
+  line-height:1.45;
+}
+.opposite-explanation.hint{border-left-color:#ffd34f;background:rgba(255,207,54,.07)}
+.opposite-explanation.hint small{color:#ffd34f}
+.opposite-explanation.solution{border-left-color:#d457f1;background:rgba(177,54,220,.08)}
+.opposite-explanation.solution small{color:#e89afa}
+.opposite-explanation.good{border-left-color:#43dc78;background:rgba(45,204,105,.07)}
+.opposite-explanation.good small{color:#67ee95}
+.opposite-explanation.bad{border-left-color:#ff6170;background:rgba(255,73,89,.07)}
+.opposite-explanation.bad small{color:#ff9ba4}
+
+.opposite-next{
+  width:100%;
+  margin-top:8px;
+  min-height:40px;
+  border:0;
+  border-radius:10px;
+  background:linear-gradient(120deg,#4fe0e7,#8870e9);
+  color:#06151c;
+  font-size:.52rem;
+  font-weight:900;
+}
+
+.opposite-pair-memory{
+  margin-top:8px;
+  display:grid;
+  grid-template-columns:auto repeat(3,1fr);
+  gap:6px;
+  align-items:center;
+}
+.opposite-pair-memory span{font-size:.47rem;color:#8ea4b0}
+.opposite-pair-memory b{
+  padding:7px;
+  border-radius:10px;
+  text-align:center;
+  border:1px solid rgba(72,145,179,.20);
+  background:rgba(255,255,255,.025);
+  color:#52e1e8;
+  font-size:.60rem;
+}
+
+@media(max-width:900px),(hover:none) and (pointer:coarse){
+  .opposite-learning-card{
+    min-height:120px;
+    grid-template-columns:82px 28px 82px;
+    gap:8px;
+  }
+  .opposite-main-die{width:68px;height:68px}
+  .opposite-question-mark{width:66px;height:66px;border-radius:15px;font-size:1.5rem}
+  .opposite-answer-grid button{min-height:104px}
+  .opposite-answer-die{width:52px;height:52px}
+  .opposite-explanation p{font-size:.50rem}
+  .opposite-pair-memory{grid-template-columns:repeat(3,1fr)}
+  .opposite-pair-memory span{grid-column:1/-1}
+}
