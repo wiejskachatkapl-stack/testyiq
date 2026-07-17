@@ -1,5 +1,15 @@
 # Changelog
 
+## v1057
+### Naprawiono
+- wybrana kostka pojawia się w okienku ze znakiem zapytania,
+- dobra odpowiedź w okienku otrzymuje zieloną ramkę,
+- zła odpowiedź w okienku otrzymuje czerwoną ramkę,
+- po złej odpowiedzi okienko ponownie pokazuje znak zapytania,
+- przycisk `NASTĘPNE PYTANIE` jest widoczny po dobrej odpowiedzi,
+- przycisk pozwala przejść dalej od razu, a bez kliknięcia pytanie zmienia się automatycznie po 2 sekundach,
+- cache PWA zmieniono na `iq-brain-lab-v1057`.
+
 ## v1056
 ### Zmieniono
 - poprawna odpowiedź w etapie 3 jest zaznaczana na zielono,
