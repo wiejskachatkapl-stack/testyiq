@@ -8,7 +8,7 @@ function modal(title,text,icon='✦'){document.getElementById('modalTitle').text
 function closeModal(){document.getElementById('modal').classList.add('hidden')}
 document.querySelectorAll('[data-route]').forEach(b=>b.onclick=()=>nav(b.dataset.route));
 document.querySelectorAll('[data-coming]').forEach(b=>b.onclick=()=>modal(b.dataset.coming,'Moduł jest zapisany w roadmapie i zostanie uruchomiony w kolejnych wersjach.'));
-back.onclick=()=>nav(state.history.pop()||'home',false);
+document.getElementById('back')?.addEventListener('click',()=>nav(state.history.pop()||'home',false));
 document.getElementById('closeModal').onclick=closeModal;document.getElementById('okModal').onclick=closeModal;
 document.getElementById('modal').onclick=e=>{if(e.target.id==='modal')closeModal()};
 document.getElementById('soundBtn').onclick=e=>{state.sound=!state.sound;e.currentTarget.textContent=state.sound?'♪':'×'};
@@ -117,7 +117,7 @@ document.querySelectorAll('[data-tip]').forEach(b=>b.onclick=()=>{academyTipText
 
 const academyNextLessonButton=document.getElementById('academyNextLesson');
 if(academyNextLessonButton)academyNextLessonButton.onclick=()=>{if(diceAcademyLesson<4){diceAcademyLesson++;renderDiceAcademy()}else academySolution.classList.remove('hidden')};
-academyStartTraining.onclick=()=>startDiceTraining();
+document.getElementById('academyStartTraining')?.addEventListener('click',()=>startDiceTraining());
 const academyDirectTrainingButton=document.getElementById('academyDirectTraining');
 if(academyDirectTrainingButton)academyDirectTrainingButton.onclick=()=>startDiceTraining();
 
@@ -125,7 +125,7 @@ if(academyDirectTrainingButton)academyDirectTrainingButton.onclick=()=>startDice
 
 
 let realDieRotation=0;
-rotateRealDieBtn.onclick=()=>{
+document.getElementById('rotateRealDieBtn')?.addEventListener('click',()=>{
   realDieRotation=(realDieRotation+1)%4;
   const rotations=[
     'rotateX(-20deg) rotateY(32deg)',
@@ -133,13 +133,14 @@ rotateRealDieBtn.onclick=()=>{
     'rotateX(-28deg) rotateY(212deg)',
     'rotateX(-16deg) rotateY(302deg)'
   ];
-  realDie.style.transform=rotations[realDieRotation];
-};
-foldCubeNetBtn.onclick=()=>{
-  const folded=realCubeNet.classList.toggle('folded');
-  foldedCubePreview.classList.toggle('hidden',!folded);
-  foldCubeNetBtn.textContent=folded?'ROZŁÓŻ':'ZŁÓŻ';
-};
+  document.getElementById('realDie').style.transform=rotations[realDieRotation];
+});
+document.getElementById('foldCubeNetBtn')?.addEventListener('click',()=>{
+  const net=document.getElementById('realCubeNet');
+  const folded=net.classList.toggle('folded');
+  document.getElementById('foldedCubePreview').classList.toggle('hidden',!folded);
+  document.getElementById('foldCubeNetBtn').textContent=folded?'ROZŁÓŻ':'ZŁÓŻ';
+});
 
 function openCubeNet(){
   cubeNetPanel.classList.remove('hidden');
@@ -149,10 +150,10 @@ function closeCubeNet(){
   cubeNetPanel.classList.add('hidden');
   cubeNetPanel.setAttribute('aria-hidden','true');
 }
-showCubeNetBtn.onclick=openCubeNet;
-closeCubeNetBtn.onclick=closeCubeNet;
-cubeNetDoneBtn.onclick=closeCubeNet;
-cubeNetPanel.onclick=e=>{if(e.target===cubeNetPanel)closeCubeNet()};
+document.getElementById('showCubeNetBtn')?.addEventListener('click',openCubeNet);
+document.getElementById('closeCubeNetBtn')?.addEventListener('click',closeCubeNet);
+document.getElementById('cubeNetDoneBtn')?.addEventListener('click',closeCubeNet);
+document.getElementById('cubeNetPanel')?.addEventListener('click',e=>{if(e.target===e.currentTarget)closeCubeNet()});
 
 
 /* =========================================================
@@ -585,5 +586,5 @@ document.getElementById('endPreviewBtn').onclick=()=>{
   }else nav('home');
 };
 
-setTimeout(()=>{document.getElementById('app').classList.remove('hidden');setTimeout(()=>document.getElementById('splash')?.remove(),700)},1700);
+setTimeout(()=>{document.getElementById('app')?.classList.remove('hidden');setTimeout(()=>document.getElementById('splash')?.remove(),700)},1700);
 if('serviceWorker'in navigator)addEventListener('load',()=>navigator.serviceWorker.register('./sw.js'));

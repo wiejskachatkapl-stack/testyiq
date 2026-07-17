@@ -508,7 +508,7 @@
     </div>
   </section>
 
-  <footer><button data-coming="O aplikacji">O aplikacji</button><span>•</span><span>Wersja 1049</span></footer>
+  <footer><button data-coming="O aplikacji">O aplikacji</button><span>•</span><span>Wersja 1050</span></footer>
 </main>
 
 
@@ -680,6 +680,33 @@
 <script src="js/generators/matrixGenerator.js"></script>
 <script src="js/generators/mixedGenerator.js"></script>
 <script src="js/engine/questionEngine.js"></script>
+<script>
+(function(){
+  document.querySelectorAll('[id]').forEach(function(element){
+    if (!(element.id in window)) {
+      try {
+        Object.defineProperty(window, element.id, {
+          value: element,
+          configurable: true
+        });
+      } catch (error) {
+        window[element.id] = element;
+      }
+    }
+  });
+
+  window.addEventListener('error', function(event){
+    console.error('Błąd uruchamiania aplikacji:', event.error || event.message);
+  });
+
+  setTimeout(function(){
+    var app = document.getElementById('app');
+    var splash = document.getElementById('splash');
+    if (app) app.classList.remove('hidden');
+    if (splash) splash.remove();
+  }, 2400);
+})();
+</script>
 <script src="app.js"></script>
 </body>
 </html>
