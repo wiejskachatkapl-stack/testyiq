@@ -107,16 +107,19 @@ function renderDiceAcademy(){
  academyTipBox.classList.add('hidden');academySolution.classList.add('hidden');
  if(window.academyFeedback){academyFeedback.className='academy-feedback';academyFeedback.textContent='Wybierz odpowiedź albo pokaż rozwiązanie.'}
  document.querySelectorAll('[data-academy-answer]').forEach(b=>b.classList.remove('correct','wrong'));
- academyNextLesson.textContent=diceAcademyLesson===4?'ZAKOŃCZ NAUKĘ ✓':'NASTĘPNA LEKCJA ›';
+ const nextLessonButton=document.getElementById('academyNextLesson');
+ if(nextLessonButton)nextLessonButton.textContent=diceAcademyLesson===4?'ZAKOŃCZ NAUKĘ ✓':'NASTĘPNA LEKCJA ›';
 }
 document.querySelectorAll('[data-lesson]').forEach(b=>b.onclick=()=>{diceAcademyLesson=Number(b.dataset.lesson);renderDiceAcademy()});
 document.querySelectorAll('[data-tip]').forEach(b=>b.onclick=()=>{academyTipText.textContent=DICE_ACADEMY_LESSONS[diceAcademyLesson].tips[Number(b.dataset.tip)];academyTipBox.classList.remove('hidden')});
 
 
 
-academyNextLesson.onclick=()=>{if(diceAcademyLesson<4){diceAcademyLesson++;renderDiceAcademy()}else academySolution.classList.remove('hidden')};
+const academyNextLessonButton=document.getElementById('academyNextLesson');
+if(academyNextLessonButton)academyNextLessonButton.onclick=()=>{if(diceAcademyLesson<4){diceAcademyLesson++;renderDiceAcademy()}else academySolution.classList.remove('hidden')};
 academyStartTraining.onclick=()=>startDiceTraining();
-document.getElementById('academyDirectTraining').onclick=()=>startDiceTraining();
+const academyDirectTrainingButton=document.getElementById('academyDirectTraining');
+if(academyDirectTrainingButton)academyDirectTrainingButton.onclick=()=>startDiceTraining();
 
 
 
@@ -540,10 +543,10 @@ function startDiceTraining(){
   state.questionEngine.start(20,'adaptive');
 }
 
-trainingHint1.onclick=()=>showTrainingText('hint1');
-trainingHint2.onclick=()=>showTrainingText('hint2');
-trainingShowSolution.onclick=()=>showTrainingText('solution');
-trainingNextQuestion.onclick=()=>state.questionEngine?.advance();
+document.getElementById('trainingHint1')?.addEventListener('click',()=>showTrainingText('hint1'));
+document.getElementById('trainingHint2')?.addEventListener('click',()=>showTrainingText('hint2'));
+document.getElementById('trainingShowSolution')?.addEventListener('click',()=>showTrainingText('solution'));
+document.getElementById('trainingNextQuestion')?.addEventListener('click',()=>state.questionEngine?.advance());
 
 
 function startDiceTest(){
