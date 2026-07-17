@@ -1,6 +1,6 @@
 # IQ Challenge • Brain Lab
 
-Aktualna wersja: **v1051**
+Aktualna wersja: **v1052**
 
 Status: Brain Engine — fundament SPA i pierwsza ścieżka Test IQ.
 
@@ -164,3 +164,7 @@ Ekran główny telefonu został zmniejszony tak, aby całość mieściła się b
 
 ## v1051
 Dodano widok rozłożonej kostki z opisem par przeciwległych ścian. Powiększono wskazówki i uproszczono pierwszą lekcję, aby była zrozumiała bez znajomości obrotów przestrzennych.
+
+
+## v1052
+Naprawiono przycisk cofania, dodano kursor ręki do elementów interaktywnych oraz zablokowano przechwytywanie kliknięć przez ukryte ekrany i przycisk muzyki.

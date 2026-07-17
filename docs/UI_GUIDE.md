@@ -88,3 +88,7 @@ Mobilny ekran główny korzysta z czterech proporcjonalnych sekcji wysokości. D
 
 ## Akademia Kostek v1051
 Wskazówki są prezentowane jako duże, opisowe kafelki. Widok rozłożonej kostki pokazuje położenie wszystkich sześciu ścian i pary przeciwległe.
+
+
+## Interakcje v1052
+Tylko aktywny ekran może odbierać kliknięcia. Na komputerze wszystkie aktywne przyciski pokazują kursor ręki.

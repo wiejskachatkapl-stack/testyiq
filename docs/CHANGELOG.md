@@ -1,5 +1,14 @@
 # Changelog
 
+## v1052
+### Naprawiono
+- przycisk cofania w lewym górnym rogu,
+- kursor ręki na przyciskach drugiego i trzeciego ekranu,
+- kursor ręki na przyciskach Akademii Kostek,
+- ukryty ekran główny nie przechwytuje już kliknięć,
+- przycisk `Muzyka relaksacyjna` nie otwiera się po kliknięciu kafelka `Analogie`,
+- cache PWA zmieniono na `iq-brain-lab-v1052`.
+
 ## v1051
 ### Zmieniono
 - dodano przycisk `Pokaż rozłożoną kostkę`,
