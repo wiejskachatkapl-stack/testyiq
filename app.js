@@ -221,6 +221,15 @@ function renderCornerLesson(){
   document.getElementById('cornerFaceTop').innerHTML=DiceGenerator.diceSvg(q.a,'corner-die');
   document.getElementById('cornerFaceLeft').innerHTML=DiceGenerator.diceSvg(q.b,'corner-die');
 
+  const answerFace=document.getElementById('cornerFaceAnswer');
+  answerFace.className='corner-face corner-right corner-missing';
+  answerFace.innerHTML='?';
+
+  const nextButton=document.getElementById('cornerNextBtn');
+  nextButton.classList.add('hidden');
+  nextButton.disabled=false;
+  nextButton.textContent='NASTĘPNE PYTANIE ›';
+
   const options=[q.answer,...q.wrong].sort(()=>Math.random()-.5);
   const answers=document.getElementById('cornerAnswers');
   answers.innerHTML=options.map((value,index)=>`
@@ -237,6 +246,11 @@ function renderCornerLesson(){
       const value=Number(button.dataset.cornerValue);
       const correct=value===q.answer;
       const box=document.getElementById('cornerExplanation');
+      const answerFace=document.getElementById('cornerFaceAnswer');
+      const nextButton=document.getElementById('cornerNextBtn');
+
+      answerFace.innerHTML=DiceGenerator.diceSvg(value,'corner-die');
+      answerFace.className=`corner-face corner-right corner-answer-filled ${correct?'answer-good':'answer-bad'}`;
 
       if(correct){
         cornerLessonLocked=true;
@@ -244,18 +258,11 @@ function renderCornerLesson(){
         box.className='opposite-explanation good';
         box.innerHTML=`<small>DOBRA ODPOWIEDŹ</small><p>${q.solution}</p>`;
 
-        setTimeout(()=>{
-          if(cornerLessonIndex<CORNER_LESSON_QUESTIONS.length-1){
-            cornerLessonIndex++;
-            renderCornerLesson();
-          }else{
-            cornerLessonIndex=0;
-            box.className='opposite-explanation good';
-            box.innerHTML='<small>ETAP 3 UKOŃCZONY</small><p>Potrafisz już rozpoznawać, które trzy ściany mogą spotkać się w jednym narożniku kostki.</p>';
-            answers.innerHTML='';
-            document.getElementById('cornerNextBtn').classList.add('hidden');
-          }
-        },2000);
+        nextButton.classList.remove('hidden');
+        nextButton.textContent='NASTĘPNE PYTANIE ZA 2 SEKUNDY ›';
+
+        window.clearTimeout(window.cornerLessonAdvanceTimer);
+        window.cornerLessonAdvanceTimer=setTimeout(()=>advanceCornerLesson(),2000);
       }else{
         button.classList.add('wrong');
         box.className='opposite-explanation bad';
@@ -263,18 +270,42 @@ function renderCornerLesson(){
 
         setTimeout(()=>{
           button.classList.remove('wrong');
+          answerFace.className='corner-face corner-right corner-missing';
+          answerFace.innerHTML='?';
           box.className='opposite-explanation';
           box.innerHTML='<small>NAUKA</small><p>Wybierz ścianę, która może dotykać obu pokazanych ścian w jednym narożniku.</p>';
         },1600);
       }
     };
   });
-
   const explanation=document.getElementById('cornerExplanation');
   explanation.className='opposite-explanation';
   explanation.innerHTML='<small>NAUKA</small><p>Wybierz ścianę, która może dotykać obu pokazanych ścian w jednym narożniku.</p>';
   document.getElementById('cornerNextBtn').classList.add('hidden');
 }
+
+
+function advanceCornerLesson(){
+  window.clearTimeout(window.cornerLessonAdvanceTimer);
+  const box=document.getElementById('cornerExplanation');
+
+  if(cornerLessonIndex<CORNER_LESSON_QUESTIONS.length-1){
+    cornerLessonIndex++;
+    renderCornerLesson();
+  }else{
+    cornerLessonIndex=0;
+    cornerLessonLocked=true;
+    box.className='opposite-explanation good';
+    box.innerHTML='<small>ETAP 3 UKOŃCZONY</small><p>Potrafisz już rozpoznawać, które trzy ściany mogą spotkać się w jednym narożniku kostki.</p>';
+    document.getElementById('cornerAnswers').innerHTML='';
+    document.getElementById('cornerNextBtn').classList.add('hidden');
+  }
+}
+
+document.getElementById('cornerNextBtn')?.addEventListener('click',()=>{
+  if(!cornerLessonLocked)return;
+  advanceCornerLesson();
+});
 
 function showCornerLesson(){
   document.querySelector('.academy-training-intro')?.classList.add('hidden');
@@ -297,24 +328,25 @@ document.getElementById('cornerHintBtn')?.addEventListener('click',()=>{
 document.getElementById('cornerSolutionBtn')?.addEventListener('click',()=>{
   const q=CORNER_LESSON_QUESTIONS[cornerLessonIndex];
   cornerLessonLocked=true;
+
   document.querySelectorAll('#cornerAnswers button').forEach(b=>{
     b.classList.toggle('correct',Number(b.dataset.cornerValue)===q.answer);
   });
+
+  const answerFace=document.getElementById('cornerFaceAnswer');
+  answerFace.innerHTML=DiceGenerator.diceSvg(q.answer,'corner-die');
+  answerFace.className='corner-face corner-right corner-answer-filled answer-good';
+
   const box=document.getElementById('cornerExplanation');
   box.className='opposite-explanation solution';
   box.innerHTML=`<small>ROZWIĄZANIE</small><p>${q.solution}</p>`;
 
-  setTimeout(()=>{
-    if(cornerLessonIndex<CORNER_LESSON_QUESTIONS.length-1){
-      cornerLessonIndex++;
-      renderCornerLesson();
-    }else{
-      cornerLessonIndex=0;
-      box.className='opposite-explanation good';
-      box.innerHTML='<small>ETAP 3 UKOŃCZONY</small><p>Potrafisz już rozpoznawać, które trzy ściany mogą spotkać się w jednym narożniku kostki.</p>';
-      document.getElementById('cornerAnswers').innerHTML='';
-    }
-  },2000);
+  const nextButton=document.getElementById('cornerNextBtn');
+  nextButton.classList.remove('hidden');
+  nextButton.textContent='NASTĘPNE PYTANIE ZA 2 SEKUNDY ›';
+
+  window.clearTimeout(window.cornerLessonAdvanceTimer);
+  window.cornerLessonAdvanceTimer=setTimeout(()=>advanceCornerLesson(),2000);
 });
 
 

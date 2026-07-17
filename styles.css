@@ -6912,3 +6912,62 @@ html,body{
   from{opacity:.55;transform:scale(.985)}
   to{opacity:1;transform:scale(1)}
 }
+
+
+/* =========================================================
+   v1057 — odpowiedź widoczna w brakującej ścianie
+   ========================================================= */
+
+.corner-answer-filled{
+  display:grid;
+  place-items:center;
+  border-radius:15px;
+  overflow:hidden;
+  background:rgba(255,255,255,.04);
+  transition:border-color .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.corner-answer-filled .corner-die{
+  width:82px;
+  height:82px;
+}
+
+.corner-answer-filled.answer-good{
+  border:3px solid #3fe079;
+  background:rgba(44,208,105,.16);
+  box-shadow:0 0 24px rgba(63,224,121,.28);
+}
+
+.corner-answer-filled.answer-bad{
+  border:3px solid #ff5363;
+  background:rgba(255,70,87,.16);
+  box-shadow:0 0 22px rgba(255,83,99,.25);
+}
+
+#cornerNextBtn{
+  display:block;
+  width:100%;
+  min-height:46px;
+  margin-top:10px;
+  position:relative;
+  z-index:5;
+  opacity:1;
+  visibility:visible;
+  font-size:.58rem!important;
+}
+
+#cornerNextBtn.hidden{
+  display:none!important;
+}
+
+@media(max-width:900px),(hover:none) and (pointer:coarse){
+  .corner-answer-filled .corner-die{
+    width:60px;
+    height:60px;
+  }
+
+  #cornerNextBtn{
+    min-height:42px;
+    font-size:.52rem!important;
+  }
+}
