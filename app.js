@@ -351,6 +351,157 @@ document.getElementById('cornerSolutionBtn')?.addEventListener('click',()=>{
 
 
 
+
+/* =========================================================
+   v1058 — poprawiony etap 1: Orientacja
+   ========================================================= */
+const ORIENTATION_QUESTIONS=[
+  {source:[4,2,3],answer:[2,3,4],wrong:[[4,6,3],[5,2,3]],hint:'Po obrocie mogą zmienić położenie, ale muszą pozostać te same trzy liczby.',solution:'Poprawna odpowiedź zawiera dokładnie ściany 4, 2 i 3.'},
+  {source:[1,2,3],answer:[3,1,2],wrong:[[1,6,3],[5,2,3]],hint:'Sprawdź najpierw, czy żadna liczba nie została zamieniona.',solution:'Po obrocie nadal widzimy ściany 1, 2 i 3.'},
+  {source:[6,5,4],answer:[5,4,6],wrong:[[1,5,4],[6,2,4]],hint:'Obrót nie zmienia zestawu ścian spotykających się w narożniku.',solution:'Poprawny układ zachowuje zestaw 6, 5 i 4.'},
+  {source:[2,4,1],answer:[1,2,4],wrong:[[5,4,1],[2,3,1]],hint:'Odrzuć każdą odpowiedź z inną liczbą niż w układzie początkowym.',solution:'Tylko ta odpowiedź zawiera ściany 2, 4 i 1.'},
+  {source:[3,5,1],answer:[5,1,3],wrong:[[4,5,1],[3,2,1]],hint:'Porównaj wszystkie trzy ściany, nie tylko jedną.',solution:'Po obrocie nadal spotykają się ściany 3, 5 i 1.'},
+  {source:[6,2,4],answer:[4,6,2],wrong:[[1,2,4],[6,5,4]],hint:'Właściwa odpowiedź zachowuje wszystkie trzy liczby.',solution:'Poprawny narożnik nadal tworzą ściany 6, 2 i 4.'}
+];
+
+let orientationQuestionIndex=0;
+let orientationLocked=false;
+
+function orientationCubeHtml(values, cls='orientation-mini-die'){
+  return `<div class="orientation-cube">
+    <div class="orientation-cube-top">${DiceGenerator.diceSvg(values[0],cls)}</div>
+    <div class="orientation-cube-left">${DiceGenerator.diceSvg(values[1],cls)}</div>
+    <div class="orientation-cube-right">${DiceGenerator.diceSvg(values[2],cls)}</div>
+  </div>`;
+}
+
+function renderOrientationQuestion(){
+  const q=ORIENTATION_QUESTIONS[orientationQuestionIndex];
+  orientationLocked=false;
+
+  document.getElementById('orientationQuestionCounter').textContent=`${orientationQuestionIndex+1} / ${ORIENTATION_QUESTIONS.length}`;
+  document.getElementById('orientationSourceCube').innerHTML=orientationCubeHtml(q.source,'orientation-main-die');
+
+  const target=document.getElementById('orientationAnswerCube');
+  target.className='orientation-answer-box';
+  target.innerHTML='?';
+
+  const next=document.getElementById('orientationNextBtn');
+  next.classList.add('hidden');
+  next.textContent='NASTĘPNE PYTANIE ›';
+
+  const options=[q.answer,...q.wrong].sort(()=>Math.random()-.5);
+  const answers=document.getElementById('orientationAnswers');
+  answers.innerHTML=options.map((values,index)=>`
+    <button type="button" data-orientation-index="${index}" data-values="${values.join(',')}">
+      <span>${String.fromCharCode(65+index)}</span>
+      ${orientationCubeHtml(values,'orientation-option-die')}
+    </button>`).join('');
+
+  answers.querySelectorAll('button').forEach(button=>{
+    button.onclick=()=>{
+      if(orientationLocked)return;
+
+      const values=button.dataset.values.split(',').map(Number);
+      const correct=values.join(',')===q.answer.join(',');
+      const box=document.getElementById('orientationExplanation');
+
+      target.innerHTML=orientationCubeHtml(values,'orientation-main-die');
+      target.className=`orientation-answer-box filled ${correct?'answer-good':'answer-bad'}`;
+
+      if(correct){
+        orientationLocked=true;
+        button.classList.add('correct');
+        box.className='opposite-explanation good';
+        box.innerHTML=`<small>DOBRA ODPOWIEDŹ</small><p>${q.solution}</p>`;
+        next.classList.remove('hidden');
+        next.textContent='NASTĘPNE PYTANIE ZA 2 SEKUNDY ›';
+
+        clearTimeout(window.orientationAdvanceTimer);
+        window.orientationAdvanceTimer=setTimeout(advanceOrientationQuestion,2000);
+      }else{
+        button.classList.add('wrong');
+        box.className='opposite-explanation bad';
+        box.innerHTML='<small>ZŁA ODPOWIEDŹ</small><p>Popraw się i spróbuj jeszcze raz.</p>';
+
+        setTimeout(()=>{
+          button.classList.remove('wrong');
+          target.className='orientation-answer-box';
+          target.innerHTML='?';
+          box.className='opposite-explanation';
+          box.innerHTML='<small>NAUKA</small><p>Wybierz odpowiedź zachowującą te same trzy ściany spotykające się w narożniku.</p>';
+        },1600);
+      }
+    };
+  });
+
+  const box=document.getElementById('orientationExplanation');
+  box.className='opposite-explanation';
+  box.innerHTML='<small>NAUKA</small><p>Wybierz odpowiedź zachowującą te same trzy ściany spotykające się w narożniku.</p>';
+}
+
+function advanceOrientationQuestion(){
+  clearTimeout(window.orientationAdvanceTimer);
+  if(orientationQuestionIndex<ORIENTATION_QUESTIONS.length-1){
+    orientationQuestionIndex++;
+    renderOrientationQuestion();
+  }else{
+    orientationLocked=true;
+    document.getElementById('orientationAnswers').innerHTML='';
+    document.getElementById('orientationNextBtn').classList.add('hidden');
+    const box=document.getElementById('orientationExplanation');
+    box.className='opposite-explanation good';
+    box.innerHTML='<small>ETAP 1 UKOŃCZONY</small><p>Potrafisz już rozpoznać ten sam narożnik kostki po obrocie.</p>';
+  }
+}
+
+function showOrientationLesson(){
+  document.querySelector('.academy-training-intro')?.classList.add('hidden');
+  document.getElementById('oppositeLessonPanel')?.classList.add('hidden');
+  document.getElementById('cornerLessonPanel')?.classList.add('hidden');
+  document.getElementById('orientationLessonPanel')?.classList.remove('hidden');
+  renderOrientationQuestion();
+}
+
+function hideOrientationLesson(){
+  document.getElementById('orientationLessonPanel')?.classList.add('hidden');
+}
+
+document.getElementById('orientationNextBtn')?.addEventListener('click',()=>{
+  if(orientationLocked)advanceOrientationQuestion();
+});
+
+document.getElementById('orientationHintBtn')?.addEventListener('click',()=>{
+  const q=ORIENTATION_QUESTIONS[orientationQuestionIndex];
+  const box=document.getElementById('orientationExplanation');
+  box.className='opposite-explanation hint';
+  box.innerHTML=`<small>WSKAZÓWKA</small><p>${q.hint}</p>`;
+});
+
+document.getElementById('orientationSolutionBtn')?.addEventListener('click',()=>{
+  const q=ORIENTATION_QUESTIONS[orientationQuestionIndex];
+  orientationLocked=true;
+  const target=document.getElementById('orientationAnswerCube');
+  target.innerHTML=orientationCubeHtml(q.answer,'orientation-main-die');
+  target.className='orientation-answer-box filled answer-good';
+
+  document.querySelectorAll('#orientationAnswers button').forEach(button=>{
+    button.classList.toggle('correct',button.dataset.values===q.answer.join(','));
+  });
+
+  const box=document.getElementById('orientationExplanation');
+  box.className='opposite-explanation solution';
+  box.innerHTML=`<small>ROZWIĄZANIE</small><p>${q.solution}</p>`;
+
+  const next=document.getElementById('orientationNextBtn');
+  next.classList.remove('hidden');
+  next.textContent='NASTĘPNE PYTANIE ZA 2 SEKUNDY ›';
+
+  clearTimeout(window.orientationAdvanceTimer);
+  window.orientationAdvanceTimer=setTimeout(advanceOrientationQuestion,2000);
+});
+
+
 const DICE_ACADEMY_LESSONS=[
  {title:'Najpierw poznaj trzy widoczne ściany',description:'Na kostce widzisz jednocześnie górę, przód i prawy bok. Zapamiętaj trzy liczby, które spotykają się w jednym narożniku. Po obróceniu kostki mogą zmienić miejsce, ale nadal muszą się ze sobą stykać.',rule:'Te same trzy ściany spotykające się w narożniku pozostają razem po każdym obrocie.',tips:['Najpierw znajdź ścianę z liczbą 4. To nasz punkt startowy.','Sprawdź, czy obok 4 nadal znajdują się ściany 2 i 3.','Odrzuć każdą odpowiedź, w której przy 4 pojawia się inna liczba.'],solution:'W odpowiedzi B ściana 4 została przeniesiona na górę. Obok niej nadal znajdują się 2 i 3. Dlatego B zachowuje ten sam narożnik kostki.'},
  {title:'Poznaj ściany przeciwległe',description:'Ściany przeciwległe leżą po dwóch stronach kostki i nigdy nie dotykają się krawędzią. W standardowej kostce są tylko trzy takie pary.',rule:'Pary przeciwległe to 1–6, 2–5 oraz 3–4. Ich suma zawsze wynosi 7.',tips:['Zapamiętaj pierwszą parę: 1 i 6.','Następnie zapamiętaj 2 i 5.','Ostatnia para to 3 i 4.'],solution:'Aby znaleźć ścianę przeciwległą, odejmij liczbę oczek od 7.'},
@@ -375,10 +526,14 @@ document.querySelectorAll('[data-lesson]').forEach(b=>b.onclick=()=>{
   diceAcademyLesson=Number(b.dataset.lesson);
   renderDiceAcademy();
 
+  hideOrientationLesson();
   hideOppositeLesson();
   hideCornerLesson();
 
-  if(diceAcademyLesson===1){
+  if(diceAcademyLesson===0){
+    orientationQuestionIndex=0;
+    showOrientationLesson();
+  }else if(diceAcademyLesson===1){
     oppositeLessonIndex=0;
     showOppositeLesson();
   }else if(diceAcademyLesson===2){
@@ -867,3 +1022,5 @@ document.getElementById('endPreviewBtn').onclick=()=>{
 
 setTimeout(()=>{document.getElementById('app')?.classList.remove('hidden');setTimeout(()=>document.getElementById('splash')?.remove(),700)},1700);
 if('serviceWorker'in navigator)addEventListener('load',()=>navigator.serviceWorker.register('./sw.js'));
+
+setTimeout(()=>{if(document.querySelector('[data-screen="dice-academy"]'))showOrientationLesson();},0);

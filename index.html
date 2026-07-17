@@ -306,7 +306,44 @@
         <div id="academyTipBox" class="academy-tip-box hidden"><b>WSKAZÓWKA</b><p id="academyTipText"></p></div>
       </article>
 
-      <article class="academy-example academy-training-intro">
+      
+      <article id="orientationLessonPanel" class="academy-example orientation-lesson-panel">
+        <div class="academy-example-head">
+          <div>
+            <small>ETAP 1 • ORIENTACJA KOSTKI</small>
+            <h3 id="orientationQuestionTitle">Która kostka pokazuje ten sam narożnik po obrocie?</h3>
+          </div>
+          <div class="opposite-score"><span>PYTANIE</span><strong id="orientationQuestionCounter">1 / 6</strong></div>
+        </div>
+
+        <div class="orientation-learning-card">
+          <div class="orientation-source">
+            <small>KOSTKA WYJŚCIOWA</small>
+            <div id="orientationSourceCube" class="orientation-cube-box"></div>
+          </div>
+          <div class="orientation-arrow">→</div>
+          <div class="orientation-target">
+            <small>TWOJA ODPOWIEDŹ</small>
+            <div id="orientationAnswerCube" class="orientation-answer-box">?</div>
+          </div>
+        </div>
+
+        <div id="orientationAnswers" class="orientation-answer-grid"></div>
+
+        <div class="opposite-tools">
+          <button type="button" id="orientationHintBtn">💡 POKAŻ WSKAZÓWKĘ</button>
+          <button type="button" id="orientationSolutionBtn">✓ POKAŻ ROZWIĄZANIE</button>
+        </div>
+
+        <div id="orientationExplanation" class="opposite-explanation">
+          <small>NAUKA</small>
+          <p>Wybierz odpowiedź zachowującą te same trzy ściany spotykające się w narożniku.</p>
+        </div>
+
+        <button type="button" id="orientationNextBtn" class="opposite-next hidden">NASTĘPNE PYTANIE ›</button>
+      </article>
+
+<article class="academy-example academy-training-intro">
         <div class="academy-example-head">
           <div><small>TRENING PRAKTYCZNY</small><h3>Ćwicz dokładnie takie zadania jak w Teście IQ</h3></div>
         </div>
@@ -586,7 +623,7 @@
     </div>
   </section>
 
-  <footer><button data-coming="O aplikacji">O aplikacji</button><span>•</span><span>Wersja 1057</span></footer>
+  <footer><button data-coming="O aplikacji">O aplikacji</button><span>•</span><span>Wersja 1058</span></footer>
 </main>
 
 

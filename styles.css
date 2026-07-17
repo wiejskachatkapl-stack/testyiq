@@ -6971,3 +6971,100 @@ html,body{
     font-size:.52rem!important;
   }
 }
+
+
+/* =========================================================
+   v1058 — właściwa obsługa zakładki Orientacja
+   ========================================================= */
+.orientation-learning-card{
+  margin-top:10px;
+  min-height:190px;
+  border-radius:16px;
+  border:1px solid rgba(62,140,175,.22);
+  background:rgba(2,15,28,.44);
+  display:grid;
+  grid-template-columns:1fr 50px 1fr;
+  align-items:center;
+  gap:12px;
+  padding:14px;
+}
+.orientation-source,.orientation-target{text-align:center}
+.orientation-source>small,.orientation-target>small{
+  display:block;margin-bottom:8px;color:#55e0e8;font-size:.48rem;letter-spacing:.12em
+}
+.orientation-arrow{text-align:center;color:#55e0e8;font-size:1.8rem}
+.orientation-cube-box,.orientation-answer-box{
+  min-height:135px;
+  display:grid;
+  place-items:center;
+  border-radius:15px;
+}
+.orientation-answer-box{
+  border:2px dashed rgba(79,223,235,.55);
+  color:#55e6ed;
+  font-size:2.2rem;
+  font-weight:900;
+}
+.orientation-answer-box.filled{border-style:solid}
+.orientation-answer-box.answer-good{border-color:#3fe079;background:rgba(44,208,105,.12);box-shadow:0 0 22px rgba(63,224,121,.22)}
+.orientation-answer-box.answer-bad{border-color:#ff5363;background:rgba(255,70,87,.12);box-shadow:0 0 20px rgba(255,83,99,.20)}
+
+.orientation-cube{
+  position:relative;
+  width:132px;
+  height:112px;
+  margin:auto;
+}
+.orientation-cube-top,.orientation-cube-left,.orientation-cube-right{
+  position:absolute;
+  width:66px;height:66px;
+}
+.orientation-cube-top{left:33px;top:0;transform:rotateX(58deg) rotateZ(45deg)}
+.orientation-cube-left{left:4px;top:46px;transform:skewY(28deg)}
+.orientation-cube-right{left:70px;top:46px;transform:skewY(-28deg)}
+.orientation-main-die{width:66px;height:66px}
+.orientation-option-die{width:54px;height:54px}
+
+.orientation-answer-grid{
+  margin-top:9px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+}
+.orientation-answer-grid button{
+  min-height:132px;
+  border-radius:14px;
+  border:1px solid rgba(74,129,158,.24);
+  background:rgba(255,255,255,.025);
+  color:#fff;
+  position:relative;
+}
+.orientation-answer-grid button>span{
+  position:absolute;left:8px;top:8px;
+  width:23px;height:23px;border-radius:7px;
+  display:grid;place-items:center;
+  color:#4de2e9;background:rgba(50,190,208,.12);
+  font-size:.50rem;
+}
+.orientation-answer-grid button.correct{border-color:#3fe079;background:rgba(44,208,105,.16);box-shadow:0 0 20px rgba(63,224,121,.20)}
+.orientation-answer-grid button.wrong{border-color:#ff5363;background:rgba(255,70,87,.16)}
+
+#orientationNextBtn{
+  display:block;
+  width:100%;
+  min-height:46px;
+  margin-top:10px;
+  position:relative;
+  z-index:8;
+  opacity:1!important;
+  visibility:visible!important;
+}
+#orientationNextBtn.hidden{display:none!important}
+
+@media(max-width:900px),(hover:none) and (pointer:coarse){
+  .orientation-learning-card{min-height:150px;grid-template-columns:1fr 30px 1fr;padding:8px}
+  .orientation-cube{transform:scale(.78)}
+  .orientation-cube-box,.orientation-answer-box{min-height:110px}
+  .orientation-answer-grid button{min-height:110px}
+  .orientation-answer-grid .orientation-cube{transform:scale(.72)}
+}
