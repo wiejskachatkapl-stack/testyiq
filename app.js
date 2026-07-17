@@ -251,9 +251,11 @@ document.getElementById('rotateRealDieBtn')?.addEventListener('click',()=>{
 });
 document.getElementById('foldCubeNetBtn')?.addEventListener('click',()=>{
   const net=document.getElementById('realCubeNet');
+  if(!net)return;
   const folded=net.classList.toggle('folded');
-  document.getElementById('foldedCubePreview').classList.toggle('hidden',!folded);
+  document.getElementById('foldedCubePreview')?.classList.add('hidden');
   document.getElementById('foldCubeNetBtn').textContent=folded?'ROZŁÓŻ':'ZŁÓŻ';
+  document.getElementById('foldCubeNetBtn').setAttribute('aria-pressed',String(folded));
 });
 
 function openCubeNet(){

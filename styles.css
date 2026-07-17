@@ -6521,3 +6521,107 @@ html,body{
     cursor:not-allowed!important;
   }
 }
+
+
+/* =========================================================
+   v1053 — prawidłowe składanie siatki kostki w sześcian 3D
+   ========================================================= */
+
+.real-cube-net{
+  --cube-face:72px;
+  --cube-half:36px;
+  perspective:720px!important;
+  transform-style:preserve-3d!important;
+  overflow:visible!important;
+  opacity:1!important;
+  transform:none!important;
+}
+
+.real-cube-net .real-net-face{
+  width:var(--cube-face)!important;
+  height:var(--cube-face)!important;
+  box-sizing:border-box;
+  transform-style:preserve-3d;
+  backface-visibility:visible;
+  transition:
+    left .8s cubic-bezier(.2,.75,.25,1),
+    top .8s cubic-bezier(.2,.75,.25,1),
+    transform .9s cubic-bezier(.2,.75,.25,1),
+    box-shadow .5s ease;
+}
+
+/* Prawidłowa płaska siatka:
+       1
+   2 - 3 - 5 - 4
+       6
+   Pary przeciwległe: 1–6, 2–5, 3–4
+*/
+.real-cube-net .net-1{left:150px!important;top:8px!important;transform:none}
+.real-cube-net .net-2{left:70px!important;top:88px!important;transform:none}
+.real-cube-net .net-3{left:150px!important;top:88px!important;transform:none}
+.real-cube-net .net-5{left:230px!important;top:88px!important;transform:none}
+.real-cube-net .net-4{left:310px!important;top:88px!important;transform:none}
+.real-cube-net .net-6{left:150px!important;top:168px!important;transform:none}
+
+/* Wszystkie ściany przechodzą do jednego środka i składają się
+   wokół ściany nr 3. */
+.real-cube-net.folded .real-net-face{
+  left:174px!important;
+  top:108px!important;
+  box-shadow:0 8px 20px rgba(0,0,0,.28);
+}
+
+.real-cube-net.folded .net-3{
+  transform:translateZ(var(--cube-half));
+}
+.real-cube-net.folded .net-4{
+  transform:rotateY(180deg) translateZ(var(--cube-half));
+}
+.real-cube-net.folded .net-2{
+  transform:rotateY(-90deg) translateZ(var(--cube-half));
+}
+.real-cube-net.folded .net-5{
+  transform:rotateY(90deg) translateZ(var(--cube-half));
+}
+.real-cube-net.folded .net-1{
+  transform:rotateX(90deg) translateZ(var(--cube-half));
+}
+.real-cube-net.folded .net-6{
+  transform:rotateX(-90deg) translateZ(var(--cube-half));
+}
+
+/* Po złożeniu cała konstrukcja jest delikatnie obrócona,
+   aby było widać trzy prawdziwie połączone ściany. */
+.real-cube-net.folded{
+  transform:rotateX(-18deg) rotateY(28deg)!important;
+  transform-origin:210px 145px!important;
+  transition:transform .9s cubic-bezier(.2,.75,.25,1)!important;
+}
+
+/* Stary rysunkowy podgląd nie jest już używany. */
+.folded-cube-preview{
+  display:none!important;
+}
+
+@media(max-width:900px),(hover:none) and (pointer:coarse){
+  .real-cube-net{
+    --cube-face:54px;
+    --cube-half:27px;
+  }
+
+  .real-cube-net .net-1{left:112px!important;top:6px!important}
+  .real-cube-net .net-2{left:52px!important;top:66px!important}
+  .real-cube-net .net-3{left:112px!important;top:66px!important}
+  .real-cube-net .net-5{left:172px!important;top:66px!important}
+  .real-cube-net .net-4{left:232px!important;top:66px!important}
+  .real-cube-net .net-6{left:112px!important;top:126px!important}
+
+  .real-cube-net.folded .real-net-face{
+    left:139px!important;
+    top:88px!important;
+  }
+
+  .real-cube-net.folded{
+    transform-origin:166px 115px!important;
+  }
+}
