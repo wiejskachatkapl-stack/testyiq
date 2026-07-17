@@ -6625,3 +6625,95 @@ html,body{
     transform-origin:166px 115px!important;
   }
 }
+
+
+/* =========================================================
+   v1054 — większa i czytelniejsza typografia w pokazie kostki
+   ========================================================= */
+
+/* Nagłówki i opisy w oknie Akademii Kostek */
+#cubeNetPanel .cube-net-modal small,
+#cubeNetPanel .real-cube-card small{
+  font-size:.56rem!important;
+  line-height:1.4!important;
+  letter-spacing:.10em!important;
+}
+
+#cubeNetPanel .cube-net-modal h2{
+  font-size:1.20rem!important;
+  line-height:1.18!important;
+}
+
+#cubeNetPanel .cube-net-modal > p,
+#cubeNetPanel .cube-net-modal .modal-subtitle{
+  font-size:.68rem!important;
+  line-height:1.5!important;
+}
+
+#cubeNetPanel .real-cube-card h3{
+  font-size:.86rem!important;
+  line-height:1.25!important;
+}
+
+/* Opisy par przeciwległych */
+#cubeNetPanel .opposite-pairs b{
+  font-size:.72rem!important;
+  line-height:1.2!important;
+}
+
+#cubeNetPanel .opposite-pairs small{
+  font-size:.48rem!important;
+  line-height:1.25!important;
+}
+
+/* Dolne trzy zasady */
+#cubeNetPanel .cube-facts strong,
+#cubeNetPanel .cube-fact strong{
+  font-size:.72rem!important;
+}
+
+#cubeNetPanel .cube-facts span,
+#cubeNetPanel .cube-fact span,
+#cubeNetPanel .cube-facts p,
+#cubeNetPanel .cube-fact p{
+  font-size:.55rem!important;
+  line-height:1.42!important;
+}
+
+/* Przyciski */
+#cubeNetPanel button{
+  font-size:.56rem!important;
+  font-weight:800!important;
+}
+
+#cubeNetPanel #cubeNetDoneBtn{
+  font-size:.60rem!important;
+}
+
+/* Numery na ścianach siatki */
+#cubeNetPanel .real-net-face .face-number{
+  font-size:.50rem!important;
+  font-weight:900!important;
+}
+
+@media(max-width:900px),(hover:none) and (pointer:coarse){
+  #cubeNetPanel .cube-net-modal h2{
+    font-size:1.02rem!important;
+  }
+
+  #cubeNetPanel .cube-net-modal > p,
+  #cubeNetPanel .cube-net-modal .modal-subtitle{
+    font-size:.58rem!important;
+  }
+
+  #cubeNetPanel .real-cube-card h3{
+    font-size:.72rem!important;
+  }
+
+  #cubeNetPanel .cube-facts span,
+  #cubeNetPanel .cube-fact span,
+  #cubeNetPanel .cube-facts p,
+  #cubeNetPanel .cube-fact p{
+    font-size:.49rem!important;
+  }
+}
