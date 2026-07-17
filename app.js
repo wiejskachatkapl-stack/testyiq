@@ -195,6 +195,109 @@ document.getElementById('oppositeNextBtn')?.addEventListener('click',()=>{
 });
 
 
+
+/* =========================================================
+   v1055 — Etap 3: Sąsiedztwo i narożniki
+   ========================================================= */
+const CORNER_LESSON_QUESTIONS=[
+  {a:1,b:2,answer:3,wrong:[6,5],hint:'Odrzuć ścianę przeciwną do 1 oraz ścianę przeciwną do 2.',solution:'6 jest naprzeciwko 1, a 5 jest naprzeciwko 2. Dlatego 3 może spotkać się z 1 i 2 w jednym narożniku.'},
+  {a:1,b:3,answer:2,wrong:[6,4],hint:'Ściany 6 i 4 są przeciwległe do pokazanych ścian.',solution:'6 nie może dotykać 1, a 4 nie może dotykać 3. Ściana 2 może sąsiadować z obiema.'},
+  {a:2,b:4,answer:1,wrong:[5,3],hint:'Nie wybieraj liczby przeciwległej do żadnej z dwóch pokazanych.',solution:'5 jest naprzeciwko 2, a 3 jest naprzeciwko 4. Ściana 1 może znaleźć się z nimi w narożniku.'},
+  {a:6,b:5,answer:4,wrong:[1,2],hint:'1 i 2 są przeciwległe do ścian już pokazanych.',solution:'1 nie dotyka 6, a 2 nie dotyka 5. Ściana 4 może sąsiadować z obiema.'},
+  {a:6,b:3,answer:5,wrong:[1,4],hint:'Odrzuć 1 jako przeciwną do 6 oraz 4 jako przeciwną do 3.',solution:'Jedyną poprawną możliwością jest 5, ponieważ dotyka zarówno 6, jak i 3.'},
+  {a:5,b:4,answer:6,wrong:[2,3],hint:'2 jest naprzeciwko 5, a 3 naprzeciwko 4.',solution:'Ściana 6 może dotykać obu pokazanych ścian i utworzyć z nimi narożnik.'}
+];
+
+let cornerLessonIndex=0;
+let cornerLessonLocked=false;
+
+function renderCornerLesson(){
+  const q=CORNER_LESSON_QUESTIONS[cornerLessonIndex];
+  if(!q)return;
+
+  cornerLessonLocked=false;
+  document.getElementById('cornerQuestionTitle').textContent=`Która trzecia ściana może spotkać się z ${q.a} i ${q.b} w jednym narożniku?`;
+  document.getElementById('cornerQuestionCounter').textContent=`${cornerLessonIndex+1} / ${CORNER_LESSON_QUESTIONS.length}`;
+  document.getElementById('cornerFaceTop').innerHTML=DiceGenerator.diceSvg(q.a,'corner-die');
+  document.getElementById('cornerFaceLeft').innerHTML=DiceGenerator.diceSvg(q.b,'corner-die');
+
+  const options=[q.answer,...q.wrong].sort(()=>Math.random()-.5);
+  const answers=document.getElementById('cornerAnswers');
+  answers.innerHTML=options.map((value,index)=>`
+    <button type="button" data-corner-value="${value}">
+      <span>${String.fromCharCode(65+index)}</span>
+      ${DiceGenerator.diceSvg(value,'opposite-answer-die')}
+      <small>${value} ${value===1?'oczko':value<5?'oczka':'oczek'}</small>
+    </button>`).join('');
+
+  answers.querySelectorAll('button').forEach(button=>{
+    button.onclick=()=>{
+      if(cornerLessonLocked)return;
+      cornerLessonLocked=true;
+      const value=Number(button.dataset.cornerValue);
+      const correct=value===q.answer;
+      answers.querySelectorAll('button').forEach(b=>{
+        const v=Number(b.dataset.cornerValue);
+        b.classList.toggle('correct',v===q.answer);
+        if(b===button&&!correct)b.classList.add('wrong');
+      });
+      const box=document.getElementById('cornerExplanation');
+      box.className=`opposite-explanation ${correct?'good':'bad'}`;
+      box.innerHTML=`<small>${correct?'DOBRZE':'NIE TYM RAZEM'}</small><p>${q.solution}</p>`;
+      document.getElementById('cornerNextBtn').classList.remove('hidden');
+    };
+  });
+
+  const explanation=document.getElementById('cornerExplanation');
+  explanation.className='opposite-explanation';
+  explanation.innerHTML='<small>NAUKA</small><p>Wybierz ścianę, która może dotykać obu pokazanych ścian w jednym narożniku.</p>';
+  document.getElementById('cornerNextBtn').classList.add('hidden');
+}
+
+function showCornerLesson(){
+  document.querySelector('.academy-training-intro')?.classList.add('hidden');
+  document.getElementById('oppositeLessonPanel')?.classList.add('hidden');
+  document.getElementById('cornerLessonPanel')?.classList.remove('hidden');
+  renderCornerLesson();
+}
+
+function hideCornerLesson(){
+  document.getElementById('cornerLessonPanel')?.classList.add('hidden');
+}
+
+document.getElementById('cornerHintBtn')?.addEventListener('click',()=>{
+  const q=CORNER_LESSON_QUESTIONS[cornerLessonIndex];
+  const box=document.getElementById('cornerExplanation');
+  box.className='opposite-explanation hint';
+  box.innerHTML=`<small>WSKAZÓWKA</small><p>${q.hint}</p>`;
+});
+
+document.getElementById('cornerSolutionBtn')?.addEventListener('click',()=>{
+  const q=CORNER_LESSON_QUESTIONS[cornerLessonIndex];
+  cornerLessonLocked=true;
+  document.querySelectorAll('#cornerAnswers button').forEach(b=>{
+    b.classList.toggle('correct',Number(b.dataset.cornerValue)===q.answer);
+  });
+  const box=document.getElementById('cornerExplanation');
+  box.className='opposite-explanation solution';
+  box.innerHTML=`<small>ROZWIĄZANIE</small><p>${q.solution}</p>`;
+  document.getElementById('cornerNextBtn').classList.remove('hidden');
+});
+
+document.getElementById('cornerNextBtn')?.addEventListener('click',()=>{
+  if(cornerLessonIndex<CORNER_LESSON_QUESTIONS.length-1){
+    cornerLessonIndex++;
+    renderCornerLesson();
+  }else{
+    cornerLessonIndex=0;
+    const box=document.getElementById('cornerExplanation');
+    box.className='opposite-explanation good';
+    box.innerHTML='<small>ETAP 3 UKOŃCZONY</small><p>Potrafisz już rozpoznawać, które trzy ściany mogą spotkać się w jednym narożniku kostki.</p>';
+    document.getElementById('cornerNextBtn').classList.add('hidden');
+  }
+});
+
+
 const DICE_ACADEMY_LESSONS=[
  {title:'Najpierw poznaj trzy widoczne ściany',description:'Na kostce widzisz jednocześnie górę, przód i prawy bok. Zapamiętaj trzy liczby, które spotykają się w jednym narożniku. Po obróceniu kostki mogą zmienić miejsce, ale nadal muszą się ze sobą stykać.',rule:'Te same trzy ściany spotykające się w narożniku pozostają razem po każdym obrocie.',tips:['Najpierw znajdź ścianę z liczbą 4. To nasz punkt startowy.','Sprawdź, czy obok 4 nadal znajdują się ściany 2 i 3.','Odrzuć każdą odpowiedź, w której przy 4 pojawia się inna liczba.'],solution:'W odpowiedzi B ściana 4 została przeniesiona na górę. Obok niej nadal znajdują się 2 i 3. Dlatego B zachowuje ten sam narożnik kostki.'},
  {title:'Poznaj ściany przeciwległe',description:'Ściany przeciwległe leżą po dwóch stronach kostki i nigdy nie dotykają się krawędzią. W standardowej kostce są tylko trzy takie pary.',rule:'Pary przeciwległe to 1–6, 2–5 oraz 3–4. Ich suma zawsze wynosi 7.',tips:['Zapamiętaj pierwszą parę: 1 i 6.','Następnie zapamiętaj 2 i 5.','Ostatnia para to 3 i 4.'],solution:'Aby znaleźć ścianę przeciwległą, odejmij liczbę oczek od 7.'},
@@ -218,11 +321,18 @@ function renderDiceAcademy(){
 document.querySelectorAll('[data-lesson]').forEach(b=>b.onclick=()=>{
   diceAcademyLesson=Number(b.dataset.lesson);
   renderDiceAcademy();
+
+  hideOppositeLesson();
+  hideCornerLesson();
+
   if(diceAcademyLesson===1){
     oppositeLessonIndex=0;
     showOppositeLesson();
+  }else if(diceAcademyLesson===2){
+    cornerLessonIndex=0;
+    showCornerLesson();
   }else{
-    hideOppositeLesson();
+    document.querySelector('.academy-training-intro')?.classList.remove('hidden');
   }
 });
 document.querySelectorAll('[data-tip]').forEach(b=>b.onclick=()=>{academyTipText.textContent=DICE_ACADEMY_LESSONS[diceAcademyLesson].tips[Number(b.dataset.tip)];academyTipBox.classList.remove('hidden')});
