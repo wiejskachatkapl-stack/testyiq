@@ -1,5 +1,31 @@
 # Changelog
 
+## v1055
+### Dodano
+- trzeci etap Akademii Kostek: `Sąsiedztwo i narożniki`,
+- sześć ćwiczeń z wyborem trzeciej ściany narożnika,
+- graficzny pokaz trzech ścian kostki,
+- większe wskazówki i pełne wyjaśnienia,
+- ręczne przechodzenie do kolejnego pytania,
+- podsumowanie po ukończeniu etapu,
+- cache PWA zmieniono na `iq-brain-lab-v1055`.
+
+## v1054
+### Zmieniono
+- powiększono czcionki w pokazie prawdziwej kostki,
+- zwiększono czytelność opisów par przeciwległych,
+- powiększono tekst trzech zasad u dołu,
+- zwiększono napisy na przyciskach,
+- cache PWA zmieniono na `iq-brain-lab-v1054`.
+
+## v1053
+### Naprawiono
+- prawidłowe składanie rozłożonej siatki kostki,
+- każda z sześciu ścian składa się do właściwej pozycji w sześcianie 3D,
+- zachowano prawidłowe pary przeciwległe: 1–6, 2–5, 3–4,
+- usunięto nieprawidłowy rysunkowy podgląd nakładany na siatkę,
+- cache PWA zmieniono na `iq-brain-lab-v1053`.
+
 ## v1052
 ### Naprawiono
 - przycisk cofania w lewym górnym rogu,
