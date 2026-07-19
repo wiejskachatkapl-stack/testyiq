@@ -8054,3 +8054,50 @@ html,body{
     max-height:190px!important;
   }
 }
+
+
+/* =========================================================
+   v1074 — testy matryc logicznych
+   ========================================================= */
+
+.matrix-question-card .shape-matrix-grid{
+  gap:8px!important;
+  padding:8px!important;
+}
+
+.matrix-question-card .shape-matrix-cell{
+  border:1px solid rgba(94,190,205,.22)!important;
+  border-radius:10px!important;
+  background:rgba(255,255,255,.025)!important;
+}
+
+.matrix-question-card .matrix-main-shape{
+  width:82%!important;
+  height:82%!important;
+  max-width:92px!important;
+  max-height:92px!important;
+}
+
+.matrix-answer .matrix-answer-shape{
+  width:72px!important;
+  height:72px!important;
+}
+
+@media(max-width:768px){
+  .matrix-question-card .shape-matrix-grid{
+    gap:5px!important;
+    padding:5px!important;
+  }
+
+  .matrix-question-card .matrix-main-shape{
+    width:76%!important;
+    height:76%!important;
+    max-width:64px!important;
+    max-height:64px!important;
+  }
+
+  .matrix-answer .matrix-answer-shape{
+    width:52px!important;
+    height:52px!important;
+  }
+}

@@ -84,7 +84,8 @@ function getTrainingProfile(){try{return {level:1,xp:0,streak:0,categories:{},ga
 function renderTrainingProfile(){const p=getTrainingProfile(),xp=p.xp||0;document.getElementById('brainLevelValue').textContent=Math.floor(xp/100)+1;document.getElementById('brainXpValue').textContent=`${xp%100} / 100`;document.getElementById('brainXpFill').style.width=`${xp%100}%`;document.querySelectorAll('.training-category').forEach(b=>{const v=p.categories?.[b.dataset.category]||0;b.querySelector('.category-progress em').style.width=`${v}%`;b.querySelector('.category-progress b').textContent=`${v}%`})}
 function openTrainingCategory(key){const c=TRAINING_CATEGORIES[key];if(!c)return;const p=getTrainingProfile(),v=p.categories?.[key]||0;categoryScreenIcon.textContent=c.icon;categoryScreenTitle.textContent=c.name;categoryScreenDescription.textContent=c.description;categoryScreenProgress.textContent=`${v}%`;let total=0,done=0,stars=0;c.games.forEach(g=>{total+=g.levels;done+=p.games?.[g.id]?.completed||0;stars+=p.games?.[g.id]?.stars||0});categoryCompleted.textContent=`${done} / ${total}`;categoryStars.textContent=stars;categoryStreak.textContent=`${p.streak||0} dni`;trainingGameGrid.innerHTML=c.games.map((g,idx)=>`<button class="training-game-card game-card-${idx+1} ${g.status==='available'?'available':'locked'}" data-game="${g.id}" data-status="${g.status}"><span class="game-icon">${TRAINING_GAME_ICONS[g.id]||g.icon}</span><span class="game-copy"><strong>${g.name}</strong><small>${g.subtitle}</small></span><span class="game-level"><b>${p.games?.[g.id]?.completed||0} / ${g.levels}</b><i><em style="width:0%"></em></i></span><span class="game-status">${g.status==='available'?'GRAJ':'WKRÓTCE'}</span></button>`).join('');trainingGameGrid.querySelectorAll('button').forEach(b=>b.onclick=()=>{
   if(b.dataset.game==='dice-training'&&b.dataset.status==='available'){nav('dice-academy');renderDiceAcademy();return}
-  modal(b.dataset.status==='available'?b.querySelector('strong').textContent:'Wkrótce dostępne',b.dataset.status==='available'?'Ten moduł otrzyma taki sam system nauki jak Kostki.':'Ten trening zostanie dodany w kolejnych wersjach.','✦')
+  if(b.dataset.game==='matrix-training'&&b.dataset.status==='available'){startMatrixTraining();return}
+  modal(b.dataset.status==='available'?b.querySelector('strong').textContent:'Wkrótce dostępne',b.dataset.status==='available'?'Moduł jest dostępny.':'Ten trening zostanie dodany w kolejnych wersjach.','✦')
 });nav('training-category')}
 document.querySelectorAll('.training-category').forEach(b=>b.onclick=()=>openTrainingCategory(b.dataset.category));
 
@@ -1203,6 +1204,18 @@ function diceTrainingHints(question){
 function trainingHintModalData(question){
   const layout=question?.layout || question?.meta?.layout || 'sequence';
 
+  if(question?.family==='matrix'){
+    return {
+      title:'Jak analizować matrycę logiczną?',
+      hints:[
+        {title:'Najpierw sprawdź wiersze',text:'Porównaj elementy od lewej do prawej i zobacz, co się przesuwa, dodaje, znika albo zmienia.'},
+        {title:'Potem sprawdź kolumny',text:'Ta sama lub uzupełniająca reguła może działać z góry na dół.'},
+        {title:'Wybierz odpowiedź pasującą do obu kierunków',text:'Poprawny element powinien jednocześnie kończyć ostatni wiersz i ostatnią kolumnę.'}
+      ],
+      remember:'Nie zgaduj po jednym polu — reguła musi pasować do całej matrycy.'
+    };
+  }
+
   if(layout==='sequence'){
     return {
       title:'Jak analizować ciąg kostek?',
@@ -1323,6 +1336,44 @@ document.getElementById('trainingHint1')?.addEventListener('click',showTrainingH
 document.getElementById('trainingShowSolution')?.addEventListener('click',()=>showTrainingText('solution'));
 document.getElementById('trainingNextQuestion')?.classList.add('hidden');
 
+
+
+function startMatrixTraining(){
+  diceTrainingMode=true;
+  trainingHelpPanel.classList.remove('hidden');
+  resetTrainingHelp();
+
+  state.participant=state.participant||{firstName:'Trening',lastName:'Matryce',age:18,count:20,mode:'adaptive'};
+  nav('question');
+  state.testStartedAt=Date.now();
+  clearInterval(state.timerId);
+  document.getElementById('questionTimer').textContent='00:00';
+  state.timerId=setInterval(()=>{
+    document.getElementById('questionTimer').textContent=formatTime(Date.now()-state.testStartedAt);
+  },1000);
+
+  state.questionEngine=new QuestionEngine({
+    generator:MatrixGenerator,
+    manualAdvance:false,
+    retryIncorrect:true,
+    autoAdvanceDelay:2000,
+    onRender:q=>{
+      renderDiceQuestion(q);
+      resetTrainingHelp();
+    },
+    onProgress:updateQuestionProgress,
+    onFeedback:showQuestionFeedback,
+    onFinish:summary=>{
+      clearInterval(state.timerId);
+      diceTrainingMode=false;
+      trainingHelpPanel.classList.add('hidden');
+      modal('Trening Matryc ukończony',`Poprawne odpowiedzi: ${summary.correct}/${summary.total} (${summary.percent}%).`,'▦');
+      nav('training-category');
+      renderTrainingCategory('logic');
+    }
+  });
+  state.questionEngine.start(20,'adaptive');
+}
 
 function startDiceTest(){
   diceTrainingMode=false;
