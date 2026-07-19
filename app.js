@@ -473,7 +473,49 @@ const CORNER_GENERAL_HINTS=[
   }
 ];
 
+
+function initAcademyHintModal(){
+  const modal=document.getElementById('academyHintModal');
+  const closeButton=document.getElementById('academyHintModalClose');
+  const doneButton=document.getElementById('academyHintModalDone');
+
+  if(!modal)return false;
+  if(modal.dataset.initialized==='true')return true;
+
+  closeButton?.addEventListener('click',event=>{
+    event.preventDefault();
+    event.stopPropagation();
+    closeAcademyHintModal();
+  });
+
+  doneButton?.addEventListener('click',event=>{
+    event.preventDefault();
+    event.stopPropagation();
+    closeAcademyHintModal();
+  });
+
+  modal.addEventListener('click',event=>{
+    if(event.target===modal)closeAcademyHintModal();
+  });
+
+  document.addEventListener('keydown',event=>{
+    if(event.key==='Escape'&&!modal.classList.contains('hidden')){
+      closeAcademyHintModal();
+    }
+  });
+
+  modal.dataset.initialized='true';
+  return true;
+}
+
+if(document.readyState==='loading'){
+  document.addEventListener('DOMContentLoaded',initAcademyHintModal,{once:true});
+}else{
+  initAcademyHintModal();
+}
+
 function openAcademyHintModal(title, hints, eyebrow='WSKAZÓWKI', remember=''){
+  initAcademyHintModal();
   const modal=document.getElementById('academyHintModal');
   if(!modal)return;
 
@@ -497,14 +539,6 @@ function closeAcademyHintModal(){
   document.getElementById('academyHintModal')?.classList.add('hidden');
 }
 
-document.getElementById('academyHintModalClose')?.addEventListener('click',closeAcademyHintModal);
-document.getElementById('academyHintModalDone')?.addEventListener('click',closeAcademyHintModal);
-document.getElementById('academyHintModal')?.addEventListener('click',event=>{
-  if(event.target===event.currentTarget)closeAcademyHintModal();
-});
-document.addEventListener('keydown',event=>{
-  if(event.key==='Escape')closeAcademyHintModal();
-});
 
 
 const ORIENTATION_QUESTIONS=[
