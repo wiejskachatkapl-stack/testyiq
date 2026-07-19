@@ -1,5 +1,15 @@
 # Changelog
 
+## v1066
+### Zmieniono
+- etap treningowy jest opisany jako powtórka wszystkich poznanych zasad,
+- dwa przyciski wskazówek zastąpiono jednym przyciskiem `POKAŻ PODPOWIEDZI`,
+- podpowiedzi otwierają duże okno takie jak w poprzednich etapach,
+- treść wskazówek jest automatycznie dopasowana do typu aktualnego pytania,
+- wskazówki nie podają konkretnej odpowiedzi ani liczby oczek,
+- pozostawiono oddzielny przycisk `POKAŻ ROZWIĄZANIE`,
+- cache PWA zmieniono na `iq-brain-lab-v1066`.
+
 ## v1065
 ### Naprawiono
 - przycisk `ROZUMIEM` zamyka okno podpowiedzi,
