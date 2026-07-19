@@ -1,5 +1,15 @@
 # Changelog
 
+## v1067
+### Dodano i naprawiono
+- podpowiedzi w teście otwierają duże okno modalne,
+- kliknięta odpowiedź pojawia się w polu ze znakiem zapytania,
+- dobra odpowiedź jest oznaczana na zielono,
+- po dobrej odpowiedzi kolejne pytanie pojawia się po 2 sekundach,
+- zła odpowiedź jest oznaczana na czerwono,
+- po złej odpowiedzi pytanie pozostaje bez zmian i można odpowiedzieć ponownie,
+- cache PWA zmieniono na `iq-brain-lab-v1067`.
+
 ## v1066
 ### Zmieniono
 - etap treningowy jest opisany jako powtórka wszystkich poznanych zasad,
