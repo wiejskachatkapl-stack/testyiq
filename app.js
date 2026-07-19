@@ -1147,12 +1147,82 @@ function diceTrainingHints(question){
   };
 }
 
+
+function trainingHintModalData(question){
+  const layout=question?.layout || question?.meta?.layout || 'sequence';
+
+  if(layout==='sequence'){
+    return {
+      title:'Jak analizować ciąg kostek?',
+      hints:[
+        {title:'Porównuj kolejne elementy',text:'Sprawdź, co zmienia się między pierwszą i drugą kostką, a następnie między drugą i trzecią.'},
+        {title:'Szukaj jednej powtarzalnej reguły',text:'Zwróć uwagę na dodawanie, odejmowanie, naprzemienność, powtarzanie albo zmianę o stałą wartość.'},
+        {title:'Sprawdź regułę na całym ciągu',text:'Dobra reguła musi pasować do wszystkich pokazanych przejść, a nie tylko do jednej pary.'}
+      ],
+      remember:'Najpierw znajdź zmianę między elementami, a dopiero potem zastosuj ją do pola ze znakiem zapytania.'
+    };
+  }
+
+  if(layout==='analogy'||layout==='analogy3'){
+    return {
+      title:'Jak rozwiązać analogię kostek?',
+      hints:[
+        {title:'Odkryj zmianę w pierwszej parze',text:'Sprawdź, w jaki sposób pierwsza kostka przechodzi w drugą.'},
+        {title:'Nie zmieniaj reguły',text:'Dokładnie tę samą operację trzeba zastosować do kolejnej kostki.'},
+        {title:'Porównaj wszystkie odpowiedzi',text:'Odrzuć warianty, które stosują inną zmianę niż ta pokazana w pierwszej parze.'}
+      ],
+      remember:'W analogii po obu stronach działa dokładnie ta sama zasada.'
+    };
+  }
+
+  if(layout==='matrix2'||layout==='matrix3'){
+    return {
+      title:'Jak analizować matrycę kostek?',
+      hints:[
+        {title:'Zacznij od pełnego wiersza lub kolumny',text:'Najpierw znajdź fragment matrycy, w którym wszystkie pola są już widoczne.'},
+        {title:'Odkryj zależność',text:'Sprawdź, czy ostatnie pole powstaje przez dodawanie, odejmowanie, zamianę albo powtarzanie wcześniejszych wartości.'},
+        {title:'Zastosuj tę samą zasadę',text:'Reguła z pełnego wiersza lub kolumny musi działać również tam, gdzie znajduje się znak zapytania.'}
+      ],
+      remember:'W całej matrycy obowiązuje ta sama zależność.'
+    };
+  }
+
+  if(layout==='odd'){
+    return {
+      title:'Jak znaleźć element niepasujący?',
+      hints:[
+        {title:'Znajdź wspólną cechę',text:'Porównaj wszystkie kostki i ustal zasadę, którą spełnia większość z nich.'},
+        {title:'Sprawdzaj kilka możliwości',text:'Zwróć uwagę na parzystość, kolejność, powtarzalność i relacje między wartościami.'},
+        {title:'Wybierz jedyny wyjątek',text:'Poprawna odpowiedź to ta kostka, która jako jedyna łamie wspólną regułę.'}
+      ],
+      remember:'Najpierw znajdź regułę większości, a dopiero potem wskaż wyjątek.'
+    };
+  }
+
+  return {
+    title:'Jak podejść do tego zadania?',
+    hints:[
+      {title:'Obejrzyj cały układ',text:'Nie skupiaj się tylko na jednej kostce. Porównaj wszystkie elementy pytania.'},
+      {title:'Szukaj prostej reguły',text:'Sprawdź kolejność, zmianę wartości, powtarzanie i relacje między kostkami.'},
+      {title:'Eliminuj odpowiedzi',text:'Odrzuć warianty, które nie pasują do reguły widocznej w całym zadaniu.'}
+    ],
+    remember:'Poprawna reguła musi wyjaśniać cały układ.'
+  };
+}
+
+function showTrainingHints(){
+  const question=state.questionEngine?.current;
+  if(!question)return;
+  const data=trainingHintModalData(question);
+  openAcademyHintModal(data.title,data.hints,'TRENING KOSTEK',data.remember);
+}
+
 function resetTrainingHelp(){
   if(!diceTrainingMode)return;
   trainingHelpPanel.classList.remove('hidden');
   trainingNextQuestion.classList.add('hidden');
   trainingExplanation.className='training-explanation';
-  trainingExplanation.innerHTML='<small>NAUKA PODCZAS TRENINGU</small><p>Wybierz wskazówkę, gdy nie widzisz reguły.</p>';
+  trainingExplanation.innerHTML='<small>POWTÓRKA MATERIAŁU</small><p>To etap sprawdzający wszystkie poznane zasady dotyczące kostek.</p>';
 }
 
 function showTrainingText(kind){
@@ -1199,8 +1269,7 @@ function startDiceTraining(){
   state.questionEngine.start(20,'adaptive');
 }
 
-document.getElementById('trainingHint1')?.addEventListener('click',()=>showTrainingText('hint1'));
-document.getElementById('trainingHint2')?.addEventListener('click',()=>showTrainingText('hint2'));
+document.getElementById('trainingHint1')?.addEventListener('click',showTrainingHints);
 document.getElementById('trainingShowSolution')?.addEventListener('click',()=>showTrainingText('solution'));
 document.getElementById('trainingNextQuestion')?.addEventListener('click',()=>state.questionEngine?.advance());
 
