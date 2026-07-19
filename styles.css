@@ -7174,3 +7174,98 @@ html,body{
     height:64px;
   }
 }
+
+
+/* =========================================================
+   v1060 — poprawna, zwarta kostka 3-ścienna w Orientacji
+   ========================================================= */
+
+.orientation-cube{
+  position:relative!important;
+  width:128px!important;
+  height:112px!important;
+  margin:0 auto!important;
+  overflow:visible!important;
+  transform:none!important;
+}
+
+.orientation-cube-top,
+.orientation-cube-left,
+.orientation-cube-right{
+  position:absolute!important;
+  width:64px!important;
+  height:64px!important;
+  overflow:hidden!important;
+  transform-origin:center center!important;
+}
+
+.orientation-cube-top{
+  left:32px!important;
+  top:2px!important;
+  transform:rotate(45deg) scaleY(.54)!important;
+  z-index:3!important;
+}
+
+.orientation-cube-left{
+  left:8px!important;
+  top:38px!important;
+  transform:skewY(28deg)!important;
+  transform-origin:right top!important;
+  z-index:2!important;
+}
+
+.orientation-cube-right{
+  left:60px!important;
+  top:38px!important;
+  transform:skewY(-28deg)!important;
+  transform-origin:left top!important;
+  z-index:2!important;
+}
+
+.orientation-cube-top svg,
+.orientation-cube-left svg,
+.orientation-cube-right svg,
+.orientation-main-die,
+.orientation-option-die{
+  width:64px!important;
+  height:64px!important;
+  display:block!important;
+}
+
+/* Delikatne dosunięcie ścian, aby nie było szczelin */
+.orientation-cube-left{
+  margin-right:-1px!important;
+}
+
+.orientation-cube-right{
+  margin-left:-1px!important;
+}
+
+.orientation-cube-top{
+  filter:drop-shadow(0 1px 1px rgba(0,0,0,.18));
+}
+
+.orientation-cube-left,
+.orientation-cube-right{
+  filter:drop-shadow(0 2px 2px rgba(0,0,0,.18));
+}
+
+/* odpowiedzi i pole docelowe zachowują ten sam zwarty model */
+.orientation-answer-grid .orientation-cube,
+.orientation-answer-box .orientation-cube,
+.orientation-cube-box .orientation-cube{
+  width:128px!important;
+  height:112px!important;
+}
+
+@media(max-width:900px),(hover:none) and (pointer:coarse){
+  .orientation-cube,
+  .orientation-answer-grid .orientation-cube,
+  .orientation-answer-box .orientation-cube,
+  .orientation-cube-box .orientation-cube{
+    width:116px!important;
+    height:102px!important;
+    transform:scale(.90)!important;
+    transform-origin:center center!important;
+  }
+}
