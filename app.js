@@ -1083,7 +1083,11 @@ function updateQuestionProgress(data){
 
 
 function renderSelectedAnswerInTarget(question, selectedIndex, correct){
-  const target=document.querySelector('#diceSequence .answer-target');
+  let target=document.querySelector('#diceSequence .answer-target');
+  if(!target){
+    const missing=document.querySelector('#diceSequence .missing-die, #diceSequence .missing-shape');
+    target=missing?.closest('.puzzle-cell, .shape-matrix-cell') || missing;
+  }
   if(!target)return;
   const selected=question?.options?.[selectedIndex];
   if(selected==null)return;
@@ -1096,7 +1100,11 @@ function renderSelectedAnswerInTarget(question, selectedIndex, correct){
 }
 
 function resetSelectedAnswerTarget(question){
-  const target=document.querySelector('#diceSequence .answer-target');
+  let target=document.querySelector('#diceSequence .answer-target');
+  if(!target){
+    const missing=document.querySelector('#diceSequence .missing-die, #diceSequence .missing-shape');
+    target=missing?.closest('.puzzle-cell, .shape-matrix-cell') || missing;
+  }
   if(!target)return;
   target.classList.remove('answer-target-good','answer-target-bad');
   target.innerHTML=question?.family==='matrix'
