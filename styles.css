@@ -7580,3 +7580,34 @@ html,body{
     grid-template-columns:1fr!important;
   }
 }
+
+
+/* =========================================================
+   v1067 — odpowiedź w polu ze znakiem zapytania
+   ========================================================= */
+#diceSequence .answer-target{
+  transition:border-color .2s ease,background .2s ease,box-shadow .2s ease,transform .2s ease;
+}
+#diceSequence .answer-target.answer-target-good{
+  border:3px solid #39df79!important;
+  background:rgba(42,210,106,.15)!important;
+  box-shadow:0 0 26px rgba(57,223,121,.28)!important;
+  transform:scale(1.025);
+}
+#diceSequence .answer-target.answer-target-bad{
+  border:3px solid #ff5363!important;
+  background:rgba(255,70,87,.15)!important;
+  box-shadow:0 0 24px rgba(255,83,99,.25)!important;
+  transform:scale(1.025);
+}
+#diceSequence .answer-target svg{
+  width:100%!important;
+  height:100%!important;
+  max-width:116px;
+  max-height:116px;
+}
+.training-explanation.bad{
+  border-left-color:#ff5363!important;
+  background:rgba(255,70,87,.08)!important;
+}
+.training-explanation.bad small{color:#ff8d98!important}

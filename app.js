@@ -955,6 +955,7 @@ function formatTime(ms){
 
 function renderDiceQuestion(question){
   document.querySelector('.question-card')?.classList.remove('matrix-question-card');
+  if(document.getElementById('trainingHelpPanel')&&!trainingHelpPanel.classList.contains('hidden'))resetTrainingHelp();
   if(question.family==='matrix') return renderMatrixQuestion(question);
   document.getElementById('questionCategory').textContent=`${question.category} • ${layoutName(question.layout)}`;
   document.getElementById('questionPrompt').textContent=question.prompt;
@@ -994,7 +995,7 @@ function layoutName(layout){
 }
 
 function dieCell(value,extra=''){
-  return `<div class="puzzle-cell ${extra}">
+  return `<div class="puzzle-cell ${extra}${value==null?' answer-target':''}">
     ${value==null?'<div class="missing-die">?</div>':DiceGenerator.diceSvg(value,'sequence-die')}
   </div>`;
 }
@@ -1067,7 +1068,7 @@ function renderMatrixQuestion(question){
   const board=document.getElementById('diceSequence');
   board.className='dice-sequence matrix-shape-board';
   board.innerHTML=`<div class="shape-matrix-grid">${question.data.cells.map(item=>
-    item==null?'<div class="shape-matrix-cell missing-shape">?</div>':`<div class="shape-matrix-cell">${MatrixGenerator.shapeSvg(item,'matrix-main-shape')}</div>`
+    item==null?'<div class="shape-matrix-cell missing-shape answer-target">?</div>':`<div class="shape-matrix-cell">${MatrixGenerator.shapeSvg(item,'matrix-main-shape')}</div>`
   ).join('')}</div>`;
   const answers=document.getElementById('diceAnswers');
   answers.innerHTML=question.options.map((item,index)=>`<button class="dice-answer matrix-answer" type="button" data-answer="${index}" aria-label="Odpowiedź ${String.fromCharCode(65+index)}"><span>${String.fromCharCode(65+index)}</span>${MatrixGenerator.shapeSvg(item,'matrix-answer-shape')}</button>`).join('');
@@ -1080,17 +1081,60 @@ function updateQuestionProgress(data){
   document.getElementById('questionProgress').style.width=`${data.progress}%`;
 }
 
+
+function renderSelectedAnswerInTarget(question, selectedIndex, correct){
+  const target=document.querySelector('#diceSequence .answer-target');
+  if(!target)return;
+  const selected=question?.options?.[selectedIndex];
+  if(selected==null)return;
+
+  target.classList.remove('answer-target-good','answer-target-bad');
+  target.classList.add(correct?'answer-target-good':'answer-target-bad');
+  target.innerHTML=question.family==='matrix'
+    ? MatrixGenerator.shapeSvg(selected,'matrix-main-shape')
+    : DiceGenerator.diceSvg(selected,'sequence-die');
+}
+
+function resetSelectedAnswerTarget(question){
+  const target=document.querySelector('#diceSequence .answer-target');
+  if(!target)return;
+  target.classList.remove('answer-target-good','answer-target-bad');
+  target.innerHTML=question?.family==='matrix'
+    ? '?'
+    : '<div class="missing-die">?</div>';
+}
+
 function showQuestionFeedback({correct,correctIndex,selectedIndex}){
   const buttons=[...document.querySelectorAll('.dice-answer')];
+  const question=state.questionEngine?.current;
+
+  renderSelectedAnswerInTarget(question,selectedIndex,correct);
+
   buttons.forEach((button,index)=>{
     button.disabled=true;
-    if(index===correctIndex)button.classList.add('correct');
+    if(index===selectedIndex)button.classList.add(correct?'correct':'wrong');
   });
-  if(!correct && Number.isInteger(selectedIndex)){
-    buttons[selectedIndex]?.classList.add('wrong');
-  }
+
   document.querySelector('.question-card')?.classList.add(correct?'flash-correct':'flash-wrong');
   setTimeout(()=>document.querySelector('.question-card')?.classList.remove('flash-correct','flash-wrong'),420);
+
+  const h=diceTrainingHints(question);
+  if(correct){
+    trainingExplanation.className='training-explanation good';
+    trainingExplanation.innerHTML=`<small>DOBRZE</small><p>${h.solution}</p>`;
+  }else{
+    trainingExplanation.className='training-explanation bad';
+    trainingExplanation.innerHTML='<small>ZŁA ODPOWIEDŹ</small><p>Spróbuj ponownie. Za chwilę możesz zaznaczyć inną odpowiedź.</p>';
+    setTimeout(()=>{
+      resetSelectedAnswerTarget(question);
+      buttons.forEach(button=>{
+        button.disabled=false;
+        button.classList.remove('wrong','correct');
+      });
+      trainingExplanation.className='training-explanation';
+      trainingExplanation.innerHTML='<small>SPRÓBUJ PONOWNIE</small><p>To samo pytanie pozostaje na ekranie. Wybierz inną odpowiedź.</p>';
+    },1600);
+  }
 }
 
 function finishDicePreview(summary){
@@ -1276,7 +1320,8 @@ document.getElementById('trainingNextQuestion')?.addEventListener('click',()=>st
 
 function startDiceTest(){
   diceTrainingMode=false;
-  trainingHelpPanel.classList.add('hidden');
+  trainingHelpPanel.classList.remove('hidden');
+  resetTrainingHelp();
   const p=state.participant;
   if(!p)return nav('setup');
 
@@ -1293,7 +1338,9 @@ function startDiceTest(){
     onRender:renderDiceQuestion,
     onProgress:updateQuestionProgress,
     onFeedback:showQuestionFeedback,
-    onFinish:finishDicePreview
+    onFinish:finishDicePreview,
+    retryIncorrect:true,
+    autoAdvanceDelay:2000
   });
   state.questionEngine.start(p.count,p.mode);
 }
