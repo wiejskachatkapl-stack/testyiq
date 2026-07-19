@@ -1,5 +1,15 @@
 # Changelog
 
+## v1073
+### Naprawiono
+- matryce 2×2 na komputerze są rzeczywiście większe,
+- matryce 3×3 na komputerze są rzeczywiście większe,
+- karta pytania rezerwuje 390 px wysokości na planszę,
+- usunięto zależność od procentowej wysokości rodzica,
+- ustawiono jawne rozmiary plansz, komórek i kostek,
+- na telefonie zachowano mniejsze rozmiary,
+- cache PWA zmieniono na `iq-brain-lab-v1073`.
+
 ## v1072
 ### Zmieniono
 - powiększono matryce 2×2 na komputerze,
