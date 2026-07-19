@@ -7269,3 +7269,72 @@ html,body{
     transform-origin:center center!important;
   }
 }
+
+
+/* =========================================================
+   v1061 — kostka Orientacji jako jeden spójny rysunek SVG
+   ========================================================= */
+
+.orientation-cube{
+  width:132px!important;
+  height:132px!important;
+  display:grid!important;
+  place-items:center!important;
+  position:relative!important;
+  margin:0 auto!important;
+  overflow:visible!important;
+}
+
+.orientation-cube-svg{
+  width:122px!important;
+  height:126px!important;
+  display:block!important;
+  overflow:visible!important;
+}
+
+.orientation-cube-top,
+.orientation-cube-left,
+.orientation-cube-right{
+  display:none!important;
+}
+
+.orientation-cube-box,
+.orientation-answer-box{
+  min-height:150px!important;
+}
+
+.orientation-answer-grid button{
+  min-height:150px!important;
+}
+
+.orientation-answer-grid .orientation-cube-svg{
+  width:112px!important;
+  height:116px!important;
+}
+
+.orientation-answer-box .orientation-cube-svg{
+  width:122px!important;
+  height:126px!important;
+}
+
+@media(max-width:900px),(hover:none) and (pointer:coarse){
+  .orientation-cube{
+    width:112px!important;
+    height:112px!important;
+    transform:none!important;
+  }
+
+  .orientation-cube-svg{
+    width:104px!important;
+    height:108px!important;
+  }
+
+  .orientation-cube-box,
+  .orientation-answer-box{
+    min-height:124px!important;
+  }
+
+  .orientation-answer-grid button{
+    min-height:126px!important;
+  }
+}

@@ -432,11 +432,45 @@ let orientationQuestionIndex=0;
 let orientationLocked=false;
 
 function orientationCubeHtml(values, cls='orientation-mini-die'){
-  return `<div class="orientation-cube">
-    <div class="orientation-cube-top">${DiceGenerator.diceSvg(values[0],cls)}</div>
-    <div class="orientation-cube-left">${DiceGenerator.diceSvg(values[1],cls)}</div>
-    <div class="orientation-cube-right">${DiceGenerator.diceSvg(values[2],cls)}</div>
-  </div>`;
+  const pipMap={
+    1:[[.5,.5]],
+    2:[[.28,.28],[.72,.72]],
+    3:[[.28,.28],[.5,.5],[.72,.72]],
+    4:[[.28,.28],[.72,.28],[.28,.72],[.72,.72]],
+    5:[[.28,.28],[.72,.28],[.5,.5],[.28,.72],[.72,.72]],
+    6:[[.28,.24],[.72,.24],[.28,.5],[.72,.5],[.28,.76],[.72,.76]]
+  };
+
+  const project=(face,u,v)=>{
+    if(face==='top'){
+      return [60+(u-v)*46,15+(u+v)*24];
+    }
+    if(face==='left'){
+      return [14+u*46,39+v*58+u*24];
+    }
+    return [60+u*46,63+v*58-u*24];
+  };
+
+  const pips=(face,value)=>{
+    return (pipMap[value]||[]).map(([u,v])=>{
+      const [x,y]=project(face,u,v);
+      return `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="4.7" fill="#10151a"/>`;
+    }).join('');
+  };
+
+  return `<svg class="orientation-cube-svg ${cls}" viewBox="0 0 120 124" role="img" aria-label="Kostka: ${values.join(', ')}">
+    <defs>
+      <filter id="orientationCubeShadow" x="-30%" y="-30%" width="160%" height="180%">
+        <feDropShadow dx="0" dy="4" stdDeviation="3" flood-color="#000" flood-opacity=".32"/>
+      </filter>
+    </defs>
+    <g filter="url(#orientationCubeShadow)" stroke="#7a8287" stroke-width="2.2" stroke-linejoin="round">
+      <polygon points="60,15 106,39 60,63 14,39" fill="#f3e7ca"/>
+      <polygon points="14,39 60,63 60,121 14,97" fill="#eee0c1"/>
+      <polygon points="60,63 106,39 106,97 60,121" fill="#f7ecd3"/>
+    </g>
+    <g>${pips('top',values[0])}${pips('left',values[1])}${pips('right',values[2])}</g>
+  </svg>`;
 }
 
 function renderOrientationQuestion(){
