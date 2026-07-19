@@ -1,5 +1,14 @@
 # Changelog
 
+## v1064
+### Uproszczono
+- usunięto trzy osobne przyciski podpowiedzi z lewej kolumny,
+- usunięto drugi, dolny panel podpowiedzi,
+- pozostawiono jeden przycisk `POKAŻ PODPOWIEDZI` przy aktualnym zadaniu,
+- wszystkie podpowiedzi otwierają jedno wspólne, duże okno,
+- treść wskazówek jest teraz zawsze spójna z daną zakładką,
+- cache PWA zmieniono na `iq-brain-lab-v1064`.
+
 ## v1063
 ### Zmieniono
 - usunięto wszystkie podpowiedzi odnoszące się do konkretnych oczek lub liczb,
