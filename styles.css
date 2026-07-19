@@ -7638,3 +7638,129 @@ html,body{
 #trainingNextQuestion{
   display:none!important;
 }
+
+
+/* =========================================================
+   v1070 — dopasowanie matryc i układów wielorzędowych
+   ========================================================= */
+
+/* Karta pytania z matrycą musi rezerwować miejsce na planszę */
+.question-card.matrix-question-card{
+  overflow:hidden!important;
+}
+
+.question-card.matrix-question-card .question-visual,
+.question-card.matrix-question-card #diceSequence{
+  min-height:0!important;
+  max-height:none!important;
+}
+
+/* Matryce zawsze mieszczą się wewnątrz pola zadania */
+#diceSequence.layout-matrix2,
+#diceSequence.layout-matrix3,
+#diceSequence .matrix-board{
+  width:100%!important;
+  max-width:100%!important;
+  box-sizing:border-box!important;
+  margin:0 auto!important;
+}
+
+/* 2 × 2 */
+#diceSequence .matrix-board.matrix-2{
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  grid-template-rows:repeat(2,minmax(0,1fr))!important;
+  gap:12px!important;
+  width:min(320px,92%)!important;
+  aspect-ratio:1/1!important;
+  align-items:center!important;
+  justify-items:center!important;
+  padding:10px!important;
+}
+
+/* 3 × 3 */
+#diceSequence .matrix-board.matrix-3{
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  grid-template-rows:repeat(3,minmax(0,1fr))!important;
+  gap:8px!important;
+  width:min(390px,94%)!important;
+  aspect-ratio:1/1!important;
+  align-items:center!important;
+  justify-items:center!important;
+  padding:8px!important;
+}
+
+/* Każde pole matrycy ma ograniczony rozmiar */
+#diceSequence .matrix-board .puzzle-cell{
+  width:100%!important;
+  height:100%!important;
+  min-width:0!important;
+  min-height:0!important;
+  display:grid!important;
+  place-items:center!important;
+  overflow:hidden!important;
+}
+
+/* Kostki skalują się razem z komórką */
+#diceSequence .matrix-board .sequence-die,
+#diceSequence .matrix-board .dice-svg{
+  width:min(100%,96px)!important;
+  height:auto!important;
+  max-height:100%!important;
+  object-fit:contain!important;
+}
+
+/* Pole brakującej odpowiedzi skaluje się identycznie */
+#diceSequence .matrix-board .missing-die{
+  width:min(100%,96px)!important;
+  height:auto!important;
+  aspect-ratio:1/1!important;
+  max-height:100%!important;
+}
+
+/* Mniejsze ekrany */
+@media(max-width:1100px){
+  #diceSequence .matrix-board.matrix-2{
+    width:min(280px,88%)!important;
+    gap:10px!important;
+  }
+
+  #diceSequence .matrix-board.matrix-3{
+    width:min(330px,90%)!important;
+    gap:6px!important;
+  }
+}
+
+@media(max-width:760px){
+  .question-card.matrix-question-card{
+    padding:12px!important;
+  }
+
+  #diceSequence .matrix-board.matrix-2{
+    width:min(240px,86vw)!important;
+    gap:8px!important;
+    padding:6px!important;
+  }
+
+  #diceSequence .matrix-board.matrix-3{
+    width:min(270px,88vw)!important;
+    gap:5px!important;
+    padding:5px!important;
+  }
+
+  #diceSequence .matrix-board .sequence-die,
+  #diceSequence .matrix-board .dice-svg,
+  #diceSequence .matrix-board .missing-die{
+    max-width:74px!important;
+  }
+}
+
+/* Ogólne zabezpieczenie dla układów 2+ rzędów i kolumn */
+#diceSequence .matrix-board,
+#diceSequence .shape-matrix-grid,
+#diceSequence .analogy3-board,
+#diceSequence .odd-board{
+  transform-origin:center center!important;
+  box-sizing:border-box!important;
+}
