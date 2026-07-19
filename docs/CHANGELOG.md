@@ -1,5 +1,15 @@
 # Changelog
 
+## v1068
+### Naprawiono
+- poprawna kostka nie jest już błędnie uznawana za złą,
+- odpowiedź jest sprawdzana także według rzeczywistej wartości kostki, a nie tylko pozycji przycisku,
+- wybrana poprawna kostka pojawia się w polu ze znakiem zapytania,
+- zielone oznaczenie pozostaje widoczne przez 2 sekundy,
+- po 2 sekundach test automatycznie przechodzi do następnego pytania,
+- błędna odpowiedź jest czerwona i pozwala ponownie rozwiązać to samo pytanie,
+- cache PWA zmieniono na `iq-brain-lab-v1068`.
+
 ## v1067
 ### Dodano i naprawiono
 - podpowiedzi w teście otwierają duże okno modalne,
