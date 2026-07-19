@@ -1,5 +1,16 @@
 # Changelog
 
+## v1071
+### Naprawiono
+- matryce kostkowe 2×2 i 3×3 są rozpoznawane jako osobny typ układu,
+- plansza nie nachodzi na nagłówek pytania,
+- plansza nie nachodzi na rząd odpowiedzi,
+- matryca 2×2 ma ograniczony maksymalny rozmiar,
+- matryca 3×3 jest dodatkowo zmniejszana,
+- kostki skalują się do wymiarów komórek,
+- dodano dopasowanie do niskich i wąskich ekranów,
+- cache PWA zmieniono na `iq-brain-lab-v1071`.
+
 ## v1070
 ### Naprawiono
 - matryce 2×2 nie wychodzą już poza obszar pytania,
