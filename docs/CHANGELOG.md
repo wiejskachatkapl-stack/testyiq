@@ -1,5 +1,14 @@
 # Changelog
 
+## v1061
+### Naprawiono
+- całkowicie przebudowano kostki w zakładce `Orientacja`,
+- kostka jest teraz jednym rysunkiem SVG zamiast trzech osobno obracanych elementów,
+- górna, lewa i prawa ściana zawsze stykają się wspólnymi krawędziami,
+- górna ściana nie może już zniknąć ani zostać zasłonięta,
+- poprawkę zastosowano do przykładu, wszystkich odpowiedzi i pola wybranej odpowiedzi,
+- cache PWA zmieniono na `iq-brain-lab-v1061`.
+
 ## v1060
 ### Naprawiono
 - górna ściana kostki w zakładce `Orientacja` jest ponownie widoczna,
