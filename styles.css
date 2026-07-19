@@ -7611,3 +7611,30 @@ html,body{
   background:rgba(255,70,87,.08)!important;
 }
 .training-explanation.bad small{color:#ff8d98!important}
+
+
+/* =========================================================
+   v1069 — pełna kostka w polu odpowiedzi i automatyczny trening
+   ========================================================= */
+
+#diceSequence .missing-die.answer-target{
+  overflow:hidden;
+  padding:0!important;
+}
+
+#diceSequence .missing-die.answer-target > .dice-svg{
+  width:100%!important;
+  height:100%!important;
+  max-width:none!important;
+  max-height:none!important;
+  display:block!important;
+}
+
+#diceSequence .missing-die.answer-target.answer-target-good,
+#diceSequence .missing-die.answer-target.answer-target-bad{
+  color:transparent!important;
+}
+
+#trainingNextQuestion{
+  display:none!important;
+}

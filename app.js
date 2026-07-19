@@ -995,8 +995,8 @@ function layoutName(layout){
 }
 
 function dieCell(value,extra=''){
-  return `<div class="puzzle-cell ${extra}${value==null?' answer-target':''}">
-    ${value==null?'<div class="missing-die">?</div>':DiceGenerator.diceSvg(value,'sequence-die')}
+  return `<div class="puzzle-cell ${extra}">
+    ${value==null?'<div class="missing-die answer-target">?</div>':DiceGenerator.diceSvg(value,'sequence-die')}
   </div>`;
 }
 
@@ -1083,11 +1083,7 @@ function updateQuestionProgress(data){
 
 
 function renderSelectedAnswerInTarget(question, selectedIndex, correct){
-  let target=document.querySelector('#diceSequence .answer-target');
-  if(!target){
-    const missing=document.querySelector('#diceSequence .missing-die, #diceSequence .missing-shape');
-    target=missing?.closest('.puzzle-cell, .shape-matrix-cell') || missing;
-  }
+  const target=document.querySelector('#diceSequence .answer-target');
   if(!target)return;
   const selected=question?.options?.[selectedIndex];
   if(selected==null)return;
@@ -1100,11 +1096,7 @@ function renderSelectedAnswerInTarget(question, selectedIndex, correct){
 }
 
 function resetSelectedAnswerTarget(question){
-  let target=document.querySelector('#diceSequence .answer-target');
-  if(!target){
-    const missing=document.querySelector('#diceSequence .missing-die, #diceSequence .missing-shape');
-    target=missing?.closest('.puzzle-cell, .shape-matrix-cell') || missing;
-  }
+  const target=document.querySelector('#diceSequence .answer-target');
   if(!target)return;
   target.classList.remove('answer-target-good','answer-target-bad');
   target.innerHTML=question?.family==='matrix'
@@ -1298,17 +1290,15 @@ function startDiceTraining(){
 
   state.questionEngine=new QuestionEngine({
     generator:DiceGenerator,
-    manualAdvance:true,
-    onRender:q=>{renderDiceQuestion(q);resetTrainingHelp()},
-    onProgress:updateQuestionProgress,
-    onFeedback:({correct,correctIndex,selectedIndex})=>{
-      showQuestionFeedback({correct,correctIndex,selectedIndex});
-      const q=state.questionEngine.current;
-      const h=diceTrainingHints(q);
-      trainingExplanation.className=`training-explanation ${correct?'good':'bad'}`;
-      trainingExplanation.innerHTML=`<small>${correct?'DOBRZE':'NIE TYM RAZEM'}</small><p>${correct?'Poprawnie rozpoznałeś regułę. ':''}${h.solution}</p>`;
-      trainingNextQuestion.classList.remove('hidden');
+    manualAdvance:false,
+    retryIncorrect:true,
+    autoAdvanceDelay:2000,
+    onRender:q=>{
+      renderDiceQuestion(q);
+      resetTrainingHelp();
     },
+    onProgress:updateQuestionProgress,
+    onFeedback:showQuestionFeedback,
     onFinish:summary=>{
       clearInterval(state.timerId);
       diceTrainingMode=false;
@@ -1323,7 +1313,7 @@ function startDiceTraining(){
 
 document.getElementById('trainingHint1')?.addEventListener('click',showTrainingHints);
 document.getElementById('trainingShowSolution')?.addEventListener('click',()=>showTrainingText('solution'));
-document.getElementById('trainingNextQuestion')?.addEventListener('click',()=>state.questionEngine?.advance());
+document.getElementById('trainingNextQuestion')?.classList.add('hidden');
 
 
 function startDiceTest(){
