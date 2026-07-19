@@ -1,5 +1,18 @@
 # Changelog
 
+## v1074
+### Dodano
+- aktywny moduł `Matryce` w kategorii Logika,
+- 20-pytaniowy trening matryc,
+- matryce z przesuwaniem zaciemnionej ćwiartki,
+- matryce z przesuwaniem pól w siatce 3×3,
+- matryce z liniami poziomymi i pionowymi,
+- matryce z rosnącymi układami bloków,
+- dodatkowe zadania z figurami, obrotami, wypełnieniami i liczbą elementów,
+- podpowiedzi dopasowane do matryc,
+- ten sam system odpowiedzi i kolorów co w Kostkach,
+- cache PWA zmieniono na `iq-brain-lab-v1074`.
+
 ## v1073
 ### Naprawiono
 - matryce 2×2 na komputerze są rzeczywiście większe,
