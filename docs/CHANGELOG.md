@@ -1,5 +1,15 @@
 # Changelog
 
+## v1062
+### Zmieniono
+- usunięto wskazówki zależne od konkretnych liczb, które mogły nie pasować do aktualnego pytania,
+- dodano uniwersalne wskazówki dla `Orientacji`,
+- dodano uniwersalne wskazówki dla `Przeciwległych`,
+- dodano uniwersalne wskazówki dla `Sąsiedztwa i narożników`,
+- wskazówki otwierają się w osobnym, dużym oknie,
+- zwiększono rozmiar czcionek i czytelność treści,
+- cache PWA zmieniono na `iq-brain-lab-v1062`.
+
 ## v1061
 ### Naprawiono
 - całkowicie przebudowano kostki w zakładce `Orientacja`,
