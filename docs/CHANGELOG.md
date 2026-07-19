@@ -1,5 +1,15 @@
 # Changelog
 
+## v1069
+### Naprawiono
+- w polu ze znakiem zapytania pojawia się cała wybrana kostka, a nie pojedyncza kropka,
+- cel odpowiedzi ma teraz prawidłowy, stały rozmiar,
+- poprawna odpowiedź w Treningu Kostek automatycznie przechodzi dalej po 2 sekundach,
+- usunięto ręczny tryb przechodzenia w treningu podsumowującym,
+- błędna odpowiedź pozostawia to samo pytanie i po chwili pozwala wybrać ponownie,
+- przycisk ręcznego przejścia został ukryty,
+- cache PWA zmieniono na `iq-brain-lab-v1069`.
+
 ## v1068
 ### Naprawiono
 - poprawna kostka nie jest już błędnie uznawana za złą,
