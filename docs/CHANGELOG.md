@@ -1,5 +1,15 @@
 # Changelog
 
+## v1070
+### Naprawiono
+- matryce 2×2 nie wychodzą już poza obszar pytania,
+- matryce 3×3 automatycznie dopasowują rozmiar,
+- kostki skalują się do wielkości komórek,
+- pole ze znakiem zapytania ma taki sam rozmiar jak pozostałe pola,
+- dodano responsywne ustawienia dla mniejszych ekranów,
+- zabezpieczono także inne układy z wieloma rzędami i kolumnami,
+- cache PWA zmieniono na `iq-brain-lab-v1070`.
+
 ## v1069
 ### Naprawiono
 - w polu ze znakiem zapytania pojawia się cała wybrana kostka, a nie pojedyncza kropka,
