@@ -1,5 +1,16 @@
 # Changelog
 
+## v1072
+### Zmieniono
+- powiększono matryce 2×2 na komputerze,
+- powiększono matryce 3×3 na komputerze,
+- proporcjonalnie powiększono kostki i pole odpowiedzi na desktopie,
+- delikatnie zmniejszono matryce 2×2 na telefonie,
+- delikatnie zmniejszono matryce 3×3 na telefonie,
+- dodano osobne ustawienia dla bardzo wąskich ekranów,
+- bez zmian w generatorach i mechanice pytań,
+- cache PWA zmieniono na `iq-brain-lab-v1072`.
+
 ## v1071
 ### Naprawiono
 - matryce kostkowe 2×2 i 3×3 są rozpoznawane jako osobny typ układu,
