@@ -54,7 +54,15 @@
     answer(optionIndex) {
       if (this.locked || !this.current) return;
       this.locked = true;
-      const correct = optionIndex === this.current.answerIndex;
+      const selectedOption = this.current.options?.[optionIndex];
+      const sameValue = (() => {
+        try {
+          return JSON.stringify(selectedOption) === JSON.stringify(this.current.answer);
+        } catch (error) {
+          return selectedOption === this.current.answer;
+        }
+      })();
+      const correct = optionIndex === this.current.answerIndex || sameValue;
       const responseMs = Date.now() - this.questionStartedAt;
       if (correct) this.correct += 1;
 
