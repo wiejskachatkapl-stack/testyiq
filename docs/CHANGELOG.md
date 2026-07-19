@@ -1,5 +1,15 @@
 # Changelog
 
+## v1076
+### Zmieniono
+- zwiększono wysokość obszaru planszy dla matryc na komputerze,
+- zwiększono wysokość obszaru planszy dla matryc na telefonie,
+- wyśrodkowano planszę pionowo,
+- odpowiedzi przesunięto nieco niżej,
+- pozostawiono obecny rozmiar figur,
+- dodano osobne ustawienia dla niższych ekranów,
+- cache PWA zmieniono na `iq-brain-lab-v1076`.
+
 ## v1075
 ### Naprawiono
 - matryce figur 3×3 mieszczą się w obszarze pytania,
