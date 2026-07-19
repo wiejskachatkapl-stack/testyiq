@@ -1,5 +1,15 @@
 # Changelog
 
+## v1063
+### Zmieniono
+- usunięto wszystkie podpowiedzi odnoszące się do konkretnych oczek lub liczb,
+- podpowiedzi są teraz uniwersalne i zawsze pasują do typu zadania,
+- `Orientacja` uczy porównywania całego zestawu trzech ścian,
+- `Przeciwległe` uczy par przeciwległych i zasady sumy 7,
+- `Narożniki` uczy eliminowania par przeciwległych,
+- dodano wyróżnioną sekcję `ZAPAMIĘTAJ`,
+- cache PWA zmieniono na `iq-brain-lab-v1063`.
+
 ## v1062
 ### Zmieniono
 - usunięto wskazówki zależne od konkretnych liczb, które mogły nie pasować do aktualnego pytania,
