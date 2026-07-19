@@ -954,7 +954,15 @@ function formatTime(ms){
 }
 
 function renderDiceQuestion(question){
-  document.querySelector('.question-card')?.classList.remove('matrix-question-card');
+  const questionCard=document.querySelector('.question-card');
+  questionCard?.classList.remove('matrix-question-card','multirow-question-card','matrix-2x2-card','matrix-3x3-card');
+
+  if(question.layout==='matrix2'){
+    questionCard?.classList.add('multirow-question-card','matrix-2x2-card');
+  }else if(question.layout==='matrix3'){
+    questionCard?.classList.add('multirow-question-card','matrix-3x3-card');
+  }
+
   if(document.getElementById('trainingHelpPanel')&&!trainingHelpPanel.classList.contains('hidden'))resetTrainingHelp();
   if(question.family==='matrix') return renderMatrixQuestion(question);
   document.getElementById('questionCategory').textContent=`${question.category} • ${layoutName(question.layout)}`;

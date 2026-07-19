@@ -7764,3 +7764,121 @@ html,body{
   transform-origin:center center!important;
   box-sizing:border-box!important;
 }
+
+
+/* =========================================================
+   v1071 — pełne dopasowanie matryc 2×2 i 3×3
+   ========================================================= */
+
+/* Dla matryc kostkowych karta dostaje osobny, zwarty układ */
+.question-card.multirow-question-card{
+  grid-template-rows:auto minmax(0,1fr) auto auto!important;
+  gap:8px!important;
+  overflow:hidden!important;
+}
+
+/* Plansza nie może nachodzić na tytuł ani odpowiedzi */
+.question-card.multirow-question-card #diceSequence{
+  min-height:0!important;
+  height:100%!important;
+  max-height:100%!important;
+  padding:8px!important;
+  overflow:hidden!important;
+  display:grid!important;
+  place-items:center!important;
+}
+
+/* 2×2 ma mniejszy maksymalny rozmiar */
+.question-card.matrix-2x2-card #diceSequence .matrix-board.matrix-2{
+  width:min(250px,78%)!important;
+  height:min(250px,100%)!important;
+  aspect-ratio:1/1!important;
+  gap:8px!important;
+  padding:6px!important;
+}
+
+/* 3×3 musi być wyraźnie mniejsza, aby zmieścić cały układ */
+.question-card.matrix-3x3-card #diceSequence .matrix-board.matrix-3{
+  width:min(285px,82%)!important;
+  height:min(285px,100%)!important;
+  aspect-ratio:1/1!important;
+  gap:5px!important;
+  padding:5px!important;
+}
+
+/* Pola nie zwiększają planszy ponad przydzielone miejsce */
+.question-card.multirow-question-card .matrix-board .puzzle-cell{
+  width:100%!important;
+  height:100%!important;
+  min-width:0!important;
+  min-height:0!important;
+  padding:2px!important;
+  overflow:hidden!important;
+}
+
+/* Kostki skalują się do komórek zamiast wymuszać rozmiar planszy */
+.question-card.multirow-question-card .matrix-board .sequence-die,
+.question-card.multirow-question-card .matrix-board .dice-svg{
+  width:100%!important;
+  height:100%!important;
+  max-width:82px!important;
+  max-height:82px!important;
+  object-fit:contain!important;
+}
+
+/* 3×3 dodatkowo mniejsze kostki */
+.question-card.matrix-3x3-card .matrix-board .sequence-die,
+.question-card.matrix-3x3-card .matrix-board .dice-svg,
+.question-card.matrix-3x3-card .matrix-board .missing-die{
+  max-width:64px!important;
+  max-height:64px!important;
+}
+
+/* Znak zapytania zachowuje proporcje kostki */
+.question-card.multirow-question-card .matrix-board .missing-die{
+  width:100%!important;
+  height:100%!important;
+  max-width:82px!important;
+  max-height:82px!important;
+  aspect-ratio:1/1!important;
+  box-sizing:border-box!important;
+}
+
+/* Odpowiedzi mają stałą, niekolidującą wysokość */
+.question-card.multirow-question-card .dice-answers{
+  min-height:118px!important;
+  height:auto!important;
+}
+
+/* Na niższych ekranach jeszcze mocniej zmniejszamy plansze */
+@media(max-height:850px){
+  .question-card.matrix-2x2-card #diceSequence .matrix-board.matrix-2{
+    width:min(220px,72%)!important;
+    height:min(220px,100%)!important;
+  }
+
+  .question-card.matrix-3x3-card #diceSequence .matrix-board.matrix-3{
+    width:min(245px,76%)!important;
+    height:min(245px,100%)!important;
+  }
+}
+
+@media(max-width:760px){
+  .question-card.multirow-question-card{
+    grid-template-rows:auto minmax(210px,1fr) auto auto!important;
+  }
+
+  .question-card.matrix-2x2-card #diceSequence .matrix-board.matrix-2{
+    width:min(210px,72vw)!important;
+    height:min(210px,100%)!important;
+  }
+
+  .question-card.matrix-3x3-card #diceSequence .matrix-board.matrix-3{
+    width:min(230px,76vw)!important;
+    height:min(230px,100%)!important;
+  }
+
+  .question-card.multirow-question-card .dice-answers{
+    min-height:104px!important;
+  }
+}
