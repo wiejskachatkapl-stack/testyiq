@@ -1,5 +1,13 @@
 # Changelog
 
+## v1060
+### Naprawiono
+- górna ściana kostki w zakładce `Orientacja` jest ponownie widoczna,
+- trzy ściany stykają się ze sobą i tworzą zwartą kostkę,
+- usunięto efekt dwóch rozdzielonych boków,
+- ten sam poprawiony wygląd zastosowano do kostki wyjściowej, odpowiedzi i pola docelowego,
+- cache PWA zmieniono na `iq-brain-lab-v1060`.
+
 ## v1059
 ### Naprawiono
 - kostki w zakładce `Orientacja` są teraz zwarte i wyglądają jak złożone sześciany,

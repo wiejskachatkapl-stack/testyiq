@@ -1,6 +1,6 @@
 # IQ Challenge • Brain Lab
 
-Aktualna wersja: **v1059**
+Aktualna wersja: **v1060**
 
 Status: Brain Engine — fundament SPA i pierwsza ścieżka Test IQ.
 
@@ -166,33 +166,37 @@ Ekran główny telefonu został zmniejszony tak, aby całość mieściła się b
 Dodano widok rozłożonej kostki z opisem par przeciwległych ścian. Powiększono wskazówki i uproszczono pierwszą lekcję, aby była zrozumiała bez znajomości obrotów przestrzennych.
 
 
-## v1059
+## v1060
 Naprawiono przycisk cofania, dodano kursor ręki do elementów interaktywnych oraz zablokowano przechwytywanie kliknięć przez ukryte ekrany i przycisk muzyki.
 
 
-## v1059
+## v1060
 Siatka kostki składa się teraz rzeczywiście z sześciu ścian w prawidłowy sześcian 3D. Usunięto fałszywy, nakładany podgląd.
 
 
-## v1059
+## v1060
 Powiększono czcionki w oknie prezentacji prawdziwej kostki: nagłówki, opisy, pary przeciwległe, dolne zasady oraz przyciski.
 
 
-## v1059
+## v1060
 Dodano trzeci etap Akademii Kostek: sąsiedztwo ścian i rozpoznawanie trzech ścian spotykających się w jednym narożniku.
 
 
-## v1059
+## v1060
 W etapie 3 poprawna odpowiedź podświetla się na zielono i po 2 sekundach automatycznie przechodzi do następnego pytania. Błędna odpowiedź podświetla się na czerwono, pojawia się komunikat „Zła odpowiedź. Popraw się i spróbuj jeszcze raz”, po czym zaznaczenie znika i można ponownie odpowiadać.
 
 
-## v1059
+## v1060
 Wybrana odpowiedź pojawia się teraz bezpośrednio w brakującej ścianie oznaczonej wcześniej znakiem zapytania. Poprawna jest zielona, błędna czerwona. Przycisk następnego pytania jest widoczny po poprawnej odpowiedzi i podczas dwusekundowego oczekiwania.
 
 
-## v1059
+## v1060
 Naprawiono właściwą zakładkę Orientacja. Wybrana odpowiedź pojawia się w polu ze znakiem zapytania, a po poprawnej odpowiedzi widoczny jest przycisk Następne pytanie.
 
 
-## v1059
+## v1060
 Kostki w Orientacji zostały wizualnie złożone i dosunięte. W zakładce Przeciwległe wybrana odpowiedź pojawia się w polu ze znakiem zapytania, z zielonym lub czerwonym oznaczeniem oraz widocznym przyciskiem następnego pytania.
+
+
+## v1060
+Przebudowano wizualizację kostki w zakładce Orientacja. Wszystkie trzy ściany są teraz widoczne, stykają się krawędziami i tworzą zwartą kostkę zamiast dwóch rozdzielonych boków.
