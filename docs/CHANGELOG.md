@@ -1,5 +1,15 @@
 # Changelog
 
+## v1065
+### Naprawiono
+- przycisk `ROZUMIEM` zamyka okno podpowiedzi,
+- przycisk `X` zamyka okno podpowiedzi,
+- kliknięcie poza kartą zamyka okno,
+- klawisz `Esc` zamyka okno,
+- inicjalizacja zdarzeń odbywa się po załadowaniu dokumentu,
+- dodano zabezpieczenie przed wielokrotnym podpinaniem tych samych zdarzeń,
+- cache PWA zmieniono na `iq-brain-lab-v1065`.
+
 ## v1064
 ### Uproszczono
 - usunięto trzy osobne przyciski podpowiedzi z lewej kolumny,
