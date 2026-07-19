@@ -95,12 +95,12 @@ document.querySelectorAll('.training-category').forEach(b=>b.onclick=()=>openTra
    v1051 — Etap 2: Ściany przeciwległe
    ========================================================= */
 const OPPOSITE_LESSON_QUESTIONS=[
-  {face:1,answer:6,hint:'Na standardowej kostce suma oczek na przeciwległych ścianach wynosi 7.',solution:'7 − 1 = 6, więc naprzeciwko 1 znajduje się 6.'},
-  {face:2,answer:5,hint:'Dodaj brakującą liczbę do 2 tak, aby otrzymać 7.',solution:'7 − 2 = 5, więc naprzeciwko 2 znajduje się 5.'},
-  {face:3,answer:4,hint:'Przeciwległa para musi sumować się do 7.',solution:'7 − 3 = 4, więc naprzeciwko 3 znajduje się 4.'},
-  {face:6,answer:1,hint:'To ta sama para co 1 ↔ 6, tylko pytanie jest odwrócone.',solution:'Naprzeciwko 6 znajduje się 1.'},
-  {face:5,answer:2,hint:'Przypomnij sobie parę 2 ↔ 5.',solution:'Naprzeciwko 5 znajduje się 2.'},
-  {face:4,answer:3,hint:'Przypomnij sobie parę 3 ↔ 4.',solution:'Naprzeciwko 4 znajduje się 3.'}
+  {face:1,answer:6,hint:'Porównaj cały zestaw trzech ścian i odrzuć odpowiedzi zawierające inną ścianę niż w przykładzie.',solution:'7 − 1 = 6, więc naprzeciwko 1 znajduje się 6.'},
+  {face:2,answer:5,hint:'Porównaj cały zestaw trzech ścian i odrzuć odpowiedzi zawierające inną ścianę niż w przykładzie.',solution:'7 − 2 = 5, więc naprzeciwko 2 znajduje się 5.'},
+  {face:3,answer:4,hint:'Porównaj cały zestaw trzech ścian i odrzuć odpowiedzi zawierające inną ścianę niż w przykładzie.',solution:'7 − 3 = 4, więc naprzeciwko 3 znajduje się 4.'},
+  {face:6,answer:1,hint:'Porównaj cały zestaw trzech ścian i odrzuć odpowiedzi zawierające inną ścianę niż w przykładzie.',solution:'Naprzeciwko 6 znajduje się 1.'},
+  {face:5,answer:2,hint:'Porównaj cały zestaw trzech ścian i odrzuć odpowiedzi zawierające inną ścianę niż w przykładzie.',solution:'Naprzeciwko 5 znajduje się 2.'},
+  {face:4,answer:3,hint:'Porównaj cały zestaw trzech ścian i odrzuć odpowiedzi zawierające inną ścianę niż w przykładzie.',solution:'Naprzeciwko 4 znajduje się 3.'}
 ];
 
 let oppositeLessonIndex=0;
@@ -218,7 +218,8 @@ document.getElementById('oppositeHintBtn')?.addEventListener('click',()=>{
   openAcademyHintModal(
     'Jak znaleźć ścianę przeciwległą?',
     OPPOSITE_GENERAL_HINTS,
-    'ŚCIANY PRZECIWLEGŁE'
+    'ŚCIANY PRZECIWLEGŁE',
+    'Przeciwległe ściany nigdy się nie stykają, a ich wartości na standardowej kostce sumują się do 7.'
   );
 });
 
@@ -265,12 +266,12 @@ document.getElementById('oppositeNextBtn')?.addEventListener('click',()=>{
    v1055 — Etap 3: Sąsiedztwo i narożniki
    ========================================================= */
 const CORNER_LESSON_QUESTIONS=[
-  {a:1,b:2,answer:3,wrong:[6,5],hint:'Odrzuć ścianę przeciwną do 1 oraz ścianę przeciwną do 2.',solution:'6 jest naprzeciwko 1, a 5 jest naprzeciwko 2. Dlatego 3 może spotkać się z 1 i 2 w jednym narożniku.'},
-  {a:1,b:3,answer:2,wrong:[6,4],hint:'Ściany 6 i 4 są przeciwległe do pokazanych ścian.',solution:'6 nie może dotykać 1, a 4 nie może dotykać 3. Ściana 2 może sąsiadować z obiema.'},
-  {a:2,b:4,answer:1,wrong:[5,3],hint:'Nie wybieraj liczby przeciwległej do żadnej z dwóch pokazanych.',solution:'5 jest naprzeciwko 2, a 3 jest naprzeciwko 4. Ściana 1 może znaleźć się z nimi w narożniku.'},
-  {a:6,b:5,answer:4,wrong:[1,2],hint:'1 i 2 są przeciwległe do ścian już pokazanych.',solution:'1 nie dotyka 6, a 2 nie dotyka 5. Ściana 4 może sąsiadować z obiema.'},
-  {a:6,b:3,answer:5,wrong:[1,4],hint:'Odrzuć 1 jako przeciwną do 6 oraz 4 jako przeciwną do 3.',solution:'Jedyną poprawną możliwością jest 5, ponieważ dotyka zarówno 6, jak i 3.'},
-  {a:5,b:4,answer:6,wrong:[2,3],hint:'2 jest naprzeciwko 5, a 3 naprzeciwko 4.',solution:'Ściana 6 może dotykać obu pokazanych ścian i utworzyć z nimi narożnik.'}
+  {a:1,b:2,answer:3,wrong:[6,5],hint:'Porównaj cały zestaw trzech ścian i odrzuć odpowiedzi zawierające inną ścianę niż w przykładzie.',solution:'6 jest naprzeciwko 1, a 5 jest naprzeciwko 2. Dlatego 3 może spotkać się z 1 i 2 w jednym narożniku.'},
+  {a:1,b:3,answer:2,wrong:[6,4],hint:'Porównaj cały zestaw trzech ścian i odrzuć odpowiedzi zawierające inną ścianę niż w przykładzie.',solution:'6 nie może dotykać 1, a 4 nie może dotykać 3. Ściana 2 może sąsiadować z obiema.'},
+  {a:2,b:4,answer:1,wrong:[5,3],hint:'Porównaj cały zestaw trzech ścian i odrzuć odpowiedzi zawierające inną ścianę niż w przykładzie.',solution:'5 jest naprzeciwko 2, a 3 jest naprzeciwko 4. Ściana 1 może znaleźć się z nimi w narożniku.'},
+  {a:6,b:5,answer:4,wrong:[1,2],hint:'Porównaj cały zestaw trzech ścian i odrzuć odpowiedzi zawierające inną ścianę niż w przykładzie.',solution:'1 nie dotyka 6, a 2 nie dotyka 5. Ściana 4 może sąsiadować z obiema.'},
+  {a:6,b:3,answer:5,wrong:[1,4],hint:'Porównaj cały zestaw trzech ścian i odrzuć odpowiedzi zawierające inną ścianę niż w przykładzie.',solution:'Jedyną poprawną możliwością jest 5, ponieważ dotyka zarówno 6, jak i 3.'},
+  {a:5,b:4,answer:6,wrong:[2,3],hint:'Porównaj cały zestaw trzech ścian i odrzuć odpowiedzi zawierające inną ścianę niż w przykładzie.',solution:'Ściana 6 może dotykać obu pokazanych ścian i utworzyć z nimi narożnik.'}
 ];
 
 let cornerLessonIndex=0;
@@ -387,7 +388,8 @@ document.getElementById('cornerHintBtn')?.addEventListener('click',()=>{
   openAcademyHintModal(
     'Jak znaleźć trzecią ścianę narożnika?',
     CORNER_GENERAL_HINTS,
-    'SĄSIEDZTWO I NAROŻNIKI'
+    'SĄSIEDZTWO I NAROŻNIKI',
+    'W jednym narożniku nie może znaleźć się żadna para ścian przeciwległych.'
   );
 });
 
@@ -428,63 +430,65 @@ document.getElementById('cornerSolutionBtn')?.addEventListener('click',()=>{
 
 const ORIENTATION_GENERAL_HINTS=[
   {
-    title:'Najpierw porównaj zestaw trzech ścian',
-    text:'Sprawdź, jakie trzy liczby tworzą pokazany narożnik. Po obrocie kostki te same trzy ściany nadal muszą spotykać się razem.'
+    title:'Sprawdź trzy widoczne ściany',
+    text:'Najpierw ustal, jakie trzy ściany spotykają się w pokazanym narożniku. Zapamiętaj cały zestaw, a nie tylko jedną ścianę.'
   },
   {
-    title:'Nie kieruj się położeniem',
-    text:'Góra, lewa i prawa strona mogą zamienić się miejscami. Liczy się to, czy odpowiedź zawiera dokładnie ten sam zestaw trzech ścian.'
+    title:'Nie sugeruj się położeniem',
+    text:'Po obrocie góra, lewa i prawa strona mogą zamienić się miejscami. Zestaw trzech ścian pozostaje jednak ten sam.'
   },
   {
-    title:'Odrzuć odpowiedzi z inną liczbą',
-    text:'Jeżeli w odpowiedzi pojawia się liczba, której nie ma w kostce wyjściowej, taka odpowiedź jest błędna. Obrót nie zmienia wartości ścian.'
+    title:'Eliminuj odpowiedzi niemożliwe',
+    text:'Odrzuć każdą odpowiedź, w której pojawia się choć jedna inna ściana niż w kostce wyjściowej.'
   }
 ];
 
 const OPPOSITE_GENERAL_HINTS=[
   {
-    title:'Przypomnij sobie pary przeciwległe',
+    title:'Zapamiętaj trzy pary',
     text:'Na standardowej kostce przeciwległe pary to 1–6, 2–5 oraz 3–4.'
   },
   {
-    title:'Skorzystaj z sumy 7',
-    text:'Liczby na przeciwległych ścianach standardowej kostki sumują się do 7.'
+    title:'Przeciwległe nigdy się nie stykają',
+    text:'Dwie ściany przeciwległe nie mogą dotykać się ani krawędzią, ani narożnikiem.'
   },
   {
-    title:'Przeciwległe ściany nigdy się nie dotykają',
-    text:'Jeżeli dwie ściany mogą spotkać się krawędzią lub w narożniku, nie są przeciwległe.'
+    title:'Szybka kontrola',
+    text:'Na standardowej kostce liczby na przeciwległych ścianach sumują się do 7.'
   }
 ];
 
 const CORNER_GENERAL_HINTS=[
   {
-    title:'Sprawdź pary przeciwległe',
-    text:'W jednym narożniku nie mogą pojawić się dwie ściany przeciwległe.'
+    title:'W narożniku spotykają się trzy ściany',
+    text:'Poprawny narożnik tworzą dokładnie trzy ściany, które wzajemnie się stykają.'
   },
   {
-    title:'Odrzuć ściany przeciwne do pokazanych',
-    text:'Najpierw usuń odpowiedzi przeciwległe do którejkolwiek z dwóch widocznych ścian.'
+    title:'Odrzuć pary przeciwległe',
+    text:'Dwie ściany przeciwległe nigdy nie mogą znaleźć się razem w jednym narożniku.'
   },
   {
-    title:'Trzy ściany muszą się wzajemnie stykać',
-    text:'Poprawna trzecia ściana musi sąsiadować z obiema pokazanymi ścianami.'
+    title:'Zastosuj eliminację',
+    text:'Najpierw usuń odpowiedzi zawierające ścianę przeciwną do którejkolwiek z pokazanych, a dopiero potem porównaj pozostałe.'
   }
 ];
 
-function openAcademyHintModal(title, hints, eyebrow='WSKAZÓWKI'){
+function openAcademyHintModal(title, hints, eyebrow='WSKAZÓWKI', remember=''){
   const modal=document.getElementById('academyHintModal');
   if(!modal)return;
 
   document.getElementById('academyHintModalEyebrow').textContent=eyebrow;
   document.getElementById('academyHintModalTitle').textContent=title;
-  document.getElementById('academyHintModalBody').innerHTML=hints.map((hint,index)=>`
-    <section class="academy-hint-step">
-      <b>${index+1}</b>
-      <div>
-        <h4>${hint.title}</h4>
-        <p>${hint.text}</p>
-      </div>
-    </section>`).join('');
+  document.getElementById('academyHintModalBody').innerHTML=
+    hints.map((hint,index)=>`
+      <section class="academy-hint-step">
+        <b>${index+1}</b>
+        <div>
+          <h4>${hint.title}</h4>
+          <p>${hint.text}</p>
+        </div>
+      </section>`).join('')+
+    (remember?`<aside class="academy-hint-remember"><small>ZAPAMIĘTAJ</small><p>${remember}</p></aside>`:'');
 
   modal.classList.remove('hidden');
 }
@@ -504,12 +508,12 @@ document.addEventListener('keydown',event=>{
 
 
 const ORIENTATION_QUESTIONS=[
-  {source:[4,2,3],answer:[2,3,4],wrong:[[4,6,3],[5,2,3]],hint:'Po obrocie mogą zmienić położenie, ale muszą pozostać te same trzy liczby.',solution:'Poprawna odpowiedź zawiera dokładnie ściany 4, 2 i 3.'},
-  {source:[1,2,3],answer:[3,1,2],wrong:[[1,6,3],[5,2,3]],hint:'Sprawdź najpierw, czy żadna liczba nie została zamieniona.',solution:'Po obrocie nadal widzimy ściany 1, 2 i 3.'},
-  {source:[6,5,4],answer:[5,4,6],wrong:[[1,5,4],[6,2,4]],hint:'Obrót nie zmienia zestawu ścian spotykających się w narożniku.',solution:'Poprawny układ zachowuje zestaw 6, 5 i 4.'},
-  {source:[2,4,1],answer:[1,2,4],wrong:[[5,4,1],[2,3,1]],hint:'Odrzuć każdą odpowiedź z inną liczbą niż w układzie początkowym.',solution:'Tylko ta odpowiedź zawiera ściany 2, 4 i 1.'},
-  {source:[3,5,1],answer:[5,1,3],wrong:[[4,5,1],[3,2,1]],hint:'Porównaj wszystkie trzy ściany, nie tylko jedną.',solution:'Po obrocie nadal spotykają się ściany 3, 5 i 1.'},
-  {source:[6,2,4],answer:[4,6,2],wrong:[[1,2,4],[6,5,4]],hint:'Właściwa odpowiedź zachowuje wszystkie trzy liczby.',solution:'Poprawny narożnik nadal tworzą ściany 6, 2 i 4.'}
+  {source:[4,2,3],answer:[2,3,4],wrong:[[4,6,3],[5,2,3]],hint:'Porównaj cały zestaw trzech ścian i odrzuć odpowiedzi zawierające inną ścianę niż w przykładzie.',solution:'Poprawna odpowiedź zawiera dokładnie ściany 4, 2 i 3.'},
+  {source:[1,2,3],answer:[3,1,2],wrong:[[1,6,3],[5,2,3]],hint:'Porównaj cały zestaw trzech ścian i odrzuć odpowiedzi zawierające inną ścianę niż w przykładzie.',solution:'Po obrocie nadal widzimy ściany 1, 2 i 3.'},
+  {source:[6,5,4],answer:[5,4,6],wrong:[[1,5,4],[6,2,4]],hint:'Porównaj cały zestaw trzech ścian i odrzuć odpowiedzi zawierające inną ścianę niż w przykładzie.',solution:'Poprawny układ zachowuje zestaw 6, 5 i 4.'},
+  {source:[2,4,1],answer:[1,2,4],wrong:[[5,4,1],[2,3,1]],hint:'Porównaj cały zestaw trzech ścian i odrzuć odpowiedzi zawierające inną ścianę niż w przykładzie.',solution:'Tylko ta odpowiedź zawiera ściany 2, 4 i 1.'},
+  {source:[3,5,1],answer:[5,1,3],wrong:[[4,5,1],[3,2,1]],hint:'Porównaj cały zestaw trzech ścian i odrzuć odpowiedzi zawierające inną ścianę niż w przykładzie.',solution:'Po obrocie nadal spotykają się ściany 3, 5 i 1.'},
+  {source:[6,2,4],answer:[4,6,2],wrong:[[1,2,4],[6,5,4]],hint:'Porównaj cały zestaw trzech ścian i odrzuć odpowiedzi zawierające inną ścianę niż w przykładzie.',solution:'Poprawny narożnik nadal tworzą ściany 6, 2 i 4.'}
 ];
 
 let orientationQuestionIndex=0;
@@ -657,7 +661,8 @@ document.getElementById('orientationHintBtn')?.addEventListener('click',()=>{
   openAcademyHintModal(
     'Jak rozpoznać ten sam narożnik po obrocie?',
     ORIENTATION_GENERAL_HINTS,
-    'ORIENTACJA KOSTKI'
+    'ORIENTACJA KOSTKI',
+    'Obrót zmienia położenie ścian, ale nie zmienia zestawu trzech ścian spotykających się w narożniku.'
   );
 });
 

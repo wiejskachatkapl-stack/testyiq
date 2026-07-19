@@ -7486,3 +7486,42 @@ html,body{
     font-size:.64rem!important;
   }
 }
+
+
+/* =========================================================
+   v1063 — finalne uniwersalne wskazówki
+   ========================================================= */
+
+.academy-hint-remember{
+  margin-top:14px;
+  padding:16px 18px;
+  border-radius:15px;
+  border:1px solid rgba(210,88,240,.36);
+  border-left:4px solid #d65df0;
+  background:linear-gradient(120deg,rgba(128,42,178,.16),rgba(35,25,82,.18));
+}
+
+.academy-hint-remember small{
+  color:#ef9aff;
+  font-size:.58rem!important;
+  letter-spacing:.13em;
+  font-weight:900;
+}
+
+.academy-hint-remember p{
+  margin:7px 0 0;
+  color:#fff;
+  font-size:.82rem!important;
+  line-height:1.5;
+  font-weight:700;
+}
+
+@media(max-width:700px){
+  .academy-hint-remember{
+    padding:13px 14px;
+  }
+
+  .academy-hint-remember p{
+    font-size:.67rem!important;
+  }
+}
