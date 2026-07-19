@@ -2,13 +2,15 @@
   'use strict';
 
   class QuestionEngine {
-    constructor({ generator, onRender, onProgress, onFinish, onFeedback, manualAdvance = false }) {
+    constructor({ generator, onRender, onProgress, onFinish, onFeedback, manualAdvance = false, retryIncorrect = false, autoAdvanceDelay = 520 }) {
       this.generator = generator;
       this.onRender = onRender;
       this.onProgress = onProgress;
       this.onFinish = onFinish;
       this.onFeedback = onFeedback;
       this.manualAdvance = manualAdvance;
+      this.retryIncorrect = retryIncorrect;
+      this.autoAdvanceDelay = autoAdvanceDelay;
       this.reset();
     }
 
@@ -74,6 +76,14 @@
       }
 
       this.onFeedback?.({ correct, correctIndex: this.current.answerIndex, selectedIndex: optionIndex });
+
+      if (!correct && this.retryIncorrect) {
+        setTimeout(() => {
+          this.locked = false;
+        }, 1600);
+        return;
+      }
+
       this.index += 1;
       if (!this.manualAdvance) {
         setTimeout(() => {
@@ -84,7 +94,7 @@
             this.locked = false;
             setTimeout(() => this.next(), 120);
           }
-        }, 520);
+        }, this.autoAdvanceDelay);
       }
     }
 
