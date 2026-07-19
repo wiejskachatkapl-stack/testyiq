@@ -33,6 +33,7 @@
   }
 
   function visualKey(f){
+    if(f?.kind) return `${f.kind}|${JSON.stringify(f.pattern||f.data||{})}`;
     const count=f.count||1;
     const position=count===1 ? (f.position||'center') : 'group';
     return [
@@ -167,6 +168,78 @@
       }
       const ans=cells[8]; cells[8]=null; return matrix(cells,ans);
     }},
+
+    { id:'quadrant-shift', level:2, prompt:'Który element kończy przesuwanie zaciemnionego pola?', build(){
+      const shapes=['diamond','square','circle'];
+      const cells=[];
+      for(let r=0;r<3;r++) for(let c=0;c<3;c++) cells.push({kind:'quadrant',pattern:{shape:shapes[r],q:(c+r)%4}});
+      const answer=cells[8]; cells[8]=null;
+      const options=[
+        answer,
+        {kind:'quadrant',pattern:{shape:'circle',q:0}},
+        {kind:'quadrant',pattern:{shape:'circle',q:1}},
+        {kind:'quadrant',pattern:{shape:'square',q:2}},
+        {kind:'quadrant',pattern:{shape:'diamond',q:3}}
+      ];
+      return {cells,answer,options};
+    }},
+    { id:'grid-shift', level:3, prompt:'Uzupełnij przesuwanie zaznaczonych pól w siatce.', build(){
+      const base=[0,3,6];
+      const cells=[];
+      const extras=[[null,4,5],[null,7,8],[null,1,2]];
+      for(let r=0;r<3;r++){
+        for(let c=0;c<3;c++){
+          const p=[...base];
+          if(extras[r][c]!=null)p.push(extras[r][c]);
+          cells.push({kind:'grid3',pattern:p});
+        }
+      }
+      const answer=cells[8]; cells[8]=null;
+      const options=[
+        answer,
+        {kind:'grid3',pattern:[0,3,6,4]},
+        {kind:'grid3',pattern:[0,3,6,7]},
+        {kind:'grid3',pattern:[0,3,6,8]},
+        {kind:'grid3',pattern:[0,3,6,2]}
+      ];
+      return {cells,answer,options};
+    }},
+    { id:'line-counts', level:3, prompt:'Uzupełnij liczbę linii poziomych i pionowych.', build(){
+      const cells=[
+        {kind:'lines',pattern:{h:2,v:0}},{kind:'lines',pattern:{h:2,v:0}},{kind:'lines',pattern:{h:3,v:1}},
+        {kind:'lines',pattern:{h:1,v:1}},{kind:'lines',pattern:{h:1,v:1}},{kind:'lines',pattern:{h:2,v:2}},
+        {kind:'lines',pattern:{h:0,v:2}},{kind:'lines',pattern:{h:0,v:2}},null
+      ];
+      const answer={kind:'lines',pattern:{h:1,v:3}};
+      const options=[
+        answer,
+        {kind:'lines',pattern:{h:1,v:1}},
+        {kind:'lines',pattern:{h:2,v:2}},
+        {kind:'lines',pattern:{h:3,v:0}},
+        {kind:'lines',pattern:{h:0,v:3}}
+      ];
+      return {cells,answer,options};
+    }},
+    { id:'block-growth', level:4, prompt:'Który układ bloków kończy wzrost wierszy i kolumn?', build(){
+      const make=(r,c)=>{
+        const p=[];
+        for(let y=0;y<r+2;y++)p.push(y*4);
+        for(let x=1;x<c+2;x++)p.push((r+1)*4+x);
+        return {kind:'blocks',pattern:p};
+      };
+      const cells=[];
+      for(let r=0;r<3;r++)for(let c=0;c<3;c++)cells.push(make(r,c));
+      const answer=cells[8]; cells[8]=null;
+      const options=[
+        answer,
+        make(1,2),
+        make(2,1),
+        make(0,2),
+        {kind:'blocks',pattern:[0,4,8,9,10]}
+      ];
+      return {cells,answer,options};
+    }},
+
     { id:'nested-three-rules', level:10, prompt:'Zastosuj jednocześnie reguły wierszy, kolumn i przekątnej.', build(){
       const s=shuffle(SHAPES).slice(0,3), fills=['outline','solid','striped']; const cells=[];
       for(let r=0;r<3;r++) for(let c=0;c<3;c++) cells.push(feature(s[(r+c)%3],fills[(2*r+c)%3],(r*90+c*45),((r+c)%3)+1,['small','medium','large'][(r+2*c)%3]));
@@ -177,7 +250,77 @@
   function clone(x){ return JSON.parse(JSON.stringify(x)); }
   function matrix(cells,answer){ return {cells,answer}; }
 
+
+  function customMatrixSvg(item,className=''){
+    const uid=`custom-matrix-${Math.random().toString(36).slice(2)}`;
+    const base=`<svg class="matrix-shape-svg ${className}" viewBox="0 0 100 100" role="img" aria-label="Element matrycy">`;
+    const end='</svg>';
+
+    if(item.kind==='grid3'){
+      const cells=item.pattern||[];
+      let out=`${base}<rect x="8" y="8" width="84" height="84" rx="5" fill="#f6f4ef" stroke="#15212c" stroke-width="4"/>`;
+      for(let i=1;i<3;i++){
+        out+=`<line x1="${8+i*28}" y1="8" x2="${8+i*28}" y2="92" stroke="#15212c" stroke-width="2"/>`;
+        out+=`<line x1="8" y1="${8+i*28}" x2="92" y2="${8+i*28}" stroke="#15212c" stroke-width="2"/>`;
+      }
+      cells.forEach(idx=>{
+        const r=Math.floor(idx/3),c=idx%3;
+        out+=`<rect x="${10+c*28}" y="${10+r*28}" width="24" height="24" fill="#3f6795"/>`;
+      });
+      return out+end;
+    }
+
+    if(item.kind==='quadrant'){
+      const shape=item.pattern?.shape||'circle';
+      const q=item.pattern?.q||0;
+      let outline='',fill='';
+      if(shape==='circle'){
+        outline='<circle cx="50" cy="50" r="35" fill="#fff" stroke="#111" stroke-width="3"/><line x1="15" y1="50" x2="85" y2="50" stroke="#111" stroke-width="2"/><line x1="50" y1="15" x2="50" y2="85" stroke="#111" stroke-width="2"/>';
+        const paths=[
+          'M50 50 L50 15 A35 35 0 0 1 85 50 Z',
+          'M50 50 L85 50 A35 35 0 0 1 50 85 Z',
+          'M50 50 L50 85 A35 35 0 0 1 15 50 Z',
+          'M50 50 L15 50 A35 35 0 0 1 50 15 Z'
+        ];
+        fill=`<path d="${paths[q]}" fill="#111"/>`;
+      }else{
+        const rot=shape==='diamond'?'rotate(45 50 50)':'';
+        outline=`<g transform="${rot}"><rect x="18" y="18" width="64" height="64" fill="#fff" stroke="#111" stroke-width="3"/><line x1="50" y1="18" x2="50" y2="82" stroke="#111" stroke-width="2"/><line x1="18" y1="50" x2="82" y2="50" stroke="#111" stroke-width="2"/></g>`;
+        const coords=[[50,18,32,32],[50,50,32,32],[18,50,32,32],[18,18,32,32]][q];
+        fill=`<g transform="${rot}"><rect x="${coords[0]}" y="${coords[1]}" width="${coords[2]}" height="${coords[3]}" fill="#111"/></g>`;
+      }
+      return `${base}${outline}${fill}${end}`;
+    }
+
+    if(item.kind==='lines'){
+      const h=item.pattern?.h||0, v=item.pattern?.v||0;
+      let out=`${base}<rect x="12" y="12" width="76" height="76" fill="#fff" stroke="#111" stroke-width="3"/>`;
+      for(let i=0;i<h;i++){
+        const y=50+(i-(h-1)/2)*10;
+        out+=`<line x1="26" y1="${y}" x2="74" y2="${y}" stroke="#1465e8" stroke-width="3"/>`;
+      }
+      for(let i=0;i<v;i++){
+        const x=50+(i-(v-1)/2)*10;
+        out+=`<line x1="${x}" y1="26" x2="${x}" y2="74" stroke="#1465e8" stroke-width="3"/>`;
+      }
+      return out+end;
+    }
+
+    if(item.kind==='blocks'){
+      const cells=item.pattern||[];
+      let out=base;
+      cells.forEach(idx=>{
+        const r=Math.floor(idx/4),c=idx%4;
+        out+=`<rect x="${18+c*17}" y="${18+r*17}" width="15" height="15" fill="#111"/>`;
+      });
+      return out+end;
+    }
+
+    return `${base}<rect x="15" y="15" width="70" height="70" fill="none" stroke="#72f0f2" stroke-width="3"/>${end}`;
+  }
+
   function shapeSvg(item,className=''){
+    if(item?.kind) return customMatrixSvg(item,className);
     const count=item.count||1;
     const positions=countPositions(count,item.position);
     const uid=`matrix-${Math.random().toString(36).slice(2)}`;
@@ -350,7 +493,7 @@
   function generate(index=0,level=1){
     const type=pickType(level);
     const data=type.build();
-    const options=shuffle([data.answer,...distractors(data.answer,type.id)]);
+    const options=shuffle(data.options||[data.answer,...distractors(data.answer,type.id)]);
     const answerVisualKey=visualKey(data.answer);
     return {
       id:`matrix-${Date.now()}-${index}`,
