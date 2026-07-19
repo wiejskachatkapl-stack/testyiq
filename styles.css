@@ -7966,3 +7966,91 @@ html,body{
     height:min(192px,100%)!important;
   }
 }
+
+
+/* =========================================================
+   v1073 — realne powiększenie matryc na komputerze
+   ========================================================= */
+
+/* Na komputerze karta rezerwuje faktyczną wysokość dla planszy. */
+@media(min-width:769px){
+  .question-card.matrix-2x2-card,
+  .question-card.matrix-3x3-card{
+    grid-template-rows:auto 390px auto auto!important;
+  }
+
+  .question-card.matrix-2x2-card #diceSequence,
+  .question-card.matrix-3x3-card #diceSequence{
+    height:390px!important;
+    min-height:390px!important;
+    max-height:390px!important;
+    overflow:hidden!important;
+    display:grid!important;
+    place-items:center!important;
+  }
+
+  .question-card.matrix-2x2-card #diceSequence .matrix-board.matrix-2{
+    width:340px!important;
+    height:340px!important;
+    max-width:340px!important;
+    max-height:340px!important;
+    aspect-ratio:auto!important;
+    gap:14px!important;
+    padding:12px!important;
+  }
+
+  .question-card.matrix-3x3-card #diceSequence .matrix-board.matrix-3{
+    width:355px!important;
+    height:355px!important;
+    max-width:355px!important;
+    max-height:355px!important;
+    aspect-ratio:auto!important;
+    gap:9px!important;
+    padding:10px!important;
+  }
+
+  .question-card.matrix-2x2-card .matrix-board .puzzle-cell{
+    width:145px!important;
+    height:145px!important;
+  }
+
+  .question-card.matrix-3x3-card .matrix-board .puzzle-cell{
+    width:100px!important;
+    height:100px!important;
+  }
+
+  .question-card.matrix-2x2-card .matrix-board .sequence-die,
+  .question-card.matrix-2x2-card .matrix-board .dice-svg,
+  .question-card.matrix-2x2-card .matrix-board .missing-die{
+    width:130px!important;
+    height:130px!important;
+    max-width:130px!important;
+    max-height:130px!important;
+  }
+
+  .question-card.matrix-3x3-card .matrix-board .sequence-die,
+  .question-card.matrix-3x3-card .matrix-board .dice-svg,
+  .question-card.matrix-3x3-card .matrix-board .missing-die{
+    width:88px!important;
+    height:88px!important;
+    max-width:88px!important;
+    max-height:88px!important;
+  }
+}
+
+/* Telefon pozostaje mniejszy niż wcześniej. */
+@media(max-width:768px){
+  .question-card.matrix-2x2-card #diceSequence .matrix-board.matrix-2{
+    width:176px!important;
+    height:176px!important;
+    max-width:176px!important;
+    max-height:176px!important;
+  }
+
+  .question-card.matrix-3x3-card #diceSequence .matrix-board.matrix-3{
+    width:190px!important;
+    height:190px!important;
+    max-width:190px!important;
+    max-height:190px!important;
+  }
+}
