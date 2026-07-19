@@ -7338,3 +7338,151 @@ html,body{
     min-height:126px!important;
   }
 }
+
+
+/* =========================================================
+   v1062 — duże okno wskazówek Akademii Kostek
+   ========================================================= */
+
+.academy-hint-modal{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  display:grid;
+  place-items:center;
+  padding:24px;
+  background:rgba(0,8,18,.78);
+  backdrop-filter:blur(8px);
+}
+
+.academy-hint-modal.hidden{
+  display:none!important;
+}
+
+.academy-hint-modal-card{
+  position:relative;
+  width:min(720px,92vw);
+  max-height:min(82vh,720px);
+  overflow:auto;
+  padding:28px;
+  border-radius:22px;
+  border:1px solid rgba(72,214,229,.35);
+  background:
+    linear-gradient(145deg,rgba(7,31,47,.98),rgba(20,19,55,.98));
+  box-shadow:0 24px 80px rgba(0,0,0,.48);
+}
+
+.academy-hint-modal-close{
+  position:absolute;
+  top:14px;
+  right:14px;
+  width:42px;
+  height:42px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(255,255,255,.05);
+  color:#fff;
+  font-size:1.35rem!important;
+  line-height:1;
+}
+
+.academy-hint-modal-card>small{
+  color:#55e0e8;
+  font-size:.64rem!important;
+  letter-spacing:.14em;
+}
+
+.academy-hint-modal-card>h3{
+  margin:8px 54px 20px 0;
+  color:#fff;
+  font-size:1.35rem!important;
+  line-height:1.22;
+}
+
+.academy-hint-modal-body{
+  display:grid;
+  gap:12px;
+}
+
+.academy-hint-step{
+  display:grid;
+  grid-template-columns:48px 1fr;
+  gap:14px;
+  align-items:start;
+  padding:16px;
+  border-radius:15px;
+  border:1px solid rgba(88,169,198,.18);
+  background:rgba(255,255,255,.035);
+}
+
+.academy-hint-step>b{
+  width:42px;
+  height:42px;
+  display:grid;
+  place-items:center;
+  border-radius:12px;
+  background:linear-gradient(135deg,#4fe0e7,#9a68eb);
+  color:#07141c;
+  font-size:.88rem!important;
+}
+
+.academy-hint-step h4{
+  margin:0;
+  color:#fff;
+  font-size:.86rem!important;
+  line-height:1.3;
+}
+
+.academy-hint-step p{
+  margin:6px 0 0;
+  color:#dbe9ee;
+  font-size:.78rem!important;
+  line-height:1.55;
+}
+
+.academy-hint-modal-done{
+  width:100%;
+  min-height:48px;
+  margin-top:18px;
+  border:0;
+  border-radius:12px;
+  background:linear-gradient(120deg,#4fe0e7,#8c6bea);
+  color:#06151c;
+  font-size:.65rem!important;
+  font-weight:900!important;
+}
+
+@media(max-width:700px){
+  .academy-hint-modal{
+    padding:12px;
+  }
+
+  .academy-hint-modal-card{
+    width:100%;
+    padding:22px 16px 16px;
+    border-radius:18px;
+  }
+
+  .academy-hint-modal-card>h3{
+    font-size:1.05rem!important;
+  }
+
+  .academy-hint-step{
+    grid-template-columns:40px 1fr;
+    padding:13px;
+    gap:10px;
+  }
+
+  .academy-hint-step>b{
+    width:36px;
+    height:36px;
+  }
+
+  .academy-hint-step h4{
+    font-size:.72rem!important;
+  }
+
+  .academy-hint-step p{
+    font-size:.64rem!important;
+  }
+}

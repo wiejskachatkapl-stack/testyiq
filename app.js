@@ -215,10 +215,11 @@ function hideOppositeLesson(){
 }
 
 document.getElementById('oppositeHintBtn')?.addEventListener('click',()=>{
-  const q=OPPOSITE_LESSON_QUESTIONS[oppositeLessonIndex];
-  const box=document.getElementById('oppositeExplanation');
-  box.className='opposite-explanation hint';
-  box.innerHTML=`<small>WSKAZÓWKA</small><p>${q.hint}</p>`;
+  openAcademyHintModal(
+    'Jak znaleźć ścianę przeciwległą?',
+    OPPOSITE_GENERAL_HINTS,
+    'ŚCIANY PRZECIWLEGŁE'
+  );
 });
 
 document.getElementById('oppositeSolutionBtn')?.addEventListener('click',()=>{
@@ -383,10 +384,11 @@ function hideCornerLesson(){
 }
 
 document.getElementById('cornerHintBtn')?.addEventListener('click',()=>{
-  const q=CORNER_LESSON_QUESTIONS[cornerLessonIndex];
-  const box=document.getElementById('cornerExplanation');
-  box.className='opposite-explanation hint';
-  box.innerHTML=`<small>WSKAZÓWKA</small><p>${q.hint}</p>`;
+  openAcademyHintModal(
+    'Jak znaleźć trzecią ścianę narożnika?',
+    CORNER_GENERAL_HINTS,
+    'SĄSIEDZTWO I NAROŻNIKI'
+  );
 });
 
 document.getElementById('cornerSolutionBtn')?.addEventListener('click',()=>{
@@ -419,6 +421,88 @@ document.getElementById('cornerSolutionBtn')?.addEventListener('click',()=>{
 /* =========================================================
    v1058 — poprawiony etap 1: Orientacja
    ========================================================= */
+
+/* =========================================================
+   v1062 — uniwersalne, większe wskazówki w osobnym oknie
+   ========================================================= */
+
+const ORIENTATION_GENERAL_HINTS=[
+  {
+    title:'Najpierw porównaj zestaw trzech ścian',
+    text:'Sprawdź, jakie trzy liczby tworzą pokazany narożnik. Po obrocie kostki te same trzy ściany nadal muszą spotykać się razem.'
+  },
+  {
+    title:'Nie kieruj się położeniem',
+    text:'Góra, lewa i prawa strona mogą zamienić się miejscami. Liczy się to, czy odpowiedź zawiera dokładnie ten sam zestaw trzech ścian.'
+  },
+  {
+    title:'Odrzuć odpowiedzi z inną liczbą',
+    text:'Jeżeli w odpowiedzi pojawia się liczba, której nie ma w kostce wyjściowej, taka odpowiedź jest błędna. Obrót nie zmienia wartości ścian.'
+  }
+];
+
+const OPPOSITE_GENERAL_HINTS=[
+  {
+    title:'Przypomnij sobie pary przeciwległe',
+    text:'Na standardowej kostce przeciwległe pary to 1–6, 2–5 oraz 3–4.'
+  },
+  {
+    title:'Skorzystaj z sumy 7',
+    text:'Liczby na przeciwległych ścianach standardowej kostki sumują się do 7.'
+  },
+  {
+    title:'Przeciwległe ściany nigdy się nie dotykają',
+    text:'Jeżeli dwie ściany mogą spotkać się krawędzią lub w narożniku, nie są przeciwległe.'
+  }
+];
+
+const CORNER_GENERAL_HINTS=[
+  {
+    title:'Sprawdź pary przeciwległe',
+    text:'W jednym narożniku nie mogą pojawić się dwie ściany przeciwległe.'
+  },
+  {
+    title:'Odrzuć ściany przeciwne do pokazanych',
+    text:'Najpierw usuń odpowiedzi przeciwległe do którejkolwiek z dwóch widocznych ścian.'
+  },
+  {
+    title:'Trzy ściany muszą się wzajemnie stykać',
+    text:'Poprawna trzecia ściana musi sąsiadować z obiema pokazanymi ścianami.'
+  }
+];
+
+function openAcademyHintModal(title, hints, eyebrow='WSKAZÓWKI'){
+  const modal=document.getElementById('academyHintModal');
+  if(!modal)return;
+
+  document.getElementById('academyHintModalEyebrow').textContent=eyebrow;
+  document.getElementById('academyHintModalTitle').textContent=title;
+  document.getElementById('academyHintModalBody').innerHTML=hints.map((hint,index)=>`
+    <section class="academy-hint-step">
+      <b>${index+1}</b>
+      <div>
+        <h4>${hint.title}</h4>
+        <p>${hint.text}</p>
+      </div>
+    </section>`).join('');
+
+  modal.classList.remove('hidden');
+}
+
+function closeAcademyHintModal(){
+  document.getElementById('academyHintModal')?.classList.add('hidden');
+}
+
+document.getElementById('academyHintModalClose')?.addEventListener('click',closeAcademyHintModal);
+document.getElementById('academyHintModalDone')?.addEventListener('click',closeAcademyHintModal);
+document.getElementById('academyHintModal')?.addEventListener('click',event=>{
+  if(event.target===event.currentTarget)closeAcademyHintModal();
+});
+document.addEventListener('keydown',event=>{
+  if(event.key==='Escape')closeAcademyHintModal();
+});
+
+
 const ORIENTATION_QUESTIONS=[
   {source:[4,2,3],answer:[2,3,4],wrong:[[4,6,3],[5,2,3]],hint:'Po obrocie mogą zmienić położenie, ale muszą pozostać te same trzy liczby.',solution:'Poprawna odpowiedź zawiera dokładnie ściany 4, 2 i 3.'},
   {source:[1,2,3],answer:[3,1,2],wrong:[[1,6,3],[5,2,3]],hint:'Sprawdź najpierw, czy żadna liczba nie została zamieniona.',solution:'Po obrocie nadal widzimy ściany 1, 2 i 3.'},
@@ -570,10 +654,11 @@ document.getElementById('orientationNextBtn')?.addEventListener('click',()=>{
 });
 
 document.getElementById('orientationHintBtn')?.addEventListener('click',()=>{
-  const q=ORIENTATION_QUESTIONS[orientationQuestionIndex];
-  const box=document.getElementById('orientationExplanation');
-  box.className='opposite-explanation hint';
-  box.innerHTML=`<small>WSKAZÓWKA</small><p>${q.hint}</p>`;
+  openAcademyHintModal(
+    'Jak rozpoznać ten sam narożnik po obrocie?',
+    ORIENTATION_GENERAL_HINTS,
+    'ORIENTACJA KOSTKI'
+  );
 });
 
 document.getElementById('orientationSolutionBtn')?.addEventListener('click',()=>{
