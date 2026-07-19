@@ -1,5 +1,15 @@
 # Changelog
 
+## v1075
+### Naprawiono
+- matryce figur 3×3 mieszczą się w obszarze pytania,
+- siatka nie wychodzi poza kartę,
+- komórki nie wymuszają zbyt dużej wysokości,
+- figury automatycznie skalują się do komórek,
+- odpowiedzi zostały delikatnie zmniejszone,
+- dodano osobne dopasowanie dla niskich ekranów i telefonów,
+- cache PWA zmieniono na `iq-brain-lab-v1075`.
+
 ## v1074
 ### Dodano
 - aktywny moduł `Matryce` w kategorii Logika,
