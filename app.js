@@ -704,7 +704,7 @@ function renderDiceAcademy(){
  academySolutionText.textContent=l.solution;academyProgressText.textContent=`${diceAcademyLesson+1} / 5`;
  academyProgressBar.style.width=`${(diceAcademyLesson+1)*20}%`;
  document.querySelectorAll('[data-lesson]').forEach((b,i)=>{b.classList.toggle('active',i===diceAcademyLesson);b.classList.toggle('completed',i<diceAcademyLesson)});
- academyTipBox.classList.add('hidden');academySolution.classList.add('hidden');
+ academySolution.classList.add('hidden');
  if(window.academyFeedback){academyFeedback.className='academy-feedback';academyFeedback.textContent='Wybierz odpowiedź albo pokaż rozwiązanie.'}
  document.querySelectorAll('[data-academy-answer]').forEach(b=>b.classList.remove('correct','wrong'));
  const nextLessonButton=document.getElementById('academyNextLesson');
@@ -731,7 +731,6 @@ document.querySelectorAll('[data-lesson]').forEach(b=>b.onclick=()=>{
     document.querySelector('.academy-training-intro')?.classList.remove('hidden');
   }
 });
-document.querySelectorAll('[data-tip]').forEach(b=>b.onclick=()=>{academyTipText.textContent=DICE_ACADEMY_LESSONS[diceAcademyLesson].tips[Number(b.dataset.tip)];academyTipBox.classList.remove('hidden')});
 
 
 

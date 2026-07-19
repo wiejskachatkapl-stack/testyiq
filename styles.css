@@ -7525,3 +7525,31 @@ html,body{
     font-size:.67rem!important;
   }
 }
+
+
+/* =========================================================
+   v1064 — jeden spójny system podpowiedzi
+   ========================================================= */
+
+/* Stary system podpowiedzi po lewej został usunięty. */
+.academy-tips,
+.academy-tip-box{
+  display:none!important;
+}
+
+/* Lewa kolumna kończy się na zasadzie i pokazie kostki. */
+.academy-theory{
+  align-content:start;
+}
+
+/* Jedyny punkt wejścia do podpowiedzi znajduje się przy zadaniu. */
+.opposite-tools button:first-child{
+  border-color:rgba(255,211,79,.34)!important;
+  background:rgba(255,211,79,.07)!important;
+  color:#ffe27d!important;
+}
+
+/* Spójny tytuł okna. */
+.academy-hint-modal-card>small{
+  color:#ffe27d!important;
+}
