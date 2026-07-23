@@ -90,153 +90,153 @@ Mobilny ekran główny korzysta z czterech proporcjonalnych sekcji wysokości. D
 Wskazówki są prezentowane jako duże, opisowe kafelki. Widok rozłożonej kostki pokazuje położenie wszystkich sześciu ścian i pary przeciwległe.
 
 
-## Interakcje v1089
+## Interakcje v1090
 Tylko aktywny ekran może odbierać kliknięcia. Na komputerze wszystkie aktywne przyciski pokazują kursor ręki.
 
 
-## v1089
+## v1090
 Siatka kostki składa się teraz rzeczywiście z sześciu ścian w prawidłowy sześcian 3D. Usunięto fałszywy, nakładany podgląd.
 
 
-## v1089
+## v1090
 Powiększono czcionki w oknie prezentacji prawdziwej kostki: nagłówki, opisy, pary przeciwległe, dolne zasady oraz przyciski.
 
 
-## v1089
+## v1090
 Dodano trzeci etap Akademii Kostek: sąsiedztwo ścian i rozpoznawanie trzech ścian spotykających się w jednym narożniku.
 
 
-## v1089
+## v1090
 W etapie 3 poprawna odpowiedź podświetla się na zielono i po 2 sekundach automatycznie przechodzi do następnego pytania. Błędna odpowiedź podświetla się na czerwono, pojawia się komunikat „Zła odpowiedź. Popraw się i spróbuj jeszcze raz”, po czym zaznaczenie znika i można ponownie odpowiadać.
 
 
-## v1089
+## v1090
 Wybrana odpowiedź pojawia się teraz bezpośrednio w brakującej ścianie oznaczonej wcześniej znakiem zapytania. Poprawna jest zielona, błędna czerwona. Przycisk następnego pytania jest widoczny po poprawnej odpowiedzi i podczas dwusekundowego oczekiwania.
 
 
-## v1089
+## v1090
 Naprawiono właściwą zakładkę Orientacja. Wybrana odpowiedź pojawia się w polu ze znakiem zapytania, a po poprawnej odpowiedzi widoczny jest przycisk Następne pytanie.
 
 
-## v1089
+## v1090
 Kostki w Orientacji zostały wizualnie złożone i dosunięte. W zakładce Przeciwległe wybrana odpowiedź pojawia się w polu ze znakiem zapytania, z zielonym lub czerwonym oznaczeniem oraz widocznym przyciskiem następnego pytania.
 
 
-## v1089
+## v1090
 Przebudowano wizualizację kostki w zakładce Orientacja. Wszystkie trzy ściany są teraz widoczne, stykają się krawędziami i tworzą zwartą kostkę zamiast dwóch rozdzielonych boków.
 
 
-## v1089
+## v1090
 Wizualizacja kostki w zakładce Orientacja została wykonana od nowa jako jeden spójny rysunek SVG. Górna, lewa i prawa ściana są połączone wspólnymi krawędziami, więc nie mogą się rozsunąć ani zniknąć.
 
 
-## v1089
+## v1090
 Wskazówki w Akademii Kostek są teraz uniwersalne, zgodne z zasadą danego typu zadania i otwierają się w dużym, czytelnym oknie modalnym.
 
 
-## Wskazówki v1089
+## Wskazówki v1090
 Okno wskazówek pokazuje trzy uniwersalne kroki oraz wyróżnioną zasadę „Zapamiętaj”. Treści nie odnoszą się do konkretnych oczek ani pojedynczego pytania.
 
 
-## v1089
+## v1090
 Uproszczono system podpowiedzi. Usunięto trzy osobne karty i dolny komunikat w lewej kolumnie. Podpowiedzi są teraz dostępne wyłącznie przez jeden przycisk przy aktualnym zadaniu i otwierają jedno spójne okno.
 
 
-## Okno podpowiedzi v1089
+## Okno podpowiedzi v1090
 Okno można zamknąć przyciskiem X, przyciskiem ROZUMIEM, kliknięciem w przyciemnione tło albo klawiszem Esc.
 
 
-## Trening podsumowujący v1089
+## Trening podsumowujący v1090
 Przycisk POKAŻ PODPOWIEDZI otwiera wspólne okno modalne z trzema ogólnymi krokami i zasadą ZAPAMIĘTAJ. Obok pozostaje POKAŻ ROZWIĄZANIE.
 
 
-## v1089
+## v1090
 W teście kostek dodano duże okno podpowiedzi. Kliknięta odpowiedź pojawia się w polu ze znakiem zapytania. Poprawna jest zielona i po 2 sekundach przechodzi dalej. Błędna jest czerwona, znika i pozwala ponownie odpowiedzieć na to samo pytanie.
 
 
-## v1089
+## v1090
 Naprawiono sprawdzanie poprawności odpowiedzi w teście kostek. Silnik porównuje teraz nie tylko indeks, ale również rzeczywistą wartość wybranej kostki. Poprawna kostka pozostaje w polu znaku zapytania przez 2 sekundy, po czym następuje automatyczne przejście. Błędna odpowiedź pozostawia to samo pytanie do ponownej próby.
 
 
-## v1089
+## v1090
 Naprawiono pole ze znakiem zapytania: celem jest teraz samo okienko o stałych wymiarach, dlatego wybrana odpowiedź pokazuje całą kostkę, a nie pojedyncze oczko. Trening Kostek nie używa już ręcznego przechodzenia — poprawna odpowiedź automatycznie przechodzi dalej po 2 sekundach, a błędna odblokowuje to samo pytanie do ponownej próby.
 
 
-## v1089
+## v1090
 Dopasowano matryce 2×2 i 3×3 oraz inne układy wielorzędowe do obszaru pytania. Kostki i pole ze znakiem zapytania skalują się automatycznie, dzięki czemu plansza nie wychodzi poza kartę zadania.
 
 
-## v1089
+## v1090
 Matryce kostkowe 2×2 i 3×3 otrzymują teraz osobne klasy układu. Plansza ma wydzieloną wysokość wewnątrz karty, nie nachodzi na tytuł ani odpowiedzi, a kostki skalują się do komórek zamiast zwiększać cały układ.
 
 
-## v1089
+## v1090
 Wprowadzono osobne rozmiary matryc kostkowych dla komputera i telefonu. Na komputerze układy 2×2 i 3×3 są większe i czytelniejsze, a na telefonie delikatnie zmniejszone, aby cała plansza mieściła się nad odpowiedziami.
 
 
-## v1089
+## v1090
 Na komputerze matryce 2×2 i 3×3 otrzymały stałą, większą przestrzeń w karcie pytania oraz jawne rozmiary plansz, komórek i kostek. Usunięto zależność od procentowej wysokości, która wcześniej powodowała ich nadmierne zmniejszenie.
 
 
-## v1089
+## v1090
 Uruchomiono osobny trening Matryce. Dodano cztery nowe rodziny zadań inspirowane przykładami użytkownika: przesuwanie zaciemnionych ćwiartek, przesuwanie pól w siatce 3×3, zależności liczby linii oraz wzrost układów blokowych. Trening korzysta z tego samego szablonu odpowiedzi, podpowiedzi i informacji zwrotnej co Kostki.
 
 
-## v1089
+## v1090
 Dopasowano matryce figur 3×3 do obszaru pytania. Plansza, komórki, figury i odpowiedzi skalują się niezależnie dla komputera, niskiego ekranu i telefonu, dzięki czemu cały układ mieści się w karcie.
 
 
-## v1089
+## v1090
 Zwiększono wysokość obszaru planszy dla wszystkich pytań typu Matryce. Plansza jest wyśrodkowana pionowo i nie powinna być obcinana od góry ani od dołu. Rozmiaru samych figur nie zmniejszano.
 
 
-## v1089
+## v1090
 Podłączono pierwsze gry w kategoriach Refleks, Koncentracja, Wiedza i Wyobraźnia. Wszystkie korzystają ze wspólnego 20-pytaniowego szablonu, podpowiedzi, kolorów odpowiedzi i automatycznego przejścia. Wyzwanie dnia uruchamia mieszany trening obejmujący Kostki, Matryce oraz cztery nowe kategorie.
 
 
-## v1089
+## v1090
 Poprawiono pierwszy trening w kategorii Refleks. Kafelek ma teraz nazwę „Szybka spostrzegawczość”, ponieważ zadania polegają na błyskawicznym rozpoznawaniu dominującego symbolu. Po każdej poprawnej odpowiedzi pokazuje się czas reakcji, kolejne pytanie pojawia się po 0,65 sekundy, a podsumowanie zawiera średni czas reakcji.
 
 
-## v1089
+## v1090
 Podłączono moduły Sekwencje, Zapałki i Co nie pasuje. Każdy ma własny generator, 20 pytań, podpowiedzi, rozwiązania, ponowną próbę i automatyczne przejście.
 
 
-## v1089
+## v1090
 Na telefonach zwiększono wysokość obszaru przykładu w zadaniach Sekwencje, Zapałki i Co nie pasuje. Sekcja odpowiedzi została odsunięta niżej, aby nie nachodziła na przykład ani pole ze znakiem zapytania.
 
 
-## v1089
+## v1090
 Przebudowano mobilny ekran pytań tak, aby mieścił się bez przewijania. Zmniejszono nagłówek, pasek postępu, kartę pytania, odpowiedzi, podpowiedzi i stopkę. W zadaniach tekstowych przykład, strzałka i pole odpowiedzi są na telefonie ułożone poziomo.
 
 
-## v1089
+## v1090
 Moduł Zapałki został przebudowany z pytań wielokrotnego wyboru na interaktywną planszę. Użytkownik wybiera aktywną zapałkę, następnie wolne miejsce, może cofnąć ruch, zresetować układ, skorzystać z podpowiedzi i sprawdzić wynik.
 
 
-## v1089
+## v1090
 Naprawiono sprawdzanie interaktywnych zadań Zapałki. Program nie porównuje już ruchu wyłącznie z jednym zapisanym rozwiązaniem. Odczytuje cyfry i znaki z aktualnego układu zapałek, oblicza równanie i akceptuje każde prawidłowe rozwiązanie wykonane jednym ruchem.
 
 
-## v1089
+## v1090
 Rozbudowano interaktywny moduł Zapałki do 24 zweryfikowanych zagadek. Pierwsze poziomy wymagają przesunięcia jednej zapałki, a trudniejsze dokładnie dwóch. Program pokazuje liczbę wykonanych i pozostałych ruchów oraz nadal akceptuje każde matematycznie poprawne rozwiązanie.
 
 
-## v1089
+## v1090
 Przebudowano bank zagadek Zapałki. Każda zagadka jest automatycznie sprawdzana wobec wszystkich prawidłowych równań o tej samej liczbie zapałek. Zadania dwuruchowe są odrzucane, jeżeli istnieje jakiekolwiek rozwiązanie jednym ruchem. Pozostawiono wyłącznie zagadki z jednym, jednoznacznym rozwiązaniem o dokładnie wymaganej liczbie ruchów.
 
 
-## v1089 — ekran Co nie pasuje?
+## v1090 — ekran Co nie pasuje?
 Plansza zawiera sześć dużych, klikalnych kafelków graficznych w układzie 3×2. Litera odpowiedzi jest umieszczona w lewym górnym rogu kafelka. Poprawny wybór otrzymuje zieloną ramkę, błędny czerwoną. Na telefonie plansza zachowuje układ 3×2, ale zmniejsza wysokość kart.
 
 
-## v1089 — komputer
+## v1090 — komputer
 W szerokościach od 769 px kafelki modułu „Co nie pasuje?” mają wysokość 116 px, mniejsze odstępy i planszę o maksymalnej szerokości 860 px. Zmiana zapobiega nachodzeniu drugiego rzędu na dolne elementy interfejsu.
 
 
-## v1089 — obrazkowe reguły
+## v1090 — obrazkowe reguły
 Kafelki nie pokazują już nazw obiektów. Widoczna jest wyłącznie ilustracja oraz litera odpowiedzi. Nagłówek pokazuje poziom ŁATWY, ŚREDNI albo TRUDNY, ale nie zdradza ukrytej reguły. Zachowano zmniejszony układ komputerowy wprowadzony w v1087.
 
 
-## v1089 — etap 1 grafiki
-W module „Co nie pasuje?” kategorie zwierzęce korzystają już z własnych ilustracji półrealistycznych zamiast prostych symboli. Pozostałe kategorie zachowują wcześniejszą oprawę i będą podmieniane etapami.
+## v1090 — kafelki fotograficzne
+Fotografie wypełniają cały kafelek bez podpisów. Zachowano literę odpowiedzi, ramkę wyboru oraz rozmiary naprawione w v1087. Stare ilustracje SVG nadal używają dopasowania `contain`, natomiast próbne fotografie korzystają z `cover`.

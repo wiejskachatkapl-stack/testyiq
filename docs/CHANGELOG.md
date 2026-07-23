@@ -1,12 +1,16 @@
 # Changelog
 
-## v1089
-### Etap 1 — ładniejsze grafiki zwierząt w „Co nie pasuje?”
-- podmieniono 49 grafik zwierząt na nowe ilustracje SVG,
-- grafiki są bardziej naturalne i mniej „emoji-owe”,
-- zachowano istniejący silnik zagadek z v1088,
-- nie zmieniano punktacji, układu 3×2 ani logiki odpowiedzi,
-- cache PWA zmieniono na `iq-brain-lab-v1089`.
+## v1090
+### Próbny naturalny styl grafik
+- bazą ponownie jest stabilna v1088,
+- całkowicie pominięto odrzucone grafiki z v1089,
+- dodano osiem prawdziwych fotografii zwierząt,
+- zdjęcia otrzymały jednolite kadrowanie, delikatną korektę i zaokrąglone narożniki,
+- pierwsza zagadka zawsze pokazuje fotograficzny zestaw do natychmiastowej oceny stylu,
+- pozostałych kategorii jeszcze nie podmieniano,
+- nie zmieniano punktacji ani mechaniki modułu,
+- dodano dokument `docs/IMAGE_CREDITS.md`,
+- cache PWA zmieniono na `iq-brain-lab-v1090`.
 
 ## v1088
 ### Przebudowa zagadek „Co nie pasuje?”
