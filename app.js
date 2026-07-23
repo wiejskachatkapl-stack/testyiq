@@ -978,7 +978,8 @@ function renderOddOneOutQuestion(question){
   card?.classList.remove('matrix-question-card','multirow-question-card','matrix-2x2-card','matrix-3x3-card');
   card?.classList.add('odd-image-question-card');
 
-  document.getElementById('questionCategory').textContent='LOGIKA • CO NIE PASUJE?';
+  document.getElementById('questionCategory').textContent=
+    `LOGIKA • CO NIE PASUJE? • ${question.data?.difficultyLabel||'ŁATWY'}`;
   document.getElementById('questionPrompt').textContent=question.prompt;
 
   const board=document.getElementById('diceSequence');

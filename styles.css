@@ -9236,3 +9236,30 @@ html,body{
     font-size:.7rem!important;
   }
 }
+
+
+/* =========================================================
+   v1088 — trudniejsze, niepowtarzalne zagadki obrazkowe
+   ========================================================= */
+
+.odd-image-option img{
+  object-fit:contain!important;
+  pointer-events:none!important;
+  user-select:none!important;
+}
+
+.odd-image-question-card .question-category{
+  letter-spacing:.055em;
+}
+
+@media (min-width:769px){
+  .odd-image-option{
+    height:114px!important;
+    min-height:114px!important;
+  }
+
+  .odd-image-option img{
+    height:106px!important;
+    max-height:106px!important;
+  }
+}
