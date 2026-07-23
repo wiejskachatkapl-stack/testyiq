@@ -8401,3 +8401,22 @@ html,body{
     min-height:92px!important;
   }
 }
+
+
+/* =========================================================
+   v1078 — Refleks jako trening szybkości
+   ========================================================= */
+
+.training-explanation.good small{
+  letter-spacing:.09em;
+}
+
+.cognitive-question-board .cognitive-stimulus{
+  user-select:none;
+}
+
+@media(min-width:769px){
+  .cognitive-question-board .cognitive-stimulus{
+    font-size:clamp(1.35rem,2.8vw,2.25rem);
+  }
+}

@@ -17,7 +17,7 @@ document.getElementById('testForm').onsubmit=e=>{e.preventDefault();const firstN
 const TRAINING_CATEGORIES={
  logic:{name:'Logika',icon:'◇',description:'Rozwijaj analizę, wnioskowanie i rozpoznawanie wzorców.',games:[['dice-training','Kostki','⬡',200,'available','Ciągi, zależności i układy kostek'],['matrix-training','Matryce','▦',200,'available','Figury, obroty i brakujące elementy'],['sequences','Sekwencje','⌁',200,'soon','Liczby, litery i symbole'],['matches','Zapałki','╱',500,'soon','Przesuwaj zapałki i naprawiaj układy'],['odd','Co nie pasuje?','◈',200,'soon','Znajdź element łamiący regułę']]},
  memory:{name:'Pamięć',icon:'◎',description:'Ćwicz pamięć roboczą i kolejność.',games:[['memory','Memory','▦',200,'soon','Łącz identyczne pary'],['order','Zapamiętaj kolejność','↔',200,'soon','Odtwarzaj sekwencje'],['numbers','Zapamiętaj liczby','123',200,'soon','Coraz dłuższe ciągi'],['path','Zapamiętaj drogę','⌁',200,'soon','Odtwarzaj trasę']]},
- reflex:{name:'Refleks',icon:'⚡',description:'Poprawiaj czas reakcji.',games:[['green','Kliknij zielone','●',200,'available','Reaguj na właściwy kolor'],['click-numbers','Kliknij liczby','123',200,'soon','Znajdź liczby po kolei'],['avoid','Unikaj czerwonych','×',200,'soon','Reaguj szybko'],['stroop','Kolor kontra słowo','A',200,'soon','Pokonaj automatyczne skojarzenia']]},
+ reflex:{name:'Refleks',icon:'⚡',description:'Ćwicz szybkość reakcji i błyskawiczne rozpoznawanie wzorców.',games:[['green','Szybka spostrzegawczość','●',200,'available','Znajdź dominujący symbol jak najszybciej'],['click-numbers','Kliknij liczby','123',200,'soon','Znajdź liczby po kolei'],['avoid','Unikaj czerwonych','×',200,'soon','Reaguj szybko'],['stroop','Kolor kontra słowo','A',200,'soon','Pokonaj automatyczne skojarzenia']]},
  focus:{name:'Koncentracja',icon:'◉',description:'Trenuj spostrzegawczość i skupienie.',games:[['differences','Znajdź różnice','≠',300,'available','Porównuj obrazy'],['same','Znajdź taki sam','=',200,'soon','Wskaż identyczny symbol'],['hidden','Ukryty obiekt','⌕',200,'soon','Odszukuj przedmioty'],['tracking','Śledzenie obiektu','◌',200,'soon','Nie zgub elementu']]},
  knowledge:{name:'Wiedza',icon:'⌁',description:'Łącz fakty i poznawaj świat.',games:[['animals','Pojedynki zwierząt','♞',300,'available','Które jest większe lub szybsze?'],['world','Świat i geografia','◍',300,'soon','Kraje, góry i rzeki'],['science','Nauka','⚗',300,'soon','Przyroda i wynalazki'],['space','Kosmos','✦',300,'soon','Planety i gwiazdy'],['words','Słownictwo','Aa',300,'soon','Synonimy i znaczenia']]},
  imagination:{name:'Wyobraźnia',icon:'△',description:'Rozwijaj wyobraźnię przestrzenną.',games:[['rotate','Obrót figur','↻',200,'available','Wybierz figurę po obrocie'],['solids','Bryły 3D','⬡',200,'soon','Wyobrażaj sobie obrót brył'],['tangram','Tangram','△',200,'soon','Układaj kształty'],['mazes','Labirynty','⌗',200,'soon','Znajdź drogę']]}
@@ -1159,7 +1159,7 @@ function resetSelectedAnswerTarget(question){
       : '<div class="missing-die">?</div>';
 }
 
-function showQuestionFeedback({correct,correctIndex,selectedIndex}){
+function showQuestionFeedback({correct,correctIndex,selectedIndex,responseMs}){
   const buttons=[...document.querySelectorAll('.dice-answer')];
   const question=state.questionEngine?.current;
 
@@ -1178,7 +1178,12 @@ function showQuestionFeedback({correct,correctIndex,selectedIndex}){
     : diceTrainingHints(question);
   if(correct){
     trainingExplanation.className='training-explanation good';
-    trainingExplanation.innerHTML=`<small>DOBRZE</small><p>${h.solution}</p>`;
+    if(question?.category==='REFLEKS'){
+      const reaction=(responseMs/1000).toFixed(2).replace('.',',');
+      trainingExplanation.innerHTML=`<small>DOBRZE • CZAS REAKCJI ${reaction} s</small><p>${h.solution}</p>`;
+    }else{
+      trainingExplanation.innerHTML=`<small>DOBRZE</small><p>${h.solution}</p>`;
+    }
   }else{
     trainingExplanation.className='training-explanation bad';
     trainingExplanation.innerHTML='<small>ZŁA ODPOWIEDŹ</small><p>Spróbuj ponownie. Za chwilę możesz zaznaczyć inną odpowiedź.</p>';
@@ -1481,11 +1486,12 @@ function startCognitiveTraining(gameId,title){
     document.getElementById('questionTimer').textContent=formatTime(Date.now()-state.testStartedAt);
   },1000);
 
+  const isReflex=gameId==='green';
   state.questionEngine=new QuestionEngine({
     generator,
     manualAdvance:false,
     retryIncorrect:true,
-    autoAdvanceDelay:2000,
+    autoAdvanceDelay:isReflex?650:2000,
     onRender:q=>{renderDiceQuestion(q);resetTrainingHelp();},
     onProgress:updateQuestionProgress,
     onFeedback:showQuestionFeedback,
@@ -1493,7 +1499,10 @@ function startCognitiveTraining(gameId,title){
       clearInterval(state.timerId);
       diceTrainingMode=false;
       trainingHelpPanel.classList.add('hidden');
-      modal(`${title} — ukończono`,`Poprawne odpowiedzi: ${summary.correct}/${summary.total} (${summary.percent}%).`,'✦');
+      const resultText=isReflex
+        ? `Poprawne odpowiedzi: ${summary.correct}/${summary.total} (${summary.percent}%). Średni czas reakcji: ${(summary.averageMs/1000).toFixed(2).replace('.',',')} s.`
+        : `Poprawne odpowiedzi: ${summary.correct}/${summary.total} (${summary.percent}%).`;
+      modal(`${title} — ukończono`,resultText,'✦');
       nav('training-category');
       renderTrainingCategory(activeTrainingCategory);
     }
