@@ -1678,6 +1678,64 @@ function setsEqual(a,b){
   return true;
 }
 
+
+function matchSignature(segments){
+  return [...segments].sort().join(',');
+}
+
+const MATCH_REVERSE_DIGITS=Object.fromEntries(
+  Object.entries(MATCH_SEGMENTS)
+    .filter(([symbol])=>/^\d$/.test(symbol))
+    .map(([symbol,segments])=>[matchSignature(segments),Number(symbol)])
+);
+
+const MATCH_REVERSE_OPERATORS=Object.fromEntries(
+  Object.entries(MATCH_SEGMENTS)
+    .filter(([symbol])=>['+','-','='].includes(symbol))
+    .map(([symbol,segments])=>[matchSignature(segments),symbol])
+);
+
+function decodeMatchSymbol(position, expectedType){
+  const segments=[];
+  for(const key of matchActiveSet){
+    const [pos,segment]=key.split(':');
+    if(Number(pos)===position)segments.push(segment);
+  }
+
+  const signature=matchSignature(segments);
+  return expectedType==='digit'
+    ? MATCH_REVERSE_DIGITS[signature]
+    : MATCH_REVERSE_OPERATORS[signature];
+}
+
+function evaluateCurrentMatchEquation(){
+  const left=decodeMatchSymbol(0,'digit');
+  const operator=decodeMatchSymbol(1,'operator');
+  const right=decodeMatchSymbol(2,'digit');
+  const equals=decodeMatchSymbol(3,'operator');
+  const result=decodeMatchSymbol(4,'digit');
+
+  if(
+    left===undefined ||
+    right===undefined ||
+    result===undefined ||
+    !['+','-'].includes(operator) ||
+    equals!=='='
+  ){
+    return {
+      valid:false,
+      reason:'Po ruchu wszystkie cyfry i znaki muszą mieć prawidłowy kształt.'
+    };
+  }
+
+  const calculated=operator==='+' ? left+right : left-right;
+  return {
+    valid:true,
+    correct:calculated===result,
+    text:`${left} ${operator} ${right} = ${result}`
+  };
+}
+
 function checkMatchPuzzle(){
   const status=document.getElementById('matchStatus');
   if(matchMoveHistory.length!==1){
@@ -1686,8 +1744,16 @@ function checkMatchPuzzle(){
     return;
   }
 
-  if(setsEqual(matchActiveSet,matchTargetSet)){
-    status.textContent='DOBRZE! Równanie jest prawidłowe.';
+  const evaluation=evaluateCurrentMatchEquation();
+
+  if(!evaluation.valid){
+    status.textContent=evaluation.reason;
+    status.className='match-status bad';
+    return;
+  }
+
+  if(evaluation.correct){
+    status.textContent=`DOBRZE! ${evaluation.text}`;
     status.className='match-status good';
     document.querySelector('.interactive-match-board')?.classList.add('match-correct');
     setTimeout(()=>{
@@ -1703,7 +1769,7 @@ function checkMatchPuzzle(){
       loadMatchPuzzle();
     },1800);
   }else{
-    status.textContent='To jeszcze nie jest poprawne równanie. Cofnij ruch i spróbuj ponownie.';
+    status.textContent=`Równanie ${evaluation.text} nadal jest nieprawidłowe. Cofnij ruch i spróbuj ponownie.`;
     status.className='match-status bad';
   }
 }
