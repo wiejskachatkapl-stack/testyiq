@@ -1,6 +1,6 @@
 # IQ Challenge • Brain Lab
 
-Aktualna wersja: **v1085**
+Aktualna wersja: **v1086**
 
 Status: Brain Engine — fundament SPA i pierwsza ścieżka Test IQ.
 
@@ -166,137 +166,146 @@ Ekran główny telefonu został zmniejszony tak, aby całość mieściła się b
 Dodano widok rozłożonej kostki z opisem par przeciwległych ścian. Powiększono wskazówki i uproszczono pierwszą lekcję, aby była zrozumiała bez znajomości obrotów przestrzennych.
 
 
-## v1085
+## v1086
 Naprawiono przycisk cofania, dodano kursor ręki do elementów interaktywnych oraz zablokowano przechwytywanie kliknięć przez ukryte ekrany i przycisk muzyki.
 
 
-## v1085
+## v1086
 Siatka kostki składa się teraz rzeczywiście z sześciu ścian w prawidłowy sześcian 3D. Usunięto fałszywy, nakładany podgląd.
 
 
-## v1085
+## v1086
 Powiększono czcionki w oknie prezentacji prawdziwej kostki: nagłówki, opisy, pary przeciwległe, dolne zasady oraz przyciski.
 
 
-## v1085
+## v1086
 Dodano trzeci etap Akademii Kostek: sąsiedztwo ścian i rozpoznawanie trzech ścian spotykających się w jednym narożniku.
 
 
-## v1085
+## v1086
 W etapie 3 poprawna odpowiedź podświetla się na zielono i po 2 sekundach automatycznie przechodzi do następnego pytania. Błędna odpowiedź podświetla się na czerwono, pojawia się komunikat „Zła odpowiedź. Popraw się i spróbuj jeszcze raz”, po czym zaznaczenie znika i można ponownie odpowiadać.
 
 
-## v1085
+## v1086
 Wybrana odpowiedź pojawia się teraz bezpośrednio w brakującej ścianie oznaczonej wcześniej znakiem zapytania. Poprawna jest zielona, błędna czerwona. Przycisk następnego pytania jest widoczny po poprawnej odpowiedzi i podczas dwusekundowego oczekiwania.
 
 
-## v1085
+## v1086
 Naprawiono właściwą zakładkę Orientacja. Wybrana odpowiedź pojawia się w polu ze znakiem zapytania, a po poprawnej odpowiedzi widoczny jest przycisk Następne pytanie.
 
 
-## v1085
+## v1086
 Kostki w Orientacji zostały wizualnie złożone i dosunięte. W zakładce Przeciwległe wybrana odpowiedź pojawia się w polu ze znakiem zapytania, z zielonym lub czerwonym oznaczeniem oraz widocznym przyciskiem następnego pytania.
 
 
-## v1085
+## v1086
 Przebudowano wizualizację kostki w zakładce Orientacja. Wszystkie trzy ściany są teraz widoczne, stykają się krawędziami i tworzą zwartą kostkę zamiast dwóch rozdzielonych boków.
 
 
-## v1085
+## v1086
 Wizualizacja kostki w zakładce Orientacja została wykonana od nowa jako jeden spójny rysunek SVG. Górna, lewa i prawa ściana są połączone wspólnymi krawędziami, więc nie mogą się rozsunąć ani zniknąć.
 
 
-## v1085
+## v1086
 Wskazówki w Akademii Kostek są teraz uniwersalne, zgodne z zasadą danego typu zadania i otwierają się w dużym, czytelnym oknie modalnym.
 
 
-## v1085
+## v1086
 Wszystkie podpowiedzi w Akademii Kostek są teraz ogólne i niezależne od konkretnych liczb w pytaniu. Dodano sekcję „Zapamiętaj” z najważniejszą regułą danego typu zadania.
 
 
-## v1085
+## v1086
 Uproszczono system podpowiedzi. Usunięto trzy osobne karty i dolny komunikat w lewej kolumnie. Podpowiedzi są teraz dostępne wyłącznie przez jeden przycisk przy aktualnym zadaniu i otwierają jedno spójne okno.
 
 
-## v1085
+## v1086
 Naprawiono zamykanie okna podpowiedzi. Przycisk X, przycisk ROZUMIEM, kliknięcie w tło oraz klawisz Esc są inicjalizowane po załadowaniu DOM i działają niezależnie od kolejności wczytywania skryptów.
 
 
-## v1085
+## v1086
 W podsumowującym treningu kostek pozostawiono jeden przycisk podpowiedzi. Otwiera on duże okno identyczne jak w poprzednich etapach, ale treść jest dobierana do aktualnego typu zadania: ciąg, analogia, matryca, element niepasujący lub zadanie ogólne.
 
 
-## v1085
+## v1086
 W teście kostek dodano duże okno podpowiedzi. Kliknięta odpowiedź pojawia się w polu ze znakiem zapytania. Poprawna jest zielona i po 2 sekundach przechodzi dalej. Błędna jest czerwona, znika i pozwala ponownie odpowiedzieć na to samo pytanie.
 
 
-## v1085
+## v1086
 Naprawiono sprawdzanie poprawności odpowiedzi w teście kostek. Silnik porównuje teraz nie tylko indeks, ale również rzeczywistą wartość wybranej kostki. Poprawna kostka pozostaje w polu znaku zapytania przez 2 sekundy, po czym następuje automatyczne przejście. Błędna odpowiedź pozostawia to samo pytanie do ponownej próby.
 
 
-## v1085
+## v1086
 Naprawiono pole ze znakiem zapytania: celem jest teraz samo okienko o stałych wymiarach, dlatego wybrana odpowiedź pokazuje całą kostkę, a nie pojedyncze oczko. Trening Kostek nie używa już ręcznego przechodzenia — poprawna odpowiedź automatycznie przechodzi dalej po 2 sekundach, a błędna odblokowuje to samo pytanie do ponownej próby.
 
 
-## v1085
+## v1086
 Dopasowano matryce 2×2 i 3×3 oraz inne układy wielorzędowe do obszaru pytania. Kostki i pole ze znakiem zapytania skalują się automatycznie, dzięki czemu plansza nie wychodzi poza kartę zadania.
 
 
-## v1085
+## v1086
 Matryce kostkowe 2×2 i 3×3 otrzymują teraz osobne klasy układu. Plansza ma wydzieloną wysokość wewnątrz karty, nie nachodzi na tytuł ani odpowiedzi, a kostki skalują się do komórek zamiast zwiększać cały układ.
 
 
-## v1085
+## v1086
 Wprowadzono osobne rozmiary matryc kostkowych dla komputera i telefonu. Na komputerze układy 2×2 i 3×3 są większe i czytelniejsze, a na telefonie delikatnie zmniejszone, aby cała plansza mieściła się nad odpowiedziami.
 
 
-## v1085
+## v1086
 Na komputerze matryce 2×2 i 3×3 otrzymały stałą, większą przestrzeń w karcie pytania oraz jawne rozmiary plansz, komórek i kostek. Usunięto zależność od procentowej wysokości, która wcześniej powodowała ich nadmierne zmniejszenie.
 
 
-## v1085
+## v1086
 Uruchomiono osobny trening Matryce. Dodano cztery nowe rodziny zadań inspirowane przykładami użytkownika: przesuwanie zaciemnionych ćwiartek, przesuwanie pól w siatce 3×3, zależności liczby linii oraz wzrost układów blokowych. Trening korzysta z tego samego szablonu odpowiedzi, podpowiedzi i informacji zwrotnej co Kostki.
 
 
-## v1085
+## v1086
 Dopasowano matryce figur 3×3 do obszaru pytania. Plansza, komórki, figury i odpowiedzi skalują się niezależnie dla komputera, niskiego ekranu i telefonu, dzięki czemu cały układ mieści się w karcie.
 
 
-## v1085
+## v1086
 Zwiększono wysokość obszaru planszy dla wszystkich pytań typu Matryce. Plansza jest wyśrodkowana pionowo i nie powinna być obcinana od góry ani od dołu. Rozmiaru samych figur nie zmniejszano.
 
 
-## v1085
+## v1086
 Podłączono pierwsze gry w kategoriach Refleks, Koncentracja, Wiedza i Wyobraźnia. Wszystkie korzystają ze wspólnego 20-pytaniowego szablonu, podpowiedzi, kolorów odpowiedzi i automatycznego przejścia. Wyzwanie dnia uruchamia mieszany trening obejmujący Kostki, Matryce oraz cztery nowe kategorie.
 
 
-## v1085
+## v1086
 Poprawiono pierwszy trening w kategorii Refleks. Kafelek ma teraz nazwę „Szybka spostrzegawczość”, ponieważ zadania polegają na błyskawicznym rozpoznawaniu dominującego symbolu. Po każdej poprawnej odpowiedzi pokazuje się czas reakcji, kolejne pytanie pojawia się po 0,65 sekundy, a podsumowanie zawiera średni czas reakcji.
 
 
-## v1085
+## v1086
 Podłączono moduły Sekwencje, Zapałki i Co nie pasuje. Każdy ma własny generator, 20 pytań, podpowiedzi, rozwiązania, ponowną próbę i automatyczne przejście.
 
 
-## v1085
+## v1086
 Na telefonach zwiększono wysokość obszaru przykładu w zadaniach Sekwencje, Zapałki i Co nie pasuje. Sekcja odpowiedzi została odsunięta niżej, aby nie nachodziła na przykład ani pole ze znakiem zapytania.
 
 
-## v1085
+## v1086
 Przebudowano mobilny ekran pytań tak, aby mieścił się bez przewijania. Zmniejszono nagłówek, pasek postępu, kartę pytania, odpowiedzi, podpowiedzi i stopkę. W zadaniach tekstowych przykład, strzałka i pole odpowiedzi są na telefonie ułożone poziomo.
 
 
-## v1085
+## v1086
 Moduł Zapałki został przebudowany z pytań wielokrotnego wyboru na interaktywną planszę. Użytkownik wybiera aktywną zapałkę, następnie wolne miejsce, może cofnąć ruch, zresetować układ, skorzystać z podpowiedzi i sprawdzić wynik.
 
 
-## v1085
+## v1086
 Naprawiono sprawdzanie interaktywnych zadań Zapałki. Program nie porównuje już ruchu wyłącznie z jednym zapisanym rozwiązaniem. Odczytuje cyfry i znaki z aktualnego układu zapałek, oblicza równanie i akceptuje każde prawidłowe rozwiązanie wykonane jednym ruchem.
 
 
-## v1085
+## v1086
 Rozbudowano interaktywny moduł Zapałki do 24 zweryfikowanych zagadek. Pierwsze poziomy wymagają przesunięcia jednej zapałki, a trudniejsze dokładnie dwóch. Program pokazuje liczbę wykonanych i pozostałych ruchów oraz nadal akceptuje każde matematycznie poprawne rozwiązanie.
 
 
-## v1085
+## v1086
 Przebudowano bank zagadek Zapałki. Każda zagadka jest automatycznie sprawdzana wobec wszystkich prawidłowych równań o tej samej liczbie zapałek. Zadania dwuruchowe są odrzucane, jeżeli istnieje jakiekolwiek rozwiązanie jednym ruchem. Pozostawiono wyłącznie zagadki z jednym, jednoznacznym rozwiązaniem o dokładnie wymaganej liczbie ruchów.
+
+
+## v1086 — Co nie pasuje? w wersji obrazkowej
+- przebudowano moduł z tekstowych przykładów na klikalną planszę 6 obrazków,
+- przygotowano 144 lokalnych grafik SVG w 18 kategoriach,
+- generator losuje pięć obrazków jednej kategorii i jeden element niepasujący,
+- pozycja wyjątku jest losowana,
+- po poprawnej odpowiedzi wyświetlane jest objaśnienie ukrytej reguły,
+- punktacja nie została przebudowana — zgodnie z ustaleniem najpierw dopracowujemy zagadki.

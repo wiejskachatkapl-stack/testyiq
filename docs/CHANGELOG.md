@@ -1,5 +1,18 @@
 # Changelog
 
+## v1086
+### Obrazkowy moduł „Co nie pasuje?”
+- zastąpiono tekstowe zadania planszą sześciu obrazków,
+- dodano 144 lokalnych ilustracji SVG,
+- dodano 18 kategorii: zwierzęta, rośliny, transport, dom, narzędzia, elektronika i instrumenty,
+- generator wybiera pięć elementów jednej kategorii oraz jeden wyjątek,
+- obrazki są tasowane przy każdym zadaniu,
+- odpowiedź wybiera się bezpośrednio przez kliknięcie obrazka,
+- dodano zieloną i czerwoną informację wizualną,
+- dodano objaśnienie reguły po poprawnym rozwiązaniu,
+- nie zmieniano punktacji,
+- cache PWA zmieniono na `iq-brain-lab-v1086`.
+
 ## v1085
 ### Zweryfikowano generator Zapałek
 - utworzono 28 matematycznie zweryfikowanych zagadek,
