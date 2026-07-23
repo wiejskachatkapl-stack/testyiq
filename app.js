@@ -17,10 +17,10 @@ document.getElementById('testForm').onsubmit=e=>{e.preventDefault();const firstN
 const TRAINING_CATEGORIES={
  logic:{name:'Logika',icon:'◇',description:'Rozwijaj analizę, wnioskowanie i rozpoznawanie wzorców.',games:[['dice-training','Kostki','⬡',200,'available','Ciągi, zależności i układy kostek'],['matrix-training','Matryce','▦',200,'available','Figury, obroty i brakujące elementy'],['sequences','Sekwencje','⌁',200,'soon','Liczby, litery i symbole'],['matches','Zapałki','╱',500,'soon','Przesuwaj zapałki i naprawiaj układy'],['odd','Co nie pasuje?','◈',200,'soon','Znajdź element łamiący regułę']]},
  memory:{name:'Pamięć',icon:'◎',description:'Ćwicz pamięć roboczą i kolejność.',games:[['memory','Memory','▦',200,'soon','Łącz identyczne pary'],['order','Zapamiętaj kolejność','↔',200,'soon','Odtwarzaj sekwencje'],['numbers','Zapamiętaj liczby','123',200,'soon','Coraz dłuższe ciągi'],['path','Zapamiętaj drogę','⌁',200,'soon','Odtwarzaj trasę']]},
- reflex:{name:'Refleks',icon:'⚡',description:'Poprawiaj czas reakcji.',games:[['green','Kliknij zielone','●',200,'soon','Reaguj na właściwy kolor'],['click-numbers','Kliknij liczby','123',200,'soon','Znajdź liczby po kolei'],['avoid','Unikaj czerwonych','×',200,'soon','Reaguj szybko'],['stroop','Kolor kontra słowo','A',200,'soon','Pokonaj automatyczne skojarzenia']]},
- focus:{name:'Koncentracja',icon:'◉',description:'Trenuj spostrzegawczość i skupienie.',games:[['differences','Znajdź różnice','≠',300,'soon','Porównuj obrazy'],['same','Znajdź taki sam','=',200,'soon','Wskaż identyczny symbol'],['hidden','Ukryty obiekt','⌕',200,'soon','Odszukuj przedmioty'],['tracking','Śledzenie obiektu','◌',200,'soon','Nie zgub elementu']]},
- knowledge:{name:'Wiedza',icon:'⌁',description:'Łącz fakty i poznawaj świat.',games:[['animals','Pojedynki zwierząt','♞',300,'soon','Które jest większe lub szybsze?'],['world','Świat i geografia','◍',300,'soon','Kraje, góry i rzeki'],['science','Nauka','⚗',300,'soon','Przyroda i wynalazki'],['space','Kosmos','✦',300,'soon','Planety i gwiazdy'],['words','Słownictwo','Aa',300,'soon','Synonimy i znaczenia']]},
- imagination:{name:'Wyobraźnia',icon:'△',description:'Rozwijaj wyobraźnię przestrzenną.',games:[['rotate','Obrót figur','↻',200,'soon','Wybierz figurę po obrocie'],['solids','Bryły 3D','⬡',200,'soon','Wyobrażaj sobie obrót brył'],['tangram','Tangram','△',200,'soon','Układaj kształty'],['mazes','Labirynty','⌗',200,'soon','Znajdź drogę']]}
+ reflex:{name:'Refleks',icon:'⚡',description:'Poprawiaj czas reakcji.',games:[['green','Kliknij zielone','●',200,'available','Reaguj na właściwy kolor'],['click-numbers','Kliknij liczby','123',200,'soon','Znajdź liczby po kolei'],['avoid','Unikaj czerwonych','×',200,'soon','Reaguj szybko'],['stroop','Kolor kontra słowo','A',200,'soon','Pokonaj automatyczne skojarzenia']]},
+ focus:{name:'Koncentracja',icon:'◉',description:'Trenuj spostrzegawczość i skupienie.',games:[['differences','Znajdź różnice','≠',300,'available','Porównuj obrazy'],['same','Znajdź taki sam','=',200,'soon','Wskaż identyczny symbol'],['hidden','Ukryty obiekt','⌕',200,'soon','Odszukuj przedmioty'],['tracking','Śledzenie obiektu','◌',200,'soon','Nie zgub elementu']]},
+ knowledge:{name:'Wiedza',icon:'⌁',description:'Łącz fakty i poznawaj świat.',games:[['animals','Pojedynki zwierząt','♞',300,'available','Które jest większe lub szybsze?'],['world','Świat i geografia','◍',300,'soon','Kraje, góry i rzeki'],['science','Nauka','⚗',300,'soon','Przyroda i wynalazki'],['space','Kosmos','✦',300,'soon','Planety i gwiazdy'],['words','Słownictwo','Aa',300,'soon','Synonimy i znaczenia']]},
+ imagination:{name:'Wyobraźnia',icon:'△',description:'Rozwijaj wyobraźnię przestrzenną.',games:[['rotate','Obrót figur','↻',200,'available','Wybierz figurę po obrocie'],['solids','Bryły 3D','⬡',200,'soon','Wyobrażaj sobie obrót brył'],['tangram','Tangram','△',200,'soon','Układaj kształty'],['mazes','Labirynty','⌗',200,'soon','Znajdź drogę']]}
 };
 for(const c of Object.values(TRAINING_CATEGORIES)) c.games=c.games.map(g=>({id:g[0],name:g[1],icon:g[2],levels:g[3],status:g[4],subtitle:g[5]}));
 
@@ -85,6 +85,10 @@ function renderTrainingProfile(){const p=getTrainingProfile(),xp=p.xp||0;documen
 function openTrainingCategory(key){const c=TRAINING_CATEGORIES[key];if(!c)return;const p=getTrainingProfile(),v=p.categories?.[key]||0;categoryScreenIcon.textContent=c.icon;categoryScreenTitle.textContent=c.name;categoryScreenDescription.textContent=c.description;categoryScreenProgress.textContent=`${v}%`;let total=0,done=0,stars=0;c.games.forEach(g=>{total+=g.levels;done+=p.games?.[g.id]?.completed||0;stars+=p.games?.[g.id]?.stars||0});categoryCompleted.textContent=`${done} / ${total}`;categoryStars.textContent=stars;categoryStreak.textContent=`${p.streak||0} dni`;trainingGameGrid.innerHTML=c.games.map((g,idx)=>`<button class="training-game-card game-card-${idx+1} ${g.status==='available'?'available':'locked'}" data-game="${g.id}" data-status="${g.status}"><span class="game-icon">${TRAINING_GAME_ICONS[g.id]||g.icon}</span><span class="game-copy"><strong>${g.name}</strong><small>${g.subtitle}</small></span><span class="game-level"><b>${p.games?.[g.id]?.completed||0} / ${g.levels}</b><i><em style="width:0%"></em></i></span><span class="game-status">${g.status==='available'?'GRAJ':'WKRÓTCE'}</span></button>`).join('');trainingGameGrid.querySelectorAll('button').forEach(b=>b.onclick=()=>{
   if(b.dataset.game==='dice-training'&&b.dataset.status==='available'){nav('dice-academy');renderDiceAcademy();return}
   if(b.dataset.game==='matrix-training'&&b.dataset.status==='available'){startMatrixTraining();return}
+  if(['green','differences','animals','rotate'].includes(b.dataset.game)&&b.dataset.status==='available'){
+    startCognitiveTraining(b.dataset.game,b.querySelector('strong').textContent);
+    return;
+  }
   modal(b.dataset.status==='available'?b.querySelector('strong').textContent:'Wkrótce dostępne',b.dataset.status==='available'?'Moduł jest dostępny.':'Ten trening zostanie dodany w kolejnych wersjach.','✦')
 });nav('training-category')}
 document.querySelectorAll('.training-category').forEach(b=>b.onclick=()=>openTrainingCategory(b.dataset.category));
@@ -954,6 +958,43 @@ function formatTime(ms){
   return `${min}:${sec}`;
 }
 
+
+function escapeCognitive(value){
+  return String(value).replace(/[&<>"']/g,char=>({
+    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+  })[char]);
+}
+
+function renderCognitiveQuestion(question){
+  document.querySelector('.question-card')?.classList.remove(
+    'matrix-question-card','multirow-question-card','matrix-2x2-card','matrix-3x3-card'
+  );
+
+  document.getElementById('questionCategory').textContent=`${question.category} • ${question.data.mode}`;
+  document.getElementById('questionPrompt').textContent=question.prompt;
+
+  const board=document.getElementById('diceSequence');
+  board.className='dice-sequence cognitive-question-board';
+  board.innerHTML=`
+    <div class="cognitive-stimulus">${escapeCognitive(question.data.stimulus)}</div>
+    <div class="cognitive-arrow">→</div>
+    <div class="cognitive-answer-target answer-target">?</div>`;
+
+  const answers=document.getElementById('diceAnswers');
+  answers.innerHTML=question.options.map((value,index)=>`
+    <button class="dice-answer cognitive-answer" type="button" data-answer="${index}">
+      <span>${String.fromCharCode(65+index)}</span>
+      <strong>${escapeCognitive(value)}</strong>
+    </button>`).join('');
+
+  answers.querySelectorAll('.dice-answer').forEach(button=>{
+    button.addEventListener('click',()=>{
+      if(state.questionEngine?.locked)return;
+      state.questionEngine.answer(Number(button.dataset.answer));
+    });
+  });
+}
+
 function renderDiceQuestion(question){
   const questionCard=document.querySelector('.question-card');
   questionCard?.classList.remove('matrix-question-card','multirow-question-card','matrix-2x2-card','matrix-3x3-card');
@@ -965,6 +1006,7 @@ function renderDiceQuestion(question){
   }
 
   if(document.getElementById('trainingHelpPanel')&&!trainingHelpPanel.classList.contains('hidden'))resetTrainingHelp();
+  if(question.family==='cognitive') return renderCognitiveQuestion(question);
   if(question.family==='matrix') return renderMatrixQuestion(question);
   document.getElementById('questionCategory').textContent=`${question.category} • ${layoutName(question.layout)}`;
   document.getElementById('questionPrompt').textContent=question.prompt;
@@ -1101,7 +1143,9 @@ function renderSelectedAnswerInTarget(question, selectedIndex, correct){
   target.classList.add(correct?'answer-target-good':'answer-target-bad');
   target.innerHTML=question.family==='matrix'
     ? MatrixGenerator.shapeSvg(selected,'matrix-main-shape')
-    : DiceGenerator.diceSvg(selected,'sequence-die');
+    : question.family==='cognitive'
+      ? `<strong>${escapeCognitive(selected)}</strong>`
+      : DiceGenerator.diceSvg(selected,'sequence-die');
 }
 
 function resetSelectedAnswerTarget(question){
@@ -1110,7 +1154,9 @@ function resetSelectedAnswerTarget(question){
   target.classList.remove('answer-target-good','answer-target-bad');
   target.innerHTML=question?.family==='matrix'
     ? '?'
-    : '<div class="missing-die">?</div>';
+    : question?.family==='cognitive'
+      ? '?'
+      : '<div class="missing-die">?</div>';
 }
 
 function showQuestionFeedback({correct,correctIndex,selectedIndex}){
@@ -1127,7 +1173,9 @@ function showQuestionFeedback({correct,correctIndex,selectedIndex}){
   document.querySelector('.question-card')?.classList.add(correct?'flash-correct':'flash-wrong');
   setTimeout(()=>document.querySelector('.question-card')?.classList.remove('flash-correct','flash-wrong'),420);
 
-  const h=diceTrainingHints(question);
+  const h=question?.family==='cognitive'
+    ? {solution:`Poprawna odpowiedź to: ${question.answer}.`}
+    : diceTrainingHints(question);
   if(correct){
     trainingExplanation.className='training-explanation good';
     trainingExplanation.innerHTML=`<small>DOBRZE</small><p>${h.solution}</p>`;
@@ -1203,6 +1251,37 @@ function diceTrainingHints(question){
 
 function trainingHintModalData(question){
   const layout=question?.layout || question?.meta?.layout || 'sequence';
+
+  if(question?.family==='cognitive'){
+    const category=question.category;
+    const categoryHints={
+      REFLEKS:[
+        {title:'Patrz na cały układ',text:'Nie analizuj pojedynczych elementów zbyt długo. Najpierw zauważ dominujący wzór.'},
+        {title:'Reaguj po sprawdzeniu',text:'Szybkość jest ważna, ale najpierw potwierdź wybór jednym krótkim spojrzeniem.'},
+        {title:'Ogranicz rozpraszanie',text:'Skup wzrok wyłącznie na symbolach i ignoruj pozostałe elementy ekranu.'}
+      ],
+      KONCENTRACJA:[
+        {title:'Porównuj systematycznie',text:'Przesuwaj wzrok od lewej do prawej i nie pomijaj żadnego elementu.'},
+        {title:'Szukaj jednej różnicy',text:'Porównuj kształt, wypełnienie, kierunek i położenie.'},
+        {title:'Sprawdź wybór',text:'Przed zaznaczeniem upewnij się, że pozostałe elementy są identyczne.'}
+      ],
+      WIEDZA:[
+        {title:'Najpierw odrzuć błędne',text:'Usuń odpowiedzi, które na pewno nie pasują do pytania.'},
+        {title:'Porównaj pozostałe',text:'Zwróć uwagę na dokładne znaczenie słów w pytaniu.'},
+        {title:'Nie zmieniaj odpowiedzi bez powodu',text:'Pierwszy wybór często jest poprawny, gdy wynika z pewnej wiedzy.'}
+      ],
+      WYOBRAŹNIA:[
+        {title:'Ustal punkt początkowy',text:'Najpierw zapamiętaj kierunek lub położenie figury.'},
+        {title:'Wykonuj obrót krokami',text:'Każdy obrót o 90° traktuj jako osobny ruch.'},
+        {title:'Sprawdź kierunek obrotu',text:'Upewnij się, czy obrót jest w prawo, czy w lewo.'}
+      ]
+    };
+    return {
+      title:`Jak rozwiązywać zadania: ${category.toLowerCase()}?`,
+      hints:categoryHints[category]||[],
+      remember:question.data.hint||'Najpierw rozpoznaj zasadę, a dopiero potem wybierz odpowiedź.'
+    };
+  }
 
   if(question?.family==='matrix'){
     return {
@@ -1287,7 +1366,7 @@ function resetTrainingHelp(){
   trainingHelpPanel.classList.remove('hidden');
   trainingNextQuestion.classList.add('hidden');
   trainingExplanation.className='training-explanation';
-  trainingExplanation.innerHTML='<small>POWTÓRKA MATERIAŁU</small><p>To etap sprawdzający wszystkie poznane zasady dotyczące kostek.</p>';
+  trainingExplanation.innerHTML='<small>POWTÓRKA MATERIAŁU</small><p>To etap sprawdzający poznane zasady i umiejętności.</p>';
 }
 
 function showTrainingText(kind){
@@ -1375,6 +1454,89 @@ function startMatrixTraining(){
   state.questionEngine.start(20,'adaptive');
 }
 
+
+let activeTrainingCategory='logic';
+
+function startCognitiveTraining(gameId,title){
+  const generator=CognitiveGenerators.forGame(gameId);
+  if(!generator)return;
+
+  const categoryMap={
+    green:'reflex',
+    differences:'focus',
+    animals:'knowledge',
+    rotate:'imagination'
+  };
+  activeTrainingCategory=categoryMap[gameId]||'logic';
+  diceTrainingMode=true;
+  trainingHelpPanel.classList.remove('hidden');
+  resetTrainingHelp();
+
+  state.participant=state.participant||{firstName:'Trening',lastName:title,age:18,count:20,mode:'adaptive'};
+  nav('question');
+  state.testStartedAt=Date.now();
+  clearInterval(state.timerId);
+  document.getElementById('questionTimer').textContent='00:00';
+  state.timerId=setInterval(()=>{
+    document.getElementById('questionTimer').textContent=formatTime(Date.now()-state.testStartedAt);
+  },1000);
+
+  state.questionEngine=new QuestionEngine({
+    generator,
+    manualAdvance:false,
+    retryIncorrect:true,
+    autoAdvanceDelay:2000,
+    onRender:q=>{renderDiceQuestion(q);resetTrainingHelp();},
+    onProgress:updateQuestionProgress,
+    onFeedback:showQuestionFeedback,
+    onFinish:summary=>{
+      clearInterval(state.timerId);
+      diceTrainingMode=false;
+      trainingHelpPanel.classList.add('hidden');
+      modal(`${title} — ukończono`,`Poprawne odpowiedzi: ${summary.correct}/${summary.total} (${summary.percent}%).`,'✦');
+      nav('training-category');
+      renderTrainingCategory(activeTrainingCategory);
+    }
+  });
+  state.questionEngine.start(20,'adaptive');
+}
+
+function startDailyChallenge(){
+  activeTrainingCategory='daily';
+  diceTrainingMode=true;
+  trainingHelpPanel.classList.remove('hidden');
+  resetTrainingHelp();
+
+  state.participant=state.participant||{firstName:'Wyzwanie',lastName:'Dnia',age:18,count:20,mode:'adaptive'};
+  nav('question');
+  state.testStartedAt=Date.now();
+  clearInterval(state.timerId);
+  document.getElementById('questionTimer').textContent='00:00';
+  state.timerId=setInterval(()=>{
+    document.getElementById('questionTimer').textContent=formatTime(Date.now()-state.testStartedAt);
+  },1000);
+
+  state.questionEngine=new QuestionEngine({
+    generator:DailyMixedGenerator,
+    manualAdvance:false,
+    retryIncorrect:true,
+    autoAdvanceDelay:2000,
+    onRender:q=>{renderDiceQuestion(q);resetTrainingHelp();},
+    onProgress:updateQuestionProgress,
+    onFeedback:showQuestionFeedback,
+    onFinish:summary=>{
+      clearInterval(state.timerId);
+      diceTrainingMode=false;
+      trainingHelpPanel.classList.add('hidden');
+      modal('Wyzwanie dnia ukończone',`Poprawne odpowiedzi: ${summary.correct}/${summary.total} (${summary.percent}%).`,'◎');
+      nav('home');
+    }
+  });
+  state.questionEngine.start(20,'adaptive');
+}
+
+document.getElementById('dailyChallengeBtn')?.addEventListener('click',startDailyChallenge);
+
 function startDiceTest(){
   diceTrainingMode=false;
   trainingHelpPanel.classList.remove('hidden');
@@ -1409,8 +1571,12 @@ document.getElementById('endPreviewBtn').onclick=()=>{
   if(diceTrainingMode){
     diceTrainingMode=false;
     trainingHelpPanel.classList.add('hidden');
-    nav('training-category');
-    renderTrainingCategory('logic');
+    if(activeTrainingCategory==='daily'){
+      nav('home');
+    }else{
+      nav('training-category');
+      renderTrainingCategory(activeTrainingCategory||'logic');
+    }
   }else nav('home');
 };
 

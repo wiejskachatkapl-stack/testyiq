@@ -8309,3 +8309,95 @@ html,body{
     max-height:270px!important;
   }
 }
+
+
+/* =========================================================
+   v1077 — Refleks, Koncentracja, Wiedza, Wyobraźnia
+   ========================================================= */
+
+.cognitive-question-board{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) 44px minmax(150px,.42fr)!important;
+  align-items:center!important;
+  gap:18px!important;
+  min-height:220px!important;
+}
+
+.cognitive-stimulus{
+  min-height:150px;
+  padding:22px;
+  border-radius:18px;
+  border:1px solid rgba(83,211,218,.20);
+  background:rgba(3,23,36,.38);
+  display:grid;
+  place-items:center;
+  text-align:center;
+  color:#f3f8fa;
+  font-size:clamp(1.15rem,2.5vw,2rem);
+  line-height:1.6;
+  white-space:pre-wrap;
+}
+
+.cognitive-arrow{
+  color:#52e1e8;
+  font-size:1.8rem;
+  text-align:center;
+}
+
+.cognitive-answer-target{
+  min-height:150px;
+  border:2px dashed rgba(79,223,235,.55);
+  border-radius:18px;
+  display:grid;
+  place-items:center;
+  color:#55e6ed;
+  font-size:2rem;
+  font-weight:900;
+  overflow:hidden;
+}
+
+.cognitive-answer-target strong{
+  font-size:clamp(1.1rem,2vw,1.6rem);
+  text-align:center;
+  padding:10px;
+}
+
+.cognitive-answer{
+  min-height:120px!important;
+  display:grid!important;
+  place-items:center!important;
+}
+
+.cognitive-answer strong{
+  font-size:clamp(.92rem,1.7vw,1.25rem);
+  color:#edf7f9;
+  text-align:center;
+  padding:8px;
+}
+
+@media(max-width:768px){
+  .cognitive-question-board{
+    grid-template-columns:1fr!important;
+    gap:8px!important;
+    min-height:0!important;
+  }
+
+  .cognitive-arrow{
+    transform:rotate(90deg);
+    font-size:1.2rem;
+  }
+
+  .cognitive-stimulus,
+  .cognitive-answer-target{
+    min-height:105px;
+    padding:14px;
+  }
+
+  .cognitive-stimulus{
+    font-size:1.08rem;
+  }
+
+  .cognitive-answer{
+    min-height:92px!important;
+  }
+}
