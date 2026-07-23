@@ -1,5 +1,17 @@
 # Changelog
 
+## v1085
+### Zweryfikowano generator Zapałek
+- utworzono 28 matematycznie zweryfikowanych zagadek,
+- zadania jednorurowe wymagają minimalnie dokładnie jednego ruchu,
+- zadania dwuruchowe wymagają minimalnie dokładnie dwóch ruchów,
+- każda zagadka została sprawdzona względem wszystkich poprawnych równań,
+- odrzucono zadania dwuruchowe posiadające rozwiązanie jednym ruchem,
+- pozostawiono tylko zagadki z jednym jednoznacznym rozwiązaniem minimalnym,
+- na ekranie widoczny jest poziom `ŁATWY` albo `ŚREDNI`,
+- podpowiedź informuje o zweryfikowanej minimalnej liczbie ruchów,
+- cache PWA zmieniono na `iq-brain-lab-v1085`.
+
 ## v1084
 ### Rozbudowano Zapałki
 - zwiększono liczbę interaktywnych zagadek do 24,
