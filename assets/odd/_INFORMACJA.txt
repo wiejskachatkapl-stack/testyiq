@@ -1,0 +1,1 @@
+Najlepiej zastąpić cały katalog assets/odd katalogiem z tej paczki. Stare grafiki z v1086–v1087 nie są już używane przez aplikację.
