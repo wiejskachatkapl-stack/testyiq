@@ -1,5 +1,15 @@
 # Changelog
 
+## v1087
+### Dopasowanie modułu „Co nie pasuje?” na komputerze
+- zmniejszono wysokość sześciu kafelków obrazkowych,
+- zmniejszono odstępy między kafelkami,
+- zwężono planszę obrazków,
+- poprawiono układ wierszy karty pytania,
+- usunięto nachodzenie obrazków na podpowiedź i rozwiązanie,
+- nie zmieniano zagadek, mechaniki, punktacji ani widoku telefonu,
+- cache PWA zmieniono na `iq-brain-lab-v1087`.
+
 ## v1086
 ### Obrazkowy moduł „Co nie pasuje?”
 - zastąpiono tekstowe zadania planszą sześciu obrazków,
