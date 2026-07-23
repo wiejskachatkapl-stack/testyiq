@@ -1,22 +1,33 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="320" height="220" viewBox="0 0 320 220">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#122b3a"/>
-      <stop offset="1" stop-color="#081821"/>
+      <stop offset="0" stop-color="#112839"/>
+      <stop offset="1" stop-color="#081720"/>
     </linearGradient>
-    <radialGradient id="glow" cx="50%" cy="42%" r="65%">
-      <stop offset="0" stop-color="#3b82f6" stop-opacity=".28"/>
-      <stop offset="1" stop-color="#3b82f6" stop-opacity="0"/>
+    <radialGradient id="glow" cx="50%" cy="40%" r="60%">
+      <stop offset="0" stop-color="#e24040" stop-opacity=".22"/>
+      <stop offset="1" stop-color="#e24040" stop-opacity="0"/>
     </radialGradient>
-    <filter id="shadow" x="-25%" y="-25%" width="150%" height="150%">
-      <feDropShadow dx="0" dy="7" stdDeviation="8" flood-color="#000000" flood-opacity=".30"/>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#000000" flood-opacity=".32"/>
     </filter>
   </defs>
-  <rect x="7" y="7" width="306" height="206" rx="27" fill="url(#bg)" stroke="#3b82f6" stroke-width="4"/>
-  <rect x="16" y="16" width="288" height="188" rx="21" fill="url(#glow)"/>
-  <circle cx="95" cy="54" r="27" fill="#3b82f6" opacity=".12"/>
-  <circle cx="244" cy="157" r="22" fill="#173b66" opacity=".18"/>
-  <circle cx="160" cy="108" r="78" fill="#f8fbff" opacity=".97" filter="url(#shadow)"/>
-  <text x="160" y="142" text-anchor="middle" font-size="102"
-        font-family="Segoe UI Emoji, Apple Color Emoji, Noto Color Emoji, sans-serif">🐓</text>
+  <rect x="7" y="7" width="306" height="206" rx="27" fill="url(#bg)" stroke="#e24040" stroke-width="4"/>
+  <rect x="18" y="18" width="284" height="184" rx="21" fill="url(#glow)"/>
+  <circle cx="70" cy="50" r="20" fill="#e24040" opacity=".08"/>
+  <circle cx="257" cy="162" r="27" fill="#e24040" opacity=".07"/>
+  <ellipse cx="160" cy="180" rx="86" ry="12" fill="#051019" opacity=".42"/>
+  <g filter="url(#shadow)">
+    
+      
+      <ellipse cx="150" cy="128" rx="48" ry="34" fill="#f6f2e3"/>
+      <path d="M127,113 q25,-22 42,10 q-8,26 -33,28 q-16,-12 -9,-38" fill="#e24040" opacity=".86"/>
+      
+      <circle cx="198" cy="98" r="21" fill="#f6f2e3"/>
+      <path d="M191,82 l-3,-12 M198,80 l2,-15 M205,82 l8,-12" stroke="#e24040" stroke-width="3.2" stroke-linecap="round"/>
+      <path d="M217,104 l20,6 l-20,7 z" fill="#f0b54a"/>
+      <circle cx="202" cy="95" r="2.5" fill="#1d2630"/>
+      
+    
+  </g>
 </svg>
