@@ -1,5 +1,18 @@
 # Changelog
 
+## v1081
+### Responsywność telefonu
+- cały ekran pytania mieści się bez przewijania,
+- zmniejszono górny pasek aplikacji,
+- zmniejszono pasek postępu,
+- zmniejszono nagłówek i ikonę pytania,
+- przykład, strzałka i pole odpowiedzi są ułożone poziomo,
+- zmniejszono pięć kontenerów odpowiedzi,
+- zmniejszono panel podpowiedzi i rozwiązania,
+- zmniejszono dolną stopkę,
+- dodano dodatkowy wariant dla niskich telefonów,
+- cache PWA zmieniono na `iq-brain-lab-v1081`.
+
 ## v1080
 ### Naprawiono
 - odpowiedzi w Sekwencjach nie nachodzą na przykład na telefonie,
