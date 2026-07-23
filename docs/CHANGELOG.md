@@ -1,5 +1,18 @@
 # Changelog
 
+## v1088
+### Przebudowa zagadek „Co nie pasuje?”
+- usunięto zestawy z prawie identycznymi obrazkami,
+- pozostawiono tylko jedną grafikę samolotu, jedną grafikę statku itd.,
+- dodano 163 unikalnych obiektów graficznych,
+- dodano 36 przemyślanych zagadek z jedną ukrytą regułą,
+- dodano trzy poziomy: łatwy, średni i trudny,
+- trudniejsze pytania dotyczą cech, funkcji, budowy, środowiska i sposobu działania,
+- usunięto podpisy obiektów z kafelków,
+- zachowano układ 3×2 i poprawkę rozmiaru z v1087,
+- nie zmieniano punktacji ani innych modułów,
+- cache PWA zmieniono na `iq-brain-lab-v1088`.
+
 ## v1087
 ### Dopasowanie modułu „Co nie pasuje?” na komputerze
 - zmniejszono wysokość sześciu kafelków obrazkowych,
