@@ -90,105 +90,109 @@ Mobilny ekran główny korzysta z czterech proporcjonalnych sekcji wysokości. D
 Wskazówki są prezentowane jako duże, opisowe kafelki. Widok rozłożonej kostki pokazuje położenie wszystkich sześciu ścian i pary przeciwległe.
 
 
-## Interakcje v1077
+## Interakcje v1078
 Tylko aktywny ekran może odbierać kliknięcia. Na komputerze wszystkie aktywne przyciski pokazują kursor ręki.
 
 
-## v1077
+## v1078
 Siatka kostki składa się teraz rzeczywiście z sześciu ścian w prawidłowy sześcian 3D. Usunięto fałszywy, nakładany podgląd.
 
 
-## v1077
+## v1078
 Powiększono czcionki w oknie prezentacji prawdziwej kostki: nagłówki, opisy, pary przeciwległe, dolne zasady oraz przyciski.
 
 
-## v1077
+## v1078
 Dodano trzeci etap Akademii Kostek: sąsiedztwo ścian i rozpoznawanie trzech ścian spotykających się w jednym narożniku.
 
 
-## v1077
+## v1078
 W etapie 3 poprawna odpowiedź podświetla się na zielono i po 2 sekundach automatycznie przechodzi do następnego pytania. Błędna odpowiedź podświetla się na czerwono, pojawia się komunikat „Zła odpowiedź. Popraw się i spróbuj jeszcze raz”, po czym zaznaczenie znika i można ponownie odpowiadać.
 
 
-## v1077
+## v1078
 Wybrana odpowiedź pojawia się teraz bezpośrednio w brakującej ścianie oznaczonej wcześniej znakiem zapytania. Poprawna jest zielona, błędna czerwona. Przycisk następnego pytania jest widoczny po poprawnej odpowiedzi i podczas dwusekundowego oczekiwania.
 
 
-## v1077
+## v1078
 Naprawiono właściwą zakładkę Orientacja. Wybrana odpowiedź pojawia się w polu ze znakiem zapytania, a po poprawnej odpowiedzi widoczny jest przycisk Następne pytanie.
 
 
-## v1077
+## v1078
 Kostki w Orientacji zostały wizualnie złożone i dosunięte. W zakładce Przeciwległe wybrana odpowiedź pojawia się w polu ze znakiem zapytania, z zielonym lub czerwonym oznaczeniem oraz widocznym przyciskiem następnego pytania.
 
 
-## v1077
+## v1078
 Przebudowano wizualizację kostki w zakładce Orientacja. Wszystkie trzy ściany są teraz widoczne, stykają się krawędziami i tworzą zwartą kostkę zamiast dwóch rozdzielonych boków.
 
 
-## v1077
+## v1078
 Wizualizacja kostki w zakładce Orientacja została wykonana od nowa jako jeden spójny rysunek SVG. Górna, lewa i prawa ściana są połączone wspólnymi krawędziami, więc nie mogą się rozsunąć ani zniknąć.
 
 
-## v1077
+## v1078
 Wskazówki w Akademii Kostek są teraz uniwersalne, zgodne z zasadą danego typu zadania i otwierają się w dużym, czytelnym oknie modalnym.
 
 
-## Wskazówki v1077
+## Wskazówki v1078
 Okno wskazówek pokazuje trzy uniwersalne kroki oraz wyróżnioną zasadę „Zapamiętaj”. Treści nie odnoszą się do konkretnych oczek ani pojedynczego pytania.
 
 
-## v1077
+## v1078
 Uproszczono system podpowiedzi. Usunięto trzy osobne karty i dolny komunikat w lewej kolumnie. Podpowiedzi są teraz dostępne wyłącznie przez jeden przycisk przy aktualnym zadaniu i otwierają jedno spójne okno.
 
 
-## Okno podpowiedzi v1077
+## Okno podpowiedzi v1078
 Okno można zamknąć przyciskiem X, przyciskiem ROZUMIEM, kliknięciem w przyciemnione tło albo klawiszem Esc.
 
 
-## Trening podsumowujący v1077
+## Trening podsumowujący v1078
 Przycisk POKAŻ PODPOWIEDZI otwiera wspólne okno modalne z trzema ogólnymi krokami i zasadą ZAPAMIĘTAJ. Obok pozostaje POKAŻ ROZWIĄZANIE.
 
 
-## v1077
+## v1078
 W teście kostek dodano duże okno podpowiedzi. Kliknięta odpowiedź pojawia się w polu ze znakiem zapytania. Poprawna jest zielona i po 2 sekundach przechodzi dalej. Błędna jest czerwona, znika i pozwala ponownie odpowiedzieć na to samo pytanie.
 
 
-## v1077
+## v1078
 Naprawiono sprawdzanie poprawności odpowiedzi w teście kostek. Silnik porównuje teraz nie tylko indeks, ale również rzeczywistą wartość wybranej kostki. Poprawna kostka pozostaje w polu znaku zapytania przez 2 sekundy, po czym następuje automatyczne przejście. Błędna odpowiedź pozostawia to samo pytanie do ponownej próby.
 
 
-## v1077
+## v1078
 Naprawiono pole ze znakiem zapytania: celem jest teraz samo okienko o stałych wymiarach, dlatego wybrana odpowiedź pokazuje całą kostkę, a nie pojedyncze oczko. Trening Kostek nie używa już ręcznego przechodzenia — poprawna odpowiedź automatycznie przechodzi dalej po 2 sekundach, a błędna odblokowuje to samo pytanie do ponownej próby.
 
 
-## v1077
+## v1078
 Dopasowano matryce 2×2 i 3×3 oraz inne układy wielorzędowe do obszaru pytania. Kostki i pole ze znakiem zapytania skalują się automatycznie, dzięki czemu plansza nie wychodzi poza kartę zadania.
 
 
-## v1077
+## v1078
 Matryce kostkowe 2×2 i 3×3 otrzymują teraz osobne klasy układu. Plansza ma wydzieloną wysokość wewnątrz karty, nie nachodzi na tytuł ani odpowiedzi, a kostki skalują się do komórek zamiast zwiększać cały układ.
 
 
-## v1077
+## v1078
 Wprowadzono osobne rozmiary matryc kostkowych dla komputera i telefonu. Na komputerze układy 2×2 i 3×3 są większe i czytelniejsze, a na telefonie delikatnie zmniejszone, aby cała plansza mieściła się nad odpowiedziami.
 
 
-## v1077
+## v1078
 Na komputerze matryce 2×2 i 3×3 otrzymały stałą, większą przestrzeń w karcie pytania oraz jawne rozmiary plansz, komórek i kostek. Usunięto zależność od procentowej wysokości, która wcześniej powodowała ich nadmierne zmniejszenie.
 
 
-## v1077
+## v1078
 Uruchomiono osobny trening Matryce. Dodano cztery nowe rodziny zadań inspirowane przykładami użytkownika: przesuwanie zaciemnionych ćwiartek, przesuwanie pól w siatce 3×3, zależności liczby linii oraz wzrost układów blokowych. Trening korzysta z tego samego szablonu odpowiedzi, podpowiedzi i informacji zwrotnej co Kostki.
 
 
-## v1077
+## v1078
 Dopasowano matryce figur 3×3 do obszaru pytania. Plansza, komórki, figury i odpowiedzi skalują się niezależnie dla komputera, niskiego ekranu i telefonu, dzięki czemu cały układ mieści się w karcie.
 
 
-## v1077
+## v1078
 Zwiększono wysokość obszaru planszy dla wszystkich pytań typu Matryce. Plansza jest wyśrodkowana pionowo i nie powinna być obcinana od góry ani od dołu. Rozmiaru samych figur nie zmniejszano.
 
 
-## v1077
+## v1078
 Podłączono pierwsze gry w kategoriach Refleks, Koncentracja, Wiedza i Wyobraźnia. Wszystkie korzystają ze wspólnego 20-pytaniowego szablonu, podpowiedzi, kolorów odpowiedzi i automatycznego przejścia. Wyzwanie dnia uruchamia mieszany trening obejmujący Kostki, Matryce oraz cztery nowe kategorie.
+
+
+## v1078
+Poprawiono pierwszy trening w kategorii Refleks. Kafelek ma teraz nazwę „Szybka spostrzegawczość”, ponieważ zadania polegają na błyskawicznym rozpoznawaniu dominującego symbolu. Po każdej poprawnej odpowiedzi pokazuje się czas reakcji, kolejne pytanie pojawia się po 0,65 sekundy, a podsumowanie zawiera średni czas reakcji.

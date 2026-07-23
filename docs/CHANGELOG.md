@@ -1,5 +1,15 @@
 # Changelog
 
+## v1078
+### Zmieniono
+- nazwę pierwszego treningu Refleks z `Kliknij zielone` na `Szybka spostrzegawczość`,
+- opis kafelka dopasowano do zadań z dominującymi symbolami,
+- pytania wyraźnie wymagają jak najszybszej odpowiedzi,
+- po poprawnej odpowiedzi wyświetla się czas reakcji,
+- w Refleksie kolejne pytanie pojawia się po 0,65 sekundy,
+- podsumowanie treningu pokazuje średni czas reakcji,
+- cache PWA zmieniono na `iq-brain-lab-v1078`.
+
 ## v1077
 ### Dodano
 - aktywny trening `Kliknij zielone` w kategorii Refleks,
