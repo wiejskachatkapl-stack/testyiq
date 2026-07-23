@@ -9197,3 +9197,42 @@ html,body{
     max-height:104px!important;
   }
 }
+
+
+/* =========================================================
+   v1087 — mniejsze kafelki „Co nie pasuje?” na komputerze
+   ========================================================= */
+
+@media (min-width:769px){
+  .question-card.odd-image-question-card{
+    grid-template-rows:auto auto auto minmax(105px,.62fr)!important;
+    gap:8px!important;
+  }
+
+  .odd-image-board{
+    width:min(860px,100%)!important;
+    gap:9px!important;
+    padding:2px!important;
+    align-self:start!important;
+  }
+
+  .odd-image-option{
+    min-height:116px!important;
+    height:116px!important;
+    padding:4px!important;
+    border-radius:16px!important;
+  }
+
+  .odd-image-option img{
+    height:108px!important;
+    max-height:108px!important;
+  }
+
+  .odd-option-letter{
+    top:5px!important;
+    left:5px!important;
+    width:25px!important;
+    height:25px!important;
+    font-size:.7rem!important;
+  }
+}
