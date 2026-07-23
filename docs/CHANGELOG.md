@@ -1,5 +1,13 @@
 # Changelog
 
+## v1089
+### Etap 1 — ładniejsze grafiki zwierząt w „Co nie pasuje?”
+- podmieniono 49 grafik zwierząt na nowe ilustracje SVG,
+- grafiki są bardziej naturalne i mniej „emoji-owe”,
+- zachowano istniejący silnik zagadek z v1088,
+- nie zmieniano punktacji, układu 3×2 ani logiki odpowiedzi,
+- cache PWA zmieniono na `iq-brain-lab-v1089`.
+
 ## v1088
 ### Przebudowa zagadek „Co nie pasuje?”
 - usunięto zestawy z prawie identycznymi obrazkami,
