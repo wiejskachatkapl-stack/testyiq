@@ -9023,3 +9023,27 @@ html,body{
     line-height:1.3;
   }
 }
+
+
+/* =========================================================
+   v1085 — zweryfikowana trudność Zapałek
+   ========================================================= */
+
+.matchstick-question-card .question-level strong{
+  white-space:nowrap;
+}
+
+.match-instruction::before{
+  content:"✓ ";
+  color:#60e68e;
+}
+
+@media(max-width:768px){
+  .matchstick-question-card .question-level{
+    min-width:88px!important;
+  }
+
+  .matchstick-question-card .question-level strong{
+    font-size:.60rem!important;
+  }
+}
