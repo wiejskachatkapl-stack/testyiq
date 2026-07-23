@@ -1,5 +1,18 @@
 # Changelog
 
+## v1082
+### Przebudowano moduł Zapałki
+- usunięto wybór gotowej odpowiedzi A–E,
+- dodano prawdziwe zapałki z osobnymi klikalnymi segmentami,
+- kliknięcie aktywnej zapałki wybiera ją do przeniesienia,
+- kliknięcie wolnego miejsca odkłada zapałkę,
+- dozwolony jest dokładnie jeden ruch,
+- dodano `COFNIJ`, `RESET`, `PODPOWIEDŹ` i `SPRAWDŹ`,
+- dodano 6 interaktywnych równań,
+- poprawne rozwiązanie automatycznie przechodzi do kolejnego zadania,
+- przygotowano układ desktopowy i mobilny,
+- cache PWA zmieniono na `iq-brain-lab-v1082`.
+
 ## v1081
 ### Responsywność telefonu
 - cały ekran pytania mieści się bez przewijania,
