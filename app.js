@@ -973,6 +973,34 @@ function escapeCognitive(value){
   })[char]);
 }
 
+function renderOddOneOutQuestion(question){
+  const card=document.querySelector('.question-card');
+  card?.classList.remove('matrix-question-card','multirow-question-card','matrix-2x2-card','matrix-3x3-card');
+  card?.classList.add('odd-image-question-card');
+
+  document.getElementById('questionCategory').textContent='LOGIKA • CO NIE PASUJE?';
+  document.getElementById('questionPrompt').textContent=question.prompt;
+
+  const board=document.getElementById('diceSequence');
+  board.className='dice-sequence odd-image-board';
+  board.innerHTML=question.options.map((item,index)=>`
+    <button class="dice-answer odd-image-option" type="button" data-answer="${index}" aria-label="${item.name}">
+      <span class="odd-option-letter">${String.fromCharCode(65+index)}</span>
+      <img src="${item.image}" alt="${item.name}" draggable="false">
+    </button>`).join('');
+
+  const answers=document.getElementById('diceAnswers');
+  answers.innerHTML='';
+  answers.classList.add('odd-hidden-answers');
+
+  board.querySelectorAll('.odd-image-option').forEach(button=>{
+    button.addEventListener('click',()=>{
+      if(state.questionEngine?.locked)return;
+      state.questionEngine.answer(Number(button.dataset.answer));
+    });
+  });
+}
+
 function renderCognitiveQuestion(question){
   document.querySelector('.question-card')?.classList.remove(
     'matrix-question-card','multirow-question-card','matrix-2x2-card','matrix-3x3-card'
@@ -1014,7 +1042,10 @@ function renderDiceQuestion(question){
   }
 
   if(document.getElementById('trainingHelpPanel')&&!trainingHelpPanel.classList.contains('hidden'))resetTrainingHelp();
-  if(['cognitive','sequence-training','matchstick','odd-one-out'].includes(question.family)) return renderCognitiveQuestion(question);
+  if(question.family==='odd-one-out') return renderOddOneOutQuestion(question);
+  document.querySelector('.question-card')?.classList.remove('odd-image-question-card');
+  document.getElementById('diceAnswers')?.classList.remove('odd-hidden-answers');
+  if(['cognitive','sequence-training','matchstick'].includes(question.family)) return renderCognitiveQuestion(question);
   if(question.family==='matrix') return renderMatrixQuestion(question);
   document.getElementById('questionCategory').textContent=`${question.category} • ${layoutName(question.layout)}`;
   document.getElementById('questionPrompt').textContent=question.prompt;
@@ -1171,7 +1202,7 @@ function showQuestionFeedback({correct,correctIndex,selectedIndex,responseMs}){
   const buttons=[...document.querySelectorAll('.dice-answer')];
   const question=state.questionEngine?.current;
 
-  renderSelectedAnswerInTarget(question,selectedIndex,correct);
+  if(question?.family!=='odd-one-out') renderSelectedAnswerInTarget(question,selectedIndex,correct);
 
   buttons.forEach((button,index)=>{
     button.disabled=true;
@@ -1182,7 +1213,7 @@ function showQuestionFeedback({correct,correctIndex,selectedIndex,responseMs}){
   setTimeout(()=>document.querySelector('.question-card')?.classList.remove('flash-correct','flash-wrong'),420);
 
   const isTextFamily=['cognitive','sequence-training','matchstick','odd-one-out'].includes(question?.family);
-  const h=isTextFamily ? {solution:`${question.data?.explanation||'Poprawna odpowiedź została rozpoznana.'} Poprawna odpowiedź: ${question.answer}.`} : diceTrainingHints(question);
+  const h=isTextFamily ? {solution:`${question.data?.explanation||'Poprawna odpowiedź została rozpoznana.'}${question.family==='odd-one-out'?'':` Poprawna odpowiedź: ${question.answer}.`}`} : diceTrainingHints(question);
   if(correct){
     trainingExplanation.className='training-explanation good';
     if(question?.category==='REFLEKS'){
