@@ -83,7 +83,7 @@
         this.level = Math.min(10, this.level);
       }
 
-      this.onFeedback?.({ correct, correctIndex: this.current.answerIndex, selectedIndex: optionIndex });
+      this.onFeedback?.({ correct, correctIndex: this.current.answerIndex, selectedIndex: optionIndex, responseMs });
 
       if (!correct && this.retryIncorrect) {
         setTimeout(() => {
