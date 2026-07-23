@@ -1,5 +1,17 @@
 # Changelog
 
+## v1079
+### Dodano
+- aktywny moduł `Sekwencje`,
+- aktywny moduł `Zapałki`,
+- aktywny moduł `Co nie pasuje?`,
+- trzy osobne generatory zadań,
+- podpowiedzi i wyjaśnienia,
+- 20 pytań w każdym treningu,
+- ponowną próbę po błędzie i automatyczne przejście po poprawnej odpowiedzi,
+- nowe zadania w Wyzwaniu dnia,
+- cache PWA `iq-brain-lab-v1079`.
+
 ## v1078
 ### Zmieniono
 - nazwę pierwszego treningu Refleks z `Kliknij zielone` na `Szybka spostrzegawczość`,
