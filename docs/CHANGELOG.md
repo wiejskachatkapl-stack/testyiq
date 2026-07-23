@@ -1,5 +1,16 @@
 # Changelog
 
+## v1083
+### Naprawiono logikę Zapałek
+- program odczytuje aktualne cyfry z układu zapałek,
+- program odczytuje aktualny znak działania,
+- równanie jest obliczane po kliknięciu `SPRAWDŹ`,
+- akceptowane jest każde prawidłowe rozwiązanie wykonane jednym ruchem,
+- rozwiązanie nie musi być identyczne z jednym zapisanym wzorcem,
+- układ `3 + 2 = 5` jest prawidłowo uznawany za poprawny,
+- niepełne lub nieprawidłowe cyfry i znaki są odrzucane,
+- cache PWA zmieniono na `iq-brain-lab-v1083`.
+
 ## v1082
 ### Przebudowano moduł Zapałki
 - usunięto wybór gotowej odpowiedzi A–E,
