@@ -8420,3 +8420,7 @@ html,body{
     font-size:clamp(1.35rem,2.8vw,2.25rem);
   }
 }
+
+/* v1079 — Sekwencje, Zapałki, Co nie pasuje */
+.cognitive-stimulus{word-break:break-word}.cognitive-answer strong{max-width:100%;overflow-wrap:anywhere}
+@media(max-width:768px){.cognitive-stimulus{font-size:1rem!important;line-height:1.45!important}.cognitive-answer strong{font-size:.82rem!important}}

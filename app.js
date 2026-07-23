@@ -15,7 +15,7 @@ document.getElementById('soundBtn').onclick=e=>{state.sound=!state.sound;e.curre
 document.getElementById('testForm').onsubmit=e=>{e.preventDefault();const firstName=document.getElementById('firstName').value.trim(),lastName=document.getElementById('lastName').value.trim(),age=Number(document.getElementById('age').value),count=Number(document.querySelector('[name=count]:checked').value),mode=document.querySelector('[name=mode]:checked').value,error=document.getElementById('formError');if(firstName.length<2||lastName.length<2){error.textContent='Wpisz poprawne imię i nazwisko.';return}if(!Number.isInteger(age)||age<10||age>99){error.textContent='Wiek musi mieścić się w zakresie 10–99 lat.';return}error.textContent='';state.participant={firstName,lastName,age,count,mode};document.getElementById('summary').textContent=`${firstName}, ${age} lat • ${count} pytań • tryb ${mode==='adaptive'?'adaptacyjny':'standardowy'}`;nav('intro')};
 
 const TRAINING_CATEGORIES={
- logic:{name:'Logika',icon:'◇',description:'Rozwijaj analizę, wnioskowanie i rozpoznawanie wzorców.',games:[['dice-training','Kostki','⬡',200,'available','Ciągi, zależności i układy kostek'],['matrix-training','Matryce','▦',200,'available','Figury, obroty i brakujące elementy'],['sequences','Sekwencje','⌁',200,'soon','Liczby, litery i symbole'],['matches','Zapałki','╱',500,'soon','Przesuwaj zapałki i naprawiaj układy'],['odd','Co nie pasuje?','◈',200,'soon','Znajdź element łamiący regułę']]},
+ logic:{name:'Logika',icon:'◇',description:'Rozwijaj analizę, wnioskowanie i rozpoznawanie wzorców.',games:[['dice-training','Kostki','⬡',200,'available','Ciągi, zależności i układy kostek'],['matrix-training','Matryce','▦',200,'available','Figury, obroty i brakujące elementy'],['sequences','Sekwencje','⌁',200,'available','Liczby, litery i symbole'],['matches','Zapałki','╱',500,'available','Przesuwaj zapałki i naprawiaj układy'],['odd','Co nie pasuje?','◈',200,'available','Znajdź element łamiący regułę']]},
  memory:{name:'Pamięć',icon:'◎',description:'Ćwicz pamięć roboczą i kolejność.',games:[['memory','Memory','▦',200,'soon','Łącz identyczne pary'],['order','Zapamiętaj kolejność','↔',200,'soon','Odtwarzaj sekwencje'],['numbers','Zapamiętaj liczby','123',200,'soon','Coraz dłuższe ciągi'],['path','Zapamiętaj drogę','⌁',200,'soon','Odtwarzaj trasę']]},
  reflex:{name:'Refleks',icon:'⚡',description:'Ćwicz szybkość reakcji i błyskawiczne rozpoznawanie wzorców.',games:[['green','Szybka spostrzegawczość','●',200,'available','Znajdź dominujący symbol jak najszybciej'],['click-numbers','Kliknij liczby','123',200,'soon','Znajdź liczby po kolei'],['avoid','Unikaj czerwonych','×',200,'soon','Reaguj szybko'],['stroop','Kolor kontra słowo','A',200,'soon','Pokonaj automatyczne skojarzenia']]},
  focus:{name:'Koncentracja',icon:'◉',description:'Trenuj spostrzegawczość i skupienie.',games:[['differences','Znajdź różnice','≠',300,'available','Porównuj obrazy'],['same','Znajdź taki sam','=',200,'soon','Wskaż identyczny symbol'],['hidden','Ukryty obiekt','⌕',200,'soon','Odszukuj przedmioty'],['tracking','Śledzenie obiektu','◌',200,'soon','Nie zgub elementu']]},
@@ -87,6 +87,10 @@ function openTrainingCategory(key){const c=TRAINING_CATEGORIES[key];if(!c)return
   if(b.dataset.game==='matrix-training'&&b.dataset.status==='available'){startMatrixTraining();return}
   if(['green','differences','animals','rotate'].includes(b.dataset.game)&&b.dataset.status==='available'){
     startCognitiveTraining(b.dataset.game,b.querySelector('strong').textContent);
+    return;
+  }
+  if(['sequences','matches','odd'].includes(b.dataset.game)&&b.dataset.status==='available'){
+    startLogicTraining(b.dataset.game,b.querySelector('strong').textContent);
     return;
   }
   modal(b.dataset.status==='available'?b.querySelector('strong').textContent:'Wkrótce dostępne',b.dataset.status==='available'?'Moduł jest dostępny.':'Ten trening zostanie dodany w kolejnych wersjach.','✦')
@@ -1006,7 +1010,7 @@ function renderDiceQuestion(question){
   }
 
   if(document.getElementById('trainingHelpPanel')&&!trainingHelpPanel.classList.contains('hidden'))resetTrainingHelp();
-  if(question.family==='cognitive') return renderCognitiveQuestion(question);
+  if(['cognitive','sequence-training','matchstick','odd-one-out'].includes(question.family)) return renderCognitiveQuestion(question);
   if(question.family==='matrix') return renderMatrixQuestion(question);
   document.getElementById('questionCategory').textContent=`${question.category} • ${layoutName(question.layout)}`;
   document.getElementById('questionPrompt').textContent=question.prompt;
@@ -1143,7 +1147,7 @@ function renderSelectedAnswerInTarget(question, selectedIndex, correct){
   target.classList.add(correct?'answer-target-good':'answer-target-bad');
   target.innerHTML=question.family==='matrix'
     ? MatrixGenerator.shapeSvg(selected,'matrix-main-shape')
-    : question.family==='cognitive'
+    : ['cognitive','sequence-training','matchstick','odd-one-out'].includes(question.family)
       ? `<strong>${escapeCognitive(selected)}</strong>`
       : DiceGenerator.diceSvg(selected,'sequence-die');
 }
@@ -1154,7 +1158,7 @@ function resetSelectedAnswerTarget(question){
   target.classList.remove('answer-target-good','answer-target-bad');
   target.innerHTML=question?.family==='matrix'
     ? '?'
-    : question?.family==='cognitive'
+    : ['cognitive','sequence-training','matchstick','odd-one-out'].includes(question?.family)
       ? '?'
       : '<div class="missing-die">?</div>';
 }
@@ -1173,9 +1177,8 @@ function showQuestionFeedback({correct,correctIndex,selectedIndex,responseMs}){
   document.querySelector('.question-card')?.classList.add(correct?'flash-correct':'flash-wrong');
   setTimeout(()=>document.querySelector('.question-card')?.classList.remove('flash-correct','flash-wrong'),420);
 
-  const h=question?.family==='cognitive'
-    ? {solution:`Poprawna odpowiedź to: ${question.answer}.`}
-    : diceTrainingHints(question);
+  const isTextFamily=['cognitive','sequence-training','matchstick','odd-one-out'].includes(question?.family);
+  const h=isTextFamily ? {solution:`${question.data?.explanation||'Poprawna odpowiedź została rozpoznana.'} Poprawna odpowiedź: ${question.answer}.`} : diceTrainingHints(question);
   if(correct){
     trainingExplanation.className='training-explanation good';
     if(question?.category==='REFLEKS'){
@@ -1256,6 +1259,23 @@ function diceTrainingHints(question){
 
 function trainingHintModalData(question){
   const layout=question?.layout || question?.meta?.layout || 'sequence';
+
+  if(['sequence-training','matchstick','odd-one-out'].includes(question?.family)){
+    const sets={
+      'sequence-training':[
+        {title:'Porównaj kolejne elementy',text:'Sprawdź, co zmienia się z kroku na krok.'},
+        {title:'Szukaj jednej reguły',text:'Reguła musi pasować do całego ciągu.'},
+        {title:'Sprawdź cykl',text:'Zwróć uwagę na naprzemienność, dodawanie, mnożenie i powtarzanie.'}],
+      matchstick:[
+        {title:'Tylko jeden ruch',text:'Możesz przenieść dokładnie jedną zapałkę.'},
+        {title:'Sprawdź cały układ',text:'Zmiana musi poprawić całe równanie albo figurę.'},
+        {title:'Szukaj najmniejszej zmiany',text:'Najczęściej zmienia się znak lub jedna cyfra.'}],
+      'odd-one-out':[
+        {title:'Znajdź wspólną cechę',text:'Najpierw ustal, co łączy większość elementów.'},
+        {title:'Porównaj kategorię',text:'Sprawdź kształt, znaczenie, liczbę lub właściwość.'},
+        {title:'Wskaż wyjątek',text:'Poprawna odpowiedź jako jedyna łamie wspólną zasadę.'}]};
+    return {title:'Jak podejść do tego zadania?',hints:sets[question.family],remember:question.data?.hint||'Najpierw znajdź regułę.'};
+  }
 
   if(question?.family==='cognitive'){
     const category=question.category;
@@ -1461,6 +1481,23 @@ function startMatrixTraining(){
 
 
 let activeTrainingCategory='logic';
+
+
+function logicGeneratorFor(gameId){
+  return {sequences:SequenceGenerator,matches:MatchstickGenerator,odd:OddOneOutGenerator}[gameId]||null;
+}
+function startLogicTraining(gameId,title){
+  const generator=logicGeneratorFor(gameId); if(!generator)return;
+  activeTrainingCategory='logic'; diceTrainingMode=true; trainingHelpPanel.classList.remove('hidden'); resetTrainingHelp();
+  state.participant=state.participant||{firstName:'Trening',lastName:title,age:18,count:20,mode:'adaptive'};
+  nav('question'); state.testStartedAt=Date.now(); clearInterval(state.timerId);
+  document.getElementById('questionTimer').textContent='00:00';
+  state.timerId=setInterval(()=>{document.getElementById('questionTimer').textContent=formatTime(Date.now()-state.testStartedAt);},1000);
+  state.questionEngine=new QuestionEngine({generator,manualAdvance:false,retryIncorrect:true,autoAdvanceDelay:2000,
+    onRender:q=>{renderDiceQuestion(q);resetTrainingHelp();},onProgress:updateQuestionProgress,onFeedback:showQuestionFeedback,
+    onFinish:summary=>{clearInterval(state.timerId);diceTrainingMode=false;trainingHelpPanel.classList.add('hidden');modal(`${title} — ukończono`,`Poprawne odpowiedzi: ${summary.correct}/${summary.total} (${summary.percent}%).`,'◇');nav('training-category');renderTrainingCategory('logic');}});
+  state.questionEngine.start(20,'adaptive');
+}
 
 function startCognitiveTraining(gameId,title){
   const generator=CognitiveGenerators.forGame(gameId);
