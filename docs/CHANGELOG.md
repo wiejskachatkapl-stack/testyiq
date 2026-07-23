@@ -1,5 +1,18 @@
 # Changelog
 
+## v1084
+### Rozbudowano Zapałki
+- zwiększono liczbę interaktywnych zagadek do 24,
+- dodano poziomy z przesunięciem dokładnie dwóch zapałek,
+- każda zagadka ma zweryfikowane rozwiązanie,
+- nagłówek informuje, czy należy przesunąć jedną czy dwie zapałki,
+- plansza pokazuje liczbę wykonanych ruchów,
+- po pierwszym z dwóch ruchów pojawia się informacja o pozostałym ruchu,
+- `COFNIJ` cofa ostatni ruch,
+- `RESET` przywraca cały układ,
+- program nadal akceptuje każde poprawne równanie osiągnięte wymaganą liczbą ruchów,
+- cache PWA zmieniono na `iq-brain-lab-v1084`.
+
 ## v1083
 ### Naprawiono logikę Zapałek
 - program odczytuje aktualne cyfry z układu zapałek,
