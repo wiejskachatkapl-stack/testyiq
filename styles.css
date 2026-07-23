@@ -9263,3 +9263,36 @@ html,body{
     max-height:106px!important;
   }
 }
+
+
+/* =========================================================
+   v1090 — próbny naturalny styl fotografii zwierząt
+   ========================================================= */
+
+.odd-image-option.odd-photo-option{
+  background:#07131d!important;
+  padding:3px!important;
+  overflow:hidden!important;
+}
+
+.odd-image-option img.odd-natural-photo{
+  width:100%!important;
+  height:100%!important;
+  max-height:none!important;
+  object-fit:cover!important;
+  object-position:center!important;
+  border-radius:12px!important;
+}
+
+.odd-photo-option .odd-option-letter{
+  background:rgba(79,54,160,.92)!important;
+  backdrop-filter:blur(3px);
+}
+
+@media(max-width:768px){
+  .odd-image-option img.odd-natural-photo{
+    height:100%!important;
+    max-height:none!important;
+    border-radius:10px!important;
+  }
+}

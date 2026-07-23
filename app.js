@@ -985,9 +985,9 @@ function renderOddOneOutQuestion(question){
   const board=document.getElementById('diceSequence');
   board.className='dice-sequence odd-image-board';
   board.innerHTML=question.options.map((item,index)=>`
-    <button class="dice-answer odd-image-option" type="button" data-answer="${index}" aria-label="${item.name}">
+    <button class="dice-answer odd-image-option ${item.photo?'odd-photo-option':''}" type="button" data-answer="${index}" aria-label="${item.name}">
       <span class="odd-option-letter">${String.fromCharCode(65+index)}</span>
-      <img src="${item.image}" alt="${item.name}" draggable="false">
+      <img class="${item.photo?'odd-natural-photo':''}" src="${item.image}" alt="${item.name}" draggable="false">
     </button>`).join('');
 
   const answers=document.getElementById('diceAnswers');

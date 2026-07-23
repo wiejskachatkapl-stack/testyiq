@@ -1,4 +1,4 @@
-const CACHE='iq-brain-lab-v1089';const ASSETS=['./','./index.html','./styles.css','./app.js','./manifest.json','./icons/icon-192.png','./icons/icon-512.png','./icons/icon-maskable-512.png','./js/generators/diceGenerator.js','./js/generators/matrixGenerator.js','./js/generators/mixedGenerator.js','./js/engine/questionEngine.js','./js/generators/oddOneOutGenerator.js','./assets/data/odd_one_out_database.json',
+const CACHE='iq-brain-lab-v1090';const ASSETS=['./','./index.html','./styles.css','./app.js','./manifest.json','./icons/icon-192.png','./icons/icon-512.png','./icons/icon-maskable-512.png','./js/generators/diceGenerator.js','./js/generators/matrixGenerator.js','./js/generators/mixedGenerator.js','./js/engine/questionEngine.js','./js/generators/oddOneOutGenerator.js','./assets/data/odd_one_out_database.json',
   'assets/audio/rain.ogg'
 ,
   'assets/audio/ocean.ogg'
