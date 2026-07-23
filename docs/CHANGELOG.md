@@ -1,5 +1,20 @@
 # Changelog
 
+## v1077
+### Dodano
+- aktywny trening `Kliknij zielone` w kategorii Refleks,
+- aktywny trening `Znajdź różnice` w kategorii Koncentracja,
+- aktywny trening `Pojedynki zwierząt` w kategorii Wiedza,
+- aktywny trening `Obrót figur` w kategorii Wyobraźnia,
+- wspólny szablon 20 pytań dla nowych treningów,
+- podpowiedzi dopasowane do każdej kategorii,
+- odpowiedź wyświetlaną w polu ze znakiem zapytania,
+- zieloną i czerwoną informację zwrotną,
+- automatyczne przejście po 2 sekundach,
+- aktywne `Wyzwanie dnia`,
+- mieszany generator: Kostki, Matryce, Refleks, Koncentracja, Wiedza i Wyobraźnia,
+- cache PWA zmieniono na `iq-brain-lab-v1077`.
+
 ## v1076
 ### Zmieniono
 - zwiększono wysokość obszaru planszy dla matryc na komputerze,
