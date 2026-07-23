@@ -108,12 +108,8 @@
   };
 
   const dailyFamilies=[
-    window.DiceGenerator,
-    window.MatrixGenerator,
-    ReflexGenerator,
-    FocusGenerator,
-    KnowledgeGenerator,
-    ImaginationGenerator
+    window.DiceGenerator,window.MatrixGenerator,window.SequenceGenerator,window.MatchstickGenerator,window.OddOneOutGenerator,
+    ReflexGenerator,FocusGenerator,KnowledgeGenerator,ImaginationGenerator
   ];
 
   window.CognitiveGenerators={
