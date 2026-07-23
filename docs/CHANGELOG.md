@@ -1,5 +1,14 @@
 # Changelog
 
+## v1080
+### Naprawiono
+- odpowiedzi w Sekwencjach nie nachodzą na przykład na telefonie,
+- zwiększono wysokość obszaru przykładu,
+- dodano większy odstęp przed sekcją odpowiedzi,
+- poprawkę zastosowano także do Zapałek i Co nie pasuje,
+- dodano dodatkowe ustawienia dla bardzo wąskich ekranów,
+- cache PWA zmieniono na `iq-brain-lab-v1080`.
+
 ## v1079
 ### Dodano
 - aktywny moduł `Sekwencje`,
