@@ -1508,14 +1508,7 @@ const MATCH_SEGMENTS={
   '=':['u','w']
 };
 
-const MATCH_PUZZLES=[
-  {initial:[3,'+',1,'=',3],target:[2,'+',1,'=',3],hint:'Jedna z cyfr po lewej może zmienić się po przeniesieniu jednej zapałki.'},
-  {initial:[2,'+',2,'=',5],target:[2,'+',3,'=',5],hint:'Sprawdź drugą cyfrę przed znakiem równości.'},
-  {initial:[3,'+',3,'=',5],target:[2,'+',3,'=',5],hint:'Pierwsza cyfra wymaga zamiany położenia jednej zapałki.'},
-  {initial:[9,'-',4,'=',7],target:[3,'+',4,'=',7],hint:'Jedna zapałka zmieni jednocześnie cyfrę i znak działania.'},
-  {initial:[7,'-',2,'=',3],target:[1,'+',2,'=',3],hint:'Sprawdź pierwszą cyfrę oraz znak działania.'},
-  {initial:[1,'+',6,'=',5],target:[1,'+',5,'=',6],hint:'Zapałka może zostać przeniesiona między wynikiem i składnikiem.'}
-];
+const MATCH_PUZZLES=[{initial:[0,'-',5,'=',6],target:[0,'+',5,'=',5],moves:1,hint:'Wykonaj jeden ruch. Pamiętaj, że zabrana zapałka musi zostać odłożona w innym miejscu.'},{initial:[0,'-',6,'=',5],target:[0,'+',5,'=',5],moves:1,hint:'Wykonaj jeden ruch. Pamiętaj, że zabrana zapałka musi zostać odłożona w innym miejscu.'},{initial:[0,'-',8,'=',9],target:[0,'+',9,'=',9],moves:1,hint:'Wykonaj jeden ruch. Pamiętaj, że zabrana zapałka musi zostać odłożona w innym miejscu.'},{initial:[0,'-',9,'=',8],target:[0,'+',9,'=',9],moves:1,hint:'Wykonaj jeden ruch. Pamiętaj, że zabrana zapałka musi zostać odłożona w innym miejscu.'},{initial:[5,'-',9,'=',8],target:[6,'+',3,'=',9],moves:2,hint:'Wykonaj dwa osobne ruchy. Po każdym ruchu jedna zapałka zmienia miejsce.'},{initial:[1,'-',6,'=',6],target:[1,'+',5,'=',6],moves:1,hint:'Wykonaj jeden ruch. Pamiętaj, że zabrana zapałka musi zostać odłożona w innym miejscu.'},{initial:[6,'-',7,'=',5],target:[5,'+',1,'=',6],moves:2,hint:'Wykonaj dwa osobne ruchy. Po każdym ruchu jedna zapałka zmienia miejsce.'},{initial:[2,'-',6,'=',7],target:[2,'+',5,'=',7],moves:1,hint:'Wykonaj jeden ruch. Pamiętaj, że zabrana zapałka musi zostać odłożona w innym miejscu.'},{initial:[6,'-',9,'=',9],target:[5,'+',3,'=',8],moves:2,hint:'Wykonaj dwa osobne ruchy. Po każdym ruchu jedna zapałka zmienia miejsce.'},{initial:[3,'-',6,'=',8],target:[3,'+',5,'=',8],moves:1,hint:'Wykonaj jeden ruch. Pamiętaj, że zabrana zapałka musi zostać odłożona w innym miejscu.'},{initial:[6,'-',9,'=',6],target:[5,'+',3,'=',8],moves:2,hint:'Wykonaj dwa osobne ruchy. Po każdym ruchu jedna zapałka zmienia miejsce.'},{initial:[5,'+',0,'=',6],target:[6,'-',0,'=',6],moves:1,hint:'Wykonaj jeden ruch. Pamiętaj, że zabrana zapałka musi zostać odłożona w innym miejscu.'},{initial:[5,'+',5,'=',8],target:[6,'-',6,'=',0],moves:2,hint:'Wykonaj dwa osobne ruchy. Po każdym ruchu jedna zapałka zmienia miejsce.'},{initial:[5,'+',1,'=',5],target:[6,'-',1,'=',5],moves:1,hint:'Wykonaj jeden ruch. Pamiętaj, że zabrana zapałka musi zostać odłożona w innym miejscu.'},{initial:[5,'+',8,'=',5],target:[6,'-',0,'=',6],moves:2,hint:'Wykonaj dwa osobne ruchy. Po każdym ruchu jedna zapałka zmienia miejsce.'},{initial:[5,'+',2,'=',4],target:[6,'-',2,'=',4],moves:1,hint:'Wykonaj jeden ruch. Pamiętaj, że zabrana zapałka musi zostać odłożona w innym miejscu.'},{initial:[9,'+',8,'=',9],target:[8,'-',0,'=',8],moves:2,hint:'Wykonaj dwa osobne ruchy. Po każdym ruchu jedna zapałka zmienia miejsce.'},{initial:[5,'+',3,'=',3],target:[6,'-',3,'=',3],moves:1,hint:'Wykonaj jeden ruch. Pamiętaj, że zabrana zapałka musi zostać odłożona w innym miejscu.'},{initial:[5,'+',5,'=',9],target:[9,'-',6,'=',3],moves:2,hint:'Wykonaj dwa osobne ruchy. Po każdym ruchu jedna zapałka zmienia miejsce.'},{initial:[5,'+',4,'=',2],target:[6,'-',4,'=',2],moves:1,hint:'Wykonaj jeden ruch. Pamiętaj, że zabrana zapałka musi zostać odłożona w innym miejscu.'},{initial:[5,'+',7,'=',9],target:[9,'-',1,'=',8],moves:2,hint:'Wykonaj dwa osobne ruchy. Po każdym ruchu jedna zapałka zmienia miejsce.'},{initial:[5,'+',9,'=',5],target:[9,'-',3,'=',6],moves:2,hint:'Wykonaj dwa osobne ruchy. Po każdym ruchu jedna zapałka zmienia miejsce.'},{initial:[5,'+',9,'=',7],target:[9,'-',8,'=',1],moves:2,hint:'Wykonaj dwa osobne ruchy. Po każdym ruchu jedna zapałka zmienia miejsce.'},{initial:[5,'-',8,'=',8],target:[6,'+',0,'=',6],moves:2,hint:'Wykonaj dwa osobne ruchy. Po każdym ruchu jedna zapałka zmienia miejsce.'}];
 
 let matchPuzzleIndex=0;
 let matchSelected=null;
@@ -1562,6 +1555,18 @@ function matchEquationText(eq){
   return `${eq[0]} ${eq[1]} ${eq[2]} ${eq[3]} ${eq[4]}`;
 }
 
+
+function currentMatchMoveLimit(){
+  return MATCH_PUZZLES[matchPuzzleIndex]?.moves||1;
+}
+
+function setMatchStatus(text,type=''){
+  const status=document.getElementById('matchStatus');
+  if(!status)return;
+  status.textContent=text;
+  status.className=`match-status ${type}`.trim();
+}
+
 function renderInteractiveMatchsticks(){
   const puzzle=MATCH_PUZZLES[matchPuzzleIndex];
   document.querySelector('.question-card')?.classList.add('matchstick-question-card');
@@ -1569,16 +1574,18 @@ function renderInteractiveMatchsticks(){
   document.getElementById('questionCounter').textContent=`${matchPuzzleIndex+1} / ${MATCH_PUZZLES.length}`;
   document.getElementById('questionLevel').textContent=String(Math.min(10,matchPuzzleIndex+1));
   document.getElementById('questionProgress').style.width=`${((matchPuzzleIndex+1)/MATCH_PUZZLES.length)*100}%`;
-  document.getElementById('questionPrompt').textContent='Przenieś jedną zapałkę, aby równanie było poprawne.';
+    const moveLimit=currentMatchMoveLimit();
+  document.getElementById('questionPrompt').textContent=
+    `Przenieś ${moveLimit===1?'jedną zapałkę':'dokładnie dwie zapałki'}, aby równanie było poprawne.`;
 
   const board=document.getElementById('diceSequence');
   board.className='dice-sequence interactive-match-board';
   board.innerHTML=`
-    <div class="match-instruction">Kliknij zapałkę, którą chcesz zabrać, a następnie kliknij wolne miejsce.</div>
+    <div class="match-instruction">Kliknij zapałkę, którą chcesz zabrać, a następnie kliknij wolne miejsce. Ruchy: ${matchMoveHistory.length}/${moveLimit}</div>
     <div class="match-equation">
       ${puzzle.initial.map((symbol,position)=>renderMatchSymbol(symbol,position)).join('')}
     </div>
-    <div id="matchStatus" class="match-status">Wykonaj dokładnie jeden ruch.</div>`;
+    <div id="matchStatus" class="match-status">Wykonaj dokładnie ${moveLimit} ${moveLimit===1?'ruch':'ruchy'}.</div>`;
 
   const title=document.querySelector('.answer-title');
   if(title)title.classList.add('hidden');
@@ -1602,7 +1609,7 @@ function renderInteractiveMatchsticks(){
     'Jak rozwiązać zadanie z zapałkami?',
     [
       {title:'Najpierw oceń równanie',text:'Sprawdź, która cyfra lub znak powoduje, że wynik jest błędny.'},
-      {title:'Jedna zapałka ma dwa skutki',text:'Zabierasz ją z jednego miejsca i odkładasz w innym.'},
+      {title:'Każdy ruch ma dwa skutki',text:'Zabierasz zapałkę z jednego miejsca i odkładasz ją w innym.'},
       {title:'Sprawdź obie zmiany',text:'Po ruchu wszystkie cyfry i znaki muszą być prawidłowe.'}
     ],
     'ZAPAŁKI',
@@ -1612,36 +1619,35 @@ function renderInteractiveMatchsticks(){
 }
 
 function handleMatchSlot(key){
-  const status=document.getElementById('matchStatus');
-  if(matchMoveHistory.length>=1){
-    status.textContent='Dozwolony jest tylko jeden ruch. Użyj COFNIJ albo RESET.';
-    status.className='match-status bad';
+  const moveLimit=currentMatchMoveLimit();
+
+  if(matchMoveHistory.length>=moveLimit){
+    setMatchStatus(`Wykonano już ${moveLimit} ${moveLimit===1?'ruch':'ruchy'}. Użyj COFNIJ albo RESET.`,'bad');
     return;
   }
 
   if(matchSelected===null){
     if(!matchActiveSet.has(key)){
-      status.textContent='Najpierw wybierz zapałkę, którą chcesz przenieść.';
-      status.className='match-status bad';
+      setMatchStatus('Najpierw wybierz zapałkę, którą chcesz przenieść.','bad');
       return;
     }
     matchSelected=key;
-    status.textContent='Teraz wybierz wolne miejsce dla tej zapałki.';
-    status.className='match-status selected';
     renderInteractiveMatchsticks();
+    setMatchStatus('Teraz wybierz wolne miejsce dla tej zapałki.','selected');
     return;
   }
 
   if(matchSelected===key){
     matchSelected=null;
-    status.textContent='Wybór anulowany.';
     renderInteractiveMatchsticks();
+    setMatchStatus('Wybór anulowany.');
     return;
   }
 
   if(matchActiveSet.has(key)){
     matchSelected=key;
     renderInteractiveMatchsticks();
+    setMatchStatus('Wybrano inną zapałkę. Teraz wskaż wolne miejsce.','selected');
     return;
   }
 
@@ -1651,9 +1657,13 @@ function handleMatchSlot(key){
   matchMoveHistory.push({from,to:key});
   matchSelected=null;
   renderInteractiveMatchsticks();
-  const updated=document.getElementById('matchStatus');
-  updated.textContent='Ruch wykonany. Kliknij SPRAWDŹ.';
-  updated.className='match-status ready';
+
+  const left=moveLimit-matchMoveHistory.length;
+  if(left>0){
+    setMatchStatus(`Pierwszy ruch wykonany. Pozostało ruchów: ${left}.`,'ready');
+  }else{
+    setMatchStatus('Wszystkie ruchy wykonane. Kliknij SPRAWDŹ.','ready');
+  }
 }
 
 function undoMatchMove(){
@@ -1738,8 +1748,9 @@ function evaluateCurrentMatchEquation(){
 
 function checkMatchPuzzle(){
   const status=document.getElementById('matchStatus');
-  if(matchMoveHistory.length!==1){
-    status.textContent='Najpierw przenieś dokładnie jedną zapałkę.';
+  const moveLimit=currentMatchMoveLimit();
+  if(matchMoveHistory.length!==moveLimit){
+    status.textContent=`Najpierw wykonaj dokładnie ${moveLimit} ${moveLimit===1?'ruch':'ruchy'}.`;
     status.className='match-status bad';
     return;
   }
@@ -1761,7 +1772,7 @@ function checkMatchPuzzle(){
       if(matchPuzzleIndex>=MATCH_PUZZLES.length){
         clearInterval(matchTimerId);
         matchInteractiveMode=false;
-        modal('Trening Zapałek ukończony','Ukończyłeś wszystkie interaktywne zadania z przenoszeniem zapałek.','╱');
+        modal('Trening Zapałek ukończony',`Ukończyłeś ${MATCH_PUZZLES.length} interaktywnych zadań — z przesuwaniem jednej i dwóch zapałek.`,'╱');
         nav('training-category');
         renderTrainingCategory('logic');
         return;

@@ -9004,3 +9004,22 @@ html,body{
     font-size:.45rem;
   }
 }
+
+
+/* =========================================================
+   v1084 — więcej zagadek i poziomy z dwoma ruchami
+   ========================================================= */
+
+.match-instruction{
+  font-weight:650;
+}
+
+.match-status.ready{
+  border:1px solid rgba(255,211,91,.22);
+}
+
+@media(max-width:768px){
+  .match-instruction{
+    line-height:1.3;
+  }
+}
