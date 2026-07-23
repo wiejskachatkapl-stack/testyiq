@@ -89,7 +89,11 @@ function openTrainingCategory(key){const c=TRAINING_CATEGORIES[key];if(!c)return
     startCognitiveTraining(b.dataset.game,b.querySelector('strong').textContent);
     return;
   }
-  if(['sequences','matches','odd'].includes(b.dataset.game)&&b.dataset.status==='available'){
+  if(b.dataset.game==='matches'&&b.dataset.status==='available'){
+    startInteractiveMatchsticks();
+    return;
+  }
+  if(['sequences','odd'].includes(b.dataset.game)&&b.dataset.status==='available'){
     startLogicTraining(b.dataset.game,b.querySelector('strong').textContent);
     return;
   }
@@ -1483,6 +1487,254 @@ function startMatrixTraining(){
 let activeTrainingCategory='logic';
 
 
+
+/* =========================================================
+   v1082 — interaktywny trening Zapałki
+   ========================================================= */
+
+const MATCH_SEGMENTS={
+  0:['a','b','c','d','e','f'],
+  1:['b','c'],
+  2:['a','b','d','e','g'],
+  3:['a','b','c','d','g'],
+  4:['b','c','f','g'],
+  5:['a','c','d','f','g'],
+  6:['a','c','d','e','f','g'],
+  7:['a','b','c'],
+  8:['a','b','c','d','e','f','g'],
+  9:['a','b','c','d','f','g'],
+  '+':['h','v'],
+  '-':['h'],
+  '=':['u','w']
+};
+
+const MATCH_PUZZLES=[
+  {initial:[3,'+',1,'=',3],target:[2,'+',1,'=',3],hint:'Jedna z cyfr po lewej może zmienić się po przeniesieniu jednej zapałki.'},
+  {initial:[2,'+',2,'=',5],target:[2,'+',3,'=',5],hint:'Sprawdź drugą cyfrę przed znakiem równości.'},
+  {initial:[3,'+',3,'=',5],target:[2,'+',3,'=',5],hint:'Pierwsza cyfra wymaga zamiany położenia jednej zapałki.'},
+  {initial:[9,'-',4,'=',7],target:[3,'+',4,'=',7],hint:'Jedna zapałka zmieni jednocześnie cyfrę i znak działania.'},
+  {initial:[7,'-',2,'=',3],target:[1,'+',2,'=',3],hint:'Sprawdź pierwszą cyfrę oraz znak działania.'},
+  {initial:[1,'+',6,'=',5],target:[1,'+',5,'=',6],hint:'Zapałka może zostać przeniesiona między wynikiem i składnikiem.'}
+];
+
+let matchPuzzleIndex=0;
+let matchSelected=null;
+let matchInitialSet=new Set();
+let matchActiveSet=new Set();
+let matchTargetSet=new Set();
+let matchMoveHistory=[];
+let matchTimerId=null;
+let matchStartedAt=0;
+let matchInteractiveMode=false;
+
+function matchSymbolSlots(symbol,position){
+  const digitSlots=['a','b','c','d','e','f','g'];
+  const operatorSlots=symbol==='='?['u','w']:['h','v'];
+  const slots=typeof symbol==='number'?digitSlots:operatorSlots;
+  return slots.map(segment=>`${position}:${segment}`);
+}
+
+function matchSetForEquation(equation){
+  const set=new Set();
+  equation.forEach((symbol,position)=>{
+    (MATCH_SEGMENTS[symbol]||[]).forEach(segment=>set.add(`${position}:${segment}`));
+  });
+  return set;
+}
+
+function matchSegmentClass(segment){
+  if(['a','d','g','h','u','w'].includes(segment))return 'horizontal';
+  return 'vertical';
+}
+
+function renderMatchSymbol(symbol,position){
+  const slots=matchSymbolSlots(symbol,position);
+  return `<div class="match-symbol ${typeof symbol==='number'?'match-digit':'match-operator'}" data-position="${position}">
+    ${slots.map(key=>{
+      const segment=key.split(':')[1];
+      const active=matchActiveSet.has(key);
+      return `<button type="button" class="match-slot ${matchSegmentClass(segment)} ${active?'active':''} ${matchSelected===key?'selected':''}" data-match-key="${key}" aria-label="Zapałka"></button>`;
+    }).join('')}
+  </div>`;
+}
+
+function matchEquationText(eq){
+  return `${eq[0]} ${eq[1]} ${eq[2]} ${eq[3]} ${eq[4]}`;
+}
+
+function renderInteractiveMatchsticks(){
+  const puzzle=MATCH_PUZZLES[matchPuzzleIndex];
+  document.querySelector('.question-card')?.classList.add('matchstick-question-card');
+  document.getElementById('questionCategory').textContent='LOGIKA • ZAPAŁKI';
+  document.getElementById('questionCounter').textContent=`${matchPuzzleIndex+1} / ${MATCH_PUZZLES.length}`;
+  document.getElementById('questionLevel').textContent=String(Math.min(10,matchPuzzleIndex+1));
+  document.getElementById('questionProgress').style.width=`${((matchPuzzleIndex+1)/MATCH_PUZZLES.length)*100}%`;
+  document.getElementById('questionPrompt').textContent='Przenieś jedną zapałkę, aby równanie było poprawne.';
+
+  const board=document.getElementById('diceSequence');
+  board.className='dice-sequence interactive-match-board';
+  board.innerHTML=`
+    <div class="match-instruction">Kliknij zapałkę, którą chcesz zabrać, a następnie kliknij wolne miejsce.</div>
+    <div class="match-equation">
+      ${puzzle.initial.map((symbol,position)=>renderMatchSymbol(symbol,position)).join('')}
+    </div>
+    <div id="matchStatus" class="match-status">Wykonaj dokładnie jeden ruch.</div>`;
+
+  const title=document.querySelector('.answer-title');
+  if(title)title.classList.add('hidden');
+
+  const answers=document.getElementById('diceAnswers');
+  answers.className='dice-answers match-controls';
+  answers.innerHTML=`
+    <button type="button" id="matchUndoBtn">↶ COFNIJ</button>
+    <button type="button" id="matchResetBtn">↺ RESET</button>
+    <button type="button" id="matchHintBtn">💡 PODPOWIEDŹ</button>
+    <button type="button" id="matchCheckBtn" class="match-check">✓ SPRAWDŹ</button>`;
+
+  document.getElementById('trainingHelpPanel')?.classList.add('hidden');
+
+  board.querySelectorAll('[data-match-key]').forEach(slot=>slot.addEventListener('click',()=>{
+    handleMatchSlot(slot.dataset.matchKey);
+  }));
+  document.getElementById('matchUndoBtn').onclick=undoMatchMove;
+  document.getElementById('matchResetBtn').onclick=resetMatchPuzzle;
+  document.getElementById('matchHintBtn').onclick=()=>openAcademyHintModal(
+    'Jak rozwiązać zadanie z zapałkami?',
+    [
+      {title:'Najpierw oceń równanie',text:'Sprawdź, która cyfra lub znak powoduje, że wynik jest błędny.'},
+      {title:'Jedna zapałka ma dwa skutki',text:'Zabierasz ją z jednego miejsca i odkładasz w innym.'},
+      {title:'Sprawdź obie zmiany',text:'Po ruchu wszystkie cyfry i znaki muszą być prawidłowe.'}
+    ],
+    'ZAPAŁKI',
+    puzzle.hint
+  );
+  document.getElementById('matchCheckBtn').onclick=checkMatchPuzzle;
+}
+
+function handleMatchSlot(key){
+  const status=document.getElementById('matchStatus');
+  if(matchMoveHistory.length>=1){
+    status.textContent='Dozwolony jest tylko jeden ruch. Użyj COFNIJ albo RESET.';
+    status.className='match-status bad';
+    return;
+  }
+
+  if(matchSelected===null){
+    if(!matchActiveSet.has(key)){
+      status.textContent='Najpierw wybierz zapałkę, którą chcesz przenieść.';
+      status.className='match-status bad';
+      return;
+    }
+    matchSelected=key;
+    status.textContent='Teraz wybierz wolne miejsce dla tej zapałki.';
+    status.className='match-status selected';
+    renderInteractiveMatchsticks();
+    return;
+  }
+
+  if(matchSelected===key){
+    matchSelected=null;
+    status.textContent='Wybór anulowany.';
+    renderInteractiveMatchsticks();
+    return;
+  }
+
+  if(matchActiveSet.has(key)){
+    matchSelected=key;
+    renderInteractiveMatchsticks();
+    return;
+  }
+
+  const from=matchSelected;
+  matchActiveSet.delete(from);
+  matchActiveSet.add(key);
+  matchMoveHistory.push({from,to:key});
+  matchSelected=null;
+  renderInteractiveMatchsticks();
+  const updated=document.getElementById('matchStatus');
+  updated.textContent='Ruch wykonany. Kliknij SPRAWDŹ.';
+  updated.className='match-status ready';
+}
+
+function undoMatchMove(){
+  const move=matchMoveHistory.pop();
+  if(!move)return;
+  matchActiveSet.delete(move.to);
+  matchActiveSet.add(move.from);
+  matchSelected=null;
+  renderInteractiveMatchsticks();
+}
+
+function resetMatchPuzzle(){
+  matchActiveSet=new Set(matchInitialSet);
+  matchMoveHistory=[];
+  matchSelected=null;
+  renderInteractiveMatchsticks();
+}
+
+function setsEqual(a,b){
+  if(a.size!==b.size)return false;
+  for(const value of a)if(!b.has(value))return false;
+  return true;
+}
+
+function checkMatchPuzzle(){
+  const status=document.getElementById('matchStatus');
+  if(matchMoveHistory.length!==1){
+    status.textContent='Najpierw przenieś dokładnie jedną zapałkę.';
+    status.className='match-status bad';
+    return;
+  }
+
+  if(setsEqual(matchActiveSet,matchTargetSet)){
+    status.textContent='DOBRZE! Równanie jest prawidłowe.';
+    status.className='match-status good';
+    document.querySelector('.interactive-match-board')?.classList.add('match-correct');
+    setTimeout(()=>{
+      matchPuzzleIndex++;
+      if(matchPuzzleIndex>=MATCH_PUZZLES.length){
+        clearInterval(matchTimerId);
+        matchInteractiveMode=false;
+        modal('Trening Zapałek ukończony','Ukończyłeś wszystkie interaktywne zadania z przenoszeniem zapałek.','╱');
+        nav('training-category');
+        renderTrainingCategory('logic');
+        return;
+      }
+      loadMatchPuzzle();
+    },1800);
+  }else{
+    status.textContent='To jeszcze nie jest poprawne równanie. Cofnij ruch i spróbuj ponownie.';
+    status.className='match-status bad';
+  }
+}
+
+function loadMatchPuzzle(){
+  const puzzle=MATCH_PUZZLES[matchPuzzleIndex];
+  matchInitialSet=matchSetForEquation(puzzle.initial);
+  matchTargetSet=matchSetForEquation(puzzle.target);
+  matchActiveSet=new Set(matchInitialSet);
+  matchMoveHistory=[];
+  matchSelected=null;
+  renderInteractiveMatchsticks();
+}
+
+function startInteractiveMatchsticks(){
+  matchInteractiveMode=true;
+  diceTrainingMode=true;
+  activeTrainingCategory='logic';
+  matchPuzzleIndex=0;
+  nav('question');
+  clearInterval(state.timerId);
+  matchStartedAt=Date.now();
+  document.getElementById('questionTimer').textContent='00:00';
+  matchTimerId=setInterval(()=>{
+    document.getElementById('questionTimer').textContent=formatTime(Date.now()-matchStartedAt);
+  },1000);
+  state.timerId=matchTimerId;
+  loadMatchPuzzle();
+}
+
+
 function logicGeneratorFor(gameId){
   return {sequences:SequenceGenerator,matches:MatchstickGenerator,odd:OddOneOutGenerator}[gameId]||null;
 }
@@ -1614,6 +1866,15 @@ document.getElementById('startBtn').onclick=startDiceTest;
 document.getElementById('endPreviewBtn').onclick=()=>{
   clearInterval(state.timerId);
   state.questionEngine?.reset();
+  if(matchInteractiveMode){
+    matchInteractiveMode=false;
+    diceTrainingMode=false;
+    document.querySelector('.question-card')?.classList.remove('matchstick-question-card');
+    document.querySelector('.answer-title')?.classList.remove('hidden');
+    nav('training-category');
+    renderTrainingCategory('logic');
+    return;
+  }
   if(diceTrainingMode){
     diceTrainingMode=false;
     trainingHelpPanel.classList.add('hidden');

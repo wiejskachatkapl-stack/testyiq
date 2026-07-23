@@ -8806,3 +8806,201 @@ html,body{
     display:none!important;
   }
 }
+
+
+/* =========================================================
+   v1082 — interaktywna plansza Zapałki
+   ========================================================= */
+
+.matchstick-question-card{
+  grid-template-rows:auto minmax(0,1fr) auto!important;
+}
+
+.interactive-match-board{
+  display:grid!important;
+  grid-template-rows:auto minmax(170px,1fr) auto!important;
+  gap:12px!important;
+  overflow:hidden!important;
+}
+
+.match-instruction{
+  color:#b7ccd3;
+  font-size:.72rem;
+  text-align:center;
+}
+
+.match-equation{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:16px;
+  min-height:190px;
+}
+
+.match-symbol{
+  position:relative;
+  width:76px;
+  height:128px;
+  flex:none;
+}
+
+.match-operator{
+  width:62px;
+}
+
+.match-slot{
+  position:absolute;
+  border:0;
+  border-radius:999px;
+  background:rgba(93,129,138,.13);
+  outline:1px dashed rgba(102,190,197,.18);
+  cursor:pointer;
+  padding:0;
+}
+
+.match-slot.horizontal{
+  width:48px;
+  height:10px;
+  left:14px;
+}
+
+.match-slot.vertical{
+  width:10px;
+  height:48px;
+}
+
+.match-slot[data-match-key$=":a"]{top:3px}
+.match-slot[data-match-key$=":g"]{top:59px}
+.match-slot[data-match-key$=":d"]{top:115px}
+.match-slot[data-match-key$=":f"]{left:3px;top:10px}
+.match-slot[data-match-key$=":b"]{right:3px;top:10px}
+.match-slot[data-match-key$=":e"]{left:3px;top:66px}
+.match-slot[data-match-key$=":c"]{right:3px;top:66px}
+
+.match-slot[data-match-key$=":h"]{top:58px;left:7px}
+.match-slot[data-match-key$=":v"]{top:39px;left:27px}
+.match-slot[data-match-key$=":u"]{top:47px;left:7px}
+.match-slot[data-match-key$=":w"]{top:70px;left:7px}
+
+.match-slot.active{
+  background:linear-gradient(90deg,#d59b54,#f5c979 55%,#b87337);
+  outline:1px solid rgba(255,220,151,.7);
+  box-shadow:0 2px 5px rgba(0,0,0,.35),0 0 8px rgba(245,190,105,.18);
+}
+
+.match-slot.active::after{
+  content:"";
+  position:absolute;
+  width:12px;
+  height:12px;
+  border-radius:50%;
+  background:#8c2d1f;
+  box-shadow:inset 0 0 0 2px rgba(255,160,100,.25);
+}
+
+.match-slot.horizontal.active::after{right:-3px;top:-1px}
+.match-slot.vertical.active::after{left:-1px;top:-3px}
+
+.match-slot.selected{
+  box-shadow:0 0 0 3px #58e6e9,0 0 22px rgba(88,230,233,.65)!important;
+  transform:scale(1.08);
+}
+
+.match-status{
+  min-height:38px;
+  border-radius:11px;
+  display:grid;
+  place-items:center;
+  padding:8px 12px;
+  background:rgba(65,201,214,.06);
+  color:#cfe6ea;
+  font-size:.68rem;
+  text-align:center;
+}
+
+.match-status.good{background:rgba(58,215,117,.12);color:#72ef9d}
+.match-status.bad{background:rgba(255,83,99,.11);color:#ff9da6}
+.match-status.selected,.match-status.ready{background:rgba(255,201,73,.10);color:#ffe18a}
+
+.match-controls{
+  grid-template-columns:repeat(4,1fr)!important;
+  height:auto!important;
+  min-height:54px!important;
+  gap:8px!important;
+}
+
+.match-controls button{
+  min-height:48px;
+  border-radius:12px;
+  border:1px solid rgba(91,169,186,.28);
+  background:rgba(255,255,255,.035);
+  color:#dcebef;
+  font-size:.58rem;
+  font-weight:800;
+}
+
+.match-controls .match-check{
+  border-color:rgba(66,224,121,.45);
+  background:rgba(50,198,102,.10);
+  color:#79efa0;
+}
+
+.match-correct{
+  border-color:#46e07e!important;
+  box-shadow:inset 0 0 35px rgba(70,224,126,.08);
+}
+
+@media(max-width:768px){
+  .matchstick-question-card{
+    grid-template-rows:auto minmax(0,1fr) auto!important;
+  }
+
+  .interactive-match-board{
+    grid-template-rows:auto minmax(120px,1fr) auto!important;
+    padding:7px!important;
+    gap:7px!important;
+  }
+
+  .match-instruction{font-size:.52rem}
+
+  .match-equation{
+    gap:5px;
+    min-height:135px;
+    transform:scale(.78);
+    transform-origin:center center;
+  }
+
+  .match-symbol{
+    width:64px;
+    height:112px;
+  }
+
+  .match-operator{width:52px}
+
+  .match-slot.horizontal{width:41px;height:9px;left:12px}
+  .match-slot.vertical{width:9px;height:40px}
+  .match-slot[data-match-key$=":g"]{top:51px}
+  .match-slot[data-match-key$=":d"]{top:99px}
+  .match-slot[data-match-key$=":e"]{top:58px}
+  .match-slot[data-match-key$=":c"]{top:58px}
+  .match-slot[data-match-key$=":h"]{top:51px;left:5px}
+  .match-slot[data-match-key$=":v"]{top:34px;left:22px}
+  .match-slot[data-match-key$=":u"]{top:41px;left:5px}
+  .match-slot[data-match-key$=":w"]{top:62px;left:5px}
+
+  .match-status{
+    min-height:30px;
+    font-size:.50rem;
+    padding:5px 8px;
+  }
+
+  .match-controls{
+    grid-template-columns:repeat(2,1fr)!important;
+    gap:5px!important;
+  }
+
+  .match-controls button{
+    min-height:34px;
+    font-size:.45rem;
+  }
+}
