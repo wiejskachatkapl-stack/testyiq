@@ -9400,3 +9400,16 @@ html,body{
   .odd-image-option.odd-clipart-option{padding:3px!important;}
   .odd-grid-3x3 .odd-image-option{padding:3px!important;}
 }
+
+/* =========================================================
+   v1093 — pełne grafiki + większa baza
+   ========================================================= */
+.odd-image-option.odd-clipart-option{position:relative!important;overflow:hidden!important;box-sizing:border-box!important;padding:0!important;background:#fff!important;}
+.odd-image-fit-box{position:absolute!important;inset:6px!important;display:flex!important;align-items:center!important;justify-content:center!important;overflow:hidden!important;background:#fff!important;border-radius:10px!important;}
+.odd-image-fit-box img.odd-clipart-image{display:block!important;width:100%!important;height:100%!important;max-width:100%!important;max-height:100%!important;object-fit:contain!important;object-position:center!important;margin:0!important;padding:0!important;border:0!important;border-radius:0!important;}
+.odd-option-letter{z-index:10!important;}
+.odd-grid-2x2 .odd-image-option{height:150px!important;min-height:150px!important;}
+.odd-grid-3x3 .odd-image-option{height:94px!important;min-height:94px!important;}
+.odd-grid-3x3 .odd-image-fit-box{inset:4px!important;}
+@media(max-width:768px){.odd-grid-2x2 .odd-image-option{height:118px!important;min-height:118px!important}.odd-grid-3x3 .odd-image-option{height:78px!important;min-height:78px!important}.odd-image-fit-box{inset:3px!important}}
+@media(max-width:430px){.odd-grid-2x2 .odd-image-option{height:104px!important;min-height:104px!important}.odd-grid-3x3 .odd-image-option{height:68px!important;min-height:68px!important}}

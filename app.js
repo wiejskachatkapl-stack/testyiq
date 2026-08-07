@@ -988,7 +988,7 @@ function renderOddOneOutQuestion(question){
   board.innerHTML=question.options.map((item,index)=>`
     <button class="dice-answer odd-image-option odd-clipart-option" type="button" data-answer="${index}" aria-label="${item.name}">
       <span class="odd-option-letter">${String.fromCharCode(65+index)}</span>
-      <img class="odd-clipart-image" src="${item.image}" alt="${item.name}" draggable="false">
+      <span class="odd-image-fit-box"><img class="odd-clipart-image" src="${item.image}" alt="${item.name}" draggable="false"></span>
     </button>`).join('');
 
   const answers=document.getElementById('diceAnswers');
