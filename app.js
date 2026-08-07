@@ -983,11 +983,12 @@ function renderOddOneOutQuestion(question){
   document.getElementById('questionPrompt').textContent=question.prompt;
 
   const board=document.getElementById('diceSequence');
-  board.className='dice-sequence odd-image-board';
+  const gridClass=question.options.length===9?'odd-grid-3x3':'odd-grid-2x2';
+  board.className=`dice-sequence odd-image-board ${gridClass}`;
   board.innerHTML=question.options.map((item,index)=>`
-    <button class="dice-answer odd-image-option ${item.photo?'odd-photo-option':''}" type="button" data-answer="${index}" aria-label="${item.name}">
+    <button class="dice-answer odd-image-option odd-clipart-option" type="button" data-answer="${index}" aria-label="${item.name}">
       <span class="odd-option-letter">${String.fromCharCode(65+index)}</span>
-      <img class="${item.photo?'odd-natural-photo':''}" src="${item.image}" alt="${item.name}" draggable="false">
+      <img class="odd-clipart-image" src="${item.image}" alt="${item.name}" draggable="false">
     </button>`).join('');
 
   const answers=document.getElementById('diceAnswers');
