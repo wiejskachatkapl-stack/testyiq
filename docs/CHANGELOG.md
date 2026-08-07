@@ -1,5 +1,13 @@
 # Changelog
 
+## v1093
+- powiększono bazę z 100 do 195 grafik,
+- nowe grupy: safari, ptaki leśne, ptaki egzotyczne,
+- więcej zwierząt domowych, gospodarskich, polnych, ptaków, gadów, płazów, roślin, kwiatów i pojazdów,
+- naprawiono źródłowe kadrowanie grafik,
+- wymuszono pełne dopasowanie obrazu do kafelka,
+- cache PWA: `iq-brain-lab-v1093`.
+
 ## v1092
 ### Poprawka kafelków „Co nie pasuje?”
 - grafiki nie wychodzą już poza widoczny obszar kafelków,

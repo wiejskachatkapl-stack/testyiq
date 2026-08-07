@@ -248,3 +248,7 @@ Podstawowy układ to cztery duże karty 2×2. Poziom zaawansowany wykorzystuje d
 
 ## v1092 — skalowanie clipartów
 Grafiki w kafelkach „Co nie pasuje?” są skalowane proporcjonalnie przez `object-fit: contain`, dzięki czemu nie są powiększane i obcinane. Dotyczy widoku 2×2 oraz 3×3 na komputerze i telefonie.
+
+
+## v1093
+Grafiki odpowiedzi są zawsze w całości widoczne wewnątrz osobnego `odd-image-fit-box`; nie używamy już kadrowania `cover`.

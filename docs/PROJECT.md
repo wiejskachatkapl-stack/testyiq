@@ -343,3 +343,14 @@ Bazą ponownie jest v1088. Odrzuconych ilustracji z v1089 nie użyto. Podmienion
 
 ## v1092 — dopasowanie obrazków do kafelków
 W module „Co nie pasuje?” zmieniono sposób skalowania ilustracji z `cover` na `contain`. Cała grafika jest teraz widoczna wewnątrz kafelka zarówno w układzie 2×2, jak i 3×3. Nie zmieniano zagadek, generatora ani punktacji.
+
+
+## v1093 — większa baza grafik i pełne kadry
+- baza `assets/odd` wzrosła ze 100 do 195 grafik PNG,
+- dodano/rozbudowano zwierzęta domowe, gospodarskie, polne, leśne i safari,
+- dodano ptaki leśne i egzotyczne oraz zwiększono bazę ptaków domowych i dzikich,
+- zwiększono bazę gadów, płazów, roślin, drzew, kwiatów i samochodów,
+- wszystkie wcześniejsze obrazy dostały bezpieczne płótno 800×400,
+- wiele wcześniejszych grafik ponownie wycięto bez przycinania obiektu,
+- renderer posiada wewnętrzny kontener z `object-fit: contain`, więc grafika nie może wyjść poza kafelek,
+- podstawowy układ pozostaje 2×2, a zaawansowany 3×3.
