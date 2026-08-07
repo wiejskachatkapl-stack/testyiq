@@ -1,5 +1,14 @@
 # Changelog
 
+## v1092
+### Poprawka kafelków „Co nie pasuje?”
+- grafiki nie wychodzą już poza widoczny obszar kafelków,
+- `object-fit: cover` zastąpiono `object-fit: contain`,
+- dodano bezpieczne ograniczenia `max-width` i `max-height`,
+- poprawiono centrowanie i wewnętrzny margines grafik w 2×2 i 3×3,
+- nie zmieniano generatora, reguł, zagadek ani punktacji,
+- cache PWA zmieniono na `iq-brain-lab-v1092`.
+
 ## v1091
 ### Nowa baza „Co nie pasuje?”
 - 100 nowych grafik PNG w `assets/odd`,

@@ -244,3 +244,7 @@ Fotografie wypełniają cały kafelek bez podpisów. Zachowano literę odpowiedz
 
 ## v1091 — Co nie pasuje?
 Podstawowy układ to cztery duże karty 2×2. Poziom zaawansowany wykorzystuje dziewięć mniejszych kart 3×3. Wszystkie kafelki mają jasne tło, spójny clipart i literę odpowiedzi w lewym górnym rogu.
+
+
+## v1092 — skalowanie clipartów
+Grafiki w kafelkach „Co nie pasuje?” są skalowane proporcjonalnie przez `object-fit: contain`, dzięki czemu nie są powiększane i obcinane. Dotyczy widoku 2×2 oraz 3×3 na komputerze i telefonie.

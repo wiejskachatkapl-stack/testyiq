@@ -339,3 +339,7 @@ Bazą ponownie jest v1088. Odrzuconych ilustracji z v1089 nie użyto. Podmienion
 - dodano reguły oparte na kategorii, środowisku, sposobie odżywiania, napędzie, sposobie działania narzędzi, kolorze i sezonowości ubrań,
 - przedmioty nieożywione nie mają twarzy ani oczu,
 - nie zmieniano punktacji ani innych modułów.
+
+
+## v1092 — dopasowanie obrazków do kafelków
+W module „Co nie pasuje?” zmieniono sposób skalowania ilustracji z `cover` na `contain`. Cała grafika jest teraz widoczna wewnątrz kafelka zarówno w układzie 2×2, jak i 3×3. Nie zmieniano zagadek, generatora ani punktacji.
