@@ -1,21 +1,24 @@
 {
-  "version": 1091,
+  "version": 1093,
   "layout": {
     "basic": "2x2",
     "advanced": "3x3"
   },
   "categoryLabels": {
     "domestic_animals": "zwierzęta domowe",
-    "forest_animals": "zwierzęta leśne",
-    "marine_animals": "zwierzęta morskie",
-    "field_animals": "zwierzęta polne",
     "farm_animals": "zwierzęta gospodarskie",
+    "forest_animals": "zwierzęta leśne",
+    "field_animals": "zwierzęta polne",
+    "safari_animals": "zwierzęta safari",
+    "marine_animals": "zwierzęta morskie",
+    "reptiles": "gady",
+    "amphibians": "płazy",
     "wild_birds": "ptaki dzikie",
+    "forest_birds": "ptaki leśne",
+    "exotic_birds": "ptaki egzotyczne",
     "domestic_birds": "ptaki domowe",
     "sea_fish": "ryby morskie",
     "aquarium_fish": "ryby akwariowe",
-    "reptiles": "gady",
-    "amphibians": "płazy",
     "plants": "rośliny",
     "trees": "drzewa",
     "flowers": "kwiaty",
@@ -30,6 +33,272 @@
     "money": "monety i banknoty",
     "awards": "medale i puchary",
     "clothes": "ubiory"
+  },
+  "categoryPools": {
+    "domestic_animals": [
+      "dog",
+      "cat",
+      "rabbit",
+      "hamster",
+      "guinea_pig",
+      "budgie",
+      "canary",
+      "pet_turtle",
+      "pet_goldfish",
+      "ferret",
+      "pet_dog_new",
+      "pet_cat_new",
+      "pet_rabbit_new",
+      "pet_hamster_new"
+    ],
+    "farm_animals": [
+      "cow",
+      "pig",
+      "horse",
+      "goat",
+      "sheep",
+      "donkey",
+      "hen",
+      "rooster",
+      "duck",
+      "goose",
+      "farm_cow_new",
+      "farm_horse_new",
+      "farm_pig_new",
+      "farm_goat_new"
+    ],
+    "forest_animals": [
+      "fox",
+      "deer",
+      "hedgehog",
+      "squirrel",
+      "boar",
+      "forest_fox_new",
+      "forest_deer_new",
+      "forest_hedgehog_new"
+    ],
+    "field_animals": [
+      "hare",
+      "mole",
+      "mouse",
+      "stork",
+      "field_rabbit_new",
+      "forest_hedgehog_new",
+      "boar"
+    ],
+    "safari_animals": [
+      "lion",
+      "elephant",
+      "zebra",
+      "giraffe",
+      "rhino"
+    ],
+    "marine_animals": [
+      "dolphin",
+      "seal",
+      "octopus",
+      "crab",
+      "tuna",
+      "marlin",
+      "seahorse"
+    ],
+    "reptiles": [
+      "turtle",
+      "snake",
+      "crocodile",
+      "lizard",
+      "chameleon",
+      "gecko",
+      "iguana",
+      "reptile_turtle_new",
+      "reptile_snake_new",
+      "reptile_croc_new"
+    ],
+    "amphibians": [
+      "frog",
+      "toad",
+      "salamander",
+      "newt",
+      "tree_frog",
+      "amph_toad_new",
+      "fire_salamander",
+      "orange_newt"
+    ],
+    "wild_birds": [
+      "owl",
+      "eagle",
+      "woodpecker",
+      "swan",
+      "stork",
+      "wild_stork_new",
+      "wild_eagle_new",
+      "penguin"
+    ],
+    "forest_birds": [
+      "owl",
+      "woodpecker",
+      "forest_owl_new",
+      "forest_woodpecker_new",
+      "eagle"
+    ],
+    "exotic_birds": [
+      "parrot",
+      "peacock",
+      "penguin"
+    ],
+    "domestic_birds": [
+      "hen",
+      "rooster",
+      "duck",
+      "goose",
+      "budgie",
+      "canary",
+      "bird_hen_new",
+      "bird_rooster_new",
+      "bird_duck_new",
+      "bird_goose_new"
+    ],
+    "sea_fish": [
+      "tuna",
+      "marlin",
+      "clownfish",
+      "seahorse"
+    ],
+    "aquarium_fish": [
+      "angelfish",
+      "guppy",
+      "betta",
+      "goldfish",
+      "pet_goldfish"
+    ],
+    "plants": [
+      "cactus",
+      "fern",
+      "succulent",
+      "basil",
+      "aloe",
+      "monstera",
+      "lavender",
+      "strawberry_plant",
+      "cactus_new",
+      "fern_new"
+    ],
+    "trees": [
+      "oak",
+      "spruce",
+      "birch",
+      "palm",
+      "apple_tree",
+      "maple",
+      "oak_new",
+      "spruce_new",
+      "birch_new",
+      "palm_new"
+    ],
+    "flowers": [
+      "rose",
+      "tulip",
+      "sunflower",
+      "daisy",
+      "lavender",
+      "rose_new",
+      "tulip_new",
+      "sunflower_new",
+      "daisy_new"
+    ],
+    "cars_trucks": [
+      "sedan",
+      "suv",
+      "dump_truck",
+      "fire_truck",
+      "compact_car",
+      "family_car",
+      "box_truck",
+      "dump_truck_new",
+      "tractor",
+      "bus",
+      "excavator",
+      "fire_truck_new",
+      "ambulance",
+      "road_compact",
+      "taxi",
+      "police_car",
+      "road_firetruck",
+      "road_dumptruck",
+      "road_tractor",
+      "minibus",
+      "coach_bus",
+      "tow_truck"
+    ],
+    "motorcycles": [
+      "scooter",
+      "classic_motorcycle",
+      "sport_motorcycle",
+      "dirt_bike",
+      "road_motorcycle",
+      "road_motorcycle2",
+      "road_scooter"
+    ],
+    "bicycles": [
+      "city_bike",
+      "mountain_bike",
+      "kids_bike",
+      "bmx",
+      "road_bicycle",
+      "road_bicycle2"
+    ],
+    "airplanes": [
+      "airliner",
+      "prop_plane",
+      "fighter_jet",
+      "biplane",
+      "airliner_new"
+    ],
+    "other_flying": [
+      "helicopter",
+      "hot_air_balloon",
+      "kite",
+      "drone",
+      "helicopter_new",
+      "balloon_new",
+      "rocket"
+    ],
+    "garden_tools": [
+      "shovel",
+      "rake",
+      "watering_can",
+      "wheelbarrow"
+    ],
+    "workshop_tools": [
+      "hammer",
+      "wrench",
+      "screwdriver",
+      "drill"
+    ],
+    "other_tools": [
+      "saw",
+      "pliers",
+      "paintbrush",
+      "tape_measure"
+    ],
+    "money": [
+      "gold_coin",
+      "silver_coin",
+      "coin_stack",
+      "banknote"
+    ],
+    "awards": [
+      "gold_medal",
+      "silver_medal",
+      "trophy",
+      "rosette"
+    ],
+    "clothes": [
+      "tshirt",
+      "cap",
+      "summer_dress",
+      "winter_jacket"
+    ]
   },
   "objects": [
     {
@@ -76,8 +345,7 @@
       "image": "assets/odd/cow.png",
       "clipart": true,
       "tags": [
-        "herbivore",
-        "land"
+        "herbivore"
       ]
     },
     {
@@ -100,8 +368,7 @@
       "image": "assets/odd/horse.png",
       "clipart": true,
       "tags": [
-        "herbivore",
-        "land"
+        "herbivore"
       ]
     },
     {
@@ -124,9 +391,7 @@
       "image": "assets/odd/fox.png",
       "clipart": true,
       "tags": [
-        "predator",
-        "carnivore",
-        "land"
+        "predator"
       ]
     },
     {
@@ -137,8 +402,7 @@
       "image": "assets/odd/deer.png",
       "clipart": true,
       "tags": [
-        "herbivore",
-        "land"
+        "herbivore"
       ]
     },
     {
@@ -265,9 +529,7 @@
       "image": "assets/odd/crocodile.png",
       "clipart": true,
       "tags": [
-        "predator",
-        "carnivore",
-        "water_land"
+        "predator"
       ]
     },
     {
@@ -329,9 +591,7 @@
       "image": "assets/odd/eagle.png",
       "clipart": true,
       "tags": [
-        "flies",
-        "predator",
-        "carnivore"
+        "predator"
       ]
     },
     {
@@ -1111,6 +1371,781 @@
       "tags": [
         "winter_clothes"
       ]
+    },
+    {
+      "id": "pet_dog_new",
+      "name": "pies domowy",
+      "category": "domestic_animals",
+      "supergroup": "animals",
+      "image": "assets/odd/pet_dog_new.png",
+      "clipart": true
+    },
+    {
+      "id": "pet_cat_new",
+      "name": "kot domowy",
+      "category": "domestic_animals",
+      "supergroup": "animals",
+      "image": "assets/odd/pet_cat_new.png",
+      "clipart": true
+    },
+    {
+      "id": "pet_rabbit_new",
+      "name": "królik domowy",
+      "category": "domestic_animals",
+      "supergroup": "animals",
+      "image": "assets/odd/pet_rabbit_new.png",
+      "clipart": true
+    },
+    {
+      "id": "guinea_pig",
+      "name": "świnka morska",
+      "category": "domestic_animals",
+      "supergroup": "animals",
+      "image": "assets/odd/guinea_pig.png",
+      "clipart": true
+    },
+    {
+      "id": "pet_hamster_new",
+      "name": "chomik domowy",
+      "category": "domestic_animals",
+      "supergroup": "animals",
+      "image": "assets/odd/pet_hamster_new.png",
+      "clipart": true
+    },
+    {
+      "id": "budgie",
+      "name": "papużka falista",
+      "category": "domestic_animals",
+      "supergroup": "animals",
+      "image": "assets/odd/budgie.png",
+      "clipart": true
+    },
+    {
+      "id": "canary",
+      "name": "kanarek",
+      "category": "domestic_animals",
+      "supergroup": "animals",
+      "image": "assets/odd/canary.png",
+      "clipart": true
+    },
+    {
+      "id": "pet_turtle",
+      "name": "żółw domowy",
+      "category": "domestic_animals",
+      "supergroup": "animals",
+      "image": "assets/odd/pet_turtle.png",
+      "clipart": true
+    },
+    {
+      "id": "pet_goldfish",
+      "name": "rybka domowa",
+      "category": "domestic_animals",
+      "supergroup": "animals",
+      "image": "assets/odd/pet_goldfish.png",
+      "clipart": true
+    },
+    {
+      "id": "ferret",
+      "name": "fretka",
+      "category": "domestic_animals",
+      "supergroup": "animals",
+      "image": "assets/odd/ferret.png",
+      "clipart": true
+    },
+    {
+      "id": "farm_cow_new",
+      "name": "krowa",
+      "category": "farm_animals",
+      "supergroup": "animals",
+      "image": "assets/odd/farm_cow_new.png",
+      "clipart": true
+    },
+    {
+      "id": "farm_horse_new",
+      "name": "koń",
+      "category": "farm_animals",
+      "supergroup": "animals",
+      "image": "assets/odd/farm_horse_new.png",
+      "clipart": true
+    },
+    {
+      "id": "farm_pig_new",
+      "name": "świnia",
+      "category": "farm_animals",
+      "supergroup": "animals",
+      "image": "assets/odd/farm_pig_new.png",
+      "clipart": true
+    },
+    {
+      "id": "sheep",
+      "name": "owca",
+      "category": "farm_animals",
+      "supergroup": "animals",
+      "image": "assets/odd/sheep.png",
+      "clipart": true
+    },
+    {
+      "id": "farm_goat_new",
+      "name": "koza",
+      "category": "farm_animals",
+      "supergroup": "animals",
+      "image": "assets/odd/farm_goat_new.png",
+      "clipart": true
+    },
+    {
+      "id": "donkey",
+      "name": "osioł",
+      "category": "farm_animals",
+      "supergroup": "animals",
+      "image": "assets/odd/donkey.png",
+      "clipart": true
+    },
+    {
+      "id": "farm_hen_new",
+      "name": "kura",
+      "category": "farm_animals",
+      "supergroup": "animals",
+      "image": "assets/odd/farm_hen_new.png",
+      "clipart": true
+    },
+    {
+      "id": "farm_rooster_new",
+      "name": "kogut",
+      "category": "farm_animals",
+      "supergroup": "animals",
+      "image": "assets/odd/farm_rooster_new.png",
+      "clipart": true
+    },
+    {
+      "id": "farm_duck_new",
+      "name": "kaczka",
+      "category": "farm_animals",
+      "supergroup": "animals",
+      "image": "assets/odd/farm_duck_new.png",
+      "clipart": true
+    },
+    {
+      "id": "farm_goose_new",
+      "name": "gęś",
+      "category": "farm_animals",
+      "supergroup": "animals",
+      "image": "assets/odd/farm_goose_new.png",
+      "clipart": true
+    },
+    {
+      "id": "forest_fox_new",
+      "name": "lis",
+      "category": "forest_animals",
+      "supergroup": "animals",
+      "image": "assets/odd/forest_fox_new.png",
+      "clipart": true
+    },
+    {
+      "id": "field_rabbit_new",
+      "name": "królik polny",
+      "category": "field_animals",
+      "supergroup": "animals",
+      "image": "assets/odd/field_rabbit_new.png",
+      "clipart": true
+    },
+    {
+      "id": "forest_hedgehog_new",
+      "name": "jeż",
+      "category": "field_animals",
+      "supergroup": "animals",
+      "image": "assets/odd/forest_hedgehog_new.png",
+      "clipart": true
+    },
+    {
+      "id": "forest_deer_new",
+      "name": "jeleń",
+      "category": "forest_animals",
+      "supergroup": "animals",
+      "image": "assets/odd/forest_deer_new.png",
+      "clipart": true
+    },
+    {
+      "id": "boar",
+      "name": "dzik",
+      "category": "field_animals",
+      "supergroup": "animals",
+      "image": "assets/odd/boar.png",
+      "clipart": true
+    },
+    {
+      "id": "lion",
+      "name": "lew",
+      "category": "safari_animals",
+      "supergroup": "animals",
+      "image": "assets/odd/lion.png",
+      "clipart": true,
+      "tags": [
+        "predator"
+      ]
+    },
+    {
+      "id": "elephant",
+      "name": "słoń",
+      "category": "safari_animals",
+      "supergroup": "animals",
+      "image": "assets/odd/elephant.png",
+      "clipart": true,
+      "tags": [
+        "herbivore"
+      ]
+    },
+    {
+      "id": "zebra",
+      "name": "zebra",
+      "category": "safari_animals",
+      "supergroup": "animals",
+      "image": "assets/odd/zebra.png",
+      "clipart": true,
+      "tags": [
+        "herbivore"
+      ]
+    },
+    {
+      "id": "giraffe",
+      "name": "żyrafa",
+      "category": "safari_animals",
+      "supergroup": "animals",
+      "image": "assets/odd/giraffe.png",
+      "clipart": true,
+      "tags": [
+        "herbivore"
+      ]
+    },
+    {
+      "id": "rhino",
+      "name": "nosorożec",
+      "category": "safari_animals",
+      "supergroup": "animals",
+      "image": "assets/odd/rhino.png",
+      "clipart": true,
+      "tags": [
+        "herbivore"
+      ]
+    },
+    {
+      "id": "bird_hen_new",
+      "name": "kura",
+      "category": "domestic_birds",
+      "supergroup": "animals",
+      "image": "assets/odd/bird_hen_new.png",
+      "clipart": true
+    },
+    {
+      "id": "bird_rooster_new",
+      "name": "kogut",
+      "category": "domestic_birds",
+      "supergroup": "animals",
+      "image": "assets/odd/bird_rooster_new.png",
+      "clipart": true
+    },
+    {
+      "id": "bird_duck_new",
+      "name": "kaczka",
+      "category": "domestic_birds",
+      "supergroup": "animals",
+      "image": "assets/odd/bird_duck_new.png",
+      "clipart": true
+    },
+    {
+      "id": "bird_goose_new",
+      "name": "gęś",
+      "category": "domestic_birds",
+      "supergroup": "animals",
+      "image": "assets/odd/bird_goose_new.png",
+      "clipart": true
+    },
+    {
+      "id": "forest_owl_new",
+      "name": "sowa leśna",
+      "category": "forest_birds",
+      "supergroup": "animals",
+      "image": "assets/odd/forest_owl_new.png",
+      "clipart": true
+    },
+    {
+      "id": "forest_woodpecker_new",
+      "name": "dzięcioł",
+      "category": "forest_birds",
+      "supergroup": "animals",
+      "image": "assets/odd/forest_woodpecker_new.png",
+      "clipart": true
+    },
+    {
+      "id": "wild_stork_new",
+      "name": "bocian",
+      "category": "wild_birds",
+      "supergroup": "animals",
+      "image": "assets/odd/wild_stork_new.png",
+      "clipart": true
+    },
+    {
+      "id": "wild_eagle_new",
+      "name": "orzeł",
+      "category": "wild_birds",
+      "supergroup": "animals",
+      "image": "assets/odd/wild_eagle_new.png",
+      "clipart": true
+    },
+    {
+      "id": "parrot",
+      "name": "papuga ara",
+      "category": "exotic_birds",
+      "supergroup": "animals",
+      "image": "assets/odd/parrot.png",
+      "clipart": true
+    },
+    {
+      "id": "peacock",
+      "name": "paw",
+      "category": "exotic_birds",
+      "supergroup": "animals",
+      "image": "assets/odd/peacock.png",
+      "clipart": true
+    },
+    {
+      "id": "penguin",
+      "name": "pingwin",
+      "category": "exotic_birds",
+      "supergroup": "animals",
+      "image": "assets/odd/penguin.png",
+      "clipart": true
+    },
+    {
+      "id": "reptile_turtle_new",
+      "name": "żółw",
+      "category": "reptiles",
+      "supergroup": "animals",
+      "image": "assets/odd/reptile_turtle_new.png",
+      "clipart": true
+    },
+    {
+      "id": "reptile_snake_new",
+      "name": "wąż",
+      "category": "reptiles",
+      "supergroup": "animals",
+      "image": "assets/odd/reptile_snake_new.png",
+      "clipart": true
+    },
+    {
+      "id": "reptile_croc_new",
+      "name": "krokodyl",
+      "category": "reptiles",
+      "supergroup": "animals",
+      "image": "assets/odd/reptile_croc_new.png",
+      "clipart": true
+    },
+    {
+      "id": "chameleon",
+      "name": "kameleon",
+      "category": "reptiles",
+      "supergroup": "animals",
+      "image": "assets/odd/chameleon.png",
+      "clipart": true
+    },
+    {
+      "id": "gecko",
+      "name": "gekon",
+      "category": "reptiles",
+      "supergroup": "animals",
+      "image": "assets/odd/gecko.png",
+      "clipart": true
+    },
+    {
+      "id": "iguana",
+      "name": "iguana",
+      "category": "reptiles",
+      "supergroup": "animals",
+      "image": "assets/odd/iguana.png",
+      "clipart": true
+    },
+    {
+      "id": "tree_frog",
+      "name": "rzekotka",
+      "category": "amphibians",
+      "supergroup": "animals",
+      "image": "assets/odd/tree_frog.png",
+      "clipart": true
+    },
+    {
+      "id": "amph_toad_new",
+      "name": "ropucha",
+      "category": "amphibians",
+      "supergroup": "animals",
+      "image": "assets/odd/amph_toad_new.png",
+      "clipart": true
+    },
+    {
+      "id": "fire_salamander",
+      "name": "salamandra plamista",
+      "category": "amphibians",
+      "supergroup": "animals",
+      "image": "assets/odd/fire_salamander.png",
+      "clipart": true
+    },
+    {
+      "id": "orange_newt",
+      "name": "traszka pomarańczowa",
+      "category": "amphibians",
+      "supergroup": "animals",
+      "image": "assets/odd/orange_newt.png",
+      "clipart": true
+    },
+    {
+      "id": "oak_new",
+      "name": "dąb",
+      "category": "trees",
+      "supergroup": "plants",
+      "image": "assets/odd/oak_new.png",
+      "clipart": true
+    },
+    {
+      "id": "spruce_new",
+      "name": "świerk",
+      "category": "trees",
+      "supergroup": "plants",
+      "image": "assets/odd/spruce_new.png",
+      "clipart": true
+    },
+    {
+      "id": "birch_new",
+      "name": "brzoza",
+      "category": "trees",
+      "supergroup": "plants",
+      "image": "assets/odd/birch_new.png",
+      "clipart": true
+    },
+    {
+      "id": "apple_tree",
+      "name": "jabłoń",
+      "category": "trees",
+      "supergroup": "plants",
+      "image": "assets/odd/apple_tree.png",
+      "clipart": true
+    },
+    {
+      "id": "rose_new",
+      "name": "róża",
+      "category": "flowers",
+      "supergroup": "plants",
+      "image": "assets/odd/rose_new.png",
+      "clipart": true
+    },
+    {
+      "id": "tulip_new",
+      "name": "tulipan",
+      "category": "flowers",
+      "supergroup": "plants",
+      "image": "assets/odd/tulip_new.png",
+      "clipart": true
+    },
+    {
+      "id": "sunflower_new",
+      "name": "słonecznik",
+      "category": "flowers",
+      "supergroup": "plants",
+      "image": "assets/odd/sunflower_new.png",
+      "clipart": true
+    },
+    {
+      "id": "daisy_new",
+      "name": "stokrotka",
+      "category": "flowers",
+      "supergroup": "plants",
+      "image": "assets/odd/daisy_new.png",
+      "clipart": true
+    },
+    {
+      "id": "cactus_new",
+      "name": "kaktus",
+      "category": "plants",
+      "supergroup": "plants",
+      "image": "assets/odd/cactus_new.png",
+      "clipart": true
+    },
+    {
+      "id": "fern_new",
+      "name": "paproć",
+      "category": "plants",
+      "supergroup": "plants",
+      "image": "assets/odd/fern_new.png",
+      "clipart": true
+    },
+    {
+      "id": "aloe",
+      "name": "aloes",
+      "category": "plants",
+      "supergroup": "plants",
+      "image": "assets/odd/aloe.png",
+      "clipart": true
+    },
+    {
+      "id": "monstera",
+      "name": "monstera",
+      "category": "plants",
+      "supergroup": "plants",
+      "image": "assets/odd/monstera.png",
+      "clipart": true
+    },
+    {
+      "id": "lavender",
+      "name": "lawenda",
+      "category": "plants",
+      "supergroup": "plants",
+      "image": "assets/odd/lavender.png",
+      "clipart": true
+    },
+    {
+      "id": "strawberry_plant",
+      "name": "truskawka",
+      "category": "plants",
+      "supergroup": "plants",
+      "image": "assets/odd/strawberry_plant.png",
+      "clipart": true
+    },
+    {
+      "id": "maple",
+      "name": "klon",
+      "category": "trees",
+      "supergroup": "plants",
+      "image": "assets/odd/maple.png",
+      "clipart": true
+    },
+    {
+      "id": "palm_new",
+      "name": "palma",
+      "category": "trees",
+      "supergroup": "plants",
+      "image": "assets/odd/palm_new.png",
+      "clipart": true
+    },
+    {
+      "id": "compact_car",
+      "name": "mały samochód",
+      "category": "cars_trucks",
+      "supergroup": "vehicles",
+      "image": "assets/odd/compact_car.png",
+      "clipart": true
+    },
+    {
+      "id": "family_car",
+      "name": "samochód rodzinny",
+      "category": "cars_trucks",
+      "supergroup": "vehicles",
+      "image": "assets/odd/family_car.png",
+      "clipart": true
+    },
+    {
+      "id": "box_truck",
+      "name": "samochód dostawczy",
+      "category": "cars_trucks",
+      "supergroup": "vehicles",
+      "image": "assets/odd/box_truck.png",
+      "clipart": true
+    },
+    {
+      "id": "dump_truck_new",
+      "name": "wywrotka",
+      "category": "cars_trucks",
+      "supergroup": "vehicles",
+      "image": "assets/odd/dump_truck_new.png",
+      "clipart": true
+    },
+    {
+      "id": "tractor",
+      "name": "traktor",
+      "category": "cars_trucks",
+      "supergroup": "vehicles",
+      "image": "assets/odd/tractor.png",
+      "clipart": true
+    },
+    {
+      "id": "road_motorcycle",
+      "name": "motocykl",
+      "category": "motorcycles",
+      "supergroup": "vehicles",
+      "image": "assets/odd/road_motorcycle.png",
+      "clipart": true
+    },
+    {
+      "id": "road_bicycle",
+      "name": "rower",
+      "category": "bicycles",
+      "supergroup": "vehicles",
+      "image": "assets/odd/road_bicycle.png",
+      "clipart": true
+    },
+    {
+      "id": "bus",
+      "name": "autobus",
+      "category": "cars_trucks",
+      "supergroup": "vehicles",
+      "image": "assets/odd/bus.png",
+      "clipart": true
+    },
+    {
+      "id": "airliner_new",
+      "name": "samolot pasażerski",
+      "category": "airplanes",
+      "supergroup": "vehicles",
+      "image": "assets/odd/airliner_new.png",
+      "clipart": true
+    },
+    {
+      "id": "helicopter_new",
+      "name": "śmigłowiec",
+      "category": "other_flying",
+      "supergroup": "vehicles",
+      "image": "assets/odd/helicopter_new.png",
+      "clipart": true
+    },
+    {
+      "id": "balloon_new",
+      "name": "balon",
+      "category": "other_flying",
+      "supergroup": "vehicles",
+      "image": "assets/odd/balloon_new.png",
+      "clipart": true
+    },
+    {
+      "id": "rocket",
+      "name": "rakieta",
+      "category": "other_flying",
+      "supergroup": "vehicles",
+      "image": "assets/odd/rocket.png",
+      "clipart": true
+    },
+    {
+      "id": "sailboat",
+      "name": "żaglówka",
+      "category": "other_flying",
+      "supergroup": "vehicles",
+      "image": "assets/odd/sailboat.png",
+      "clipart": true
+    },
+    {
+      "id": "excavator",
+      "name": "koparka",
+      "category": "cars_trucks",
+      "supergroup": "vehicles",
+      "image": "assets/odd/excavator.png",
+      "clipart": true
+    },
+    {
+      "id": "fire_truck_new",
+      "name": "wóz strażacki",
+      "category": "cars_trucks",
+      "supergroup": "vehicles",
+      "image": "assets/odd/fire_truck_new.png",
+      "clipart": true
+    },
+    {
+      "id": "ambulance",
+      "name": "ambulans",
+      "category": "cars_trucks",
+      "supergroup": "vehicles",
+      "image": "assets/odd/ambulance.png",
+      "clipart": true
+    },
+    {
+      "id": "road_compact",
+      "name": "czerwony samochód",
+      "category": "cars_trucks",
+      "supergroup": "vehicles",
+      "image": "assets/odd/road_compact.png",
+      "clipart": true
+    },
+    {
+      "id": "taxi",
+      "name": "taksówka",
+      "category": "cars_trucks",
+      "supergroup": "vehicles",
+      "image": "assets/odd/taxi.png",
+      "clipart": true
+    },
+    {
+      "id": "police_car",
+      "name": "radiowóz",
+      "category": "cars_trucks",
+      "supergroup": "vehicles",
+      "image": "assets/odd/police_car.png",
+      "clipart": true
+    },
+    {
+      "id": "road_firetruck",
+      "name": "wóz strażacki",
+      "category": "cars_trucks",
+      "supergroup": "vehicles",
+      "image": "assets/odd/road_firetruck.png",
+      "clipart": true
+    },
+    {
+      "id": "road_dumptruck",
+      "name": "wywrotka",
+      "category": "cars_trucks",
+      "supergroup": "vehicles",
+      "image": "assets/odd/road_dumptruck.png",
+      "clipart": true
+    },
+    {
+      "id": "road_tractor",
+      "name": "traktor",
+      "category": "cars_trucks",
+      "supergroup": "vehicles",
+      "image": "assets/odd/road_tractor.png",
+      "clipart": true
+    },
+    {
+      "id": "road_motorcycle2",
+      "name": "motocykl",
+      "category": "motorcycles",
+      "supergroup": "vehicles",
+      "image": "assets/odd/road_motorcycle2.png",
+      "clipart": true
+    },
+    {
+      "id": "road_bicycle2",
+      "name": "rower",
+      "category": "bicycles",
+      "supergroup": "vehicles",
+      "image": "assets/odd/road_bicycle2.png",
+      "clipart": true
+    },
+    {
+      "id": "minibus",
+      "name": "minibus",
+      "category": "cars_trucks",
+      "supergroup": "vehicles",
+      "image": "assets/odd/minibus.png",
+      "clipart": true
+    },
+    {
+      "id": "coach_bus",
+      "name": "autokar",
+      "category": "cars_trucks",
+      "supergroup": "vehicles",
+      "image": "assets/odd/coach_bus.png",
+      "clipart": true
+    },
+    {
+      "id": "road_scooter",
+      "name": "skuter",
+      "category": "motorcycles",
+      "supergroup": "vehicles",
+      "image": "assets/odd/road_scooter.png",
+      "clipart": true
+    },
+    {
+      "id": "tow_truck",
+      "name": "pomoc drogowa",
+      "category": "cars_trucks",
+      "supergroup": "vehicles",
+      "image": "assets/odd/tow_truck.png",
+      "clipart": true
     }
   ],
   "hardPuzzles": [
@@ -1127,16 +2162,16 @@
       "hint": "Pomyśl o sposobie odżywiania zwierząt."
     },
     {
-      "id": "predators",
+      "id": "safari_herbivores",
       "items": [
-        "fox",
-        "eagle",
-        "crocodile",
-        "cow"
+        "elephant",
+        "zebra",
+        "giraffe",
+        "lion"
       ],
-      "odd": "cow",
-      "rule": "Lis, orzeł i krokodyl są drapieżnikami. Krowa jest roślinożerna.",
-      "hint": "Zwróć uwagę na sposób zdobywania pokarmu."
+      "odd": "lion",
+      "rule": "Słoń, zebra i żyrafa są roślinożerne. Lew jest drapieżnikiem.",
+      "hint": "Zwróć uwagę na sposób odżywiania zwierząt safari."
     },
     {
       "id": "water_life",
@@ -1151,28 +2186,28 @@
       "hint": "Szukaj wspólnego środowiska życia."
     },
     {
-      "id": "motorized",
+      "id": "pet_mammals",
       "items": [
-        "sedan",
-        "sport_motorcycle",
-        "airliner",
-        "mountain_bike"
+        "dog",
+        "cat",
+        "guinea_pig",
+        "pet_goldfish"
       ],
-      "odd": "mountain_bike",
-      "rule": "Trzy pojazdy mają napęd silnikowy. Rower jest napędzany siłą mięśni.",
-      "hint": "Zwróć uwagę na źródło napędu."
+      "odd": "pet_goldfish",
+      "rule": "Pies, kot i świnka morska są ssakami. Rybka jest rybą.",
+      "hint": "Nie chodzi tylko o to, że wszystkie mogą być zwierzętami domowymi."
     },
     {
-      "id": "engine_flight",
+      "id": "non_flying_bird",
       "items": [
-        "airliner",
-        "helicopter",
-        "drone",
-        "kite"
+        "eagle",
+        "woodpecker",
+        "parrot",
+        "penguin"
       ],
-      "odd": "kite",
-      "rule": "Samolot, śmigłowiec i dron mają napęd. Latawiec unosi się bez własnego silnika.",
-      "hint": "Nie chodzi tylko o to, że wszystkie mogą być w powietrzu."
+      "odd": "penguin",
+      "rule": "Orzeł, dzięcioł i papuga latają. Pingwin jest ptakiem nielotem.",
+      "hint": "Pomyśl o sposobie poruszania się ptaków."
     },
     {
       "id": "manual_tools",
@@ -1183,7 +2218,7 @@
         "drill"
       ],
       "odd": "drill",
-      "rule": "Młotek, klucz i śrubokręt są narzędziami ręcznymi. Wiertarka ma napęd elektryczny.",
+      "rule": "Młotek, klucz i śrubokręt są narzędziami ręcznymi. Wiertarka ma napęd.",
       "hint": "Porównaj sposób działania narzędzi."
     },
     {
@@ -1195,39 +2230,56 @@
         "winter_jacket"
       ],
       "odd": "winter_jacket",
-      "rule": "Koszulka, czapka z daszkiem i lekka sukienka pasują do ciepłej pogody. Kurtka jest ubraniem zimowym.",
+      "rule": "Trzy elementy pasują do ciepłej pogody. Kurtka jest ubraniem zimowym.",
       "hint": "Pomyśl o porze roku."
     },
     {
-      "id": "gold_items",
+      "id": "emergency_vehicles",
       "items": [
-        "gold_coin",
-        "gold_medal",
-        "trophy",
-        "silver_coin"
+        "police_car",
+        "ambulance",
+        "fire_truck_new",
+        "family_car"
       ],
-      "odd": "silver_coin",
-      "rule": "Trzy elementy są złote. Srebrna moneta ma inny kolor.",
-      "hint": "Sprawdź dominujący kolor."
+      "odd": "family_car",
+      "rule": "Radiowóz, ambulans i wóz strażacki są pojazdami służb. Samochód rodzinny nie jest.",
+      "hint": "Pomyśl o przeznaczeniu pojazdów."
     }
   ],
   "advancedPuzzles": [
     {
-      "id": "adv_mammals",
+      "id": "adv_domestic",
       "items": [
         "dog",
         "cat",
         "rabbit",
         "hamster",
+        "guinea_pig",
+        "budgie",
+        "canary",
+        "ferret",
+        "fox"
+      ],
+      "odd": "fox",
+      "rule": "Osiem zwierząt może być zwierzętami domowymi. Lis jest dziki.",
+      "hint": "Pomyśl o relacji zwierząt z człowiekiem."
+    },
+    {
+      "id": "adv_farm",
+      "items": [
         "cow",
         "pig",
         "horse",
         "goat",
-        "crocodile"
+        "sheep",
+        "donkey",
+        "hen",
+        "rooster",
+        "lion"
       ],
-      "odd": "crocodile",
-      "rule": "Osiem zwierząt to ssaki. Krokodyl jest gadem.",
-      "hint": "Sprawdź gromadę każdego zwierzęcia."
+      "odd": "lion",
+      "rule": "Osiem zwierząt jest związanych z gospodarstwem. Lew jest zwierzęciem safari.",
+      "hint": "Które zwierzę nie pasuje do gospodarstwa?"
     },
     {
       "id": "adv_birds",
@@ -1244,109 +2296,7 @@
       ],
       "odd": "fox",
       "rule": "Osiem elementów to ptaki. Lis jest ssakiem.",
-      "hint": "Pomyśl o budowie i klasyfikacji zwierząt."
-    },
-    {
-      "id": "adv_fish",
-      "items": [
-        "tuna",
-        "marlin",
-        "clownfish",
-        "seahorse",
-        "angelfish",
-        "guppy",
-        "betta",
-        "goldfish",
-        "octopus"
-      ],
-      "odd": "octopus",
-      "rule": "Osiem zwierząt to ryby. Ośmiornica jest mięczakiem.",
-      "hint": "Nie każde zwierzę żyjące w wodzie jest rybą."
-    },
-    {
-      "id": "adv_tools",
-      "items": [
-        "shovel",
-        "rake",
-        "watering_can",
-        "wheelbarrow",
-        "hammer",
-        "wrench",
-        "screwdriver",
-        "drill",
-        "tshirt"
-      ],
-      "odd": "tshirt",
-      "rule": "Osiem elementów to narzędzia lub sprzęt do pracy. Koszulka jest ubraniem.",
-      "hint": "Porównaj podstawową funkcję przedmiotów."
-    },
-    {
-      "id": "adv_plants",
-      "items": [
-        "cactus",
-        "fern",
-        "succulent",
-        "basil",
-        "rose",
-        "tulip",
-        "sunflower",
-        "daisy",
-        "city_bike"
-      ],
-      "odd": "city_bike",
-      "rule": "Osiem elementów to rośliny. Rower jest pojazdem.",
-      "hint": "Zastanów się, które elementy są organizmami żywymi."
-    },
-    {
-      "id": "adv_vehicles",
-      "items": [
-        "sedan",
-        "suv",
-        "dump_truck",
-        "fire_truck",
-        "scooter",
-        "classic_motorcycle",
-        "sport_motorcycle",
-        "dirt_bike",
-        "oak"
-      ],
-      "odd": "oak",
-      "rule": "Osiem elementów to pojazdy. Dąb jest drzewem.",
-      "hint": "Szukaj wspólnego przeznaczenia."
-    },
-    {
-      "id": "adv_flying",
-      "items": [
-        "airliner",
-        "prop_plane",
-        "fighter_jet",
-        "biplane",
-        "helicopter",
-        "hot_air_balloon",
-        "kite",
-        "drone",
-        "sedan"
-      ],
-      "odd": "sedan",
-      "rule": "Osiem elementów może poruszać się w powietrzu. Samochód pozostaje pojazdem lądowym.",
-      "hint": "Pomyśl o przestrzeni, w której się poruszają."
-    },
-    {
-      "id": "adv_land_animals",
-      "items": [
-        "dog",
-        "cat",
-        "rabbit",
-        "hamster",
-        "fox",
-        "deer",
-        "hedgehog",
-        "squirrel",
-        "dolphin"
-      ],
-      "odd": "dolphin",
-      "rule": "Osiem zwierząt żyje głównie na lądzie. Delfin jest zwierzęciem morskim.",
-      "hint": "Zwróć uwagę na naturalne środowisko."
+      "hint": "Sprawdź klasyfikację zwierząt."
     },
     {
       "id": "adv_reptiles_amphibians",
@@ -1366,21 +2316,38 @@
       "hint": "Sprawdź grupę zoologiczną."
     },
     {
-      "id": "adv_awards_money",
+      "id": "adv_plants",
       "items": [
-        "gold_coin",
-        "silver_coin",
-        "coin_stack",
-        "banknote",
-        "gold_medal",
-        "silver_medal",
-        "trophy",
-        "rosette",
-        "frog"
+        "cactus",
+        "fern",
+        "succulent",
+        "basil",
+        "rose",
+        "tulip",
+        "sunflower",
+        "daisy",
+        "city_bike"
       ],
-      "odd": "frog",
-      "rule": "Osiem elementów wiąże się z pieniędzmi lub nagrodami. Żaba jest zwierzęciem.",
-      "hint": "Pomyśl o zastosowaniu i symbolice przedmiotów."
+      "odd": "city_bike",
+      "rule": "Osiem elementów to rośliny. Rower jest pojazdem.",
+      "hint": "Który element nie jest rośliną?"
+    },
+    {
+      "id": "adv_vehicles",
+      "items": [
+        "sedan",
+        "suv",
+        "compact_car",
+        "family_car",
+        "box_truck",
+        "taxi",
+        "police_car",
+        "ambulance",
+        "oak"
+      ],
+      "odd": "oak",
+      "rule": "Osiem elementów to pojazdy drogowe. Dąb jest drzewem.",
+      "hint": "Szukaj wspólnego przeznaczenia."
     }
   ]
 }
