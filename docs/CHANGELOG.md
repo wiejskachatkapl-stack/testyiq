@@ -1,5 +1,15 @@
 # Changelog
 
+## v1095
+### Naprawa niewidocznych obrazków w „Co nie pasuje?”
+- znaleziono właściwą przyczynę pustych białych kafelków,
+- ogólna reguła `.dice-answer > span` zmniejszała kontener grafiki do 23×23 px,
+- zmieniono `odd-image-fit-box` z `span` na `div`,
+- dodano zabezpieczenia rozmiaru i widoczności kontenera oraz obrazu,
+- pozostawiono `object-fit: contain`, aby obraz był widoczny w całości,
+- nie zmieniano bazy grafik, pytań ani punktacji,
+- cache PWA zmieniono na `iq-brain-lab-v1095`.
+
 ## v1093
 - powiększono bazę z 100 do 195 grafik,
 - nowe grupy: safari, ptaki leśne, ptaki egzotyczne,
@@ -827,3 +837,10 @@ Dodano Centrum Treningu Umysłu, sześć kategorii, profil Brain/XP, ekran kateg
 - duże ikony, gradienty, paski postępu i okrągłe strzałki,
 - zwarty układ mobilny bez nakładania,
 - mechanika bez zmian.
+
+
+## v1094
+- rozbudowano logikę pytań „Co nie pasuje?”
+- zwiększono różnorodność kategorii i podgrup
+- poprawiono renderowanie grafik oraz dodano fallback, gdy plik obrazka się nie wczyta
+- zaktualizowano service worker i pakiet plików do podmiany

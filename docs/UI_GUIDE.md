@@ -252,3 +252,7 @@ Grafiki w kafelkach „Co nie pasuje?” są skalowane proporcjonalnie przez `ob
 
 ## v1093
 Grafiki odpowiedzi są zawsze w całości widoczne wewnątrz osobnego `odd-image-fit-box`; nie używamy już kadrowania `cover`.
+
+
+## v1095 — widoczność obrazków
+Kontener obrazka w kafelku odpowiedzi jest elementem `div` zajmującym cały dostępny obszar kafelka. Obraz ma `object-fit: contain`, więc jest wyświetlany w całości i nie jest przycinany.

@@ -354,3 +354,7 @@ W module „Co nie pasuje?” zmieniono sposób skalowania ilustracji z `cover` 
 - wiele wcześniejszych grafik ponownie wycięto bez przycinania obiektu,
 - renderer posiada wewnętrzny kontener z `object-fit: contain`, więc grafika nie może wyjść poza kafelek,
 - podstawowy układ pozostaje 2×2, a zaawansowany 3×3.
+
+
+## v1095 — naprawa niewidocznych grafik w „Co nie pasuje?”
+Naprawiono kolizję CSS pomiędzy ogólną regułą `.dice-answer > span` a kontenerem grafik. Kontener `odd-image-fit-box` został zmieniony ze `span` na `div`, dzięki czemu nie jest już redukowany do 23×23 px. Dodano też twarde reguły `width/height/object-fit: contain`, aby całe grafiki były widoczne. Baza pytań i grafiki z v1094 pozostają bez zmian.
