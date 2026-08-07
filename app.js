@@ -973,6 +973,15 @@ function escapeCognitive(value){
   })[char]);
 }
 
+function oddAssetUrl(path){
+  const clean=String(path||'').replace(/^\.\//,'');
+  try{
+    const url=new URL(clean,document.baseURI);
+    url.searchParams.set('v','1094');
+    return url.href;
+  }catch(_){ return clean; }
+}
+
 function renderOddOneOutQuestion(question){
   const card=document.querySelector('.question-card');
   card?.classList.remove('matrix-question-card','multirow-question-card','matrix-2x2-card','matrix-3x3-card');
@@ -988,7 +997,7 @@ function renderOddOneOutQuestion(question){
   board.innerHTML=question.options.map((item,index)=>`
     <button class="dice-answer odd-image-option odd-clipart-option" type="button" data-answer="${index}" aria-label="${item.name}">
       <span class="odd-option-letter">${String.fromCharCode(65+index)}</span>
-      <span class="odd-image-fit-box"><img class="odd-clipart-image" src="${item.image}" alt="${item.name}" draggable="false"></span>
+      <span class="odd-image-fit-box"><img class="odd-clipart-image" src="${oddAssetUrl(item.image)}" alt="${item.name}" draggable="false" onerror="this.style.display='none';this.parentElement.classList.add('odd-image-load-error');"></span>
     </button>`).join('');
 
   const answers=document.getElementById('diceAnswers');
