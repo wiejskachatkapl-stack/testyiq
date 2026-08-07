@@ -1,5 +1,5 @@
 {
-  "version": 1094,
+  "version": "1096",
   "layout": {
     "basic": "2x2",
     "advanced": "3x3"
@@ -34,9 +34,7 @@
     "awards": "medale i puchary",
     "clothes": "ubiory",
     "felines": "kotowate",
-    "canids": "psowate",
     "flightless_birds": "ptaki nieloty",
-    "measuring_tools": "przyrządy miernicze",
     "hand_tools": "narzędzia ręczne",
     "electric_tools": "narzędzia elektryczne",
     "red_flowers": "kwiaty czerwone",
@@ -85,8 +83,7 @@
       "forest_fox_new",
       "forest_deer_new",
       "forest_hedgehog_new",
-      "lynx",
-      "wolf"
+      "lynx"
     ],
     "field_animals": [
       "hare",
@@ -95,8 +92,7 @@
       "stork",
       "field_rabbit_new",
       "forest_hedgehog_new",
-      "boar",
-      "coyote"
+      "boar"
     ],
     "safari_animals": [
       "lion",
@@ -106,8 +102,7 @@
       "rhino",
       "cheetah",
       "leopard",
-      "panther",
-      "jackal"
+      "panther"
     ],
     "marine_animals": [
       "dolphin",
@@ -149,7 +144,6 @@
       "wild_stork_new",
       "wild_eagle_new",
       "penguin",
-      "ostrich",
       "kiwi"
     ],
     "forest_birds": [
@@ -325,25 +319,9 @@
       "panther",
       "lynx"
     ],
-    "canids": [
-      "dog",
-      "fox",
-      "wolf",
-      "coyote",
-      "jackal"
-    ],
     "flightless_birds": [
       "penguin",
-      "ostrich",
       "kiwi"
-    ],
-    "measuring_tools": [
-      "ruler",
-      "protractor",
-      "spirit_level",
-      "caliper",
-      "thermometer",
-      "tape_measure"
     ],
     "hand_tools": [
       "hammer",
@@ -353,28 +331,22 @@
       "saw"
     ],
     "electric_tools": [
-      "drill",
-      "angle_grinder",
-      "jigsaw",
-      "circular_saw"
+      "drill"
     ],
     "red_flowers": [
       "rose",
-      "tulip",
-      "red_poppy",
-      "red_geranium"
+      "rose_new",
+      "tulip"
     ],
     "purple_flowers": [
       "lavender",
-      "purple_iris",
-      "purple_crocus",
-      "purple_pansy"
+      "tulip_new"
     ],
     "yellow_flowers": [
       "sunflower",
-      "yellow_daffodil",
-      "yellow_marigold",
-      "yellow_buttercup"
+      "sunflower_new",
+      "daisy",
+      "daisy_new"
     ]
   },
   "objects": [
@@ -384,10 +356,7 @@
       "category": "domestic_animals",
       "supergroup": "animals",
       "image": "assets/odd/dog.png",
-      "clipart": true,
-      "tags": [
-        "canid"
-      ]
+      "clipart": true
     },
     {
       "id": "cat",
@@ -395,11 +364,7 @@
       "category": "domestic_animals",
       "supergroup": "animals",
       "image": "assets/odd/cat.png",
-      "clipart": true,
-      "tags": [
-        "feline",
-        "predator"
-      ]
+      "clipart": true
     },
     {
       "id": "rabbit",
@@ -475,8 +440,7 @@
       "image": "assets/odd/fox.png",
       "clipart": true,
       "tags": [
-        "predator",
-        "canid"
+        "predator"
       ]
     },
     {
@@ -884,11 +848,7 @@
       "category": "flowers",
       "supergroup": "plants",
       "image": "assets/odd/rose.png",
-      "clipart": true,
-      "tags": [
-        "flower",
-        "red_flower"
-      ]
+      "clipart": true
     },
     {
       "id": "tulip",
@@ -896,11 +856,7 @@
       "category": "flowers",
       "supergroup": "plants",
       "image": "assets/odd/tulip.png",
-      "clipart": true,
-      "tags": [
-        "flower",
-        "red_flower"
-      ]
+      "clipart": true
     },
     {
       "id": "sunflower",
@@ -908,11 +864,7 @@
       "category": "flowers",
       "supergroup": "plants",
       "image": "assets/odd/sunflower.png",
-      "clipart": true,
-      "tags": [
-        "flower",
-        "yellow_flower"
-      ]
+      "clipart": true
     },
     {
       "id": "daisy",
@@ -1263,8 +1215,7 @@
       "clipart": true,
       "tags": [
         "manual_tool",
-        "workshop",
-        "hand_tool"
+        "workshop"
       ]
     },
     {
@@ -1276,8 +1227,7 @@
       "clipart": true,
       "tags": [
         "manual_tool",
-        "workshop",
-        "hand_tool"
+        "workshop"
       ]
     },
     {
@@ -1289,8 +1239,7 @@
       "clipart": true,
       "tags": [
         "manual_tool",
-        "workshop",
-        "hand_tool"
+        "workshop"
       ]
     },
     {
@@ -1302,8 +1251,7 @@
       "clipart": true,
       "tags": [
         "powered_tool",
-        "workshop",
-        "electric_tool"
+        "workshop"
       ]
     },
     {
@@ -1314,8 +1262,7 @@
       "image": "assets/odd/saw.png",
       "clipart": true,
       "tags": [
-        "manual_tool",
-        "hand_tool"
+        "manual_tool"
       ]
     },
     {
@@ -1326,8 +1273,7 @@
       "image": "assets/odd/pliers.png",
       "clipart": true,
       "tags": [
-        "manual_tool",
-        "hand_tool"
+        "manual_tool"
       ]
     },
     {
@@ -1344,14 +1290,12 @@
     {
       "id": "tape_measure",
       "name": "miarka",
-      "category": "measuring_tools",
+      "category": "other_tools",
       "supergroup": "tools",
       "image": "assets/odd/tape_measure.png",
       "clipart": true,
       "tags": [
-        "measuring_tool",
-        "measuring",
-        "hand_tool"
+        "measuring_tool"
       ]
     },
     {
@@ -1685,8 +1629,7 @@
       "image": "assets/odd/lion.png",
       "clipart": true,
       "tags": [
-        "predator",
-        "feline"
+        "predator"
       ]
     },
     {
@@ -1730,8 +1673,7 @@
       "image": "assets/odd/rhino.png",
       "clipart": true,
       "tags": [
-        "herbivore",
-        "land"
+        "herbivore"
       ]
     },
     {
@@ -1820,11 +1762,7 @@
       "category": "exotic_birds",
       "supergroup": "animals",
       "image": "assets/odd/penguin.png",
-      "clipart": true,
-      "tags": [
-        "bird",
-        "flightless"
-      ]
+      "clipart": true
     },
     {
       "id": "reptile_turtle_new",
@@ -2008,11 +1946,7 @@
       "category": "plants",
       "supergroup": "plants",
       "image": "assets/odd/lavender.png",
-      "clipart": true,
-      "tags": [
-        "flower",
-        "purple_flower"
-      ]
+      "clipart": true
     },
     {
       "id": "strawberry_plant",
@@ -2270,9 +2204,7 @@
       "image": "assets/odd/cheetah.png",
       "clipart": true,
       "tags": [
-        "feline",
-        "predator",
-        "land"
+        "kotowate"
       ]
     },
     {
@@ -2283,9 +2215,7 @@
       "image": "assets/odd/leopard.png",
       "clipart": true,
       "tags": [
-        "feline",
-        "predator",
-        "land"
+        "kotowate"
       ]
     },
     {
@@ -2296,9 +2226,7 @@
       "image": "assets/odd/panther.png",
       "clipart": true,
       "tags": [
-        "feline",
-        "predator",
-        "land"
+        "kotowate"
       ]
     },
     {
@@ -2309,61 +2237,7 @@
       "image": "assets/odd/lynx.png",
       "clipart": true,
       "tags": [
-        "feline",
-        "predator",
-        "land"
-      ]
-    },
-    {
-      "id": "wolf",
-      "name": "wilk",
-      "category": "forest_animals",
-      "supergroup": "animals",
-      "image": "assets/odd/wolf.png",
-      "clipart": true,
-      "tags": [
-        "canid",
-        "predator",
-        "land"
-      ]
-    },
-    {
-      "id": "coyote",
-      "name": "kojot",
-      "category": "field_animals",
-      "supergroup": "animals",
-      "image": "assets/odd/coyote.png",
-      "clipart": true,
-      "tags": [
-        "canid",
-        "predator",
-        "land"
-      ]
-    },
-    {
-      "id": "jackal",
-      "name": "szakal",
-      "category": "safari_animals",
-      "supergroup": "animals",
-      "image": "assets/odd/jackal.png",
-      "clipart": true,
-      "tags": [
-        "canid",
-        "predator",
-        "land"
-      ]
-    },
-    {
-      "id": "ostrich",
-      "name": "struś",
-      "category": "wild_birds",
-      "supergroup": "animals",
-      "image": "assets/odd/ostrich.png",
-      "clipart": true,
-      "tags": [
-        "bird",
-        "flightless",
-        "land"
+        "kotowate"
       ]
     },
     {
@@ -2374,198 +2248,7 @@
       "image": "assets/odd/kiwi.png",
       "clipart": true,
       "tags": [
-        "bird",
-        "flightless",
-        "land"
-      ]
-    },
-    {
-      "id": "ruler",
-      "name": "linijka",
-      "category": "measuring_tools",
-      "supergroup": "tools",
-      "image": "assets/odd/ruler.png",
-      "clipart": true,
-      "tags": [
-        "measuring",
-        "hand_tool"
-      ]
-    },
-    {
-      "id": "protractor",
-      "name": "kątomierz",
-      "category": "measuring_tools",
-      "supergroup": "tools",
-      "image": "assets/odd/protractor.png",
-      "clipart": true,
-      "tags": [
-        "measuring",
-        "hand_tool"
-      ]
-    },
-    {
-      "id": "spirit_level",
-      "name": "poziomica",
-      "category": "measuring_tools",
-      "supergroup": "tools",
-      "image": "assets/odd/spirit_level.png",
-      "clipart": true,
-      "tags": [
-        "measuring",
-        "hand_tool"
-      ]
-    },
-    {
-      "id": "caliper",
-      "name": "suwmiarka",
-      "category": "measuring_tools",
-      "supergroup": "tools",
-      "image": "assets/odd/caliper.png",
-      "clipart": true,
-      "tags": [
-        "measuring",
-        "hand_tool"
-      ]
-    },
-    {
-      "id": "thermometer",
-      "name": "termometr",
-      "category": "measuring_tools",
-      "supergroup": "tools",
-      "image": "assets/odd/thermometer.png",
-      "clipart": true,
-      "tags": [
-        "measuring",
-        "hand_tool"
-      ]
-    },
-    {
-      "id": "angle_grinder",
-      "name": "szlifierka kątowa",
-      "category": "electric_tools",
-      "supergroup": "tools",
-      "image": "assets/odd/angle_grinder.png",
-      "clipart": true,
-      "tags": [
-        "electric_tool"
-      ]
-    },
-    {
-      "id": "jigsaw",
-      "name": "wyrzynarka",
-      "category": "electric_tools",
-      "supergroup": "tools",
-      "image": "assets/odd/jigsaw.png",
-      "clipart": true,
-      "tags": [
-        "electric_tool"
-      ]
-    },
-    {
-      "id": "circular_saw",
-      "name": "pilarka tarczowa",
-      "category": "electric_tools",
-      "supergroup": "tools",
-      "image": "assets/odd/circular_saw.png",
-      "clipart": true,
-      "tags": [
-        "electric_tool"
-      ]
-    },
-    {
-      "id": "red_poppy",
-      "name": "mak",
-      "category": "flowers",
-      "supergroup": "plants",
-      "image": "assets/odd/red_poppy.png",
-      "clipart": true,
-      "tags": [
-        "flower",
-        "red_flower"
-      ]
-    },
-    {
-      "id": "red_geranium",
-      "name": "pelargonia",
-      "category": "flowers",
-      "supergroup": "plants",
-      "image": "assets/odd/red_geranium.png",
-      "clipart": true,
-      "tags": [
-        "flower",
-        "red_flower"
-      ]
-    },
-    {
-      "id": "purple_iris",
-      "name": "irys",
-      "category": "flowers",
-      "supergroup": "plants",
-      "image": "assets/odd/purple_iris.png",
-      "clipart": true,
-      "tags": [
-        "flower",
-        "purple_flower"
-      ]
-    },
-    {
-      "id": "purple_crocus",
-      "name": "krokus",
-      "category": "flowers",
-      "supergroup": "plants",
-      "image": "assets/odd/purple_crocus.png",
-      "clipart": true,
-      "tags": [
-        "flower",
-        "purple_flower"
-      ]
-    },
-    {
-      "id": "purple_pansy",
-      "name": "bratek",
-      "category": "flowers",
-      "supergroup": "plants",
-      "image": "assets/odd/purple_pansy.png",
-      "clipart": true,
-      "tags": [
-        "flower",
-        "purple_flower"
-      ]
-    },
-    {
-      "id": "yellow_daffodil",
-      "name": "narcyz",
-      "category": "flowers",
-      "supergroup": "plants",
-      "image": "assets/odd/yellow_daffodil.png",
-      "clipart": true,
-      "tags": [
-        "flower",
-        "yellow_flower"
-      ]
-    },
-    {
-      "id": "yellow_marigold",
-      "name": "aksamitka",
-      "category": "flowers",
-      "supergroup": "plants",
-      "image": "assets/odd/yellow_marigold.png",
-      "clipart": true,
-      "tags": [
-        "flower",
-        "yellow_flower"
-      ]
-    },
-    {
-      "id": "yellow_buttercup",
-      "name": "jaskier",
-      "category": "flowers",
-      "supergroup": "plants",
-      "image": "assets/odd/yellow_buttercup.png",
-      "clipart": true,
-      "tags": [
-        "flower",
-        "yellow_flower"
+        "nielot"
       ]
     }
   ],
@@ -2667,121 +2350,64 @@
       "hint": "Pomyśl o przeznaczeniu pojazdów."
     },
     {
-      "id": "felines-vs-canid",
-      "difficulty": 3,
+      "id": "felines-odd-amphibian",
       "items": [
         "cheetah",
         "leopard",
-        "lynx",
-        "wolf"
+        "panther",
+        "amph_toad_new"
       ],
-      "odd": "wolf",
-      "rule": "Trzy zwierzęta należą do kotowatych. Wilk należy do psowatych.",
-      "hint": "Zwróć uwagę na rodzinę biologiczną zwierząt."
+      "odd": "amph_toad_new",
+      "rule": "Trzy zwierzęta należą do kotowatych. Ropucha jest płazem.",
+      "hint": "Zwróć uwagę na rodzinę lub grupę zwierząt."
     },
     {
-      "id": "canids-vs-feline",
-      "difficulty": 3,
+      "id": "felines-odd-dog",
       "items": [
-        "fox",
-        "wolf",
-        "coyote",
-        "lynx"
+        "cat",
+        "lion",
+        "lynx",
+        "dog"
       ],
-      "odd": "lynx",
-      "rule": "Trzy zwierzęta należą do psowatych. Ryś należy do kotowatych.",
-      "hint": "Porównaj pokrewieństwo zwierząt, nie tylko środowisko życia."
+      "odd": "dog",
+      "rule": "Kot, lew i ryś należą do kotowatych. Pies do nich nie należy.",
+      "hint": "Poszukaj wspólnej rodziny zwierząt."
     },
     {
-      "id": "flightless-birds",
-      "difficulty": 3,
+      "id": "wild-birds-flightless",
       "items": [
         "penguin",
-        "ostrich",
         "kiwi",
-        "eagle"
+        "eagle",
+        "woodpecker"
       ],
-      "odd": "eagle",
-      "rule": "Trzy ptaki są nielotami. Orzeł potrafi aktywnie latać.",
-      "hint": "Nie każdy ptak potrafi latać."
+      "odd": "kiwi",
+      "rule": "Pingwin, orzeł i dzięcioł to ptaki. Kiwi także jest ptakiem, ale jako nielot tworzy wyjątek w tej grupie.",
+      "hint": "Zastanów się nie tylko nad klasą zwierząt, ale też nad ich cechą szczególną."
     },
     {
-      "id": "red-flowers",
-      "difficulty": 3,
-      "items": [
-        "rose",
-        "tulip",
-        "red_poppy",
-        "sunflower"
-      ],
-      "odd": "sunflower",
-      "rule": "Trzy kwiaty są czerwone. Słonecznik jest żółty.",
-      "hint": "Tym razem reguła dotyczy koloru kwiatu."
-    },
-    {
-      "id": "purple-flowers",
-      "difficulty": 3,
-      "items": [
-        "lavender",
-        "purple_iris",
-        "purple_crocus",
-        "yellow_daffodil"
-      ],
-      "odd": "yellow_daffodil",
-      "rule": "Trzy kwiaty są fioletowe. Narcyz jest żółty.",
-      "hint": "Porównaj dominujący kolor płatków."
-    },
-    {
-      "id": "yellow-flowers",
-      "difficulty": 3,
-      "items": [
-        "sunflower",
-        "yellow_daffodil",
-        "yellow_marigold",
-        "rose"
-      ],
-      "odd": "rose",
-      "rule": "Trzy kwiaty są żółte. Róża jest czerwona.",
-      "hint": "Zwróć uwagę na kolor kwiatów."
-    },
-    {
-      "id": "measuring-tools",
-      "difficulty": 3,
-      "items": [
-        "ruler",
-        "caliper",
-        "protractor",
-        "hammer"
-      ],
-      "odd": "hammer",
-      "rule": "Trzy przedmioty służą do mierzenia. Młotek jest narzędziem do uderzania.",
-      "hint": "Porównaj podstawowe zastosowanie przedmiotów."
-    },
-    {
-      "id": "electric-tools",
-      "difficulty": 3,
-      "items": [
-        "drill",
-        "angle_grinder",
-        "jigsaw",
-        "screwdriver"
-      ],
-      "odd": "screwdriver",
-      "rule": "Trzy narzędzia są elektryczne. Śrubokręt jest narzędziem ręcznym.",
-      "hint": "Sprawdź źródło napędu narzędzi."
-    },
-    {
-      "id": "hand-tools",
-      "difficulty": 3,
+      "id": "hand-vs-electric-tool",
       "items": [
         "hammer",
         "wrench",
-        "pliers",
+        "screwdriver",
         "drill"
       ],
       "odd": "drill",
-      "rule": "Trzy narzędzia są ręczne. Wiertarka jest narzędziem elektrycznym.",
-      "hint": "Zastanów się, które narzędzie wymaga zasilania."
+      "rule": "Młotek, klucz i śrubokręt to narzędzia ręczne. Wiertarka jest narzędziem elektrycznym.",
+      "hint": "Porównaj sposób działania narzędzi."
+    },
+    {
+      "id": "red-vs-yellow-flower",
+      "items": [
+        "rose",
+        "rose_new",
+        "tulip",
+        "sunflower"
+      ],
+      "odd": "sunflower",
+      "rule": "Róże i tulipan są kwiatami czerwonymi. Słonecznik jest żółty.",
+      "hint": "Porównaj dominujący kolor kwiatów."
     }
   ],
   "advancedPuzzles": [
@@ -2888,40 +2514,55 @@
       "hint": "Szukaj wspólnego przeznaczenia."
     },
     {
-      "id": "adv-predators",
-      "difficulty": 4,
+      "id": "adv_felines_mix",
       "items": [
+        "cat",
         "lion",
         "cheetah",
         "leopard",
         "panther",
         "lynx",
-        "wolf",
         "fox",
-        "crocodile",
-        "rhino"
+        "dog",
+        "amph_toad_new"
       ],
-      "odd": "rhino",
-      "rule": "Osiem zwierząt w zestawie to drapieżniki. Nosorożec jest roślinożercą.",
-      "hint": "Zwróć uwagę na sposób odżywiania."
+      "odd": "amph_toad_new",
+      "rule": "Osiem elementów to ssaki, z czego większość to kotowate. Ropucha jest płazem.",
+      "hint": "Sprawdź, który obrazek odbiega od pozostałych pod względem grupy zwierząt."
     },
     {
-      "id": "adv-flower-color",
-      "difficulty": 4,
+      "id": "adv_hand_tools_one_electric",
+      "items": [
+        "hammer",
+        "wrench",
+        "screwdriver",
+        "pliers",
+        "saw",
+        "shovel",
+        "rake",
+        "watering_can",
+        "drill"
+      ],
+      "odd": "drill",
+      "rule": "Osiem elementów to narzędzia ręczne lub proste narzędzia bez napędu. Wiertarka jest narzędziem elektrycznym.",
+      "hint": "Szukaj różnicy w sposobie działania."
+    },
+    {
+      "id": "adv_flower_colors",
       "items": [
         "rose",
+        "rose_new",
         "tulip",
-        "red_poppy",
-        "red_geranium",
-        "purple_iris",
-        "purple_crocus",
-        "purple_pansy",
         "lavender",
-        "yellow_daffodil"
+        "tulip_new",
+        "sunflower",
+        "sunflower_new",
+        "daisy",
+        "hammer"
       ],
-      "odd": "yellow_daffodil",
-      "rule": "Osiem kwiatów ma czerwone lub fioletowe płatki, a narcyz jest żółty.",
-      "hint": "Reguła dotyczy dominującej barwy płatków."
+      "odd": "hammer",
+      "rule": "Osiem elementów to kwiaty w różnych kolorach. Młotek jest narzędziem.",
+      "hint": "Najpierw rozpoznaj ogólną kategorię większości obrazków."
     }
   ]
 }
