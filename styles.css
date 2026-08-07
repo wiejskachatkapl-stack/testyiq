@@ -9364,3 +9364,39 @@ html,body{
   .odd-grid-2x2 .odd-image-option{height:100px!important;min-height:100px!important;}
   .odd-grid-3x3 .odd-image-option{height:66px!important;min-height:66px!important;}
 }
+\n\n/* =========================================================
+   v1092 — poprawka skalowania grafik w „Co nie pasuje?”
+   Obraz ma być w całości widoczny wewnątrz kafelka.
+   ========================================================= */
+.odd-image-option.odd-clipart-option{
+  box-sizing:border-box!important;
+  overflow:hidden!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  padding:5px!important;
+}
+.odd-image-option img.odd-clipart-image{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  max-width:100%!important;
+  max-height:100%!important;
+  object-fit:contain!important;
+  object-position:center center!important;
+  box-sizing:border-box!important;
+  border-radius:9px!important;
+}
+.odd-grid-3x3 .odd-image-option{
+  padding:4px!important;
+}
+.odd-grid-3x3 .odd-image-option img.odd-clipart-image{
+  width:100%!important;
+  height:100%!important;
+  object-fit:contain!important;
+  object-position:center!important;
+}
+@media(max-width:768px){
+  .odd-image-option.odd-clipart-option{padding:3px!important;}
+  .odd-grid-3x3 .odd-image-option{padding:3px!important;}
+}
