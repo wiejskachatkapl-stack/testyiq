@@ -973,15 +973,6 @@ function escapeCognitive(value){
   })[char]);
 }
 
-function oddAssetUrl(path){
-  const clean=String(path||'').replace(/^\.\//,'');
-  try{
-    const url=new URL(clean,document.baseURI);
-    url.searchParams.set('v','1094');
-    return url.href;
-  }catch(_){ return clean; }
-}
-
 function renderOddOneOutQuestion(question){
   const card=document.querySelector('.question-card');
   card?.classList.remove('matrix-question-card','multirow-question-card','matrix-2x2-card','matrix-3x3-card');
@@ -994,15 +985,37 @@ function renderOddOneOutQuestion(question){
   const board=document.getElementById('diceSequence');
   const gridClass=question.options.length===9?'odd-grid-3x3':'odd-grid-2x2';
   board.className=`dice-sequence odd-image-board ${gridClass}`;
-  board.innerHTML=question.options.map((item,index)=>`
+  const versionTag = 'v1094';
+  board.innerHTML=question.options.map((item,index)=>{
+    const srcPrimary = `${item.image}?${versionTag}`;
+    const srcSecondary = `./${item.image}?${versionTag}`;
+    return `
     <button class="dice-answer odd-image-option odd-clipart-option" type="button" data-answer="${index}" aria-label="${item.name}">
       <span class="odd-option-letter">${String.fromCharCode(65+index)}</span>
-      <span class="odd-image-fit-box"><img class="odd-clipart-image" src="${oddAssetUrl(item.image)}" alt="${item.name}" draggable="false" onerror="this.style.display='none';this.parentElement.classList.add('odd-image-load-error');"></span>
-    </button>`).join('');
+      <div class="odd-image-fit-box">
+        <img class="odd-clipart-image" src="${srcPrimary}" data-fallback-1="${srcSecondary}" data-item-name="${item.name}" alt="${item.name}" draggable="false" loading="eager" decoding="sync">
+      </div>
+    </button>`;
+  }).join('');
 
   const answers=document.getElementById('diceAnswers');
   answers.innerHTML='';
   answers.classList.add('odd-hidden-answers');
+
+  board.querySelectorAll('.odd-clipart-image').forEach(img=>{
+    img.addEventListener('error',()=>{
+      const step = Number(img.dataset.errorStep || '0');
+      if(step === 0 && img.dataset.fallback1){
+        img.dataset.errorStep = '1';
+        img.src = img.dataset.fallback1;
+        return;
+      }
+      const box = img.closest('.odd-image-fit-box');
+      if(box && !box.querySelector('.odd-image-fallback-label')){
+        box.innerHTML = `<span class="odd-image-fallback-label">${img.dataset.itemName || img.alt || 'Brak grafiki'}</span>`;
+      }
+    }, { once:false });
+  });
 
   board.querySelectorAll('.odd-image-option').forEach(button=>{
     button.addEventListener('click',()=>{
