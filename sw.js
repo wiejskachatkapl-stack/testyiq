@@ -1,4 +1,4 @@
-const CACHE='iq-brain-lab-v1095';
+const CACHE='iq-brain-lab-v1096';
 const ASSETS=[
   './','./index.html','./styles.css','./app.js','./manifest.json',
   './icons/icon-192.png','./icons/icon-512.png','./icons/icon-maskable-512.png',
