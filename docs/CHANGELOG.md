@@ -1,5 +1,15 @@
 # Changelog
 
+## v1091
+### Nowa baza „Co nie pasuje?”
+- 100 nowych grafik PNG w `assets/odd`,
+- 25 kategorii po 4 obrazki,
+- układ podstawowy 2×2 (4 odpowiedzi),
+- układ zaawansowany 3×3 (9 odpowiedzi),
+- nowe reguły trudności: kategorie pokrewne, drapieżne/roślinożerne, środowisko, napęd, narzędzia ręczne/elektryczne, ubiór letni/zimowy, kolor złoty/srebrny,
+- usunięto zależność od starych grafik SVG i fotografii z poprzednich prób,
+- cache PWA: `iq-brain-lab-v1091`.
+
 ## v1090
 ### Próbny naturalny styl grafik
 - bazą ponownie jest stabilna v1088,
