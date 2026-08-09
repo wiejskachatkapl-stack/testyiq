@@ -312,26 +312,37 @@
   function diceSvg(value, className = '') {
     const uid = `dice-${Math.random().toString(36).slice(2)}`;
     const pips = pipPositions(value)
-      .map(([x,y]) => `<circle cx="${x}" cy="${y}" r="6.3"/>`)
+      .map(([x,y]) => `
+        <g class="pip" transform="translate(${x} ${y})">
+          <circle cx="0" cy="0" r="6.6" fill="#0f0f10"/>
+          <circle cx="-1.55" cy="-1.8" r="1.75" fill="rgba(255,255,255,.38)"/>
+        </g>`)
       .join('');
     return `<svg class="dice-svg ${className}" viewBox="0 0 100 100" role="img" aria-label="Kostka z liczbą oczek ${value}">
       <defs>
         <linearGradient id="${uid}-face" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#fffaf0"/>
-          <stop offset="55%" stop-color="#f3ead8"/>
-          <stop offset="100%" stop-color="#ded1bb"/>
+          <stop offset="0%" stop-color="#fffdf9"/>
+          <stop offset="62%" stop-color="#f2ede6"/>
+          <stop offset="100%" stop-color="#ded3c6"/>
         </linearGradient>
-        <filter id="${uid}-shadow" x="-30%" y="-30%" width="160%" height="170%">
-          <feDropShadow dx="0" dy="5" stdDeviation="4" flood-color="#000000" flood-opacity=".28"/>
+        <radialGradient id="${uid}-glow" cx="32%" cy="22%" r="78%">
+          <stop offset="0%" stop-color="rgba(255,255,255,.52)"/>
+          <stop offset="36%" stop-color="rgba(255,255,255,.20)"/>
+          <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+        </radialGradient>
+        <filter id="${uid}-shadow" x="-30%" y="-30%" width="170%" height="180%">
+          <feDropShadow dx="0" dy="7" stdDeviation="5" flood-color="#000000" flood-opacity=".24"/>
         </filter>
       </defs>
-      <rect class="dice-face" x="8" y="8" width="84" height="84" rx="19"
-            style="fill:url(#${uid}-face)!important;stroke:none!important" filter="url(#${uid}-shadow)"/>
-      <rect class="dice-outline" x="10.5" y="10.5" width="79" height="79" rx="16.5"
-            style="fill:none!important;stroke:#5b5247!important;stroke-width:1.5" opacity=".9"/>
-      <path class="dice-shine" d="M18 24 Q18 17 25 17 H69"
-            style="fill:none!important;stroke:#ffffff!important;stroke-width:2.2" opacity=".62"/>
-      <g class="dice-pips" style="fill:#111111!important">${pips}</g>
+      <g filter="url(#${uid}-shadow)">
+        <rect class="dice-face" x="9" y="9" width="82" height="82" rx="24"
+              style="fill:url(#${uid}-face)!important;stroke:#e7ddd1!important;stroke-width:1.1"/>
+        <rect x="11" y="11" width="78" height="78" rx="22"
+              style="fill:url(#${uid}-glow)!important;stroke:none!important"/>
+      </g>
+      <path class="dice-shine" d="M20 24 Q22 17 29 17 H66"
+            style="fill:none!important;stroke:rgba(255,255,255,.74)!important;stroke-width:2.6;stroke-linecap:round"/>
+      <g class="dice-pips">${pips}</g>
     </svg>`;
   }
 
