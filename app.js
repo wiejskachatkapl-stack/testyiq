@@ -577,33 +577,43 @@ function orientationCubeHtml(values, cls='orientation-mini-die'){
   };
 
   const project=(face,u,v)=>{
-    if(face==='top'){
-      return [60+(u-v)*46,15+(u+v)*24];
-    }
-    if(face==='left'){
-      return [14+u*46,39+v*58+u*24];
-    }
+    if(face==='top') return [60+(u-v)*46,16+(u+v)*24];
+    if(face==='left') return [14+u*46,39+v*58+u*24];
     return [60+u*46,63+v*58-u*24];
   };
 
   const pips=(face,value)=>{
-    return (pipMap[value]||[]).map(([u,v])=>{
+    return (pipMap[value]||[]).map(([u,v],idx)=>{
       const [x,y]=project(face,u,v);
-      return `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="4.7" fill="#10151a"/>`;
+      return `<g class="pip pip-${idx+1}"><circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="5.1" fill="#0f0f10"/><circle cx="${(x-1.2).toFixed(1)}" cy="${(y-1.5).toFixed(1)}" r="1.45" fill="rgba(255,255,255,.38)"/></g>`;
     }).join('');
   };
 
   return `<svg class="orientation-cube-svg ${cls}" viewBox="0 0 120 124" role="img" aria-label="Kostka: ${values.join(', ')}">
     <defs>
-      <filter id="orientationCubeShadow" x="-30%" y="-30%" width="160%" height="180%">
-        <feDropShadow dx="0" dy="4" stdDeviation="3" flood-color="#000" flood-opacity=".32"/>
+      <linearGradient id="oriTop-${values.join('')}" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#fffdfa"/>
+        <stop offset="72%" stop-color="#f2ede5"/>
+        <stop offset="100%" stop-color="#e3d9cd"/>
+      </linearGradient>
+      <linearGradient id="oriLeft-${values.join('')}" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#efe8df"/>
+        <stop offset="100%" stop-color="#d8cdc0"/>
+      </linearGradient>
+      <linearGradient id="oriRight-${values.join('')}" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#f7f1e8"/>
+        <stop offset="100%" stop-color="#ddd1c6"/>
+      </linearGradient>
+      <filter id="orientationCubeShadow" x="-30%" y="-30%" width="170%" height="185%">
+        <feDropShadow dx="0" dy="6" stdDeviation="4" flood-color="#000" flood-opacity=".24"/>
       </filter>
     </defs>
-    <g filter="url(#orientationCubeShadow)" stroke="#7a8287" stroke-width="2.2" stroke-linejoin="round">
-      <polygon points="60,15 106,39 60,63 14,39" fill="#f3e7ca"/>
-      <polygon points="14,39 60,63 60,121 14,97" fill="#eee0c1"/>
-      <polygon points="60,63 106,39 106,97 60,121" fill="#f7ecd3"/>
+    <g filter="url(#orientationCubeShadow)" stroke="#cec1b3" stroke-width="1.2" stroke-linejoin="round">
+      <polygon points="60,15 106,39 60,63 14,39" fill="url(#oriTop-${values.join('')})"/>
+      <polygon points="14,39 60,63 60,121 14,97" fill="url(#oriLeft-${values.join('')})"/>
+      <polygon points="60,63 106,39 106,97 60,121" fill="url(#oriRight-${values.join('')})"/>
     </g>
+    <path d="M22 35 Q26 24 37 21 H81" stroke="rgba(255,255,255,.45)" stroke-width="2.2" fill="none" stroke-linecap="round"/>
     <g>${pips('top',values[0])}${pips('left',values[1])}${pips('right',values[2])}</g>
   </svg>`;
 }
@@ -985,7 +995,7 @@ function renderOddOneOutQuestion(question){
   const board=document.getElementById('diceSequence');
   const gridClass=question.options.length===9?'odd-grid-3x3':'odd-grid-2x2';
   board.className=`dice-sequence odd-image-board ${gridClass}`;
-  const versionTag = 'v1094';
+  const versionTag = 'v1097';
   board.innerHTML=question.options.map((item,index)=>{
     const srcPrimary = `${item.image}?${versionTag}`;
     const srcSecondary = `./${item.image}?${versionTag}`;

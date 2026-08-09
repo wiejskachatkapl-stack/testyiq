@@ -1,9 +1,10 @@
-const CACHE='iq-brain-lab-v1096';
+const CACHE='iq-brain-lab-v1097';
 const ASSETS=[
   './','./index.html','./styles.css','./app.js','./manifest.json',
   './icons/icon-192.png','./icons/icon-512.png','./icons/icon-maskable-512.png',
   './js/generators/diceGenerator.js','./js/generators/matrixGenerator.js','./js/generators/mixedGenerator.js',
   './js/engine/questionEngine.js','./js/generators/oddOneOutGenerator.js','./assets/data/odd_one_out_database.json',
+  './assets/dice/die_style_reference.png',
   'assets/audio/rain.ogg','assets/audio/ocean.ogg','assets/audio/forest.ogg','assets/audio/fire.ogg','assets/audio/night.ogg',
   'assets/audio/alpha.ogg','assets/audio/deepFocus.ogg','assets/audio/study.ogg','assets/audio/meditation.ogg',
   'assets/audio/pink.ogg','assets/audio/brown.ogg','assets/audio/white.ogg','assets/audio/delta.ogg'
